@@ -1,2 +1,2 @@
 # dotfiles
-My personal dotfiles (configuration files in /home) from manjaro linux.
+My personal dotfiles (configuration files in /home) from Fedora 30 and macOS Mojave.

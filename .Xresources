@@ -1,0 +1,12 @@
+! colors
+#include ".Xresources.d/gruvbox" 
+
+! dmenu
+dmenu.background: background
+dmenu.foreground: foreground
+dmenu.selforeground: background
+dmenu.selbackground: foreground
+st.font: Hack-10;
+st.alpha: 0.7
+
+

@@ -52,6 +52,7 @@ let g:ale_linters = {
 \}
 let g:OmniSharp_timeout = 5
 let mapleader="\<;>"
+let g:airline_theme='gruvbox'
 
 filetype plugin indent on
 syntax enable

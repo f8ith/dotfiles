@@ -6,13 +6,13 @@
 	..
 1566481996
 'b
-	/Users/jamienibtong/bin/
+	/home/faith/bin/
 	..
-1566481996
+1566966266
 'h
-	/Users/jamienibtong/
+	/home/faith/
 	..
-1566481996
+1566966266
 'z
 	/Users/jamienibtong/.config/vifm
 	..
@@ -69,11 +69,224 @@ d/Users/jamienibtong/Documents/github/Rogue-RPG
 d/Users/jamienibtong/Documents/github
 	Rogue-RPG
 3
+d/
+	home
+4
+d/home
+	faith
+1
+d/home/faith
+	.oh-my-zsh
+23
+d/home/faith/.oh-my-zsh
+	.oh-my-zsh
+1
+d/home/faith/.oh-my-zsh/.oh-my-zsh
+	..
+0
+d/home/faith/.oh-my-zsh
+	custom
+2
+d/home/faith/.oh-my-zsh/custom
+	themes
+2
+d/home/faith/.oh-my-zsh/custom/themes
+	..
+0
+d/home/faith/.oh-my-zsh/custom
+	themes
+2
+d/home/faith/.oh-my-zsh
+	custom
+2
+d/home/faith
+	.oh-my-zsh
+23
+d/home/faith/.oh-my-zsh
+	custom
+2
+d/home/faith/.oh-my-zsh/custom
+	themes
+2
+d/home/faith/.oh-my-zsh
+	.oh-my-zsh
+1
+d/home/faith/.oh-my-zsh/.oh-my-zsh
+	..
+0
+d/home/faith/.oh-my-zsh
+	.oh-my-zsh
+1
+d/home/faith
+	.tmux
+33
+d/home/faith/.tmux
+	..
+0
+d/home/faith
+	.atom
+2
+d/home/faith/.atom
+	..
+0
+d/home/faith
+	.Xresources.d
+1
+d/home/faith/.Xresources.d
+	..
+0
+d/home/faith
+	dotfiles
+13
+d/home/faith/dotfiles
+	zsh
+9
+d/home/faith/dotfiles/zsh
+	..
+0
+d/home/faith/dotfiles
+	vifm
+8
+d/home/faith/dotfiles/vifm
+	..
+0
+d/home/faith/dotfiles
+	tmux
+7
+d/home/faith/dotfiles/tmux
+	..
+0
+d/home/faith/dotfiles
+	tmux
+7
+d/home/faith
+	Public
+8
+d/home
+	faith
+1
+d/home/faith
+	.config
+4
+d/home/faith/.config
+	i3
+34
+d/home/faith/.config/i3
+	config
+1
+d/home/faith/.config
+	obs-studio
+39
+d/home/faith
+	dotfiles
+13
+d/home/faith/dotfiles
+	zsh
+9
+d/home/faith/dotfiles/zsh
+	templates
+2
+d/home/faith/dotfiles/zsh/templates
+	..
+0
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	custom
+2
+d/home/faith/dotfiles/zsh/.oh-my-zsh/custom
+	..
+0
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	..
+0
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles
+	zsh
+10
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	..
+0
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	..
+0
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	..
+0
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	..
+0
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	..
+0
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles
+	zsh
+10
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	plugins
+7
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	..
+0
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	plugins
+7
+d/home/faith/dotfiles/zsh
+	omz
+2
+d/home/faith/dotfiles/zsh/omz
+	lib
+5
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles/zsh/.oh-my-zsh
+	..
+0
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles
+	zsh
+10
 d
 
 # Right window history (oldest to newest):
 D/Users/jamienibtong/Documents/github
 	..
+0
+D/
+	bin
 0
 D
 
@@ -87,15 +300,22 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
+""/home/faith/dotfiles/zsh/omz/lib
 
 # Directory stack (oldest to newest):
 
 # Trash content:
+t/home/faith/.local/share/vifm/Trash/000_templates
+	/home/faith/dotfiles/zsh/templates
+t/home/faith/.local/share/vifm/Trash/000_themes
+	/home/faith/dotfiles/zsh/themes
+t/home/faith/.local/share/vifm/Trash/000_tools
+	/home/faith/dotfiles/zsh/tools
 
 # State:
 f
 i1
-[.1
+[.0
 [F
 F
 I1

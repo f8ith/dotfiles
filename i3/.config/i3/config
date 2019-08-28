@@ -161,3 +161,4 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+

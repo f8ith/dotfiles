@@ -22,11 +22,13 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'kien/ctrlp.vim'
 
-Plug 'tpope/vim-dispatch'
+Plug 'morhetz/gruvbox'
 
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
+
+set timeoutlen=1000 ttimeoutlen=0
 
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -80,4 +82,8 @@ command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 nnoremap <leader>rl :OmniSharpReloadSolution<cr>
 nnoremap <leader>cf :OmniSharpCodeFormat<cr>
 nnoremap <Leader>ss :OmniSharpStartServer<CR>
-nnoremap <Leader>sp :OmniSharpStopServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer
+
+set termguicolors
+set number
+colorscheme gruvbox

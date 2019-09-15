@@ -31,36 +31,6 @@ r2
 
 # Left window history (oldest to newest):
 d/Users/jamienibtong/Documents/github
-	Login-Plus
-1
-d/Users/jamienibtong/Documents/github/Login-Plus
-	..
-0
-d/Users/jamienibtong/Documents/github
-	..
-0
-d/Users/jamienibtong/Documents
-	github
-7
-d/Users/jamienibtong/Documents/github
-	..
-0
-d/Users/jamienibtong/Documents
-	github
-7
-d/Users/jamienibtong/Documents/github
-	Rogue-RPG
-3
-d/Users/jamienibtong/Documents/github/Rogue-RPG
-	Library
-2
-d/Users/jamienibtong/Documents/github
-	Rogue-RPG
-3
-d/Users/jamienibtong/Documents/github/Rogue-RPG
-	Library
-2
-d/Users/jamienibtong/Documents/github
 	Rogue-RPG
 3
 d/Users/jamienibtong/Documents/github/Rogue-RPG
@@ -279,6 +249,87 @@ d/home/faith/dotfiles/zsh
 d/home/faith/dotfiles
 	zsh
 10
+d/home/faith/dotfiles/zsh
+	.oh-my-zsh
+1
+d/home/faith/dotfiles
+	zsh
+10
+d/home/faith
+	AppImages
+4
+d/home/faith/AppImages
+	..
+0
+d/home/faith
+	Applications
+5
+d/home/faith/Applications
+	..
+0
+d/home/faith
+	.local
+16
+d/home/faith/.local
+	share
+5
+d/home/faith/.local/share
+	Trash
+5
+d/home/faith/.local/share/Trash
+	files
+2
+d/home/faith/.local/share/Trash/files
+	dotfiles
+7
+d/home/faith/.local/share/Trash/files/dotfiles
+	.git
+1
+d/home/faith/.local/share/Trash/files/dotfiles/.git
+	..
+0
+d/home/faith/.local/share/Trash/files/dotfiles
+	.git
+1
+d/home/faith/.local/share/Trash/files
+	dotfiles
+9
+d/home/faith/.local/share/Trash/files/dotfiles
+	.git
+1
+d/home/faith/.local/share/Trash/files/dotfiles/.git
+	..
+0
+d/home/faith/.local/share/Trash/files/dotfiles
+	.git
+1
+d/home/faith/.local/share/Trash/files
+	github
+11
+d/home/faith/.local/share/Trash/files/github
+	..
+0
+d/home/faith/.local/share/Trash/files
+	dotfiles
+9
+d/home/faith/.local/share/Trash/files/dotfiles
+	README.md
+2
+d/home/faith/.local/share/Trash/files
+	github
+11
+d/home/faith/.local/share/Trash/files/github
+	..
+0
+d/home/faith/Downloads
+	.part
+6
+d/home/faith
+	Downloads
+39
+d/home/faith/Downloads
+	.part
+6
 d
 
 # Right window history (oldest to newest):
@@ -291,6 +342,7 @@ D/
 D
 
 # Command line history (oldest to newest):
+:wq
 :q
 
 # Search history (oldest to newest):
@@ -300,7 +352,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/faith/dotfiles/zsh/omz/lib
+""/home/faith/.local/share/vifm/Trash/000_AppImages
 
 # Directory stack (oldest to newest):
 
@@ -311,6 +363,8 @@ t/home/faith/.local/share/vifm/Trash/000_themes
 	/home/faith/dotfiles/zsh/themes
 t/home/faith/.local/share/vifm/Trash/000_tools
 	/home/faith/dotfiles/zsh/tools
+t/home/faith/.local/share/vifm/Trash/000_AppImages
+	/home/faith/AppImages
 
 # State:
 f

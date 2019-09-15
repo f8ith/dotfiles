@@ -95,6 +95,11 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
+alias n=nvim
+alias sn="sudo nvim"
+alias v=vifm
+alias sv="sudo vifm"
+alias s=sxiv
 
 xhost +local:root > /dev/null 2>&1
 

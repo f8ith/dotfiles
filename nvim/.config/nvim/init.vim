@@ -1,10 +1,10 @@
 call plug#begin('~/.local/share/nvim/plugged')
-
+                   
 Plug 'vim-airline/vim-airline'
 
 Plug 'tpope/vim-surround'
 
-Plug 'jiangmiao/auto-pairs'
+Plug 'somini/vim-autoclose'
 
 Plug 'scrooloose/nerdtree'
 
@@ -40,6 +40,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set completeopt-=preview
+set clipboard+=unnamedplus
 
 let g:OmniSharp_server_stdio = 1
 let g:deoplete#enable_at_startup = 1
@@ -51,7 +52,7 @@ let g:ale_linters = {
 \ 'python': ['flake8']
 \}
 let g:OmniSharp_timeout = 5
-let mapleader="\<;>"
+let mapleader=","
 let g:airline_theme='gruvbox'
 
 filetype plugin indent on
@@ -63,11 +64,6 @@ au FileType cs setlocal omnifunc=OmniSharp#Complete
 inoremap <expr><C-g>     deoplete#undo_completion()
 inoremap <expr><C-l>     deoplete#complete_common_string()
 
-" Recommended key-mappings.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return deoplete#close_popup() . "\<CR>"
-endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -75,7 +71,9 @@ inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  deoplete#close_popup()
 inoremap <expr><C-e>  deoplete#cancel_popup()
 nnoremap <leader>nm :OmniSharpRename<cr>
-
+inoremap <CR> <Esc>
+inoremap <Leader><Space> <Esc>
+inoremap <Leader><Leader> <Esc>
 " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 

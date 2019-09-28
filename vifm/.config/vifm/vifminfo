@@ -328,8 +328,8 @@ d/home/faith
 	Downloads
 39
 d/home/faith/Downloads
-	.part
-6
+	0.jpg
+1
 d
 
 # Right window history (oldest to newest):
@@ -343,6 +343,7 @@ D
 
 # Command line history (oldest to newest):
 :wq
+:unzip
 :q
 
 # Search history (oldest to newest):
@@ -352,7 +353,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/faith/.local/share/vifm/Trash/000_AppImages
+""/home/faith/.local/share/vifm/Trash/000_google-chrome-stable_current_x86_64.rpm
 
 # Directory stack (oldest to newest):
 
@@ -365,11 +366,19 @@ t/home/faith/.local/share/vifm/Trash/000_tools
 	/home/faith/dotfiles/zsh/tools
 t/home/faith/.local/share/vifm/Trash/000_AppImages
 	/home/faith/AppImages
+t/home/faith/.local/share/vifm/Trash/000_DietPi_RPi-ARMv6-Buster(1).7z
+	/home/faith/Downloads/DietPi_RPi-ARMv6-Buster(1).7z
+t/home/faith/.local/share/vifm/Trash/000_debian-10.0.0-arm64-netinst.iso.part
+	/home/faith/Downloads/debian-10.0.0-arm64-netinst.iso.part
+t/home/faith/.local/share/vifm/Trash/000_debian-10.0.0-arm64-netinst.iso
+	/home/faith/Downloads/debian-10.0.0-arm64-netinst.iso
+t/home/faith/.local/share/vifm/Trash/000_google-chrome-stable_current_x86_64.rpm
+	/home/faith/Downloads/google-chrome-stable_current_x86_64.rpm
 
 # State:
 f
 i1
-[.0
+[.1
 [F
 F
 I1

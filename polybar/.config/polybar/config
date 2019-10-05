@@ -50,7 +50,7 @@ font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;1
 
 modules-left = i3 title
 modules-center = date 
-modules-right = cpu memory volume wired-network powermenu
+modules-right = cpu memory volume wired-network 
 
 [module/i3]
 type = internal/i3

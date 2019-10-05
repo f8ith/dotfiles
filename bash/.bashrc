@@ -100,6 +100,7 @@ alias sn="sudo nvim"
 alias v=vifm
 alias sv="sudo vifm"
 alias s=sxiv
+alias netflix=google-chrome
 
 xhost +local:root > /dev/null 2>&1
 

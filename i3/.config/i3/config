@@ -80,9 +80,9 @@ bindsym $mod+a focus parent
 set $ws1 "1:term"
 set $ws2 "2:app"
 set $ws3 "3:web"
-set $ws4 "4:work"
-set $ws5 "5:chat"
-set $ws6 "6:mail"
+set $ws4 "4:ntf"
+set $ws5 "5:work"
+set $ws6 "6:netf"
 set $ws7 "7:prv"
 set $ws8 "8:msc"
 set $ws9 "9:msc"
@@ -113,16 +113,13 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 # start polybar
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
-# reload wallpaper
-exec_always --no-startup-id ~/.fehbg &
-# start fcitx
-exec_always --no-startup-id fcitx 
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # Volume controls
 bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 2+ && unmute 
 bindsym XF86AudioLowerVolume exec amixer -c 1 set Master 2- && unmute 
@@ -153,4 +150,17 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"

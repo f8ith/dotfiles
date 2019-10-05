@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+xrdb -merge ~/.Xresources &
+xinput --set-prop 13 'libinput Accel Speed' -1 &
+dunst &
+~/.fehbg &
+fcitx &
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &

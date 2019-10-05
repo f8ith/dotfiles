@@ -30,15 +30,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/Users/jamienibtong/Documents/github
-	Rogue-RPG
-3
-d/Users/jamienibtong/Documents/github/Rogue-RPG
-	Library
-2
-d/Users/jamienibtong/Documents/github
-	Rogue-RPG
-3
 d/
 	home
 4
@@ -328,8 +319,17 @@ d/home/faith
 	Downloads
 39
 d/home/faith/Downloads
-	0.jpg
-1
+	..
+0
+d/home/faith
+	dotfiles
+12
+d/home/faith/dotfiles
+	X
+2
+d/home/faith/dotfiles/X
+	.xinitrc
+3
 d
 
 # Right window history (oldest to newest):
@@ -353,7 +353,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/faith/.local/share/vifm/Trash/000_google-chrome-stable_current_x86_64.rpm
+""/home/faith/.local/share/vifm/Trash/000_new engine.png
 
 # Directory stack (oldest to newest):
 
@@ -374,11 +374,19 @@ t/home/faith/.local/share/vifm/Trash/000_debian-10.0.0-arm64-netinst.iso
 	/home/faith/Downloads/debian-10.0.0-arm64-netinst.iso
 t/home/faith/.local/share/vifm/Trash/000_google-chrome-stable_current_x86_64.rpm
 	/home/faith/Downloads/google-chrome-stable_current_x86_64.rpm
+t/home/faith/.local/share/vifm/Trash/000_Oscar Javelin Throw.png
+	/home/faith/Downloads/Oscar Javelin Throw.png
+t/home/faith/.local/share/vifm/Trash/000_ImageMagick-7.0.8-66.x86_64.rpm
+	/home/faith/Downloads/ImageMagick-7.0.8-66.x86_64.rpm
+t/home/faith/.local/share/vifm/Trash/000_ImageMagick-libs-7.0.8-66.x86_64.rpm
+	/home/faith/Downloads/ImageMagick-libs-7.0.8-66.x86_64.rpm
+t/home/faith/.local/share/vifm/Trash/000_new engine.png
+	/home/faith/Downloads/new engine.png
 
 # State:
 f
 i1
-[.1
+[.0
 [F
 F
 I1

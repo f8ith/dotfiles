@@ -71,8 +71,6 @@ inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  deoplete#close_popup()
 inoremap <expr><C-e>  deoplete#cancel_popup()
 nnoremap <leader>nm :OmniSharpRename<cr>
-inoremap <CR> <Esc>
-inoremap <Leader><Space> <Esc>
 inoremap <Leader><Leader> <Esc>
 " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")

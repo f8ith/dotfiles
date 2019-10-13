@@ -23,94 +23,13 @@
 # TUI:
 al
 q0
-v2
+v1
 ov
 m-1
 l2
 r2
 
 # Left window history (oldest to newest):
-d/
-	home
-4
-d/home
-	faith
-1
-d/home/faith
-	.oh-my-zsh
-23
-d/home/faith/.oh-my-zsh
-	.oh-my-zsh
-1
-d/home/faith/.oh-my-zsh/.oh-my-zsh
-	..
-0
-d/home/faith/.oh-my-zsh
-	custom
-2
-d/home/faith/.oh-my-zsh/custom
-	themes
-2
-d/home/faith/.oh-my-zsh/custom/themes
-	..
-0
-d/home/faith/.oh-my-zsh/custom
-	themes
-2
-d/home/faith/.oh-my-zsh
-	custom
-2
-d/home/faith
-	.oh-my-zsh
-23
-d/home/faith/.oh-my-zsh
-	custom
-2
-d/home/faith/.oh-my-zsh/custom
-	themes
-2
-d/home/faith/.oh-my-zsh
-	.oh-my-zsh
-1
-d/home/faith/.oh-my-zsh/.oh-my-zsh
-	..
-0
-d/home/faith/.oh-my-zsh
-	.oh-my-zsh
-1
-d/home/faith
-	.tmux
-33
-d/home/faith/.tmux
-	..
-0
-d/home/faith
-	.atom
-2
-d/home/faith/.atom
-	..
-0
-d/home/faith
-	.Xresources.d
-1
-d/home/faith/.Xresources.d
-	..
-0
-d/home/faith
-	dotfiles
-13
-d/home/faith/dotfiles
-	zsh
-9
-d/home/faith/dotfiles/zsh
-	..
-0
-d/home/faith/dotfiles
-	vifm
-8
-d/home/faith/dotfiles/vifm
-	..
-0
 d/home/faith/dotfiles
 	tmux
 7
@@ -328,8 +247,89 @@ d/home/faith/dotfiles
 	X
 2
 d/home/faith/dotfiles/X
-	.xinitrc
-3
+	.Xresources.d
+1
+d/home/faith/dotfiles
+	X
+2
+d/home/faith
+	Downloads
+4
+d/home/faith/Downloads
+	..
+0
+d/home/faith
+	Public
+7
+d/home
+	faith
+1
+d/
+	media
+8
+d/media
+	HDD
+1
+d/media/HDD
+	github
+14
+d/media/HDD/github
+	Rogue-RPG
+4
+d/media/HDD/github/Rogue-RPG
+	Rogue-RPG
+1
+d/media/HDD/github/Rogue-RPG/Rogue-RPG
+	..
+0
+d/media/HDD/github/Rogue-RPG
+	Rogue-RPG
+6
+d/media/HDD/github/Rogue-RPG/Rogue-RPG
+	..
+0
+d/media/HDD/github/Rogue-RPG
+	Assets
+1
+d/media/HDD/github/Rogue-RPG/Assets
+	Scenes
+1
+d/media/HDD/github/Rogue-RPG/Assets/Scenes
+	SampleScene.unity
+1
+d/media/HDD/github/Rogue-RPG/Assets
+	Scenes
+1
+d/media/HDD/github/Rogue-RPG
+	Assets
+1
+d/media/HDD/github
+	Rogue-RPG
+4
+d/media/HDD/github/Rogue-RPG
+	Assets
+1
+d/media/HDD/github
+	Login-Plus
+2
+d/media/HDD
+	github
+34
+d/media
+	HDD
+1
+d/
+	home
+4
+d/home
+	faith
+1
+d/home/faith
+	Downloads
+4
+d/home/faith/Downloads
+	Oni-0.3.6-x86_64-linux.rpm
+2
 d
 
 # Right window history (oldest to newest):
@@ -343,7 +343,13 @@ D
 
 # Command line history (oldest to newest):
 :wq
+:O
+:o
+:open
+:Open
+:?
 :unzip
+:extract
 :q
 
 # Search history (oldest to newest):
@@ -353,7 +359,8 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/faith/.local/share/vifm/Trash/000_new engine.png
+""/home/faith/.local/share/vifm/Trash/000_dash-to-dockmicxgx.gmail.com.v67.shell-extension.zip
+""/home/faith/.local/share/vifm/Trash/000_dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
 
 # Directory stack (oldest to newest):
 
@@ -382,11 +389,143 @@ t/home/faith/.local/share/vifm/Trash/000_ImageMagick-libs-7.0.8-66.x86_64.rpm
 	/home/faith/Downloads/ImageMagick-libs-7.0.8-66.x86_64.rpm
 t/home/faith/.local/share/vifm/Trash/000_new engine.png
 	/home/faith/Downloads/new engine.png
+t/home/faith/.local/share/vifm/Trash/000_dynamic-panel-transparency.pot
+	/home/faith/Downloads/dynamic-panel-transparency.pot
+t/home/faith/.local/share/vifm/Trash/000_debian-10.0.0-arm64-netinst(1).iso
+	/home/faith/Downloads/debian-10.0.0-arm64-netinst(1).iso
+t/home/faith/.local/share/vifm/Trash/000_convenience.js
+	/home/faith/Downloads/convenience.js
+t/home/faith/.local/share/vifm/Trash/000_compat.js
+	/home/faith/Downloads/compat.js
+t/home/faith/.local/share/vifm/Trash/000___init__.js
+	/home/faith/Downloads/__init__.js
+t/home/faith/.local/share/vifm/Trash/000_LICENSE
+	/home/faith/Downloads/LICENSE
+t/home/faith/.local/share/vifm/Trash/000_COPYING
+	/home/faith/Downloads/COPYING
+t/home/faith/.local/share/vifm/Trash/000_Cloud-512.png
+	/home/faith/Downloads/Cloud-512.png
+t/home/faith/.local/share/vifm/Trash/000_settings.js
+	/home/faith/Downloads/settings.js
+t/home/faith/.local/share/vifm/Trash/000_stylesheet.css
+	/home/faith/Downloads/stylesheet.css
+t/home/faith/.local/share/vifm/Trash/000_theming.js
+	/home/faith/Downloads/theming.js
+t/home/faith/.local/share/vifm/Trash/000_transitions.js
+	/home/faith/Downloads/transitions.js
+t/home/faith/.local/share/vifm/Trash/000_util.js
+	/home/faith/Downloads/util.js
+t/home/faith/.local/share/vifm/Trash/000_metadata.json
+	/home/faith/Downloads/metadata.json
+t/home/faith/.local/share/vifm/Trash/000_intellifade.js
+	/home/faith/Downloads/intellifade.js
+t/home/faith/.local/share/vifm/Trash/000_events.js
+	/home/faith/Downloads/events.js
+t/home/faith/.local/share/vifm/Trash/000_extension.js
+	/home/faith/Downloads/extension.js
+t/home/faith/.local/share/vifm/Trash/000_locale
+	/home/faith/Downloads/locale
+t/home/faith/.local/share/vifm/Trash/000_media
+	/home/faith/Downloads/media
+t/home/faith/.local/share/vifm/Trash/000_prefs.js
+	/home/faith/Downloads/prefs.js
+t/home/faith/.local/share/vifm/Trash/000_schemas
+	/home/faith/Downloads/schemas
+t/home/faith/.local/share/vifm/Trash/001_locale
+	/home/faith/Downloads/locale
+t/home/faith/.local/share/vifm/Trash/001_media
+	/home/faith/Downloads/media
+t/home/faith/.local/share/vifm/Trash/001_schemas
+	/home/faith/Downloads/schemas
+t/home/faith/.local/share/vifm/Trash/000_Settings.ui
+	/home/faith/Downloads/Settings.ui
+t/home/faith/.local/share/vifm/Trash/001_COPYING
+	/home/faith/Downloads/COPYING
+t/home/faith/.local/share/vifm/Trash/000_README.md
+	/home/faith/Downloads/README.md
+t/home/faith/.local/share/vifm/Trash/000_appIconIndicators.js
+	/home/faith/Downloads/appIconIndicators.js
+t/home/faith/.local/share/vifm/Trash/000_appIcons.js
+	/home/faith/Downloads/appIcons.js
+t/home/faith/.local/share/vifm/Trash/000_dash.js
+	/home/faith/Downloads/dash.js
+t/home/faith/.local/share/vifm/Trash/000_docking.js
+	/home/faith/Downloads/docking.js
+t/home/faith/.local/share/vifm/Trash/001_extension.js
+	/home/faith/Downloads/extension.js
+t/home/faith/.local/share/vifm/Trash/000_fileManager1API.js
+	/home/faith/Downloads/fileManager1API.js
+t/home/faith/.local/share/vifm/Trash/000_intellihide.js
+	/home/faith/Downloads/intellihide.js
+t/home/faith/.local/share/vifm/Trash/000_launcherAPI.js
+	/home/faith/Downloads/launcherAPI.js
+t/home/faith/.local/share/vifm/Trash/001_prefs.js
+	/home/faith/Downloads/prefs.js
+t/home/faith/.local/share/vifm/Trash/001_stylesheet.css
+	/home/faith/Downloads/stylesheet.css
+t/home/faith/.local/share/vifm/Trash/001_theming.js
+	/home/faith/Downloads/theming.js
+t/home/faith/.local/share/vifm/Trash/000_utils.js
+	/home/faith/Downloads/utils.js
+t/home/faith/.local/share/vifm/Trash/000_windowPreview.js
+	/home/faith/Downloads/windowPreview.js
+t/home/faith/.local/share/vifm/Trash/000_locations.js
+	/home/faith/Downloads/locations.js
+t/home/faith/.local/share/vifm/Trash/001_metadata.json
+	/home/faith/Downloads/metadata.json
+t/home/faith/.local/share/vifm/Trash/002_prefs.js
+	/home/faith/Downloads/prefs.js
+t/home/faith/.local/share/vifm/Trash/002_stylesheet.css
+	/home/faith/Downloads/stylesheet.css
+t/home/faith/.local/share/vifm/Trash/002_theming.js
+	/home/faith/Downloads/theming.js
+t/home/faith/.local/share/vifm/Trash/001_utils.js
+	/home/faith/Downloads/utils.js
+t/home/faith/.local/share/vifm/Trash/001_windowPreview.js
+	/home/faith/Downloads/windowPreview.js
+t/home/faith/.local/share/vifm/Trash/001_locations.js
+	/home/faith/Downloads/locations.js
+t/home/faith/.local/share/vifm/Trash/002_metadata.json
+	/home/faith/Downloads/metadata.json
+t/home/faith/.local/share/vifm/Trash/001_launcherAPI.js
+	/home/faith/Downloads/launcherAPI.js
+t/home/faith/.local/share/vifm/Trash/001_intellihide.js
+	/home/faith/Downloads/intellihide.js
+t/home/faith/.local/share/vifm/Trash/001_fileManager1API.js
+	/home/faith/Downloads/fileManager1API.js
+t/home/faith/.local/share/vifm/Trash/002_extension.js
+	/home/faith/Downloads/extension.js
+t/home/faith/.local/share/vifm/Trash/001_dash.js
+	/home/faith/Downloads/dash.js
+t/home/faith/.local/share/vifm/Trash/001_docking.js
+	/home/faith/Downloads/docking.js
+t/home/faith/.local/share/vifm/Trash/001_appIconIndicators.js
+	/home/faith/Downloads/appIconIndicators.js
+t/home/faith/.local/share/vifm/Trash/001_appIcons.js
+	/home/faith/Downloads/appIcons.js
+t/home/faith/.local/share/vifm/Trash/002_COPYING
+	/home/faith/Downloads/COPYING
+t/home/faith/.local/share/vifm/Trash/001_README.md
+	/home/faith/Downloads/README.md
+t/home/faith/.local/share/vifm/Trash/001_Settings.ui
+	/home/faith/Downloads/Settings.ui
+t/home/faith/.local/share/vifm/Trash/002_locale
+	/home/faith/Downloads/locale
+t/home/faith/.local/share/vifm/Trash/002_media
+	/home/faith/Downloads/media
+t/home/faith/.local/share/vifm/Trash/002_schemas
+	/home/faith/Downloads/schemas
+t/media/HDD/.vifm-Trash-1000/000_Rogue-RPG
+	/media/HDD/github/Rogue-RPG/Rogue-RPG
+t/home/faith/.local/share/vifm/Trash/000_dash-to-dockmicxgx.gmail.com.v67.shell-extension.zip
+	/home/faith/Downloads/dash-to-dockmicxgx.gmail.com.v67.shell-extension.zip
+t/home/faith/.local/share/vifm/Trash/000_dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
+	/home/faith/Downloads/dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
 
 # State:
 f
 i1
-[.0
+[.1
 [F
 F
 I1

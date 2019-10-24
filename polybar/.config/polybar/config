@@ -25,12 +25,15 @@ secondary = #FF6200
 enable-ipc = true
 tray-position = none
 width = 100%
-height = 24
+height = 20
 radius = 0
 fixed-center = true
-#override-redirect = true
-
-background = ${colors.background}
+override-redirect = true
+border-top-size = 10
+border-bottom-size = 5
+border-right-size = 10
+border-left-size = 10
+background = #00FFFFFF
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -47,10 +50,34 @@ module-margin-right = 2
 
 font-0 = Hack:pixelsize=9;0
 font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;1
+font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=11;0
 
-modules-left = i3 title
-modules-center = date 
-modules-right = cpu memory volume wired-network 
+modules-left = title
+modules-center = bspwm  
+modules-right = cpu volume wired-network date
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %icon%
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.foreground-alt}
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.foreground-alt}
+label-urgent-padding = 1
+
+label-empty = 
+
+ws-icon-0 = trm;
+ws-icon-1 = edt;
+ws-icon-2 = web;
+ws-icon-3 = ntf;
+ws-icon-4 = cht;
+ws-icon-default = ♟
 
 [module/i3]
 type = internal/i3
@@ -93,7 +120,7 @@ type = internal/xwindow
 ;   <label> (default)
 format = <label>
 format-foreground = ${colors.foreground-alt}
-format-padding = 0
+format-padding = 2
 
 label = %title%
 label-maxlen = 40

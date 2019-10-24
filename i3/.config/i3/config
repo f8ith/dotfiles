@@ -25,17 +25,17 @@ gaps outer 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st -e tmux 
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -nb '#282828' -sf '#a89984' -sb "#7c6f64" -nf "#ebdbb2"
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+h focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up 
+bindsym $mod+l focus right 
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -44,13 +44,13 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+h move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up 
+bindsym $mod+Shift+l move right 
+bindsym $mod+Shift+h move left
 
 # split in horizontal orientation
-bindsym $mod+semicolon split h
+bindsym $mod+p split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -78,7 +78,7 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:term"
-set $ws2 "2:app"
+set $ws2 "2:oni"
 set $ws3 "3:web"
 set $ws4 "4:ntf"
 set $ws5 "5:work"
@@ -113,6 +113,12 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 # start polybar
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+# Startup applications
+exec --no-startup-id xinput --set-prop 13 'libinput Accel Speed' -1
+exec --no-startup-id setxkbmap -option "caps:swapescape"
+exec --no-startup-id ~/.fehbg
+exec dunst
+exec fcitx
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

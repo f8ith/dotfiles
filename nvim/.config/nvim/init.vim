@@ -6,13 +6,11 @@ Plug 'somini/vim-autoclose'
 
 Plug 'scrooloose/nerdtree'
 
-Plug 'omnisharp/omnisharp-vim'
-
-Plug 'dimixar/deoplete-omnisharp'
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'zchee/deoplete-jedi'
+
+Plug 'OmniSharp/omnisharp-vim'
 
 Plug 'dense-analysis/ale'
 
@@ -25,6 +23,8 @@ Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'alvan/vim-closetag'
+
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -43,21 +43,20 @@ set completeopt-=preview
 set clipboard+=unnamedplus
 
 let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_timeout = 5
 let g:deoplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ale_linters = {
-\ 'python': ['flake8']
+\ 'python': ['flake8'],
+\ 'cs': ['OmniSharp']
 \}
-let g:OmniSharp_timeout = 5
-let mapleader=","
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+let mapleader=""
 let g:airline_theme='gruvbox'
+let g:auto_save = 1 
 
-filetype plugin indent on
 syntax enable
-
-au FileType cs setlocal omnifunc=OmniSharp#Complete  
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     deoplete#undo_completion()

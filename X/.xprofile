@@ -1,9 +1,4 @@
 #!/usr/bin/env sh
 
 xrdb -merge ~/.Xresources &
-xinput --set-prop 13 'libinput Accel Speed' -1 &
-dunst &
-~/.fehbg &
-fcitx &
-setxkbmap -option "caps:swapescape" &
 git config --global credential.helper store &

@@ -5,5 +5,5 @@
 # Executed by startx (run your window manager from here)
 [ -f "$HOME/.xprofile" ] && . ~/.xprofile
 
-exec i3
+exec tdm --xstart  
 

@@ -30,93 +30,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/faith/dotfiles
-	tmux
-7
-d/home/faith/dotfiles/tmux
-	..
-0
-d/home/faith/dotfiles
-	tmux
-7
-d/home/faith
-	Public
-8
-d/home
-	faith
-1
-d/home/faith
-	.config
-4
-d/home/faith/.config
-	i3
-34
-d/home/faith/.config/i3
-	config
-1
-d/home/faith/.config
-	obs-studio
-39
-d/home/faith
-	dotfiles
-13
-d/home/faith/dotfiles
-	zsh
-9
-d/home/faith/dotfiles/zsh
-	templates
-2
-d/home/faith/dotfiles/zsh/templates
-	..
-0
-d/home/faith/dotfiles/zsh
-	.oh-my-zsh
-1
-d/home/faith/dotfiles/zsh/.oh-my-zsh
-	custom
-2
-d/home/faith/dotfiles/zsh/.oh-my-zsh/custom
-	..
-0
-d/home/faith/dotfiles/zsh/.oh-my-zsh
-	..
-0
-d/home/faith/dotfiles/zsh
-	omz
-2
-d/home/faith/dotfiles
-	zsh
-10
-d/home/faith/dotfiles/zsh
-	omz
-2
-d/home/faith/dotfiles/zsh/omz
-	..
-0
-d/home/faith/dotfiles/zsh
-	.oh-my-zsh
-1
-d/home/faith/dotfiles/zsh/.oh-my-zsh
-	..
-0
-d/home/faith/dotfiles/zsh
-	omz
-2
-d/home/faith/dotfiles/zsh/omz
-	..
-0
-d/home/faith/dotfiles/zsh
-	.oh-my-zsh
-1
-d/home/faith/dotfiles/zsh/.oh-my-zsh
-	..
-0
-d/home/faith/dotfiles/zsh
-	omz
-2
-d/home/faith/dotfiles/zsh/omz
-	..
-0
 d/home/faith/dotfiles/zsh
 	omz
 2
@@ -328,8 +241,95 @@ d/home/faith
 	Downloads
 4
 d/home/faith/Downloads
-	Oni-0.3.6-x86_64-linux.rpm
+	.~lock.sportsref_download (4).xls#
+7
+d/home/faith
+	.config
+4
+d/home/faith/.config
+	sxhkd
+49
+d/home/faith/.config/sxhkd
+	..
+0
+d/home/faith/.config
+	bspwm
+5
+d/home/faith/.config/bspwm
+	..
+0
+d/home/faith/.config
+	bspwm
+5
+d/home/faith/.config/bspwm
+	scripts
+1
+d/home/faith/.config/bspwm/scripts
+	..
+0
+d/home/faith/.config/bspwm
+	..
+0
+d/home/faith/.config
+	bspwm
+5
+d/home/faith
+	.config
+4
+d/home/faith/.config
+	tdm
+59
+d/home/faith/.config/tdm
+	sessions
 2
+d/home/faith/.config/tdm/sessions
+	bspwm
+7
+d/home/faith/.config/tdm
+	sessions
+2
+d/home/faith/.config
+	tdm
+59
+d/home/faith
+	.config
+4
+d/home
+	faith
+1
+d/
+	home
+4
+d/home
+	faith
+1
+d/home/faith
+	.config
+4
+d/home/faith/.config
+	polybar
+45
+d/home/faith
+	Downloads
+4
+d/home/faith/Downloads
+	fontawesome-free-5.11.2-desktop
+1
+d/home/faith/Downloads/fontawesome-free-5.11.2-desktop
+	otfs
+2
+d/home/faith/Downloads/fontawesome-free-5.11.2-desktop/otfs
+	README.md
+4
+d/home/faith/Downloads/fontawesome-free-5.11.2-desktop
+	otfs
+2
+d/home/faith/Downloads
+	fontawesome-free-5.11.2-desktop
+1
+d/home/faith
+	Music
+22
 d
 
 # Right window history (oldest to newest):
@@ -359,8 +359,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/faith/.local/share/vifm/Trash/000_dash-to-dockmicxgx.gmail.com.v67.shell-extension.zip
-""/home/faith/.local/share/vifm/Trash/000_dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
+""/home/faith/.local/share/vifm/Trash/000_scripts
 
 # Directory stack (oldest to newest):
 
@@ -521,11 +520,13 @@ t/home/faith/.local/share/vifm/Trash/000_dash-to-dockmicxgx.gmail.com.v67.shell-
 	/home/faith/Downloads/dash-to-dockmicxgx.gmail.com.v67.shell-extension.zip
 t/home/faith/.local/share/vifm/Trash/000_dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
 	/home/faith/Downloads/dynamic-panel-transparencyrockon999.github.io.v32.shell-extension.zip
+t/home/faith/.local/share/vifm/Trash/000_scripts
+	/home/faith/.config/bspwm/scripts
 
 # State:
 f
 i1
-[.1
+[.0
 [F
 F
 I1

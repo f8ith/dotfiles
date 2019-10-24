@@ -45,11 +45,6 @@ esac
 
 use_color=true
 
-# Set colorful PS1 only on colorful terminals.
-# dircolors --print-database uses its own built-in database
-# instead of using /etc/DIR_COLORS.  Try to use the external file
-# first to take advantage of user additions.  Use internal bash
-# globbing instead of external grep binary.
 safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
 match_lhs=""
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
@@ -99,29 +94,22 @@ alias n=nvim
 alias sn="sudo nvim"
 alias v=vifm
 alias sv="sudo vifm"
-alias s=sxiv
-alias netflix=google-chrome
+alias f=feh
+alias vi=nvim
+alias vim=nvim
+alias bashconf="nvim ~/.bashrc"
+alias i3conf="nvim ~/.config/i3/config"
+alias bspconf="nvim ~/.config/bspwm/bspwmrc"
+alias polyconf="nvim ~/.config/polybar/config"
+alias vimconf="nvim ~/.config/nvim/init.vim"
+alias nvimconf="nvim ~/.config/nvim/init.vim"
 
 xhost +local:root > /dev/null 2>&1
-
 complete -cf sudo
-
-# Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
-
 shopt -s expand_aliases
-
-# export QT_SELECT=4
-
-# Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-#
-# # ex - archive extractor
-# # usage: ex <file>
 ex ()
 {
   if [ -f $1 ] ; then
@@ -144,8 +132,9 @@ ex ()
   fi
 }
 
-# better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 export PATH="/home/faith/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+neofetch

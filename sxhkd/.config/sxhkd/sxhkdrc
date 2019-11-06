@@ -13,15 +13,12 @@ XF86AudioLowerVolume
     amixer -c 1 set Master 2- && unmute 
 XF86AudioMute 
     amixer -c 1 set Master mute 
-#F6 
-#F7 
-#F8 
 
 # applications
 alt + Return
 	st
 alt + d
-    dmenu_run -nb '#282828' -sf '#a89984' -sb "#7c6f64" -nf "#ebdbb2"
+    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
 
 # make sxhkd reload its configuration files:
 alt + shift + r

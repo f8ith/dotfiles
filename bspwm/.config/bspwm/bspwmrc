@@ -7,10 +7,10 @@ xinput --set-prop 13 'libinput Accel Speed' -1 &
 setxkbmap -option "caps:swapescape" &
 $HOME/.config/dunst/wrapper.sh &
 ~/.fehbg &
-fcitx &
+dbus-launch fcitx &
 . ~/.config/polybar/launch.sh
 
-bspc monitor -d trm edt web ntf cht wrk prv cfg
+bspc monitor -d trm edt web ntf cht wrk vrt prv cfg
 
 bspc config border_width                1
 bspc config window_gap                  10
@@ -38,3 +38,4 @@ bspc rule -a Firefox desktop='^3'
 bspc rule -a Station desktop='^2'
 bspc rule -a Atom desktop='^2'
 bspc rule -a Oni desktop='^2'
+bspc rule -a 'Virtual Machine Manager' desktop='^7'

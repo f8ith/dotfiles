@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-xrdb -merge ~/.Xresources &
+xrdb -load ~/.Xresources &
 git config --global credential.helper store &

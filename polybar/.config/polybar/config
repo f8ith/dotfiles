@@ -77,6 +77,8 @@ ws-icon-1 = edt;
 ws-icon-2 = web;
 ws-icon-3 = ntf;
 ws-icon-4 = cht;
+ws-icon-5 = wrk;
+ws-icon-6 = vrt;
 ws-icon-default = ♟
 
 [module/i3]

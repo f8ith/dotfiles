@@ -6,7 +6,7 @@ dmenu.background: background
 dmenu.foreground: foreground
 dmenu.selforeground: background
 dmenu.selbackground: foreground
-st.font: Hack-10;
+st.font: Inconsolata Nerd Font-12;
 st.alpha: 0.7
 
 

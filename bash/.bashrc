@@ -85,25 +85,6 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
-alias more=less
-alias n=nvim
-alias sn="sudo nvim"
-alias r=ranger
-alias sr="sudo ranger"
-alias f=feh
-alias vi=nvim
-alias vim=nvim
-alias bashconf="nvim ~/.bashrc"
-alias i3conf="nvim ~/.config/i3/config"
-alias bspconf="nvim ~/.config/bspwm/bspwmrc"
-alias polyconf="nvim ~/.config/polybar/config"
-alias vimconf="nvim ~/.config/nvim/init.vim"
-alias nvimconf="nvim ~/.config/nvim/init.vim"
-
 xhost +local:root > /dev/null 2>&1
 complete -cf sudo
 shopt -s checkwinsize
@@ -133,8 +114,10 @@ ex ()
 }
 
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
-export PATH="/home/faith/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 neofetch

@@ -1,0 +1,16 @@
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias np='nano -w PKGBUILD'
+alias more=less
+alias n=nvim
+alias sn="sudo nvim"
+alias f=feh
+alias vi=nvim
+alias vim=nvim
+alias bashconf="nvim ~/.bashrc"
+alias i3conf="nvim ~/.config/i3/config"
+alias bspconf="nvim ~/.config/bspwm/bspwmrc"
+alias polyconf="nvim ~/.config/polybar/config"
+alias vimconf="nvim ~/.config/nvim/init.vim"
+alias nvimconf="nvim ~/.config/nvim/init.vim"

@@ -31,8 +31,6 @@ bspc config urgent_border_color 	      "#dd2727"
 
 bspc config focus_follows_pointer true
 
-xdotool below -t $(xdo id -n root) $(xdo id -a polybar)
-
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Firefox desktop='^3'
 bspc rule -a Station desktop='^2'

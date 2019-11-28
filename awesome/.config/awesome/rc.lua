@@ -104,8 +104,8 @@ user = {
     -- >> Default applications <<
     terminal = "st",
     floating_terminal = "st",
-    browser = "firefox",
-    file_manager = "st -c file_manager -e ranger",
+    browser = "chromium-browser-privacy",
+    file_manager = "st -c file_manager -e lf",
     editor = "st -c editor nvim",
     -- editor = "emacs",
 
@@ -457,6 +457,7 @@ awful.rules.rules = {
                 "dota2",
                 "Terraria.bin.x86",
                 "dontstarve_steam",
+                "Firefox",
             },
         },
         properties = { fullscreen = true }
@@ -737,7 +738,6 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "Firefox",
                 "qutebrowser",
                 "Google Chrome",
                 "Chromium",
@@ -754,6 +754,7 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
+                "Firefox",
                 "dota2",
                 "Terraria.bin.x86",
                 "dontstarve_steam",

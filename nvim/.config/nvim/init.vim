@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
                    
 Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neomake/neomake'
@@ -9,6 +8,7 @@ Plug 'neomake/neomake'
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
@@ -23,7 +23,7 @@ endif
 
 call plug#end()
 
-set timeoutlen=300 ttimeoutlen=0
+set timeoutlen=200 ttimeoutlen=0
 
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -48,15 +48,13 @@ set cmdheight=2
 set updatetime=100
 set shortmess+=c
 set signcolumn=yes
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
 colorscheme nord
 
 filetype plugin on
 
 "----- AUTOCMD -----"
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
 autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -108,11 +106,11 @@ let g:closetag_close_shortcut = '<leader>>'
 "      \ }
 "autocmd! BufWritePost,BufEnter * Neomake
 "
-let g:neomake_live_server_maker = {
+let g:neomake_liveserver_maker = {
      \ 'exe': 'live-server',
      \ 'args': '--quiet'
      \ }
-let g:neomake_html_enabled_makers = ['live_server']
+let g:neomake_html_enabled_makers = ['liveserver']
 
 "----- COC CONFIG -----"
 inoremap <silent><expr> <TAB>
@@ -155,3 +153,27 @@ function! FloatingFZF()
  
   call nvim_open_win(buf, v:true, opts)
 endfunction
+
+"----- LF CONFIG -----"
+" Use lf to select and open file(s) in vim (adapted from ranger).
+
+function! LF()
+    let temp = tempname()
+    exec 'silent !lf -selection-path=' . shellescape(temp)
+    if !filereadable(temp)
+        redraw!
+        return
+    endif
+    let names = readfile(temp)
+    if empty(names)
+        redraw!
+        return
+    endif
+    exec 'edit ' . fnameescape(names[0])
+    for name in names[1:]
+        exec 'argadd ' . fnameescape(name)
+    endfor
+    redraw!
+endfunction
+command! -bar LF call LF()
+nnoremap <leader>l :LF<cr>

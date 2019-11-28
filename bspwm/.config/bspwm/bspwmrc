@@ -4,7 +4,6 @@
 compton &
 sxhkd &
 xinput --set-prop 13 'libinput Accel Speed' -1 &
-setxkbmap -option "caps:swapescape" &
 $HOME/.config/dunst/wrapper.sh &
 ~/.fehbg &
 dbus-launch fcitx &

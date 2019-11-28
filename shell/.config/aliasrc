@@ -14,3 +14,4 @@ alias bspconf="nvim ~/.config/bspwm/bspwmrc"
 alias polyconf="nvim ~/.config/polybar/config"
 alias vimconf="nvim ~/.config/nvim/init.vim"
 alias nvimconf="nvim ~/.config/nvim/init.vim"
+alias sudo='sudo '

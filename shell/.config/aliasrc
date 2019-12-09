@@ -15,3 +15,4 @@ alias polyconf="nvim ~/.config/polybar/config"
 alias vimconf="nvim ~/.config/nvim/init.vim"
 alias nvimconf="nvim ~/.config/nvim/init.vim"
 alias sudo='sudo '
+alias python3=/usr/bin/python3

@@ -9,7 +9,7 @@ local pad = helpers.pad
 
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(140)
-local text_font = beautiful.exit_screen_font or "sans 14"
+local text_font = beautiful.exit_screen_font or "Google Sans 14"
 
 -- Commands
 local poweroff_command = function()
@@ -36,7 +36,7 @@ end
 local username = os.getenv("USER")
 -- Capitalize username
 local goodbye_widget = wibox.widget.textbox("Goodbye " .. username:sub(1,1):upper()..username:sub(2))
-goodbye_widget.font = "sans 70"
+goodbye_widget.font = "Google Sans 70"
 
 local poweroff_icon = wibox.widget.imagebox(icons.poweroff)
 poweroff_icon.resize = true

@@ -18,8 +18,9 @@ XF86AudioMute
 super + Return
 	st
 super + d
-    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
-
+#Dmenu
+#    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
+    rofi matching fuzzy -show combi
 # make sxhkd reload its configuration files:
 super + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc 
@@ -27,7 +28,7 @@ super + shift + r
 # BSPWM
 
 # close and kill
-super + {_,shift + }q
+super + q
 	bspc node -{c,k}
 
 # superernate between the tiled and monocle layout

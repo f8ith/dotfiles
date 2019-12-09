@@ -8,6 +8,6 @@ dmenu.selforeground: background
 dmenu.selbackground: foreground
 st.font: Inconsolata Nerd Font-12;
 ! st.font: Source Code Pro-11;
-st.alpha: 0.7
+st.alpha: 1.0
 
 

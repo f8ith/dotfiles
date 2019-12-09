@@ -32,9 +32,6 @@ if [ ! -e /tmp/mpv.fifo ]; then
     mkfifo /tmp/mpv.fifo
 fi
 
-# Desktop effects
-#run compton --config ~/.config/compton/compton.conf
-
 # Enable numlock on login
 # Required numlockx to be installed
 run numlockx
@@ -48,8 +45,3 @@ run nm-applet
 # Wallpaper
 # (Already set to run in rc.lua)
 # ~/.fehbg
-
-compton &
-xinput --set-prop 13 'libinput Accel Speed' -1 &
-setxkbmap -option "caps:swapescape" &
-dbus-launch fcitx &

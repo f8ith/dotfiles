@@ -28,8 +28,7 @@ theme.wallpaper = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name 
 theme.wallpaper_lock = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_name .. "/wallpaper_lock.jpg"
 
 -- Set the theme font. This is the font that will be used by default in menus, bars, titlebars etc.
--- theme.font          = "Google Sans 11"
-theme.font          = "monospace 11"
+theme.font          = "Google Sans 11"
 
 -- Get colors from .Xresources and set fallback colors
 theme.xbackground = xrdb.background or "#1D1F28"
@@ -194,7 +193,7 @@ theme.tasklist_bg_normal = "#00000000"
 theme.tasklist_fg_normal = theme.xforeground.."77"
 theme.tasklist_bg_minimize = "#00000000"
 theme.tasklist_fg_minimize = theme.xcolor8
--- theme.tasklist_font_minimized = "Google Sans italic 8"
+theme.tasklist_font_minimized = "Google Sans italic 8"
 theme.tasklist_bg_urgent = theme.xbackground
 theme.tasklist_fg_urgent = theme.xcolor3
 theme.tasklist_spacing = dpi(0)

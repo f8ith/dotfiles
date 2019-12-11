@@ -72,3 +72,4 @@ bindkey '^e' edit-command-line
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 neofetch
+source ~/powerlevel10k/powerlevel10k.zsh-theme

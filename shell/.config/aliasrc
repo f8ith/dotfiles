@@ -8,11 +8,12 @@ alias sn="sudo nvim"
 alias f=feh
 alias vi=nvim
 alias vim=nvim
-alias bashconf="nvim ~/.bashrc"
+alias bashrc="nvim ~/.bashrc"
 alias i3conf="nvim ~/.config/i3/config"
-alias bspconf="nvim ~/.config/bspwm/bspwmrc"
+alias bspwmrc"nvim ~/.config/bspwm/bspwmrc"
 alias polyconf="nvim ~/.config/polybar/config"
-alias vimconf="nvim ~/.config/nvim/init.vim"
-alias nvimconf="nvim ~/.config/nvim/init.vim"
+alias vimrc="nvim ~/.config/nvim/init.vim"
+alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias sudo='sudo '
 alias python3=/usr/bin/python3
+alias yabairc="nvim ~/.config/yabai/yabairc"

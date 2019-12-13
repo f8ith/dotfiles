@@ -5,7 +5,7 @@ sxhkd &
 ~/.fehbg &
 #. ~/.config/polybar/launch.sh
 
-bspc monitor -d web msc msc edt cht wrk vrt prv cfg trm
+bspc monitor -d web trm msc edt cht wrk vrt prv cfg trm
 
 bspc config border_width                5
 bspc config window_gap                  30

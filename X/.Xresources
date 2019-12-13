@@ -6,7 +6,7 @@ dmenu.background: background
 dmenu.foreground: foreground
 dmenu.selforeground: background
 dmenu.selbackground: foreground
-st.font: Inconsolata Nerd Font-12;
+st.font: FiraCode Nerd Font Mono-10;
 ! st.font: Source Code Pro-11;
 st.alpha: 1.0
 

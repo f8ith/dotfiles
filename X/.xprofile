@@ -7,4 +7,3 @@ xinput --set-prop 13 'libinput Accel Speed' -1 &
 $HOME/.config/dunst/wrapper.sh &
 compton &
 dbus-launch fcitx &
-emacs --daemon &

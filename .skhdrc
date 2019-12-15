@@ -1,5 +1,5 @@
 # open terminal
-alt - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -129,4 +129,4 @@ ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 
 # reload skhd and yabai
-ctrl + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || brew services restart skhd
+shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || brew services restart skhd

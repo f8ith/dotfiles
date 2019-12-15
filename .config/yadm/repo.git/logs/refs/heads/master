@@ -1,5 +1,0 @@
-0000000000000000000000000000000000000000 2e23e1a8d342f7115d457ef1bf0b11be3cc53fc8 faith <jamienibtong@gmail.com> 1576222805 +0800	initial pull
-2e23e1a8d342f7115d457ef1bf0b11be3cc53fc8 cf1b405dec0c80029978a3784b44372c8aba7acf faith <jamienibtong@gmail.com> 1576283405 +0800	pull: Fast-forward
-cf1b405dec0c80029978a3784b44372c8aba7acf 7dca47222b0d537231da8e6e467049e7c35da788 faith <jamienibtong@gmail.com> 1576283559 +0800	commit: Initial change from stow to yadm
-7dca47222b0d537231da8e6e467049e7c35da788 30a3ee2a7b1affb40c420e665a8100b680460fa7 faith <jamienibtong@gmail.com> 1576285685 +0800	commit: Complete switch from GNU Stow to yadm
-30a3ee2a7b1affb40c420e665a8100b680460fa7 11b61092c5b2ba2315c08936af2e586f95577096 yadm clone <yadm> 1576442402 +0800	reset: moving to HEAD

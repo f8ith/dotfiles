@@ -4,7 +4,42 @@ foreground = ${xrdb:color15}
 foreground-alt = ${xrdb:color8}
 alert = ${xrdb:color9}
 
-[bar/top]
+[bar/flat]
+enable-ipc = true
+tray-position = none
+width = 100%
+height = 30
+radius = 0
+fixed-center = true
+override-redirect = true
+wm-restack = bspwm
+border-top-size = 5 
+border-bottom-size = 5
+border-right-size = 0
+border-left-size = 0
+background = #
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Hack Nerd Font:pixelsize=9;0
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;0
+font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=9;1
+
+modules-left = title
+modules-center = bspwm  
+modules-right = cpu volume wired-network date
+
+[bar/round]
 enable-ipc = true
 tray-position = none
 width = 100%

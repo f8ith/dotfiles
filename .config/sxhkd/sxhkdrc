@@ -23,7 +23,7 @@ alt + d
     rofi matching fuzzy -show combi
 # make sxhkd reload its configuration files:
 alt + shift + r
-	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc 
+	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh
 
 # BSPWM
 

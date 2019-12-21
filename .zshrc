@@ -89,7 +89,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source $ZPLUG_HOME/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/pipenv", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1

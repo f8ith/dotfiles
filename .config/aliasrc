@@ -17,5 +17,4 @@ alias initvim="nvim ~/.config/nvim/init.vim"
 alias n="nnn"
 alias sn="sudo nnn"
 alias sudo='sudo '
-alias python3=/usr/bin/python3
 alias yabairc="nvim ~/.config/yabai/yabairc"

@@ -1,22 +1,12 @@
 let g:netrw_dirhistmax  =10
-<<<<<<< HEAD
-let g:netrw_dirhistcnt =0
-let g:netrw_dirhist_0='/home/faith/.config/polybar'
-=======
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/Users/faith/git/carton'
-let g:netrw_dirhist_1='/Users/faith/.config/nvim'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/faith/.config/polybar'
 let g:netrw_dirhist_0='/Users/faith/git/carton/libcarton'
->>>>>>> 4e2d7489f3097dfd86e0a70018da7d94f2cd3876
 let g:netrw_dirhist_9='/Users/faith/.config/nvim'
 let g:netrw_dirhist_8='/Users/faith/dotfiles/delta/scanners'
 let g:netrw_dirhist_7='/Users/faith/dotfiles/delta'
 let g:netrw_dirhist_6='/home/faith/.doom.d'
 let g:netrw_dirhist_5='/home/faith/.emacs.d'
-let g:netrw_dirhist_4='/home/faith/.doom.d'
-let g:netrw_dirhist_3='/usr/share/X11/xorg.conf.d'
-<<<<<<< HEAD
+let g:netrw_dirhist_4='/home/faith/.mozilla/firefox/6bnjse6i.default'
+let g:netrw_dirhist_3='/home/faith/.mozilla/firefox/6bnjse6i.default/chrome'
 let g:netrw_dirhist_2='/home/faith/.config/polybar'
-let g:netrw_dirhist_1='/home/faith/.config/awesome'
-=======
->>>>>>> 4e2d7489f3097dfd86e0a70018da7d94f2cd3876

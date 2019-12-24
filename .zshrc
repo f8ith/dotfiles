@@ -78,7 +78,10 @@ bindkey '^e' edit-command-line
 # Load zsh-syntax-highlighting; should be last.
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
-# neofetch
+if [[ uname != 'darwin' ]] ; then
+    neofetch
+fi
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

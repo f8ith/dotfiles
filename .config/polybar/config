@@ -2,7 +2,46 @@
 background = ${xrdb:color0}
 foreground = ${xrdb:color15}
 foreground-alt = ${xrdb:color8}
+foreground-sub = #434c5e
 alert = ${xrdb:color9}
+
+[bar/clean]
+enable-ipc = true
+tray-position = none
+width = 60%
+height = 30
+radius = 0
+offset-x = 20%
+offset-y = 5
+fixed-center = true
+override-redirect = true
+wm-restack = bspwm
+border-top-size = 5 
+border-bottom-size = 5
+border-right-size = 0
+border-left-size = 0
+background = #3b4252
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-color = #2e3440
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Hack Nerd Font:pixelsize=9;0
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;0
+font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=9;0
+
+modules-left = title-clean
+modules-center = bspwm  
+modules-right = cpu-clean volume-clean wired-network-clean date-clean
+
 
 [bar/flat]
 enable-ipc = true
@@ -17,13 +56,13 @@ border-top-size = 5
 border-bottom-size = 5
 border-right-size = 0
 border-left-size = 0
-background = #
+background = #2e3440
 foreground = ${colors.foreground}
 
 line-size = 2
 line-color = #f00
 
-border-color = #00000000
+border-color = #2e3440
 
 padding-left = 0
 padding-right = 2
@@ -33,7 +72,7 @@ module-margin-right = 1
 
 font-0 = Hack Nerd Font:pixelsize=9;0
 font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;0
-font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=9;1
+font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=9;0
 
 modules-left = title
 modules-center = bspwm  
@@ -77,29 +116,29 @@ modules-right = cpu volume wired-network date
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %icon%
-label-focused-padding = 1
+label-focused = %icon%  %name%
+label-focused-background = #8fbcbb
+label-focused-padding = 4
 
-label-occupied = %icon%
+label-occupied = %icon%  %name%
 label-occupied-foreground = ${colors.foreground-alt}
-label-occupied-padding = 1
+label-occupied-padding = 2
 
-label-urgent = %index%!
-label-urgent-background = ${colors.foreground-alt}
-label-urgent-padding = 1
+label-urgent = %index%  %name%!
+label-urgent-background = #bf616a
+label-urgent-padding = 4
 
 label-empty = 
 
-ws-icon-0 = trm;
-ws-icon-1 = msc;
+ws-icon-0 = term;
+ws-icon-1 = misc;
 ws-icon-2 = web;
-ws-icon-3 = edt;
-ws-icon-4 = cht;
-ws-icon-5 = wrk;
-ws-icon-6 = vrt;
+ws-icon-3 = edit;
+ws-icon-4 = chat;
+ws-icon-5 = work;
+ws-icon-6 = virt;
 ws-icon-default = ♟
 
-format-background = #3B4252
 format-foreground = ${colors.foreground}
 format-padding = 1
 
@@ -120,12 +159,12 @@ label-mode-background = ${colors.primary}
 label-focused = %name%
 label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.foreground}
-label-focused-padding = 1
+label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
 label-unfocused-foreground = ${colors.foreground-alt}
-label-unfocused-padding = 1
+label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
@@ -135,23 +174,30 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${colors.foreground-alt}
-label-urgent-padding = 1
+label-urgent-padding = 4
 
 [module/title]
 type = internal/xwindow
-; Available tags:
-;   <label> (default)
+
 format = <label>
 format-foreground = ${colors.foreground-alt}
 format-padding = 2
 
 label = %title%
 label-maxlen = 40
-
-; Used instead of label when there is no window title
-; Available tokens:
-;   None
 label-empty = 
+
+[module/title-clean]
+type = internal/xwindow
+
+format = <label>
+format-foreground = ${colors.foreground-alt}
+format-padding = 2
+
+label = %title%
+label-maxlen = 30
+label-empty = 
+
 
 [module/date]
 type = internal/date
@@ -164,11 +210,27 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix-foreground = ${colors.foreground-alt}
-format-background = #5E81AC
-format-padding = 2
+format-background = #b48ead
+format-padding = 4
 
 label = %date% %time%
-1
+
+[module/date-clean]
+type = internal/date
+interval = 1
+
+date = %a 
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix-foreground = 
+format-background = #8fbcbb
+format-padding = 4
+
+label = %date% %time%
+
 [module/volume]
 type = internal/pulseaudio
 master-soundcard = hw:1
@@ -183,26 +245,92 @@ mapped = True
 
 interval = 5
 
-format-volume = <label-volume>
-label-volume =  %percentage%%
-format-volume-background = #88C0D0
-format-volume-padding = 2
+format-volume = <label-volume> <bar-volume>
+format-volume-padding = 4
+; format-volume-background = #ebcb8b
+label-volume =   %percentage%%
+label-volume-foreground = ${colors.foreground}
 
-[module/clock]
-type = internal/date
-interval = 2
-date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-format-underline = #5E81AC
+label-muted =  muted
+label-muted-foreground = ${colors.foreground-alt}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/volume-clean]
+type = internal/pulseaudio
+master-soundcard = hw:1
+headphone-soundcard = hw:1
+
+master-mixer = Master
+headphone-mixer = Headphone
+
+headphone-id = 8
+
+mapped = True
+
+interval = 5
+
+format-volume = <label-volume> <bar-volume>
+format-volume-padding = 2
+; format-volume-background = #ebcb8b
+label-volume =   %percentage%%
+label-volume-foreground = ${colors.foreground-alt}
+
+label-muted =  muted
+label-muted-foreground = ${colors.foreground-sub}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
 
 [module/memory]
 type = internal/memory
 label =   %percentage_used%%
+label-format-padding = 4
 
 [module/cpu]
 type = internal/cpu
 format = <label>
-label =  %percentage%%
-format-background = #8FBCBB
+label =   %percentage%%
+; format-background = #d08770
+format-padding = 4
+
+
+[module/cpu-clean]
+type = internal/cpu
+format = <label>
+label =   %percentage%%
+label-foreground = ${colors.foreground-alt}
+; format-background = #d08770
 format-padding = 2
 
 [module/powermenu]
@@ -255,11 +383,25 @@ interval = 3.0
 
 format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-format-connected-underline = #81A1C1
+label-connected = %local_ip%
+label-padding = 4
+
+format-disconnected =
+; format-connected-background = #a3be8c
+format-connected-foreground = ${colors.foreground}
+format-connected-padding = 4
+
+[module/wired-network-clean]
+type = internal/network
+interface = enp6s0 
+interval = 3.0
+
+format-connected-prefix = "  "
+format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 label-padding = 2
 
 format-disconnected =
-format-connected-background = #81A1C1
-format-connected-foreground = ${colors.foreground}
+; format-connected-background = #a3be8c
+format-connected-foreground = ${colors.foreground-alt}
 format-connected-padding = 2

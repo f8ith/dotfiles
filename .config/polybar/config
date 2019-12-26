@@ -38,8 +38,8 @@ font-0 = Hack Nerd Font:pixelsize=9;0
 font-1 = Font Awesome 5 Free:style=Solid:pixelsize=9;0
 font-2 = Font Awesome 5 Brands:style=Regular:pixelsize=9;0
 
-modules-left = title-clean
-modules-center = bspwm  
+modules-left = bspwm
+modules-center =  
 modules-right = cpu-clean volume-clean wired-network-clean date-clean
 
 
@@ -118,7 +118,7 @@ type = internal/bspwm
 
 label-focused = %icon%  %name%
 label-focused-background = #8fbcbb
-label-focused-padding = 4
+label-focused-padding = 3
 
 label-occupied = %icon%  %name%
 label-occupied-foreground = ${colors.foreground-alt}
@@ -126,21 +126,21 @@ label-occupied-padding = 2
 
 label-urgent = %index%  %name%!
 label-urgent-background = #bf616a
-label-urgent-padding = 4
+label-urgent-padding = 3
 
 label-empty = 
 
 ws-icon-0 = term;
 ws-icon-1 = misc;
 ws-icon-2 = web;
-ws-icon-3 = edit;
+ws-icon-3 = code;
 ws-icon-4 = chat;
 ws-icon-5 = work;
 ws-icon-6 = virt;
 ws-icon-default = ♟
 
 format-foreground = ${colors.foreground}
-format-padding = 1
+format-padding = 0
 
 [module/i3]
 type = internal/i3
@@ -194,9 +194,7 @@ format = <label>
 format-foreground = ${colors.foreground-alt}
 format-padding = 2
 
-label = %title%
-label-maxlen = 30
-label-empty = 
+label = %title:30:30%
 
 
 [module/date]
@@ -227,7 +225,7 @@ time-alt = %H:%M:%S
 
 format-prefix-foreground = 
 format-background = #8fbcbb
-format-padding = 4
+format-padding = 3
 
 label = %date% %time%
 

@@ -16,7 +16,7 @@ XF86AudioMute
 
 # applications
 alt + Return
-	kitty
+	st
 alt + d
 #Dmenu
 #    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"

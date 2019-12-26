@@ -6,8 +6,9 @@ dmenu.background: background
 dmenu.foreground: foreground
 dmenu.selforeground: background
 dmenu.selbackground: foreground
-st.font: FiraCode Nerd Font Mono-10
+st.font: SF Mono:pixelsize=16:antialias=false:autohint=false
 ! st.font: Source Code Pro-11
 st.alpha: 1.0
+st.borderpx: 100
 polybar.theme: clean
 

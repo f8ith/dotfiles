@@ -4,6 +4,9 @@
 sxhkd &
 ~/.fehbg &
 . ~/.config/polybar/launch.sh
+setxkbmap -option caps:escape &
+xinput --set-prop 8 'libinput Accel Speed' -1 &
+xinput set-prop 8 288 1 &
 
 bspc monitor -d web term misc code chat work virt private config term
 

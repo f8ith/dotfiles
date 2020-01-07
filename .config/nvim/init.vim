@@ -13,11 +13,12 @@ if exists('g:vscode')
 else
     " ordinary neovim
     Plug 'vim-airline/vim-airline'
-    
+    Plug 'vim-airline/vim-airline-themes'   
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neomake/neomake'
     
     Plug 'arcticicestudio/nord-vim'
+    Plug 'NLKNguyen/papercolor-theme'
     
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-vinegar'
@@ -47,8 +48,6 @@ else
     set completeopt-=preview
     set clipboard+=unnamedplus
     
-    let g:airline_theme='nord'
-    
     syntax enable
     
     set termguicolors
@@ -61,10 +60,11 @@ else
     set signcolumn=yes
     autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
     
-    colorscheme nord
-    
     filetype plugin on
     
+    colorscheme nord 
+    let g:airline_theme='nord'
+
     "----- AUTOCMD -----"
     autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
     autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et

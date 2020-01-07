@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/faith/.config/bspwm/themes'
+let g:netrw_dirhist_4='/home/faith/.Xresources.d'
+let g:netrw_dirhist_3='/etc/modules-load.d'
+let g:netrw_dirhist_2='/home/faith/.bin'
 let g:netrw_dirhist_1='/home/faith/.config/polybar'
 let g:netrw_dirhist_0='/Users/faith/git/carton/libcarton'
 let g:netrw_dirhist_9='/Users/faith/.config/nvim'
 let g:netrw_dirhist_8='/Users/faith/dotfiles/delta/scanners'
 let g:netrw_dirhist_7='/Users/faith/dotfiles/delta'
 let g:netrw_dirhist_6='/home/faith/.doom.d'
-let g:netrw_dirhist_5='/home/faith/.emacs.d'
-let g:netrw_dirhist_4='/home/faith/.mozilla/firefox/6bnjse6i.default'
-let g:netrw_dirhist_3='/home/faith/.mozilla/firefox/6bnjse6i.default/chrome'
-let g:netrw_dirhist_2='/home/faith/.config/polybar'

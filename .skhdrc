@@ -20,7 +20,7 @@ shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
 # balance size of windows
-shift + alt - 0 : yabai -m space --balance
+# shift + alt - 0 : yabai -m space --balance
 
 # make floating window fill screen
 shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1

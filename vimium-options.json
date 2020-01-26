@@ -1,0 +1,42 @@
+{
+  "settingsVersion": "1.64.6",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.twitch.tv/*",
+      "passKeys": "f"
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "f"
+    },
+    {
+      "pattern": "https?://eclass.hkugac.edu.hk/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.tokyoghoul.site/*",
+      "passKeys": "f"
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: https://www.google.com/search?q=%s Google\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: https://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing% d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.startpage.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: #2e3440;\nborder: 0px;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: #eceff4;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}gT\n\n  #vomnibar {\n    display: block;\n    position: fixed;\n    width: calc(100% - 20px); /* adjusted to keep border radius and box-shadow visible*/\n    /*min-width: 400px;\n    top: 70px;\n    left: 50%;*/\n    top: 8px;\n    left: 8px;\n    /*margin: 0 0 0 -40%;*/\n    font-family: Roboto;\n  \n    background: #2e3440;\n    text-align: center;\n    border-radius: 4px;\n    border: none;\n    z-index: 2139999999; /* One less than hint markers and the help dialog (see ../content_scripts/vimium.css). */\n  }\n  \n  #vomnibar input {\n    color: #eceff4;\n    font-family: 'Open Sans', Helvetica Neue, Arial, sans-serif;\n    font-size: 28px;\n    height: 44px;\n    margin-bottom: 0;\n    padding: 4px;\n    background-color: #2e3440;\n    border-radius: 3px;\n    border: none;\n    width: 100%;\n    outline: none;\n    box-sizing: border-box;\n  }\n  \n  #vomnibar .vomnibarSearchArea {\n    display: block;\n    padding: 10px;\n    background-color: #2e3440;\n    border-radius: 4px 4px 0 0;\n    border-bottom: none;\n  }\n  \n  #vomnibar ul {\n    background-color: #2e3440;\n    border-radius: 0 0 4px 4px;\n    list-style: none;\n    padding: 10px 0;\n    padding-top: 0;\n  }\n  \n  #vomnibar li {\n    border-bottom: none;\n    line-height: 1.1em;\n    padding: 7px 10px;\n    font-size: 16px;\n    color: #eceff4;\n    position: relative;\n    display: list-item;\n    margin: auto;\n  }\n  \n  #vomnibar li:last-of-type {\n    border-bottom: none;\n  }\n  \n  #vomnibar li .vomnibarTopHalf, #vomnibar li .vomnibarBottomHalf {\n    display: block;\n    overflow: hidden;\n  }\n  \n  #vomnibar li .vomnibarBottomHalf {\n    font-size: 15px;\n    margin-top: 3px;\n    padding: 2px 0;\n  }\n  \n  #vomnibar li .vomnibarIcon {\n    background-position-y: center;\n    background-size: 16px;\n    background-repeat: no-repeat;\n    padding-left: 20px;\n  }\n  \n  #vomnibar li .vomnibarSource {\n    color: #eceff4;\n    margin-right: 4px;\n  }\n  #vomnibar li .vomnibarRelevancy {\n    position: absolute;\n    right: 0;\n    top: 0;\n    padding: 5px;\n    background-color: #2e3440;\n    color: #eceff4;\n    font-family: monospace;\n    width: 100px;\n    overflow: hidden;\n  }\n  \n  #vomnibar li .vomnibarUrl {\n    white-space: nowrap;\n    color: #b48ead;\n  }\n  \n  #vomnibar li .vomnibarMatch {\n    font-weight: bold;\n    color: #81a1c1;\n  }\n  \n  #vomnibar li em, #vomnibar li .vomnibarTitle {\n    color: #eceff4;\n    margin-left: 4px;\n    font-weight: normal;\n  }\n  #vomnibar li em { font-style: italic; }\n  #vomnibar li em .vomnibarMatch, #vomnibar li .vomnibarTitle .vomnibarMatch {\n    color: #eceff4;\n  }\n  \n  #vomnibar li.vomnibarSelected {\n    background-color: #8fbcbb;\n    font-weight: normal;\n  }\n  \n  #vomnibarInput::selection {\n    background-color: #8fbcbb;\n  }\n  \n  .vomnibarInsertText {\n  }\n  \n  .vomnibarNoInsertText {\n    visibility: hidden;\n  }"
+}

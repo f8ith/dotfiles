@@ -10,7 +10,7 @@ alias vi=nvim
 alias vim=nvim
 alias bashrc="nvim ~/.bashrc"
 alias i3conf="nvim ~/.config/i3/config"
-alias bspwmrc"nvim ~/.config/bspwm/bspwmrc"
+alias bspwmrc="nvim ~/.config/bspwm/bspwmrc"
 alias polyconf="nvim ~/.config/polybar/config"
 alias vimrc="nvim ~/.config/nvim/init.vim"
 alias initvim="nvim ~/.config/nvim/init.vim"
@@ -18,3 +18,5 @@ alias n="nnn"
 alias sn="sudo nnn"
 alias sudo='sudo '
 alias yabairc="nvim ~/.config/yabai/yabairc"
+alias aliasrc="~/.config/aliasrc"
+alias shortcutrc="~/.config/shortcutrc"

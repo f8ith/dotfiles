@@ -2,7 +2,6 @@
 
 xrdb -load ~/.Xresources &
 git config --global credential.helper store &
-$HOME/.config/dunst/wrapper.sh &
 picom &
 unclutter &
 dbus-launch fcitx &

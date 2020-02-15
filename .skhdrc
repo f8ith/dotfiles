@@ -20,7 +20,7 @@ shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
 # balance size of windows
-shift + alt - 0 : yabai -m space --balance
+# shift + alt - 0 : yabai -m space --balance
 
 # make floating window fill screen
 shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
@@ -130,3 +130,6 @@ ctrl + alt - d : yabai -m space --layout float
 
 # reload skhd and yabai
 shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || brew services restart skhd
+
+# Disable rshift
+0x3D : yas

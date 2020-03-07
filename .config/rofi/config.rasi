@@ -50,7 +50,10 @@ configuration {
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
     me-accept-custom: "MouseMiddle";
+    show-icons:         true;
+    icon-theme:         "Papirus";
 }
+
 * {
     selected-normal-foreground:  rgba ( 52, 60, 72, 100 % );
     foreground:                  rgba ( 224, 224, 224, 100 % );
@@ -205,4 +208,3 @@ textbox-prompt-colon {
     text-color: inherit;
 }
 
-@import "colors.rasi"

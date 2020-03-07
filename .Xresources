@@ -6,8 +6,7 @@ dmenu.background: background
 dmenu.foreground: foreground
 dmenu.selforeground: background
 dmenu.selbackground: foreground
-st.font: SF Mono:pixelsize=16:antialias=false:autohint=false
-! st.font: Source Code Pro-11
+st.font: Hack Nerd Font Mono:style=Regular:pixelsize=16:antialias=true:autohint=false
 st.alpha: 1.0
 st.borderpx: 50
 polybar.theme: clean

@@ -1,11 +1,9 @@
 # MISC
 
 # screenshots
-alt + ctrl + 3
-	maim -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
-alt + ctrl + 4
-	maim -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
-
+super + {_,shift + } + {3,4} 
+	maim -{q,s} -u {| xclip -selection clipboard -t image/png && notify-send "Screenshot captured",-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
+} 
 # media keys
 XF86AudioRaiseVolume 
     amixer -c 1 set Master 2+ && unmute 
@@ -16,7 +14,7 @@ XF86AudioMute
 
 # applications
 alt + Return
-	kitty
+	st
 alt + d
 #Dmenu
 #    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
@@ -63,7 +61,7 @@ alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus or swap the next node
-alt + {_,shift + }c
+
 	bspc node -{f,s} next.local
 
 # focus the older or newer node in the focus history
@@ -104,6 +102,3 @@ alt + control + {h,j,k,l}
 alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Attach USB Controller
-#alt + alt
-#        attach-controller.sh

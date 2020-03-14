@@ -28,6 +28,7 @@ else
     Plug 'jiangmiao/auto-pairs'
     Plug 'ptzz/lf.vim'
     Plug 'sheerun/vim-polyglot'
+    Plug 'easymotion/vim-easymotion'
     
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -131,6 +132,7 @@ else
           \ <SID>check_back_space() ? "\<TAB>" :
           \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    inoremap <
     
     function! s:check_back_space() abort
       let col = col('.') - 1
@@ -167,29 +169,6 @@ else
       call nvim_open_win(buf, v:true, opts)
     endfunction
     
-    "----- LF CONFIG -----"
-    " Use lf to select and open file(s) in vim (adapted from ranger).
-    function! LF()
-        let temp = tempname()
-        exec 'silent !lf -selection-path=' . shellescape(temp)
-        if !filereadable(temp)
-            redraw!
-            return
-        endif
-        let names = readfile(temp)
-        if empty(names)
-            redraw!
-            return
-        endif
-        exec 'edit ' . fnameescape(names[0])
-        for name in names[1:]
-            exec 'argadd ' . fnameescape(name)
-        endfor
-        redraw!
-    endfunction
-    command! -bar LF call LF()
-    nnoremap <leader>l :LF<cr>
-
 endif
     
 let mapleader=" "

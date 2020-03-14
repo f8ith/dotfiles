@@ -17,9 +17,9 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
+source ~/.zinit/bin/zinit.zsh
 autoload -U compinit
 zstyle ':completion:*' menu select
-zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
@@ -28,11 +28,11 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -75,33 +75,26 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-# Load zsh-syntax-highlighting; should be last.
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
 if [[ uname != 'darwin' ]] ; then
     neofetch
 fi
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Zplug
+# zinit
 
-source $ZPLUG_HOME/init.zsh
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit snippet OMZ::plugins/git-prompt/git-prompt.plugin.zsh
+zinit snippet OMZ::plugins/pip/pip.plugin.zsh
+zinit snippet OMZ::plugins/python/python.plugin.zsh
+zinit snippet OMZ::plugins/ripgrep/_ripgrep
+zinit ice wait=2 lucid
+zinit light mafredri/zsh-async
+zinit ice wait=2 lucid
+zinit light zdharma/fast-syntax-highlighting
+zinit ice wait=2 lucid
+zinit light wfxr/forgit
 
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/python", from:oh-my-zsh
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load --verbose
+eval "$(pyenv init -)"

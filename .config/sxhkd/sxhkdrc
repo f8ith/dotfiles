@@ -1,9 +1,13 @@
 # MISC
 
 # screenshots
-super + {_,shift + } + {3,4} 
-	maim -{q,s} -u {| xclip -selection clipboard -t image/png && notify-send "Screenshot captured",-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
+super + {_,shift + } + Print
+	maim -{q,s} -u {-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
 } 
+
+alt + {_,shift + } + Print
+	maim -{q,s} -u {| xclip -selection clipboard -t image/png && notify-send "Screenshot captured"} 
+
 # media keys
 XF86AudioRaiseVolume 
     amixer -c 1 set Master 2+ && unmute 
@@ -14,7 +18,7 @@ XF86AudioMute
 
 # applications
 alt + Return
-	st
+	kitty
 alt + d
 #Dmenu
 #    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
@@ -102,3 +106,6 @@ alt + control + {h,j,k,l}
 alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Attach keyboard and mouse to VM
+ctrl + Print
+        echo 'win10q35 attach 1532:0219 046d:c539' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 

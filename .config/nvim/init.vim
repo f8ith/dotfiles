@@ -26,6 +26,8 @@ else
     Plug 'alvan/vim-closetag'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'ptzz/lf.vim'
+    Plug 'sheerun/vim-polyglot'
     
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

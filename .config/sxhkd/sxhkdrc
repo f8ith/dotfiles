@@ -1,5 +1,3 @@
-# MISC
-
 # screenshots
 super + {_,shift + } + Print
 	maim -{q,s} -u {-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
@@ -16,61 +14,53 @@ XF86AudioLowerVolume
 XF86AudioMute 
     amixer -c 1 set Master mute 
 
-# applications
 alt + Return
-	kitty
+    kitty
+
 alt + d
-#Dmenu
-#    dmenu_run -nb '#2e3440' -sf '#eceff4' -sb "#88c0d0" -nf "#e5e9f0"
     rofi matching fuzzy -show combi
-# make sxhkd reload its configuration files:
+
+alt + e
+    kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim 
+
 alt + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh
 
 # BSPWM
 
-# close and kill
 alt + w
 	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
-alt + {_,shift + }f
-	bspc {desktop -l next,node -t ~fullscreen}
+alt + f
+	~/.config/bspwm/fullscreen.sh
 
-# rotate current node 90 degrees
 alt + y
 	bspc node @focused:/ -R 90
 
-# swap the current node and the biggest local node
 alt + g
 	bspc node -s biggest.local
+
 
 #
 # state/flags
 #
 
-# set the window state
 alt + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
 
 
 # focus/swap
 
-# focus the node in the given direction
 alt + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
 alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus or swap the next node
-
+alt + c
 	bspc node -{f,s} next.local
 
-# focus the older or newer node in the focus history
 
-# focus or send to the given desktop
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
@@ -78,19 +68,15 @@ alt + {_,shift + }{1-9,0}
 # preselect
 #
 
-# preselect the direction
 alt + {u,o}
 	bspc node -p {south,east}
 
-# preselect the ratio
 alt + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
 alt + ctrl + space
 	bspc node -p cancel
 
-# cancel the preselection for the focused desktop
 alt + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
@@ -98,14 +84,11 @@ alt + space
 # move/resize
 #
 
-# expand a window by moving one of its side outward
 alt + control + {h,j,k,l}
 	bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
 
-# move a floating window
 alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Attach keyboard and mouse to VM
 ctrl + Print
         echo 'win10q35 attach 1532:0219 046d:c539' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 

@@ -21,6 +21,7 @@ cups-pdf
 discord
 dmidecode
 dnsmasq
+dragon-drag-and-drop-git
 dunst
 ebtables
 edex-ui-git
@@ -45,6 +46,7 @@ gcc
 gimp
 git
 gnome-video-effects
+go
 groff
 grub
 gst-libav
@@ -57,7 +59,7 @@ guvcview
 htop
 inter-font
 kitty
-lf-bin
+lf-git
 libreoffice-fresh
 libva-mesa-driver
 libva-vdpau-driver

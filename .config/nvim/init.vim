@@ -15,8 +15,11 @@ else
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'   
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " async live server
     Plug 'neomake/neomake'
     
+    " color schemes
     Plug 'arcticicestudio/nord-vim'
     Plug 'NLKNguyen/papercolor-theme'
     
@@ -26,10 +29,13 @@ else
     Plug 'alvan/vim-closetag'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'ptzz/lf.vim'
     Plug 'sheerun/vim-polyglot'
     Plug 'easymotion/vim-easymotion'
     
+    " lf
+    Plug 'ptzz/lf.vim'
+    Plug 'rbgrouleff/bclose.vim'
+
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
     else
@@ -208,7 +214,11 @@ else
      
       call nvim_open_win(buf, v:true, opts)
     endfunction
+
+    "----- LF CONFIG -----""
+    let mapleader=" "
+    nnoremap <silent> <leader>ff :LfNewTab <cr>
     
 endif
     
-let mapleader=" "
+  

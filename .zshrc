@@ -79,13 +79,9 @@ if [[ uname != 'darwin' ]] ; then
     neofetch
 fi
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # zinit
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit light denysdovhan/spaceship-prompt
 zinit snippet OMZ::plugins/git-prompt/git-prompt.plugin.zsh
 zinit snippet OMZ::plugins/pip/pip.plugin.zsh
 zinit snippet OMZ::plugins/python/python.plugin.zsh

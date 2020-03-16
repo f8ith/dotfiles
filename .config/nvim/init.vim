@@ -217,7 +217,9 @@ else
 
     "----- LF CONFIG -----""
     let mapleader=" "
+    let g:lf_replace_netrw = 1
     nnoremap <silent> <leader>ff :LfNewTab <cr>
+
     
 endif
     

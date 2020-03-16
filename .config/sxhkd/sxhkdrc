@@ -21,7 +21,7 @@ alt + d
     rofi matching fuzzy -show combi
 
 alt + e
-    kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim 
+    kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim .
 
 alt + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh

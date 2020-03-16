@@ -73,6 +73,10 @@ fi
 # zinit
 
 zinit light denysdovhan/spaceship-prompt
+
+# Spaceship Prompt options
+SPACESHIP_VI_MODE_SHOW=false
+
 zinit snippet OMZ::plugins/git-prompt/git-prompt.plugin.zsh
 zinit snippet OMZ::plugins/pip/pip.plugin.zsh
 zinit snippet OMZ::plugins/python/python.plugin.zsh

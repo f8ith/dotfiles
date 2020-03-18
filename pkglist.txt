@@ -12,7 +12,6 @@ binutils
 bison
 bridge-utils
 bspwm
-chromium
 code
 cool-retro-term
 cpuset-git
@@ -104,8 +103,8 @@ pkgconf
 polybar
 pulseaudio-alsa
 pulsemixer
-pyenv
 python-pip
+python-poetry
 qemu
 reflector
 ripgrep

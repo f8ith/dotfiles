@@ -1,5 +1,9 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "javascript"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "javascript", "python"],
+  "diagnostic.errorSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.warningSign": "",
   "languageserver": {
   "python": {
     "command": "python",
@@ -50,6 +54,9 @@
             "matchDir": "[^\\.].*"
           },
           "pyflakes": {
+            "enabled": true
+          },
+          "black": {
             "enabled": true
           }
         }

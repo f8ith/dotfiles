@@ -12,8 +12,7 @@ if exists('g:vscode')
     call plug#end()
 else
     " ordinary neovim
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'   
+    Plug 'itchyny/lightline.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " async live server
@@ -23,13 +22,19 @@ else
     Plug 'arcticicestudio/nord-vim'
     Plug 'NLKNguyen/papercolor-theme'
     
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-vinegar'
-    Plug 'airblade/vim-gitgutter'
+    " git integration
+    Plug 'tpope/vim-fugitive' 
+    
+    "  auto pairs
     Plug 'alvan/vim-closetag'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
+
+    " visuals
     Plug 'sheerun/vim-polyglot'
+    Plug 'ryanoasis/vim-devicons'
+
+
     Plug 'easymotion/vim-easymotion'
     
     " lf
@@ -72,22 +77,74 @@ else
     filetype plugin on
     
     colorscheme nord 
-    let g:airline_theme='nord'
 
-    "----- AUTOCMD -----"
+    " LIGHTLINE  "
+    
+    " lightline
+    let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+      \   ],
+      \   'right': [
+      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent', 'wordcount' ],
+      \     [ 'blame' ]
+      \   ],
+      \ },
+      \ 'component_function': {
+      \   'wordcount': 'WordCount',
+      \   'blame': 'LightlineGitBlame',
+      \ }
+    \ }
+    
+    function! LightlineGitBlame() abort
+      let blame = get(b:, 'coc_git_blame', '')
+      " return blame
+      return winwidth(0) > 120 ? blame : ''
+    endfunction
+
+    function! WordCount()
+        let currentmode = mode()
+        if !exists("g:lastmode_wc")
+            let g:lastmode_wc = currentmode
+        endif
+        if &modified || !exists("b:wordcount") || currentmode =~? '\c.*v' || currentmode != g:lastmode_wc
+            let g:lastmode_wc = currentmode
+            let l:old_position = getpos('.')
+            let l:old_status = v:statusmsg
+            execute "silent normal g\<c-g>"
+            if v:statusmsg == "--No lines in buffer--"
+                let b:wordcount = 0
+            else
+                let s:split_wc = split(v:statusmsg)
+                if index(s:split_wc, "Selected") < 0
+                    let b:wordcount = str2nr(s:split_wc[11])
+                else
+                    let b:wordcount = str2nr(s:split_wc[5])
+                endif
+                let v:statusmsg = l:old_status
+            endif
+            call setpos('.', l:old_position)
+            return b:wordcount . " words"
+        else
+            return b:wordcount . " words"
+        endif
+    endfunction
+    " AUTOCMD "
     autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
     autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
     autocmd FileType json syntax match Comment +\/\/.\+$+
     
-    "----- ALE CONFIG -----"
+    " ALE "
     "let g:ale_linters = {
     "\ 'python': ['flake8']
     "\}
     "let g:ale_list_window_size = 5
     "let g:ale_python_pyls_auto_pipenv = 0
-    "let g:airline#extensions#ale#enabled = 1
     
-    "----- CLOSETAG CONFIG -----"
+    " closetag 
     let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
     let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
     let g:closetag_filetypes = 'html,xhtml,phtml'
@@ -100,39 +157,14 @@ else
     let g:closetag_shortcut = '>'
     let g:closetag_close_shortcut = '<leader>>'
     
-    
-    "----- DEOPLETE CONFIG -----"
-    "let g:deoplete#enable_at_startup = 1
-    "inoremap <expr><C-g>     deoplete#undo_completion()
-    "inoremap <expr><C-l>     deoplete#complete_common_string()
-    
-    "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    "inoremap <expr><C-h>  deoplete#smart_close_popup()."\<C-h>"
-    "inoremap <expr><C-y>  deoplete#close_popup()
-    "inoremap <expr><C-e>  deoplete#cancel_popup()
-    
-    "----- NEOMAKE CONFIG -----"
-    "call neomake#configure#automake('nrwi', 100)
-    "let g:neomake_python_enabled_makers = ['flake8']
-    "let g:neomake_open_list = 0
-    "let g:neomake_warning_sign = {
-    "      \ 'text': '',
-    "      \ 'texthl': 'WarningMsg',
-    "      \ }
-    
-    "let g:neomake_error_sign = {
-    "      \ 'text': '',
-    "      \ 'texthl': 'ErrorMsg',
-    "      \ }
-    "autocmd! BufWritePost,BufEnter * Neomake
-    "
+    " neomake 
     let g:neomake_liveserver_maker = {
          \ 'exe': 'live-server',
          \ 'args': '--quiet'
          \ }
     let g:neomake_html_enabled_makers = ['liveserver']
     
-    "----- COC CONFIG -----"
+    " coc
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-n>" :
           \ <SID>check_back_space() ? "\<TAB>" :
@@ -185,7 +217,7 @@ else
     nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-    "----- FZF CONFIG -----"
+    " fzf
     nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
     
     set wildmode=list:longest,list:full
@@ -215,12 +247,16 @@ else
       call nvim_open_win(buf, v:true, opts)
     endfunction
 
-    "----- LF CONFIG -----""
+    " lf
     let mapleader=" "
     let g:lf_replace_netrw = 1
     nnoremap <silent> <leader>ff :LfNewTab <cr>
 
-    
+    " highlight
+    hi DiffAdd guibg=#2e3440 ctermbg=0
+    hi DiffChange guibg=#2e3440 ctermbg=0
+    hi DiffDelete guibg=#2e3440 ctermbg=0
+
 endif
     
   

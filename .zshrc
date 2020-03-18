@@ -87,5 +87,3 @@ zinit ice wait=2 lucid
 zinit light zdharma/fast-syntax-highlighting
 zinit ice wait=2 lucid
 zinit light wfxr/forgit
-
-eval "$(pyenv init -)"

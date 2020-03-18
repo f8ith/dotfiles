@@ -54,7 +54,7 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-if [[ uname != 'darwin' ]] ; then
+if [[ uname != 'Darwin' ]] ; then
     neofetch
 fi
 

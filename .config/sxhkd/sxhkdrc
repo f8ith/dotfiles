@@ -1,10 +1,10 @@
 # screenshots
-super + {_,shift + } + Print
+super + {_,shift + }Print
 	maim -{q,s} -u {-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
 } 
 
-alt + {_,shift + } + Print
-	maim -{q,s} -u {| xclip -selection clipboard -t image/png && notify-send "Screenshot captured"} 
+alt + {_,shift + }Print
+	maim -{q,s} -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
 
 # media keys
 XF86AudioRaiseVolume 

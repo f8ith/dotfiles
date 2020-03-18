@@ -17,7 +17,7 @@ system_type=$(uname -s)
 if [ "$system_type" = "Darwin" ]; then
     export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:/home/faith/.npm/bin:/home/faith/.bin:$PATH"
 else
-    export PATH="$PATH:/home/faith/.local/bin:/home/faith/.npm/bin:/home/faith/.bin"
+    export PATH="$PATH:/home/faith/.cargo/bin:/home/faith/.local/bin:/home/faith/.npm/bin:/home/faith/.bin"
 fi
 
 # lf icons

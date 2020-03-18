@@ -12,6 +12,7 @@ binutils
 bison
 bridge-utils
 bspwm
+cfiles
 code
 cool-retro-term
 cpuset-git

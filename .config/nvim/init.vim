@@ -12,7 +12,7 @@ if exists('g:vscode')
     call plug#end()
 else
     " ordinary neovim
-    Plug 'itchyny/lightline.vim'
+    " Plug 'itchyny/lightline.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " async live server
@@ -33,14 +33,11 @@ else
     " visuals
     Plug 'sheerun/vim-polyglot'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'shougo/vimfiler'
 
 
     Plug 'easymotion/vim-easymotion'
     
-    " lf
-    Plug 'ptzz/lf.vim'
-    Plug 'rbgrouleff/bclose.vim'
-
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
     else
@@ -57,6 +54,7 @@ else
     nmap <silent> <c-h> :wincmd h<CR>
     nmap <silent> <c-l> :wincmd l<CR>
     
+    set noshowmode
     set shiftwidth=4
     set expandtab
     set completeopt-=preview
@@ -64,7 +62,6 @@ else
     
     syntax enable
     
-    set termguicolors
     set number relativenumber
     set nu rnu
     set hidden
@@ -76,10 +73,8 @@ else
     
     filetype plugin on
     
-    colorscheme nord 
+    colorscheme faith
 
-    " LIGHTLINE  "
-    
     " lightline
     let g:lightline = {
       \ 'colorscheme': 'nord',
@@ -98,6 +93,8 @@ else
       \   'blame': 'LightlineGitBlame',
       \ }
     \ }
+    let g:lightline.seperator = { 'left': '', 'right': ''}
+    let g:lightline.subseparator = { 'left': '|', 'right': '' }
     
     function! LightlineGitBlame() abort
       let blame = get(b:, 'coc_git_blame', '')
@@ -247,16 +244,15 @@ else
       call nvim_open_win(buf, v:true, opts)
     endfunction
 
-    " lf
     let mapleader=" "
-    let g:lf_replace_netrw = 1
-    nnoremap <silent> <leader>ff :LfNewTab <cr>
 
     " highlight
-    hi DiffAdd guibg=#2e3440 ctermbg=0
-    hi DiffChange guibg=#2e3440 ctermbg=0
-    hi DiffDelete guibg=#2e3440 ctermbg=0
+    hi DiffAdd ctermbg=0
+    hi DiffChange ctermbg=0
+    hi DiffDelete ctermbg=0
 
+    source ~/.config/nvim/statusline/faith.vim
+    
 endif
     
   

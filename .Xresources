@@ -1,5 +1,5 @@
 ! colors
-#include ".Xresources.d/nord" 
+#include ".Xresources.d/ephemeral" 
 
 ! dmenu
 dmenu.background: background
@@ -9,5 +9,3 @@ dmenu.selbackground: foreground
 st.font: Hack Nerd Font Mono:style=Regular:size=16:antialias=false:autohint=false
 st.alpha: 1.0
 st.borderpx: 50
-polybar.theme: clean
-

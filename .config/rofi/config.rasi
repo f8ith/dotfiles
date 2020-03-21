@@ -208,4 +208,4 @@ textbox-prompt-colon {
     text-color: inherit;
 }
 
-@import "colors.rasi"
+@import "themes/ephemeral.rasi"

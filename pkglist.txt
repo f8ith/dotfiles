@@ -13,6 +13,8 @@ bison
 bridge-utils
 bspwm
 cfiles
+chromium
+chromium-widevine
 code
 cool-retro-term
 cpuset-git
@@ -36,7 +38,6 @@ fcitx-ui-light
 feh
 ffmpegthumbnailer
 ffnvcodec-headers
-firefox
 flex
 fontforge
 fzf
@@ -63,6 +64,7 @@ libva-vdpau-driver
 libvirt
 linux
 linux-firmware
+ly-git
 m4
 maim
 make

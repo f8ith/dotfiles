@@ -34,7 +34,7 @@ fi
 
 # Enable numlock on login
 # Required numlockx to be installed
-run numlockx
+# run numlockx
 
 # Network manager tray icon
 run nm-applet

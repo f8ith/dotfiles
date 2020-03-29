@@ -439,7 +439,7 @@ keys.globalkeys = gears.table.join(
     -- Max layout
     -- Single tap: Set max layout
     -- Double tap: Also disable floating for ALL visible clients in the tag
-    awful.key({ superkey }, "w",
+    awful.key({ superkey }, "q",
         function()
         awful.layout.set(awful.layout.suit.max)
         helpers.single_double_tap(
@@ -451,8 +451,7 @@ keys.globalkeys = gears.table.join(
                 end
             end
         )
-        end,
-        {description = "set max layout", group = "tag"}),
+        end, {description = "set max layout", group = "tag"}),
     -- Tiling
     -- Single tap: Set tiled layout
     -- Double tap: Also disable floating for ALL visible clients in the tag
@@ -533,12 +532,6 @@ keys.globalkeys = gears.table.join(
             awful.spawn.with_shell("~/scr/Rofi/rofi_edit")
         end,
         {description = "quick edit file", group = "launcher"}),
-    -- mpvtube
-    awful.key({ superkey }, "y", function() awful.spawn.with_shell("~/scr/Rofi/rofi_mpvtube") end,
-        {description = "mpvtube", group = "launcher"}),
-    -- mpvtube song
-    awful.key({ superkey, shiftkey }, "y", function() awful.spawn.with_shell("~/scr/info/mpv-query.sh") end,
-        {description = "show mpv media title", group = "launcher"}),
     -- Spawn file manager
     awful.key({ superkey, shiftkey }, "f", function() awful.spawn(user.file_manager, {floating = true}) end,
         {description = "file manager", group = "launcher"}),
@@ -547,7 +540,13 @@ keys.globalkeys = gears.table.join(
         function()
             awful.spawn(user.terminal .. " -e htop")
         end,
-        {description = "htop", group = "launcher"})
+        {description = "htop", group = "launcher"}),
+    -- software kvm switch
+    awful.key({ ctrlkey }, "Print", function() 
+        awful.spawn.with_shell("echo 'win10q35 attach 1532:0219 046d:c539 046d:c087' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock")
+        naughty.notification({ title = "libvirt", message = "Attached usb devices", timeout = 2 })
+    end)
+
 )
 
 keys.clientkeys = gears.table.join(
@@ -674,7 +673,7 @@ keys.clientkeys = gears.table.join(
         {description = "normal mode", group = "client"}),
 
     -- Close client
-    awful.key({ superkey }, "q",      function (c) c:kill() end,
+    awful.key({ superkey }, "w",      function (c) c:kill() end,
         {description = "close", group = "client"}),
     awful.key({ altkey }, "F4",      function (c) c:kill() end,
         {description = "close", group = "client"}),
@@ -898,7 +897,7 @@ keys.taglist_buttons = gears.table.join(
     end),
     awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
     awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end)
-)
+) 
 
 -- }}}
 

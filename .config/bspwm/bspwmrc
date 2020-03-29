@@ -30,12 +30,11 @@ bspc config urgent_border_color 	      $(xrdb -query | grep "*.alert" | cut -f 2
 
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^1'
 bspc rule -a Firefox desktop='^1'
 bspc rule -a VSCodium desktop='^3'
 bspc rule -a zsh desktop='^2'
 bspc rule -a Discord desktop='^4'
 bspc rule -a 'Virtual Machine Manager' desktop='^7'
 bspc rule -a mpv state=fullscreen
-bspc rule -a editor state=fullscreen desktop='^2'
+bspc rule -a editor state=fullscreen desktop='^3'
 bspc rule -a zathura state=tiling

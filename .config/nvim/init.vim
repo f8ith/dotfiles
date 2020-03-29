@@ -6,6 +6,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+let mapleader=" "
+let loaded_netrwPlugin = 1
+
 if exists('g:vscode')
     " VSCode extension
     Plug 'asvetliakov/vim-easymotion'
@@ -18,7 +21,7 @@ else
     " async live server
     Plug 'neomake/neomake'
     
-    " color schemes
+    " color schemes 
     Plug 'arcticicestudio/nord-vim'
     Plug 'NLKNguyen/papercolor-theme'
     
@@ -35,6 +38,8 @@ else
     Plug 'ryanoasis/vim-devicons'
     Plug 'shougo/vimfiler'
 
+    " file manager
+    Plug 'shougo/defx.nvim'
 
     Plug 'easymotion/vim-easymotion'
     
@@ -49,12 +54,14 @@ else
     
     set timeoutlen=200 ttimeoutlen=0
     
-    nmap <silent> <c-k> :wincmd k<CR>
-    nmap <silent> <c-j> :wincmd j<CR>
-    nmap <silent> <c-h> :wincmd h<CR>
-    nmap <silent> <c-l> :wincmd l<CR>
+    nnoremap <silent> <c-k> :wincmd k<CR>
+    nnoremap <silent> <c-j> :wincmd j<CR>
+    nnoremap <silent> <c-h> :wincmd h<CR>
+    nnoremap <silent> <c-l> :wincmd l<CR>
     
+    " set termguicolors
     set noshowmode
+    set showcmd
     set shiftwidth=4
     set expandtab
     set completeopt-=preview
@@ -69,11 +76,9 @@ else
     set updatetime=100
     set shortmess+=c
     set signcolumn=yes
-    autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
-    
     filetype plugin on
     
-    colorscheme faith
+    colorscheme nord
 
     " lightline
     let g:lightline = {
@@ -129,12 +134,93 @@ else
             return b:wordcount . " words"
         endif
     endfunction
-    " AUTOCMD "
-    autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
-    autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
-    autocmd FileType json syntax match Comment +\/\/.\+$+
+
+    " autocmd
+    augroup filetypes
+        autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
+        autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
+        autocmd FileType json syntax match Comment +\/\/.\+$+
+    augroup END
+
+    " defx
+    function! s:defx_my_settings() abort
+      " Define mappings
+      nnoremap <silent><buffer><expr> <CR>
+      \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> c
+      \ defx#do_action('copy')
+      nnoremap <silent><buffer><expr> m
+      \ defx#do_action('move')
+      nnoremap <silent><buffer><expr> p
+      \ defx#do_action('paste')
+      nnoremap <silent><buffer><expr> l
+      \ defx#do_action('open')
+      nnoremap <silent><buffer><expr> E
+      \ defx#do_action('open', 'vsplit')
+      nnoremap <silent><buffer><expr> P
+      \ defx#do_action('open', 'pedit')
+      nnoremap <silent><buffer><expr> o
+      \ defx#do_action('open_or_close_tree')
+      nnoremap <silent><buffer><expr> K
+      \ defx#do_action('new_directory')
+      nnoremap <silent><buffer><expr> N
+      \ defx#do_action('new_file')
+      nnoremap <silent><buffer><expr> M
+      \ defx#do_action('new_multiple_files')
+      nnoremap <silent><buffer><expr> C
+      \ defx#do_action('toggle_columns',
+      \                'mark:indent:icon:filename:type:size:time')
+      nnoremap <silent><buffer><expr> S
+      \ defx#do_action('toggle_sort', 'time')
+      nnoremap <silent><buffer><expr> d
+      \ defx#do_action('remove')
+      nnoremap <silent><buffer><expr> r
+      \ defx#do_action('rename')
+      nnoremap <silent><buffer><expr> !
+      \ defx#do_action('execute_command')
+      nnoremap <silent><buffer><expr> x
+      \ defx#do_action('execute_system')
+      nnoremap <silent><buffer><expr> yy
+      \ defx#do_action('yank_path')
+      nnoremap <silent><buffer><expr> .
+      \ defx#do_action('toggle_ignored_files')
+      nnoremap <silent><buffer><expr> ;
+      \ defx#do_action('repeat')
+      nnoremap <silent><buffer><expr> h
+      \ defx#do_action('cd', ['..'])
+      nnoremap <silent><buffer><expr> ~
+      \ defx#do_action('cd')
+      nnoremap <silent><buffer><expr> q
+      \ defx#do_action('quit')
+      nnoremap <silent><buffer><expr> <Space>
+      \ defx#do_action('toggle_select') . 'j'
+      nnoremap <silent><buffer><expr> *
+      \ defx#do_action('toggle_select_all')
+      nnoremap <silent><buffer><expr> j
+      \ line('.') == line('$') ? 'gg' : 'j'
+      nnoremap <silent><buffer><expr> k
+      \ line('.') == 1 ? 'G' : 'k'
+      nnoremap <silent><buffer><expr> <C-l>
+      \ defx#do_action('redraw')
+      nnoremap <silent><buffer><expr> <C-g>
+      \ defx#do_action('print')
+    endfunction
+
+    function! s:open_defx_if_directory()
+      let l:full_path = expand(expand('%:p'))
+      if isdirectory(l:full_path)
+        Defx `expand('%:p')`
+      endif
+    endfunction
     
-    " ALE "
+    augroup defx_config
+      autocmd!
+      autocmd FileType defx call s:defx_my_settings()
+      autocmd BufEnter * call s:open_defx_if_directory()
+    augroup END
+
+    nnoremap <silent> <leader>f :Defx -auto-cd<CR>
+    " ale
     "let g:ale_linters = {
     "\ 'python': ['flake8']
     "\}
@@ -164,21 +250,21 @@ else
     " coc
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
+          \ <SID>check_back_leader() ? "\<TAB>" :
           \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
     
-    function! s:check_back_space() abort
+    function! s:check_back_leader() abort
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
      
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
+    nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+    nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+    nnoremap <silent> gd <Plug>(coc-definition)
+    nnoremap <silent> gy <Plug>(coc-type-definition)
+    nnoremap <silent> gi <Plug>(coc-implementation)
+    nnoremap <silent> gr <Plug>(coc-references)
     
     
     function! s:show_documentation()
@@ -190,29 +276,28 @@ else
     endfunction
     
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    nmap <leader>rn <Plug>(coc-rename)
-    xmap <leader>f  <Plug>(coc-format-selected)
-    nmap <leader>f  <Plug>(coc-format-selected)
-    xmap <leader>a  <Plug>(coc-codeaction-selected)
-    nmap <leader>a  <Plug>(coc-codeaction-selected)
-    nmap <leader>ac  <Plug>(coc-codeaction)
-    nmap <leader>qf  <Plug>(coc-fix-current)
-    xmap if <Plug>(coc-funcobj-i)
-    xmap af <Plug>(coc-funcobj-a)
-    omap if <Plug>(coc-funcobj-i)
-    omap af <Plug>(coc-funcobj-a)
+    nnoremap <leader>rn <Plug>(coc-rename)
+    xnoremap <leader>f  <Plug>(coc-format-selected)
+    xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+    nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+    nnoremap <leader>ac  <Plug>(coc-codeaction)
+    nnoremap <leader>qf  <Plug>(coc-fix-current)
+    xnoremap if <Plug>(coc-funcobj-i)
+    xnoremap af <Plug>(coc-funcobj-a)
+    onoremap if <Plug>(coc-funcobj-i)
+    onoremap af <Plug>(coc-funcobj-a)
     
     command! -nargs=0 Format :call CocAction('format')
     command! -nargs=? Fold :call     CocAction('fold', <f-args>)
     command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+    nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
+    nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+    nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+    nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+    nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+    nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+    nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
     " fzf
     nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
@@ -244,15 +329,12 @@ else
       call nvim_open_win(buf, v:true, opts)
     endfunction
 
-    let mapleader=" "
 
-    " highlight
-    hi DiffAdd ctermbg=0
+    " highlight hi DiffAdd ctermbg=0
     hi DiffChange ctermbg=0
     hi DiffDelete ctermbg=0
 
-    source ~/.config/nvim/statusline/faith.vim
+    source ~/.config/nvim/statusline/lena.vim
     
 endif
-    
-  
+

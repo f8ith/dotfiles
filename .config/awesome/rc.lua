@@ -102,28 +102,28 @@ end
 -- User variables and preferences
 user = {
     -- >> Default applications <<
-    terminal = "st",
-    floating_terminal = "st",
-    browser = "chromium-browser-privacy",
-    file_manager = "st -c file_manager -e lf",
-    editor = "st -c editor nvim",
+    terminal = "kitty",
+    floating_terminal = "kitty",
+    browser = "chromium",
+    file_manager = "kitty --class=file_manager cfiles",
+    editor = "kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim .",
     -- editor = "emacs",
 
     -- >> Search <<
     -- web_search_cmd = "exo-open https://duckduckgo.com/?q="
-    web_search_cmd = "xdg-open https://duckduckgo.com/?q=",
+    web_search_cmd = "xdg-open https://google.com/?q=",
     -- web_search_cmd = "exo-open https://www.google.com/search?q="
 
     -- >> Music <<
-    music_client = "st -c music -e ncmpcpp",
+    music_client = "chromium --app=https://beta.music.apple.com/library/playlist/p.GE5rp0biP9WR9mb --new-window",
 
     -- TODO
     -- >> Screenshots <<
     -- Make sure the directory exists!
-    screenshot_dir = "/media/HDD/Pictures/Screenshots/",
+    screenshot_dir = "/mnt/HDD/Pictures/Screenshots/",
 
     -- >> Email <<
-    email_client = "st -c email -e neomutt",
+    email_client = "chromium --app=https://mail.google.com --new-window",
 
     -- >> Anti-aliasing <<
     -- ------------------
@@ -565,6 +565,7 @@ awful.rules.rules = {
                 "st-256color",
                 "st",
                 "URxvt",
+                "kitty",
             },
         },
         properties = { width = screen_width * 0.45, height = screen_height * 0.5 }
@@ -740,7 +741,7 @@ awful.rules.rules = {
             class = {
                 "qutebrowser",
                 "Google Chrome",
-                "Chromium",
+                "chromium",
             },
         },
         except_any = {
@@ -774,6 +775,19 @@ awful.rules.rules = {
                 "Slack",
                 "TeamSpeak 3",
                 "Skype",
+                "web.whatsapp.com",
+                "discordapp.com__channels_@me",
+            },
+        },
+        properties = { screen = 1, tag = awful.screen.focused().tags[3], floating = false }
+    },
+
+    -- Web apps
+    {
+        rule_any = {
+            name = {
+                "Whatsapp",
+                "Discord",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[3], floating = false }
@@ -815,6 +829,9 @@ awful.rules.rules = {
             },
             instance = {
                 "email",
+            },
+            name = {
+                "Gmail",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[7] }
@@ -890,12 +907,12 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 -- Can be toggled with a keybind (check keys.lua)
---client.connect_signal("mouse::enter", function(c)
---    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
---        and awful.client.focus.filter(c) then
---        client.focus = c
---    end
---end)
+client.connect_signal("mouse::enter", function(c)
+    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+        and awful.client.focus.filter(c) then
+        client.focus = c
+   end
+end)
 
 -- Apply rounded corners to clients
 -- (If antialiasing is enabled, the rounded corners are applied in

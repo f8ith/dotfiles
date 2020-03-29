@@ -63,12 +63,12 @@ end
 local file_manager_command = function ()
     awful.spawn(user.file_manager)
 end
-local telegram_command = function ()
-    helpers.run_or_raise({class = 'TelegramDesktop'}, false, "telegram")
+local whatsapp_command = function ()
+    helpers.run_or_raise({instance = 'web.whatsapp.com'}, false, "chromium --app=https://web.whatsapp.com")
 end
 local discord_command = function ()
     -- Run or raise Discord running on the browser, spawned with Chromium browser's app mode
-    helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium-browser --app=\"https://discordapp.com/channels/@me\"")
+    helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium --app=https://discordapp.com/channels/@me")
     -- Run or raise Discord app
     -- helpers.run_or_raise({class = 'discord'}, false, "discord")
 end
@@ -113,9 +113,9 @@ local org_command = function ()
 end
 
 -- Create app buttons
-local browser = create_button("", beautiful.xcolor3, beautiful.xcolor11, browser_command)
-local discord = create_button("", beautiful.xcolor5, beautiful.xcolor13, discord_command)
-local telegram = create_button("", beautiful.xcolor4, beautiful.xcolor12, telegram_command)
+local browser = create_button("", beautiful.xcolor3, beautiful.xcolor11, browser_command)
+local discord = create_button("", beautiful.xcolor5, beautiful.xcolor13, discord_command)
+local whatsapp = create_button("", beautiful.xcolor4, beautiful.xcolor12, whatsapp_command)
 local mail = create_button("", beautiful.xcolor6, beautiful.xcolor14, mail_command)
 local files = create_button("", beautiful.xcolor3, beautiful.xcolor11, file_manager_command)
 local gimp = create_button("", beautiful.xcolor5, beautiful.xcolor13, gimp_command)
@@ -249,7 +249,7 @@ app_drawer:setup {
     -- Background
     {
         -- Stripes
-        create_stripe({browser, youtube, discord, telegram}, "#00000000"),
+        create_stripe({browser, youtube, discord, whatsapp}, "#00000000"),
         create_stripe({mail, org, files, passwords}, beautiful.xcolor8.."20"),
         create_stripe({gimp, record, lutris, steam}, beautiful.xcolor8.."40"),
         create_stripe({networks, night_mode, performance, restart_awesome}, beautiful.xcolor8.."60"),

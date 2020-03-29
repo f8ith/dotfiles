@@ -8,36 +8,36 @@ alt + {_,shift + }Print
 
 # media keys
 XF86AudioRaiseVolume 
-    amixer -c 1 set Master 2+ && unmute 
+    amixer -D default set Master 5%+ && amixer -D default set Master unmute
 XF86AudioLowerVolume 
-    amixer -c 1 set Master 2- && unmute 
+    amixer -D default set Master 5%- && amixer -D default set Master unmute 
 XF86AudioMute 
-    amixer -c 1 set Master mute 
+    amixer -D default set Master mute 
 
-alt + Return
+super + Return
     kitty
 
-alt + d
+super + d
     rofi matching fuzzy -show combi
 
-alt + e
+super + e
     kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim .
 
-alt + shift + r
+super + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh
 
 # BSPWM
 
-alt + w
+super + w
 	bspc node -{c,k}
 
-alt + f
+super + f
 	~/.config/bspwm/fullscreen.sh
 
-alt + y
+super + y
 	bspc node @focused:/ -R 90
 
-alt + g
+super + g
 	bspc node -s biggest.local
 
 
@@ -45,50 +45,53 @@ alt + g
 # state/flags
 #
 
-alt + {t,shift + t,s}
+super + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
 
 
 # focus/swap
 
-alt + {_,shift + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-alt + {p,b,comma,period}
+super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-alt + c
+super + c
 	bspc node -{f,s} next.local
 
 
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
 #
 # preselect
 #
 
-alt + {u,o}
+super + {u,o}
 	bspc node -p {south,east}
 
-alt + ctrl + {1-9}
+super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-alt + ctrl + space
+super + ctrl + space
 	bspc node -p cancel
 
-alt + space
+super + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
 # move/resize
 #
 
-alt + control + {h,j,k,l}
-	bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
+super + control + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-alt + {Left,Down,Up,Right}
+super + control + shift + {h,j,k,l}
+        bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ctrl + Print
-        echo 'win10q35 attach 1532:0219 046d:c539' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 
+        echo 'win10q35 attach 1532:0219 046d:c539 046d:c087' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 

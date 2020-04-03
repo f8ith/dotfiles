@@ -33,6 +33,7 @@ fbreader
 fcitx-configtool
 fcitx-googlepinyin
 fcitx-qt5
+fcitx-skin-material
 fcitx-table-extra
 fcitx-ui-light
 feh
@@ -44,6 +45,7 @@ fzf
 gcc
 gimp
 git
+github-cli-bin
 gnome-video-effects
 go
 groff
@@ -55,7 +57,9 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
 guvcview
+hardinfo
 htop
+hub
 inter-font
 kitty
 libreoffice-fresh
@@ -64,6 +68,7 @@ libva-vdpau-driver
 libvirt
 linux
 linux-firmware
+looking-glass
 ly-git
 m4
 maim
@@ -78,6 +83,7 @@ networkmanager
 nodejs
 noto-fonts
 noto-fonts-cjk
+noto-fonts-emoji
 noto-fonts-extra
 npm
 ntfs-3g
@@ -88,6 +94,7 @@ openssh
 os-prober
 otf-hermit
 ovmf
+owlink-git
 p7zip
 pacman-contrib
 papirus-icon-theme
@@ -117,6 +124,7 @@ sudo
 sxhkd
 texinfo
 tldr
+ttf-courier-prime-code
 ttf-fira-code
 ttf-fira-sans
 ttf-font-awesome
@@ -133,6 +141,7 @@ vi
 virt-manager
 wireguard-arch
 wireguard-tools
+xautolock
 xclip
 xdotool
 xorg-fonts-misc

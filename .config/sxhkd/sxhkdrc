@@ -1,10 +1,19 @@
 # screenshots
-super + {_,shift + }Print
-	maim -{q,s} -u {-m 9 ~/Pictures/$(date +%s).jpg && notify-send "Screenshot saved"
-} 
 
-alt + {_,shift + }Print
-	maim -{q,s} -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
+Print
+        maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved"
+
+super + ctrl + c
+	maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot saved"
+
+super + shift + c
+        maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" 
+
+super + Print
+	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
+
+# super + shift + Print
+#        feh ~/Pictures/Screenshots
 
 # media keys
 XF86AudioRaiseVolume 
@@ -12,7 +21,7 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume 
     amixer -D default set Master 5%- && amixer -D default set Master unmute 
 XF86AudioMute 
-    amixer -D default set Master mute 
+    pactl set-sink-mute @DEFAULT_SINK@ toggle 
 
 super + Return
     kitty
@@ -77,7 +86,7 @@ super + ctrl + {1-9}
 super + ctrl + space
 	bspc node -p cancel
 
-super + space
+ctrl + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #

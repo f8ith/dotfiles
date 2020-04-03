@@ -1,7 +1,9 @@
 # Default Programs
 
 export EDITOR="nvim"
-export TERMINAL="st" export BROWSER="firefox" export READER="zathura"
+export TERMINAL="kitty" 
+export BROWSER="chromium" 
+export READER="zathura"
 
 # Fcitx settings
 export QT_QPA_PLATFORMTHEME="qt5ct"

@@ -28,9 +28,12 @@ xrdb ~/.Xresources
 # run urxvtd -q -o -f
 
 # Mpv input file
-if [ ! -e /tmp/mpv.fifo ]; then
+# if [ ! -e /tmp/mpv.fifo ]; then
     mkfifo /tmp/mpv.fifo
-fi
+# fi
+
+# Desktop effects
+#run compton --config ~/.config/compton/compton.conf
 
 # Enable numlock on login
 # Required numlockx to be installed

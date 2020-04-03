@@ -141,6 +141,7 @@ else
         autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
         autocmd FileType json syntax match Comment +\/\/.\+$+
     augroup END
+    autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
     " defx
     function! s:defx_my_settings() abort

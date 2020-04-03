@@ -5,11 +5,10 @@ local beautiful = require("beautiful")
 -- local naughty = require("naughty")
 
 local helpers = require("helpers")
-local pad = helpers.pad
 
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(140)
-local text_font = beautiful.exit_screen_font or "Google Sans 14"
+local text_font = beautiful.exit_screen_font or "sans 14"
 
 -- Commands
 local poweroff_command = function()
@@ -36,7 +35,7 @@ end
 local username = os.getenv("USER")
 -- Capitalize username
 local goodbye_widget = wibox.widget.textbox("Goodbye " .. username:sub(1,1):upper()..username:sub(2))
-goodbye_widget.font = "Google Sans 70"
+goodbye_widget.font = "sans 70"
 
 local poweroff_icon = wibox.widget.imagebox(icons.poweroff)
 poweroff_icon.resize = true
@@ -49,14 +48,12 @@ local poweroff = wibox.widget{
     {
         nil,
         poweroff_icon,
-        nil,
         expand = "none",
         layout = wibox.layout.align.horizontal
     },
     {
-        pad(1),
+        nil,
         poweroff_text,
-        pad(1),
         expand = "none",
         layout = wibox.layout.align.horizontal
     },
@@ -174,14 +171,12 @@ local lock = wibox.widget{
     {
         nil,
         lock_icon,
-        nil,
         expand = "none",
         layout = wibox.layout.align.horizontal
     },
     {
-        pad(1),
+        nil,
         lock_text,
-        pad(1),
         expand = "none",
         layout = wibox.layout.align.horizontal
     },
@@ -262,19 +257,13 @@ exit_screen:setup {
         {
             nil,
             {
-                -- {
                 poweroff,
-                pad(3),
                 reboot,
-                pad(3),
                 suspend,
-                pad(3),
                 exit,
-                pad(3),
                 lock,
+                spacing = dpi(20),
                 layout = wibox.layout.fixed.horizontal
-                -- },
-                -- widget = exit_screen_box
             },
             nil,
             expand = "none",

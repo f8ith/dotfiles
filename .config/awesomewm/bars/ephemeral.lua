@@ -101,10 +101,10 @@ local music = create_button("", beautiful.xcolor4, beautiful.xcolor8.."90", b
 
 music:buttons(gears.table.join(
     awful.button({ }, 1, function ()
-        helpers.run_or_raise({class = "music"}, true, user.music_client)
+        helpers.run_or_raise({instance = "musi.sh__me_playlist_p.GE5rp0biP9WR9mb"}, true, user.music_client)
     end),
     awful.button({ }, 3, function ()
-        helpers.run_or_raise({class = "music"}, true, user.music_client)
+        helpers.run_or_raise({instance = "musi.sh__me_playlist_p.GE5rp0biP9WR9mb"}, true, user.music_client)
     end)
 ))
 
@@ -130,9 +130,9 @@ local update_tasklist = function (task, c)
     else
         if c.class == "email" then
             color = beautiful.xcolor2
-        elseif c.class == "Firefox" then
+        elseif c.class == "Chromium" then
             color = beautiful.xcolor1
-        elseif c.class == "music" then
+        elseif c.class == "beta.music.apple.com__library_playlist_p.GE5rp0biP9WR9mb" then
             color = beautiful.xcolor5
         elseif c.class == "TelegramDesktop" then
             color = beautiful.xcolor2

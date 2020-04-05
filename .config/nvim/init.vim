@@ -1,7 +1,5 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -39,7 +37,9 @@ else
     Plug 'shougo/vimfiler'
 
     " file manager
-    Plug 'shougo/defx.nvim'
+    " Plug 'shougo/defx.nvim'
+    Plug 'ptzz/lf.vim'
+    Plug 'rbgrouleff/bclose.vim'
 
     Plug 'easymotion/vim-easymotion'
     
@@ -141,86 +141,85 @@ else
         autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
         autocmd FileType json syntax match Comment +\/\/.\+$+
     augroup END
-    autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
     " defx
-    function! s:defx_my_settings() abort
-      " Define mappings
-      nnoremap <silent><buffer><expr> <CR>
-      \ defx#do_action('open')
-      nnoremap <silent><buffer><expr> c
-      \ defx#do_action('copy')
-      nnoremap <silent><buffer><expr> m
-      \ defx#do_action('move')
-      nnoremap <silent><buffer><expr> p
-      \ defx#do_action('paste')
-      nnoremap <silent><buffer><expr> l
-      \ defx#do_action('open')
-      nnoremap <silent><buffer><expr> E
-      \ defx#do_action('open', 'vsplit')
-      nnoremap <silent><buffer><expr> P
-      \ defx#do_action('open', 'pedit')
-      nnoremap <silent><buffer><expr> o
-      \ defx#do_action('open_or_close_tree')
-      nnoremap <silent><buffer><expr> K
-      \ defx#do_action('new_directory')
-      nnoremap <silent><buffer><expr> N
-      \ defx#do_action('new_file')
-      nnoremap <silent><buffer><expr> M
-      \ defx#do_action('new_multiple_files')
-      nnoremap <silent><buffer><expr> C
-      \ defx#do_action('toggle_columns',
-      \                'mark:indent:icon:filename:type:size:time')
-      nnoremap <silent><buffer><expr> S
-      \ defx#do_action('toggle_sort', 'time')
-      nnoremap <silent><buffer><expr> d
-      \ defx#do_action('remove')
-      nnoremap <silent><buffer><expr> r
-      \ defx#do_action('rename')
-      nnoremap <silent><buffer><expr> !
-      \ defx#do_action('execute_command')
-      nnoremap <silent><buffer><expr> x
-      \ defx#do_action('execute_system')
-      nnoremap <silent><buffer><expr> yy
-      \ defx#do_action('yank_path')
-      nnoremap <silent><buffer><expr> .
-      \ defx#do_action('toggle_ignored_files')
-      nnoremap <silent><buffer><expr> ;
-      \ defx#do_action('repeat')
-      nnoremap <silent><buffer><expr> h
-      \ defx#do_action('cd', ['..'])
-      nnoremap <silent><buffer><expr> ~
-      \ defx#do_action('cd')
-      nnoremap <silent><buffer><expr> q
-      \ defx#do_action('quit')
-      nnoremap <silent><buffer><expr> <Space>
-      \ defx#do_action('toggle_select') . 'j'
-      nnoremap <silent><buffer><expr> *
-      \ defx#do_action('toggle_select_all')
-      nnoremap <silent><buffer><expr> j
-      \ line('.') == line('$') ? 'gg' : 'j'
-      nnoremap <silent><buffer><expr> k
-      \ line('.') == 1 ? 'G' : 'k'
-      nnoremap <silent><buffer><expr> <C-l>
-      \ defx#do_action('redraw')
-      nnoremap <silent><buffer><expr> <C-g>
-      \ defx#do_action('print')
-    endfunction
+    " function! s:defx_my_settings() abort
+    "   " Define mappings
+    "   nnoremap <silent><buffer><expr> <CR>
+    "   \ defx#do_action('open')
+    "   nnoremap <silent><buffer><expr> c
+    "   \ defx#do_action('copy')
+    "   nnoremap <silent><buffer><expr> m
+    "   \ defx#do_action('move')
+    "   nnoremap <silent><buffer><expr> p
+    "   \ defx#do_action('paste')
+    "   nnoremap <silent><buffer><expr> l
+    "   \ defx#do_action('open')
+    "   nnoremap <silent><buffer><expr> E
+    "   \ defx#do_action('open', 'vsplit')
+    "   nnoremap <silent><buffer><expr> P
+    "   \ defx#do_action('open', 'pedit')
+    "   nnoremap <silent><buffer><expr> o
+    "   \ defx#do_action('open_or_close_tree')
+    "   nnoremap <silent><buffer><expr> K
+    "   \ defx#do_action('new_directory')
+    "   nnoremap <silent><buffer><expr> N
+    "   \ defx#do_action('new_file')
+    "   nnoremap <silent><buffer><expr> M
+    "   \ defx#do_action('new_multiple_files')
+    "   nnoremap <silent><buffer><expr> C
+    "   \ defx#do_action('toggle_columns',
+    "   \                'mark:indent:icon:filename:type:size:time')
+    "   nnoremap <silent><buffer><expr> S
+    "   \ defx#do_action('toggle_sort', 'time')
+    "   nnoremap <silent><buffer><expr> d
+    "   \ defx#do_action('remove')
+    "   nnoremap <silent><buffer><expr> r
+    "   \ defx#do_action('rename')
+    "   nnoremap <silent><buffer><expr> !
+    "   \ defx#do_action('execute_command')
+    "   nnoremap <silent><buffer><expr> x
+    "   \ defx#do_action('execute_system')
+    "   nnoremap <silent><buffer><expr> yy
+    "   \ defx#do_action('yank_path')
+    "   nnoremap <silent><buffer><expr> .
+    "   \ defx#do_action('toggle_ignored_files')
+    "   nnoremap <silent><buffer><expr> ;
+    "   \ defx#do_action('repeat')
+    "   nnoremap <silent><buffer><expr> h
+    "   \ defx#do_action('cd', ['..'])
+    "   nnoremap <silent><buffer><expr> ~
+    "   \ defx#do_action('cd')
+    "   nnoremap <silent><buffer><expr> q
+    "   \ defx#do_action('quit')
+    "   nnoremap <silent><buffer><expr> <Space>
+    "   \ defx#do_action('toggle_select') . 'j'
+    "   nnoremap <silent><buffer><expr> *
+    "   \ defx#do_action('toggle_select_all')
+    "   nnoremap <silent><buffer><expr> j
+    "   \ line('.') == line('$') ? 'gg' : 'j'
+    "   nnoremap <silent><buffer><expr> k
+    "   \ line('.') == 1 ? 'G' : 'k'
+    "   nnoremap <silent><buffer><expr> <C-l>
+    "   \ defx#do_action('redraw')
+    "   nnoremap <silent><buffer><expr> <C-g>
+    "   \ defx#do_action('print')
+    " endfunction
 
-    function! s:open_defx_if_directory()
-      let l:full_path = expand(expand('%:p'))
-      if isdirectory(l:full_path)
-        Defx `expand('%:p')`
-      endif
-    endfunction
-    
-    augroup defx_config
-      autocmd!
-      autocmd FileType defx call s:defx_my_settings()
-      autocmd BufEnter * call s:open_defx_if_directory()
-    augroup END
+    " function! s:open_defx_if_directory()
+    "   let l:full_path = expand(expand('%:p'))
+    "   if isdirectory(l:full_path)
+    "     Defx `expand('%:p')`
+    "   endif
+    " endfunction
+    " 
+    " augroup defx_config
+    "   autocmd!
+    "   autocmd FileType defx call s:defx_my_settings()
+    "   autocmd BufEnter * call s:open_defx_if_directory()
+    " augroup END
 
-    nnoremap <silent> <leader>f :Defx -auto-cd<CR>
+    " nnoremap <silent> <leader>f :Defx -auto-cd<CR>
     " ale
     "let g:ale_linters = {
     "\ 'python': ['flake8']
@@ -334,6 +333,10 @@ else
     " highlight hi DiffAdd ctermbg=0
     hi DiffChange ctermbg=0
     hi DiffDelete ctermbg=0
+
+    " lf
+    let g:lf_replace_netrw = 1
+    map <leader>ff :LfNewTab<CR>
 
     source ~/.config/nvim/statusline/lena.vim
     

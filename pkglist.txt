@@ -12,7 +12,6 @@ binutils
 bison
 bridge-utils
 bspwm
-cfiles
 chromium
 chromium-widevine
 code
@@ -62,13 +61,14 @@ htop
 hub
 inter-font
 kitty
+lf-bin
 libreoffice-fresh
 libva-mesa-driver
 libva-vdpau-driver
 libvirt
 linux
 linux-firmware
-looking-glass
+looking-glass-git
 ly-git
 m4
 maim
@@ -89,6 +89,7 @@ npm
 ntfs-3g
 nvidia
 nvidia-settings
+obs-plugin-looking-glass-git
 obs-studio
 openssh
 os-prober
@@ -113,7 +114,7 @@ python-poetry
 qemu
 reflector
 ripgrep
-rofi
+rofi-git
 scream-pulse
 shairport-sync
 skypeforlinux-stable-bin
@@ -125,6 +126,7 @@ sxhkd
 texinfo
 tldr
 ttf-courier-prime-code
+ttf-croscore
 ttf-fira-code
 ttf-fira-sans
 ttf-font-awesome

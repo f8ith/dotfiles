@@ -34,10 +34,8 @@ else
     " visuals
     Plug 'sheerun/vim-polyglot'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'shougo/vimfiler'
 
     " file manager
-    " Plug 'shougo/defx.nvim'
     Plug 'ptzz/lf.vim'
     Plug 'rbgrouleff/bclose.vim'
 

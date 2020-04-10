@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+FILE="$1"
+TMP_FILE="${PREVIEW_TMP}/tmp.png"
+
+function draw_image {
+    >"${UEBERZUG_FIFO}" declare -A -p cmd=( \
+        [action]=add [identifier]="$6" \
+	[x]="$4" [y]="$5" [width]="$3" [height]="$2" \
+	[scaler]=fit_contain [scaling_position_x]=0.5 [scaling_position_y]=0.5 \
+	[path]="${FILE}" )
+}
+
+function draw_video {
+    ffmpegthumbnailer -i "${FILE}" -c png -o "${TMP_FILE}"
+    FILE="${TMP_FILE}"
+    draw_image "$@"
+}
+
+function draw_pdf {
+    pdftoppm -png -f 1 -l 1 -singlefile "${FILE}" "${TMP_FILE%.png}"
+#    pdftoppm -f 1 -l 1 \
+#                      -scale-to-x "${3%x*}" \
+#                      -scale-to-y "${2%y*}" \
+#                      -singlefile \
+#                      -jpeg -tiffcompression jpeg \
+#                      -- "${FILE}" "${TMP_FILE%.jpg}" \
+    FILE="${TMP_FILE}"
+    draw_image "$@"
+}
+
+case $(file -b --mime-type "${FILE}") in
+    text/*) cat "${FILE}" ;;
+    image/*) draw_image "$@" ;;
+    video/*) draw_video "$@" ;;
+    application/pdf) draw_pdf "$@" ;;
+    application/gzip|application/x-xz) tar tf "$1" ;;
+    application/zip) unzip -Z -1 "$1" ;;
+    application/x-sharedlib) readelf -h "$1" ;;
+esac
+
+exit 0

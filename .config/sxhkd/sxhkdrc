@@ -1,13 +1,13 @@
-# screenshots
+#: screenshots {{{
 
 Print
         maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved"
 
 super + ctrl + c
-	maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot saved"
+	notify-send "Select an area to capture" && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured"
 
 super + shift + c
-        maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" 
+        notify-send "Select an area to copy to clipboard" && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard" 
 
 super + Print
 	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
@@ -15,27 +15,50 @@ super + Print
 # super + shift + Print
 #        feh ~/Pictures/Screenshots
 
-# media keys
+#}}}
+
+#: media keys {{{
+
 XF86AudioRaiseVolume 
-    amixer -D default set Master 5%+ && amixer -D default set Master unmute
+        amixer -D default set Master 5%+ && amixer -D default set Master unmute && notify-send -t 200 "  $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
+
 XF86AudioLowerVolume 
-    amixer -D default set Master 5%- && amixer -D default set Master unmute 
+        amixer -D default set Master 5%- && amixer -D default set Master unmute && notify-send -t 200 " $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
+
 XF86AudioMute 
-    pactl set-sink-mute @DEFAULT_SINK@ toggle 
+        pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 200 ""
+
+#}}}
+
+#: apps {{{
 
 super + Return
-    kitty
+        kitty
 
 super + d
-    rofi matching fuzzy -show combi
+        rofi -theme launcher matching fuzzy -show combi
 
 super + e
-    kitty --class=editor --name=nvim -T=nvim -o font_size=14.0 -o window_padding_width=10 -d=~/git nvim .
+        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=10 -d ~/git -e nvim ." true
 
 super + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh
 
-# BSPWM
+# app drawer
+super + a 
+        bash ~/.config/rofi/android/apps.sh
+
+# powermenu
+super + Escape
+        bash ~/.config/rofi/android/powermenu.sh
+
+# vm controls
+super + v 
+        bash ~/.config/rofi/android/vm.sh
+
+#}}}
+
+#: BSPWM {{{
 
 super + w
 	bspc node -{c,k}
@@ -102,5 +125,11 @@ super + alt + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#}}}
+
+#: misc {{{
 ctrl + Print
+
         echo 'win10q35 attach 1532:0219 046d:c539 046d:c087' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 
+
+#}}}

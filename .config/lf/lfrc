@@ -1,73 +1,198 @@
-# Basic vars
-set shell sh
-set previewer ~/.config/lf/previewer.sh
-set shellopts '-eu'
-set ifs "\n"
-set scrolloff 10
-set color256
-set icons		# Enable icons. Requires nerd fonts and LF_ICONS variable.
+# Basic Settings
+set preview true
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
+set hidden true
+set color256 true
+set drawbox true
+set icons true
+set ignorecase true
 
-# cmds/functions
+# Custom Functions
 cmd open ${{
-    case $(file --mime-type $f -b) in
-    	text/troff) man ./ $f;;
-        text/*) $EDITOR $fx;;
-	image/x-xcf|image/svg+xml) setsid gimp $f >/dev/null 2>&1 & ;;
-	image/*) rotdir $f | setsid feh -aio 2>/dev/null | lf-select & ;;
-	audio/*) mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f ;;
-	video/*) setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f -quiet >/dev/null 2>&1 & ;;
-	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
-        *) for f in $fx; do setsid $OPENER $f >/dev/null 2>&1 & done;;
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f" & disown;;
+        *) xdg-open "$f" ;;
     esac
 }}
 
-cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-
-cmd delete ${{
-	set -f
-	printf "%s\n\t" "$fx"
-	printf "delete?[y/N]"
-	read ans
-	[ $ans = "y" ] && rm -rf $fx
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
 }}
 
-cmd moveto ${{
-	set -f
-	clear; echo "Move to where?"
-	dest="$(cut -d'	' -f2- ~/.config/directories | fzf)" &&
-	eval mv -iv $fx $dest &&
-	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
 }}
 
-cmd copyto ${{
-	set -f
-	clear; echo "Copy to where?"
-	dest="$(cut -d'	' -f2- ~/.config/directories | fzf)" &&
-	eval cp -ivr $fx $dest &&
-	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
 }}
 
-cmd bulkrename ${{
-    vidir
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
 }}
+
+cmd setwallpaper %cp "$f" ~/.config/wall.png && nitrogen --set-scaled "$f"
+
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd broot_jump ${{
+  f=$(mktemp)
+  res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+  rm -f "$f"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd open_config  ${{
+  $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
+}}
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+# Trash cli bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd clear_trash %trash-empty
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+cmd stripspace %stripspace "$f"
 
 # Bindings
-map c $lf -remote "send $id cd $(cut -d'	' -f2 ~/.config/directories | fzf)"
-map <c-f> $lf -remote "send $id select '$(fzf)'"
-map J $lf -remote "send $id cd $(cut -d'	' -f2 ~/.config/directories | fzf)"
-map gh
-map g top
-map D delete
-map C copyto
-map M moveto
-map a push %mkdir<space>
-map r push :rename<space>
-map R $lf -remote "send $id push :rename<space>$f"
-map b bulkrename
-map <c-r> reload
-map <enter> shell
-map x $$f
-map X !$f
-map o &mimeopen "$f"
-map O $mimeopen --ask "$f"
-map <c-n> push %touch<space>
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+# File Openers
+map ee $$EDITOR "$f"
+map u $view "$f"
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# Trash Mappings
+map dd trash
+map tc clear_trash
+map tr restore_trash
+
+# Broot Mapping
+map f broot_jump
+
+# Dragon Mapping
+map dr dragon
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
+
+map ss stripspace
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ms $mkscript
+map ch chmod
+map bg setwallpaper
+map o open_config
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+
+# Movement
+map gtr cd ~/.local/share/Trash/files
+
+map gv. cd ~/Videos
+map gp. cd ~/Pictures
+map gd cd ~/Documents
+map gD cd ~/Downloads
+map ge cd ~/Desktop
+
+map gr. cd ~/git
+map gc cd ~/.config
+map gE cd /etc
+map gU. cd /usr
+map gUs cd /usr/share

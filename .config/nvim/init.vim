@@ -5,7 +5,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 let mapleader=" "
-let loaded_netrwPlugin = 1
 
 if exists('g:vscode')
     " VSCode extension
@@ -36,7 +35,8 @@ else
     Plug 'ryanoasis/vim-devicons'
 
     " file manager
-    Plug 'ptzz/lf.vim'
+    " Plug 'ptzz/lf.vim'
+    Plug 'francoiscabrol/ranger.vim'
     Plug 'rbgrouleff/bclose.vim'
 
     Plug 'easymotion/vim-easymotion'
@@ -333,8 +333,12 @@ else
     hi DiffDelete ctermbg=0
 
     " lf
-    let g:lf_replace_netrw = 1
-    map <leader>ff :LfNewTab<CR>
+    " let g:lf_replace_netrw = 1
+    " map <leader>ff :LfNewTab<CR>
+
+    " ranger
+    let g:ranger_replace_netrw = 1
+    map <leader>ff :RangerNewTab<CR>
 
     source ~/.config/nvim/statusline/lena.vim
     

@@ -1,7 +1,6 @@
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
 alsa-utils
-audacity
 aurutils
 autoconf
 automake
@@ -15,6 +14,7 @@ bspwm
 chromium
 chromium-widevine
 code
+conky
 cool-retro-term
 cpuset-git
 cups
@@ -61,7 +61,6 @@ htop
 hub
 inter-font
 kitty
-lf-bin
 libreoffice-fresh
 libva-mesa-driver
 libva-vdpau-driver
@@ -91,6 +90,9 @@ nvidia
 nvidia-settings
 obs-plugin-looking-glass-git
 obs-studio
+openrazer-daemon
+openrazer-driver-dkms
+openrazer-meta
 openssh
 os-prober
 otf-hermit
@@ -108,13 +110,17 @@ pkgconf
 polybar
 pulseaudio-alsa
 pulsemixer
+python-notify2
+python-openrazer
 python-pillow
 python-pip
 python-poetry
 qemu
+ranger
 reflector
 ripgrep
-rofi-git
+rofi
+ruby
 scream-pulse
 shairport-sync
 skypeforlinux-stable-bin
@@ -123,10 +129,12 @@ socat
 stow
 sudo
 sxhkd
+termite
 texinfo
 tldr
 ttf-courier-prime-code
 ttf-croscore
+ttf-fantasque-sans-mono
 ttf-fira-code
 ttf-fira-sans
 ttf-font-awesome

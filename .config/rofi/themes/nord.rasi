@@ -1,0 +1,22 @@
+* {
+    xbg:    #2E3440;
+    xfg:    #D8DEE9;
+    x0:     #3B4252;
+    x1:     #BF616A;
+    x2:     #A3BE8C;
+    x3:     #EBCB8B;
+    x4:     #81A1C1;
+    x5:     #81a1c1;
+    x6:     #88C0D0;
+    x7:     #E5E9F0;
+    x8:     #4C566A;
+    x9:     #BF616A;
+    x10:    #A3BE8C;
+    x11:    #EBCB8B;
+    x12:    #81A1C1;
+    x13:    #8fbcbb;
+    x14:    #8FBCBB;
+    x15:    #ECEFF4;
+}
+
+@import "themes/colorschemes/dark.rasi"

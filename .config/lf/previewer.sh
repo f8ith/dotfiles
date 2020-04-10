@@ -1,18 +1,5 @@
 #!/bin/sh
 
-print_help() {
-    echo "$0 FILE H W X Y"
-    exit
-}
-
-[ -f "$1" ] || print_help
-
-for int in $2 $3 $4 $5; do
-    case $int in
-        ''|*[!0-9]*) print_help ;;
-    esac
-done
-
 WIDTH=$(expr $3 - 2)
 HEIGHT=$2
 X=$(expr $4 + 1)

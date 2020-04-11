@@ -340,7 +340,7 @@ else
     let g:ranger_replace_netrw = 1
     map <leader>ff :RangerNewTab<CR>
 
-    source ~/.config/nvim/statusline/lena.vim
+    source ~/.config/nvim/statusline/faith.vim
     
 endif
 

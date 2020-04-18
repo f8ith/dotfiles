@@ -36,10 +36,22 @@ else
 
     " file manager
     " Plug 'ptzz/lf.vim'
-    Plug 'francoiscabrol/ranger.vim'
-    Plug 'rbgrouleff/bclose.vim'
+    " Plug 'francoiscabrol/ranger.vim'
+    " Plug 'rbgrouleff/bclose.vim'
+    
+    " NERD Tree
+    
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
+
+    " motions
     Plug 'easymotion/vim-easymotion'
+    Plug 'justinmk/vim-sneak'
+    Plug 'tomtom/tcomment_vim'
+    
+    " smooth scroll
+    Plug 'yuttie/comfortable-motion.vim'
     
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -139,6 +151,14 @@ else
         autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
         autocmd FileType json syntax match Comment +\/\/.\+$+
     augroup END
+
+    " NERDTree
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    autocmd vimenter * NERDTree
+    noremap <leader>f :NERDTreeToggle<CR>
+
 
     " defx
     " function! s:defx_my_settings() abort
@@ -337,8 +357,8 @@ else
     " map <leader>ff :LfNewTab<CR>
 
     " ranger
-    let g:ranger_replace_netrw = 1
-    map <leader>ff :RangerNewTab<CR>
+    " let g:ranger_replace_netrw = 1
+    " map <leader>ff :RangerNewTab<CR>
 
     source ~/.config/nvim/statusline/faith.vim
     

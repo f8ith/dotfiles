@@ -21,7 +21,7 @@
 
 #window {
   width: 4%;
-  height: 28%;
+  height: 26%;
   anchor: east;
   location: east;
   x-offset: -1%;

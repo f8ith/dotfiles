@@ -3,6 +3,7 @@ adobe-source-han-serif-tw-fonts
 alsa-utils
 aurutils
 autoconf
+autojump
 automake
 awesome-git
 base
@@ -148,6 +149,7 @@ unclutter
 unity-editor-beta
 usbutils
 v4l2loopback-dkms-git
+veonim
 vi
 virt-manager
 wireguard-tools

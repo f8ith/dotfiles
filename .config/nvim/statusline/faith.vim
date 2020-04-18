@@ -41,7 +41,7 @@ function! SetModifiedSymbol(modified) " {{{
     else
         hi MyStatuslineModifiedBody ctermbg=NONE cterm=bold ctermfg=8
     endif
-    return '●'
+    return ''
 endfunction
 " }}}
 function! SetFiletype(filetype) " {{{

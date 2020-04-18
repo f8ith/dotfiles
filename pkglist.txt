@@ -3,12 +3,15 @@ adobe-source-han-serif-tw-fonts
 alsa-utils
 aurutils
 autoconf
+autojump
 automake
 awesome-git
 base
 betterlockscreen
 binutils
 bison
+bluez-hid2hci
+bluez-utils
 bridge-utils
 bspwm
 chromium
@@ -27,6 +30,7 @@ dragon-drag-and-drop-git
 dunst
 ebtables
 efibootmgr
+exa
 fakeroot
 fbreader
 fcitx-configtool
@@ -90,8 +94,6 @@ nvidia
 nvidia-settings
 obs-plugin-looking-glass-git
 obs-studio
-openrazer-daemon
-openrazer-driver-dkms
 openrazer-meta
 openssh
 os-prober
@@ -107,11 +109,12 @@ perl-file-mimeinfo
 picom
 piper
 pkgconf
+playerctl
 polybar
 pulseaudio-alsa
+pulseaudio-bluetooth
 pulsemixer
 python-notify2
-python-openrazer
 python-pillow
 python-pip
 python-poetry
@@ -122,7 +125,6 @@ ripgrep
 rofi
 ruby
 scream-pulse
-shairport-sync
 skypeforlinux-stable-bin
 smbclient
 socat
@@ -147,9 +149,9 @@ unclutter
 unity-editor-beta
 usbutils
 v4l2loopback-dkms-git
+veonim
 vi
 virt-manager
-wireguard-arch
 wireguard-tools
 xautolock
 xclip

@@ -28,6 +28,15 @@ XF86AudioLowerVolume
 XF86AudioMute 
         pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 200 ""
 
+XF86AudioPlay
+	playerctl -p ShairportSync play-pause
+	
+XF86AudioNext
+	playerctl -p ShairportSync next
+
+XF86AudioPrev
+	playerctl -p ShairportSync previous
+
 #}}}
 
 #: apps {{{
@@ -35,14 +44,17 @@ XF86AudioMute
 super + Return
         kitty
 
+super + shift + Return
+        kitty --class floating_terminal
+
 super + d
         rofi -theme launcher matching fuzzy -show combi
 
 super + e
-        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=10 -d ~/git -e nvim ." true
+        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=10 -d ~/git -e nvim" true
 
 super + shift + r
-	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc && killall polybar && . ~/.config/polybar/launch.sh
+	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc
 
 # app drawer
 super + a 
@@ -129,7 +141,6 @@ super + {Left,Down,Up,Right}
 
 #: misc {{{
 ctrl + Print
-
         echo 'win10q35 attach 1532:0219 046d:c539 046d:c087' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 
 
 #}}}

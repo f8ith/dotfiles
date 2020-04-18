@@ -19,4 +19,4 @@
  *
  */
 
-@import "../themes/colorschemes/material-dark/blue.rasi"
+@import "../themes/colorschemes/nord.rasi"

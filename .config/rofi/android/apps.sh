@@ -30,10 +30,10 @@ if test -f "$config"; then
             ${TERMINAL} &
             ;;
         $files)
-            ${user[file_manager]} &
+            bsptool -r file_manager 'kitty --class file_manager -T ranger -o window_padding_width=10 -e ranger' true &
             ;;
         $editor)
-            ${user[editor]} &
+            bsptool -r editor 'kitty --class editor -T nvim -o window_padding_width=10 -d ~/git -e nvim .' true &
             ;;
         $browser)
             ${BROWSER} &
@@ -45,7 +45,7 @@ if test -f "$config"; then
             bsptool -r discord discord true &
             ;;
         $mail)
-            ${user[email_client]} &
+            bsptool -r mail.google.com 'chromium --app=https://mail.google.com' true &
             ;;
         $tweetdeck)
             bsptool -r tweetdeck.twitter.com 'chromium --app=https://tweetdeck.twitter.com --new-window' true &

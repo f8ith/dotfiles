@@ -9,30 +9,35 @@ rofi_command="rofi -theme android/five.rasi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
-shutdown="⭘"
+shutdown=""
 reboot="⏼"
 lock=""
 suspend=""
+hibernate=""
 logout=""
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
+options="$shutdown\n$reboot\n$lock\n$suspend\n$hibernate\n$logout"
 
 chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 2)"
 case $chosen in
     $shutdown)
-        systemctl shutdown
+        sudo systemctl shutdown
         ;;
     $reboot)
-        systemctl reboot
+        sudo systemctl reboot
         ;;
     $lock)
         betterlockscreen -l
         ;;
     $suspend)
         sudo virsh managedsave win10q35
-        systemctl suspend
+        sudo systemctl suspend
         betterlockscreen -l
+        ;;
+    $hibernate)
+        sudo virsh managedsave win10q35
+        sudo systemctl hibernate
         ;;
     $logout)
         bspc quit

@@ -12,9 +12,9 @@ binutils
 bison
 bluez-hid2hci
 bluez-utils
+brave-bin
 bridge-utils
 bspwm
-chromium
 chromium-widevine
 code
 conky
@@ -51,6 +51,7 @@ git
 github-cli-bin
 gnome-video-effects
 go
+gonvim-fork
 groff
 grub
 gst-libav
@@ -134,6 +135,7 @@ sxhkd
 termite
 texinfo
 tldr
+trash-cli
 ttf-courier-prime-code
 ttf-croscore
 ttf-fantasque-sans-mono

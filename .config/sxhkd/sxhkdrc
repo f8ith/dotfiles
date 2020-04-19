@@ -42,16 +42,16 @@ XF86AudioPrev
 #: apps {{{
 
 super + Return
-        kitty
+        kitty -1
 
 super + shift + Return
-        kitty --class floating_terminal
+        kitty -1 --class floating_terminal
 
 super + d
         rofi -theme launcher matching fuzzy -show combi
 
 super + e
-        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=10 -d ~/git -e nvim" true
+        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=5 -d ~/git -e nvim" true
 
 super + shift + r
 	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc

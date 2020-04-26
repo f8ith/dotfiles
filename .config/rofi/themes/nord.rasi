@@ -18,5 +18,3 @@
     x14:    #8FBCBB;
     x15:    #ECEFF4;
 }
-
-@import "themes/colorschemes/dark.rasi"

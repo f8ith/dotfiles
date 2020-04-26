@@ -1,5 +1,6 @@
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
+alacritty
 alsa-utils
 aurutils
 autoconf
@@ -12,10 +13,11 @@ binutils
 bison
 bluez-hid2hci
 bluez-utils
-brave-bin
+brave-beta-bin
 bridge-utils
 bspwm
 chromium-widevine
+clang
 code
 conky
 cool-retro-term
@@ -30,6 +32,7 @@ dragon-drag-and-drop-git
 dunst
 ebtables
 efibootmgr
+emacs
 exa
 fakeroot
 fbreader
@@ -42,8 +45,8 @@ fcitx-ui-light
 feh
 ffmpegthumbnailer
 ffnvcodec-headers
+firefox-beta-bin
 flex
-fontforge
 fzf
 gcc
 gimp
@@ -65,7 +68,6 @@ hardinfo
 htop
 hub
 inter-font
-kitty
 libreoffice-fresh
 libva-mesa-driver
 libva-vdpau-driver
@@ -79,9 +81,13 @@ maim
 make
 man-db
 mercurial
+meson
+mono
 mpv
+nasm
 neofetch
 neovim
+nerd-fonts-complete
 net-tools
 networkmanager
 nodejs
@@ -99,6 +105,7 @@ openrazer-meta
 openssh
 os-prober
 otf-hermit
+otf-nerd-fonts-monacob-mono
 ovmf
 owlink-git
 p7zip
@@ -107,7 +114,6 @@ papirus-icon-theme
 patch
 pavucontrol
 perl-file-mimeinfo
-picom
 piper
 pkgconf
 playerctl
@@ -120,6 +126,7 @@ python-pillow
 python-pip
 python-poetry
 qemu
+ragel
 ranger
 reflector
 ripgrep
@@ -145,11 +152,14 @@ ttf-font-awesome
 ttf-hack
 ttf-ibm-plex
 ttf-inconsolata
+ttf-mac-fonts
+ttf-monaco
 ttf-roboto
 ttf-roboto-mono
 unclutter
 unity-editor-beta
 usbutils
+uthash
 v4l2loopback-dkms-git
 veonim
 vi

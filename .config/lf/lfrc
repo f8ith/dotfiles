@@ -1,8 +1,7 @@
-# Basic Settings
 set preview true
 set previewer ~/.config/lf/previewer
 set cleaner ~/.config/lf/cleaner
-set hidden true
+set nohidden 
 set color256 true
 set drawbox true
 set icons true
@@ -10,15 +9,25 @@ set ignorecase true
 
 # Custom Functions
 cmd open ${{
-    case $(file --mime-type "$f" -bL) in
+    case "$f" in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
+            mntdir="$f-archivemount"
+            [ ! -d "$mntdir" ] && {
+                mkdir "$mntdir"
+                archivemount "$f" "$mntdir"
+                echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
+            }
+            lf -remote "send $id cd \"$mntdir\""
+            lf -remote "send $id reload"
+            ;;
         text/*|application/json) $EDITOR "$f";;
-        video/*|image/*/application/pdf) xdg-open "$f" & disown;;
-        *) xdg-open "$f" ;;
+        *.mp4|*.mkv|*.avi|*.mov|*.jpg|*.jpeg|*.png|*.pdf|*.mp3|*.wav) xdg-open "$f" & disown;;
+        *) xdg-open "$f" & disown;;
     esac
 }}
 
 cmd mkdir ${{
-  printf "Directory Name: "
+  printf "Directory Name: " 
   read ans
   mkdir $ans
 }}
@@ -122,6 +131,45 @@ cmd restore_trash ${{
 
 cmd stripspace %stripspace "$f"
 
+# pasting done right
+cmd paste &{{
+    load=$(lf -remote 'load')
+    mode=$(echo "$load" | sed -n '1p')
+    list=$(echo "$load" | sed '1d')
+    if [ $mode = 'copy' ]; then
+        rsync -av --ignore-existing --progress $list . \
+        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
+        | while read line; do
+            lf -remote "send $id echo $line"
+        done
+    elif [ $mode = 'move' ]; then
+        mv $list .
+    fi
+    lf -remote 'send load'
+    lf -remote 'send clear'
+}}
+
+cmd Link %{{
+	lf -remote 'load' | while read file; do
+		if [ ! -n "${mode+1}" ]; then
+			mode="$file"
+			continue
+		fi
+		files+=("$file")
+	done
+	if [ "${#files[@]}" -le 1 ]; then
+		lf -remote "send $id echo no files to link"
+		exit 0
+	fi
+	# symbolicly copy mode is indicating a soft link
+	if [[ "$mode" == copy ]]; then
+		ln -sr $files -t .
+	# while a move mode is indicating a hard link
+	elif [[ "$mode" == move ]]; then
+		ln $files -t .
+	fi
+}}
+
 # Bindings
 # Remove some defaults
 map m
@@ -181,6 +229,7 @@ map L bottom
 map R reload
 map C clear
 map U unselect
+map P :Link
 
 # Movement
 map gtr cd ~/.local/share/Trash/files

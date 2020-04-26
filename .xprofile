@@ -4,3 +4,4 @@ xrdb -load ~/.Xresources &
 git config --global credential.helper store &
 unclutter &
 fcitx &
+picom &

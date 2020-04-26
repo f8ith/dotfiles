@@ -1,1 +1,1 @@
-themes/nord/launch.sh
+themes/kawaii/launch.sh

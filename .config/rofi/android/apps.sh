@@ -39,16 +39,16 @@ if test -f "$config"; then
             ${BROWSER} &
             ;;
         $whatsapp)
-            bsptool -r web.whatsapp.com "chromium --app=https://web.whatsapp.com --new-window" true &
+            whatsapp &
             ;;
         $discord)
             bsptool -r discord discord true &
             ;;
         $mail)
-            bsptool -r mail.google.com 'chromium --app=https://mail.google.com' true &
+            gmail &
             ;;
         $tweetdeck)
-            bsptool -r tweetdeck.twitter.com 'chromium --app=https://tweetdeck.twitter.com --new-window' true &
+            tweetdeck &
             ;;
     esac
 fi

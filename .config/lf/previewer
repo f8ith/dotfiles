@@ -33,7 +33,7 @@ case $(file -b --mime-type "${FILE}") in
     text/*) cat "${FILE}" ;;
     image/*) draw_image "$@" ;;
     video/*) draw_video "$@" ;;
-    application/pdf) draw_pdf "$@" ;;
+    application/pdf) pdftotext "$1" -;;
     application/gzip|application/x-xz) tar tf "$1" ;;
     application/zip) unzip -Z -1 "$1" ;;
     application/x-sharedlib) readelf -h "$1" ;;

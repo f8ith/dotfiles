@@ -5,8 +5,6 @@ killall sxhkd
 sxhkd &
 ~/.fehbg &
 . ~/.config/polybar/launch.sh &
-killall picom
-picom &
 
 source $HOME/.config/bspwm/colors
 
@@ -14,8 +12,8 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 bspc config border_width                0
 bspc config window_gap                  20
-bspc config top_padding                 25
-bspc config bottom_padding              40
+bspc config top_padding                 35
+bspc config bottom_padding              0
 bspc config left_padding                0
 bspc config right_padding               0
 bspc config split_ratio          	0.5
@@ -35,15 +33,15 @@ bspc rule -a Chromium desktop='^1'
 
 # chatting & socials
 bspc rule -a discord desktop='^3'
-bspc rule -a *:web.whatsapp.com desktop='^3'
-bspc rule -a *:tweetdeck.twitter.com desktop='^3'
+bspc rule -a whatsapp desktop='^3'
+bspc rule -a tweetdeck desktop='^3'
 
 # editors
 bspc rule -a editor state=fullscreen desktop='^4'
 bspc rule -a VSCodium desktop='^4'
 
 # email
-bspc rule -a *:mail.google.com desktop='^7'
+bspc rule -a gmail desktop='^7'
 
 # misc
 bspc rule -a Virt-manager desktop='^7' state=floating

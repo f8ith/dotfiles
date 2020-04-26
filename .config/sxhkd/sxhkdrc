@@ -42,10 +42,10 @@ XF86AudioPrev
 #: apps {{{
 
 super + Return
-        kitty -1
+        alacritty
 
 super + shift + Return
-        kitty -1 --class floating_terminal
+        alacritty --class floating_terminal
 
 super + d
         rofi -theme launcher matching fuzzy -show combi
@@ -54,7 +54,7 @@ super + e
         bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=5 -d ~/git -e nvim" true
 
 super + shift + r
-	pkill -USR1 -x sxhkd && $HOME/.config/bspwm/bspwmrc
+	$HOME/.config/bspwm/bspwmrc
 
 # app drawer
 super + a 

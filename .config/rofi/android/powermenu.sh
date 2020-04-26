@@ -31,12 +31,12 @@ case $chosen in
         betterlockscreen -l
         ;;
     $suspend)
-        sudo virsh managedsave win10q35
+        sudo virsh shutdown win10q35
         sudo systemctl suspend
         betterlockscreen -l
         ;;
     $hibernate)
-        sudo virsh managedsave win10q35
+        sudo virsh shutdown win10q35
         sudo systemctl hibernate
         ;;
     $logout)

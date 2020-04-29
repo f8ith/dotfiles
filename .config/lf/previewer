@@ -3,6 +3,12 @@
 FILE="$1"
 TMP_FILE="${PREVIEW_TMP}/tmp.png"
 
+function draw_clear {
+    >"${UEBERZUG_FIFO}" declare -A -p cmd=( \
+        [action]=remove [identifier]="$1" )
+}
+
+
 function draw_image {
     >"${UEBERZUG_FIFO}" declare -A -p cmd=( \
         [action]=add [identifier]="$6" \
@@ -12,31 +18,29 @@ function draw_image {
 }
 
 function draw_video {
-    ffmpegthumbnailer -i "${FILE}" -c png -o "${TMP_FILE}"
+    ffmpegthumbnailer -t 0% -q 3 -s "$(expr ${TEXT_WIDTH} \* $3)" \
+        -c jpeg -i "${FILE}" -o "${TMP_FILE}"
     FILE="${TMP_FILE}"
     draw_image "$@"
 }
 
+
 function draw_pdf {
-    pdftoppm -png -f 1 -l 1 -singlefile "${FILE}" "${TMP_FILE%.png}"
-#    pdftoppm -f 1 -l 1 \
-#                      -scale-to-x "${3%x*}" \
-#                      -scale-to-y "${2%y*}" \
-#                      -singlefile \
-#                      -jpeg -tiffcompression jpeg \
-#                      -- "${FILE}" "${TMP_FILE%.jpg}" \
+    pdftoppm -png -f 1 -l 1 -jpeg -tiffcompression jpeg \
+        -scale-to-x "$(expr ${TEXT_WIDTH} \* $3)" -scale-to-y -1 \
+        -singlefile "${FILE}" "${TMP_FILE%.png}"
     FILE="${TMP_FILE}"
     draw_image "$@"
 }
 
 case $(file -b --mime-type "${FILE}") in
-    text/*) cat "${FILE}" ;;
+    text/*) draw_clear "$6" ; cat "${FILE}" ;;
     image/*) draw_image "$@" ;;
     video/*) draw_video "$@" ;;
-    application/pdf) pdftotext "$1" -;;
-    application/gzip|application/x-xz) tar tf "$1" ;;
-    application/zip) unzip -Z -1 "$1" ;;
-    application/x-sharedlib) readelf -h "$1" ;;
+    application/pdf) draw_pdf "$@" ;;
+    application/gzip|application/x-xz) draw_clear "$6" ; tar tf "$1" ;;
+    application/zip) draw_clear "$6" ; unzip -Z -1 "$1" ;;
+    *) draw_clear "$6" ;;
 esac
 
 exit 0

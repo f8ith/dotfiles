@@ -51,14 +51,10 @@ super + d
         rofi -theme launcher matching fuzzy -show combi
 
 super + e
-        bsptool -r editor "kitty --class editor -T nvim -o window_padding_width=5 -d ~/git -e nvim" true
+        bsptool -r editor "alacritty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
 super + shift + r
 	$HOME/.config/bspwm/bspwmrc
-
-# app drawer
-super + a 
-        bash ~/.config/rofi/android/apps.sh
 
 # powermenu
 super + Escape

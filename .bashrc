@@ -113,9 +113,36 @@ ex ()
   fi
 }
 
-export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
+lfcd () {
+    tmp="$(mktemp)"
+    fid="$(mktemp)"
+    startlf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    id="$(cat "$fid")"
+    archivemount_dir="/tmp/__lf_archivemount_$id"
+    if [ -f "$archivemount_dir" ]; then
+        cat "$archivemount_dir" | \
+            while read -r line; do
+                sudo umount "$line"
+                rmdir "$line"
+            done
+        rm -f "$archivemount_dir"
+    fi
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-neofetch
+if [[ uname != 'Darwin' ]] ; then
+    neofetch
+fi
+
+eval "$(starship init bash)"

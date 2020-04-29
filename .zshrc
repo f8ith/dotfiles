@@ -1,18 +1,11 @@
-# Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-# History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
-# Basic auto/tab complete:
 source ~/.zinit/bin/zinit.zsh
-autoload -U compinit
-zstyle ':completion:*' menu select
-compinit
-_comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
 bindkey -v
@@ -25,31 +18,10 @@ export KEYTIMEOUT=1
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey -v '^?' backward-delete-char
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
 lfcd () {
     tmp="$(mktemp)"
     fid="$(mktemp)"
-    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    startlf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
     id="$(cat "$fid")"
     archivemount_dir="/tmp/__lf_archivemount_$id"
     if [ -f "$archivemount_dir" ]; then
@@ -85,20 +57,46 @@ if [[ uname != 'Darwin' ]] ; then
     neofetch
 fi
 
-# zinit
+# Load using the for-syntax
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions \
 
-zinit light denysdovhan/spaceship-prompt
+zinit wait"2" lucid for \
+    wfxr/forgit \
 
-# Spaceship Prompt options
-SPACESHIP_VI_MODE_SHOW=false
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
 
-zinit snippet OMZ::plugins/git-prompt/git-prompt.plugin.zsh
-zinit snippet OMZ::plugins/pip/pip.plugin.zsh
-zinit snippet OMZ::plugins/python/python.plugin.zsh
-zinit snippet OMZ::plugins/ripgrep/_ripgrep
-zinit ice wait=2 lucid
-zinit light mafredri/zsh-async
-zinit ice wait=2 lucid
-zinit light zdharma/fast-syntax-highlighting
-zinit ice wait=2 lucid
-zinit light wfxr/forgit
+eval "$(starship init zsh)"
+
+zstyle ':completion:*' menu select
+_comp_options+=(globdots)		# Include hidden files.
+
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.

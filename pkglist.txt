@@ -2,6 +2,8 @@ adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
 alacritty
 alsa-utils
+archivemount
+atool
 aurutils
 autoconf
 autojump
@@ -13,7 +15,6 @@ binutils
 bison
 bluez-hid2hci
 bluez-utils
-brave-beta-bin
 bridge-utils
 bspwm
 chromium-widevine
@@ -28,11 +29,13 @@ cups-pdf
 discord
 dmidecode
 dnsmasq
+dosfstools
 dragon-drag-and-drop-git
 dunst
 ebtables
 efibootmgr
 emacs
+esy
 exa
 fakeroot
 fbreader
@@ -75,6 +78,7 @@ libvirt
 linux
 linux-firmware
 looking-glass-git
+lxappearance-gtk3
 ly-git
 m4
 maim
@@ -134,6 +138,7 @@ rofi
 ruby
 scream-pulse
 skypeforlinux-stable-bin
+smartmontools
 smbclient
 socat
 stow
@@ -164,6 +169,7 @@ v4l2loopback-dkms-git
 veonim
 vi
 virt-manager
+whatsapp-nativefier-dark
 wireguard-tools
 xautolock
 xclip

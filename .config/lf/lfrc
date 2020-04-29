@@ -137,7 +137,7 @@ cmd paste &{{
     mode=$(echo "$load" | sed -n '1p')
     list=$(echo "$load" | sed '1d')
     if [ $mode = 'copy' ]; then
-        rsync -av --ignore-existing --progress $list . \
+        rsync -av --ignore-existing --progress "$list" . \
         | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
         | while read line; do
             lf -remote "send $id echo $line"
@@ -183,7 +183,7 @@ map e
 map f
 
 # File Openers
-map ee $$EDITOR "$f"
+map e $$EDITOR "$f"
 map u $view "$f"
 
 # Archive Mappings

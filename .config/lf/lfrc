@@ -3,7 +3,6 @@ set previewer ~/.config/lf/previewer
 set cleaner ~/.config/lf/cleaner
 set nohidden 
 set color256 true
-set drawbox true
 set icons true
 set ignorecase true
 
@@ -21,8 +20,10 @@ cmd open ${{
             lf -remote "send $id reload"
             ;;
         text/*|application/json) $EDITOR "$f";;
-        *.mp4|*.mkv|*.avi|*.mov|*.jpg|*.jpeg|*.png|*.pdf|*.mp3|*.wav) xdg-open "$f" & disown;;
-        *) xdg-open "$f" & disown;;
+        *.pdf) zathura "$f" & disown;;
+        *.mp4|*.mkv|*.avi|*.mov|*.mp3|*.wav) mpv --player-operation-mode=pseudo-gui -- "$f" & disown;;
+        *.jpg|*.jpeg|*.png) xdg-open "$f" & disown;;
+        *) xdg-open "$f";;
     esac
 }}
 
@@ -132,22 +133,35 @@ cmd restore_trash ${{
 cmd stripspace %stripspace "$f"
 
 # pasting done right
-cmd paste &{{
-    load=$(lf -remote 'load')
-    mode=$(echo "$load" | sed -n '1p')
-    list=$(echo "$load" | sed '1d')
-    if [ $mode = 'copy' ]; then
-        rsync -av --ignore-existing --progress "$list" . \
-        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
-        | while read line; do
-            lf -remote "send $id echo $line"
-        done
-    elif [ $mode = 'move' ]; then
-        mv $list .
-    fi
-    lf -remote 'send load'
-    lf -remote 'send clear'
-}}
+#cmd paste &{{
+#    load=$(lf -remote 'load')
+#    mode=$(echo "$load" | sed -n '1p')
+#    list=$(echo "$load" | sed '1d')
+#    if [ $mode = 'copy' ]; then
+#        cp -rn $list .
+#    elif [ $mode = 'move' ]; then
+#        mv -n $list .
+#    fi
+#    lf -remote 'send load'
+#    lf -remote 'send clear'
+#}}
+#
+#cmd paste &{{
+#    load=$(lf -remote 'load')
+#    mode=$(echo "$load" | sed -n '1p')
+#    list=$(echo "$load" | sed '1d')
+#    if [ $mode = 'copy' ]; then
+#        rsync -av --ignore-existing --progress "$list" . \
+#        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
+#        | while read line; do
+#            lf -remote "send $id echo $line"
+#        done
+#    elif [ $mode = 'move' ]; then
+#        mv -n $list .
+#    fi
+#    lf -remote 'send load'
+#    lf -remote 'send clear'
+#}}
 
 cmd Link %{{
 	lf -remote 'load' | while read file; do
@@ -233,6 +247,7 @@ map P :Link
 
 # Movement
 map gtr cd ~/.local/share/Trash/files
+map gh cd ~
 
 map gv. cd ~/Videos
 map gp. cd ~/Pictures

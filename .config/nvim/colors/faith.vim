@@ -29,8 +29,8 @@ hi SpellRare           ctermfg=11    ctermbg=NONE  cterm=underline
 hi SpellLocal          ctermfg=13    ctermbg=NONE  cterm=underline
 hi NonText             ctermfg=8
 hi LineNr              ctermfg=8     ctermbg=NONE  cterm=bold
-hi CursorLineNr        ctermfg=5   ctermbg=NONE     cterm=bold
-hi Visual              ctermfg=0     ctermbg=5
+hi CursorLineNr        ctermfg=5     ctermbg=NONE  cterm=bold
+hi Visual              ctermfg=NONE  ctermbg=NONE  cterm=italic,bold
 hi IncSearch           ctermfg=0     ctermbg=13    cterm=NONE
 hi Search              ctermfg=0     ctermbg=7
 hi StatusLine          ctermfg=5     ctermbg=0     cterm=NONE
@@ -70,7 +70,7 @@ hi! link SpecialKey    NonText
 "}}}
 " Generic syntax {{{
 hi Delimiter       ctermfg=7
-hi Comment         ctermfg=8   cterm=bold
+hi Comment         ctermfg=8   cterm=italic
 hi Underlined      ctermfg=2   cterm=underline
 hi Type            ctermfg=2
 hi String          ctermfg=1  cterm=bold

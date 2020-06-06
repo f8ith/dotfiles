@@ -3,6 +3,8 @@
 # Autostart programs and swapping esc with caps
 killall sxhkd
 sxhkd &
+killall dunst
+dunst &
 ~/.fehbg &
 . ~/.config/polybar/launch.sh &
 
@@ -25,7 +27,7 @@ bspc config remove_unplugged_monitors	true
 bspc config focus_follows_pointer       true
 
 # terminals
-bspc rule -a Alacritty desktop='^10'
+bspc rule -a Alacritty:Alacritty desktop='^10' follow=on
 bspc rule -a floating_terminal state=floating
 
 # browsers
@@ -38,7 +40,7 @@ bspc rule -a whatsapp desktop='^3'
 bspc rule -a tweetdeck desktop='^3'
 
 # editors
-bspc rule -a editor state=fullscreen desktop='^4'
+bspc rule -a *:editor state=fullscreen desktop='^4' follow=on
 bspc rule -a VSCodium desktop='^4'
 
 # email
@@ -47,8 +49,8 @@ bspc rule -a gmail desktop='^6'
 # misc
 bspc rule -a Virt-manager desktop='^7' state=floating
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Zathura desktop='^5' state=tiling
+bspc rule -a Zathura state=tiling
 bspc rule -a feh state=floating
 bspc rule -a mpv state=fullscreen
-bspc rule -a file_manager state=floating
 bspc rule -a notion desktop='^5'
+bspc rule -a *:file_manager state=floating

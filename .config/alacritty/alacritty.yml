@@ -48,8 +48,8 @@ window:
   #
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
-  #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  #     - buttonless: Title bar, transparent background, but no title bar  #buttons
+  #decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -87,7 +87,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font Mono
+    family: SF Mono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -115,7 +115,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -150,6 +150,34 @@ font:
 draw_bold_text_with_bright_colors: true
 
 schemes:
+   spacegray: &spacegray
+      # Default colors
+      primary:
+        background: '0x242424'
+        foreground: '0xb7bbb7'
+  
+      # Normal colors
+      normal:
+        black:   '0x2c2f33'
+        red:     '0xb04c50'
+        green:   '0x919652'
+        yellow:  '0xe2995c'
+        blue:    '0x66899d'
+        magenta: '0x8d6494'
+        cyan:    '0x527c77'
+        white:   '0x606360'
+  
+      # Bright colors
+      bright:
+        black:   '0x4b5056'
+        red:     '0xb04c50'
+        green:   '0x94985b'
+        yellow:  '0xe2995c'
+        blue:    '0x66899d'
+        magenta: '0x8d6494'
+        cyan:    '0x527c77'
+        white:   '0xdde3dc'
+
    nord: &nord
      # Default colors
      primary:
@@ -206,7 +234,6 @@ schemes:
        cyan:    '0x80615f'
        white:   '0xb8a5a8'
 
-# Colors (Nord)
 colors: *kawaii
 
 # Visual Bell

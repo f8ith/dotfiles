@@ -1,19 +1,20 @@
 #: screenshots {{{
 
 Print
-        maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved"
+        maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved" -t 2000
 
 super + ctrl + c
-	notify-send "Select an area to capture" && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured"
+	notify-send "Select an area to capture" -t 1000 && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured" -t 2000
 
 super + shift + c
-        notify-send "Select an area to copy to clipboard" && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard" 
+        notify-send "Select an area to copy to clipboard" -t 1000 && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"  -t 2000
 
 super + Print
-	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured"
+	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" -t 2000
 
-# super + shift + Print
-#        feh ~/Pictures/Screenshots
+super + shift + Print
+        alacritty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
+
 
 #}}}
 
@@ -52,6 +53,10 @@ super + d
 
 super + e
         bsptool -r editor "alacritty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
+
+super + shift + f
+        alacritty --class file_manager --title lf --working-directory ~ -e startlf
+
 
 super + shift + r
 	$HOME/.config/bspwm/bspwmrc
@@ -137,6 +142,6 @@ super + {Left,Down,Up,Right}
 
 #: misc {{{
 ctrl + Print
-        echo 'win10q35 attach 1532:0219 046d:c539 046d:c087' | socat - UNIX-CONNECT:/var/run/vm-usbserver.sock && notify-send "Attached usb devices" 
+        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices" 
 
 #}}}

@@ -13,13 +13,13 @@ emacs*background:   #12171b
 URxvt*foreground:   #b8a5a8
 XTerm*foreground:   #b8a5a8
 UXTerm*foreground:  #b8a5a8
-URxvt*background:   [100]#12171b
+URxvt*background:   #12171b
 XTerm*background:   #12171b
 UXTerm*background:  #12171b
 URxvt*cursorColor:  #b8a5a8
 XTerm*cursorColor:  #b8a5a8
 UXTerm*cursorColor: #b8a5a8
-URxvt*borderColor:  [100]#12171b
+URxvt*borderColor:  #12171b
  
 ! Colors 0-15.
 *.color0: #12171b
@@ -70,5 +70,3 @@ XClock*secondColor: rgba:b8/a5/a8/ff
  
 ! Set depth to make transparency work.
 URxvt*depth: 32
-
-! l/

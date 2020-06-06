@@ -1,8 +1,8 @@
 # Default Programs
 
 export EDITOR="nvim"
-export TERMINAL="kitty" 
-export BROWSER="brave-beta" 
+export TERMINAL="alacritty" 
+export BROWSER="firefox-developer-edition" 
 export READER="zathura"
 
 # Fcitx settings
@@ -15,6 +15,9 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 system_type=$(uname -s)
+
+# Allow cmake to use all 12 threads
+export CMAKE_BUILD_PARALLEL_LEVEL=12
 
 if [ "$system_type" = "Darwin" ]; then
     export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:/home/faith/.npm/bin:/home/faith/.bin:$PATH"

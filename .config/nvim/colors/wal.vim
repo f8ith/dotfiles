@@ -18,7 +18,7 @@ let g:colors_name = 'wal'
 " set t_Co=16
 hi Normal ctermbg=NONE ctermfg=7
 hi NonText ctermbg=NONE ctermfg=0
-hi Comment ctermbg=NONE ctermfg=1
+hi Comment cterm=italic ctermbg=NONE ctermfg=1
 hi Conceal ctermbg=NONE
 hi Constant ctermbg=NONE ctermfg=3
 hi Error ctermbg=1 ctermfg=7

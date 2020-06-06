@@ -126,6 +126,7 @@ Plug 'neomake/neomake'
 " color schemes 
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajh17/Spacegray.vim'
 
 "  auto pairs
 Plug 'alvan/vim-closetag'
@@ -136,21 +137,19 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 
-" file manager
-" Plug 'ptzz/lf.vim'
-" Plug 'francoiscabrol/ranger.vim'
-" Plug 'rbgrouleff/bclose.vim'
 
 " motions
 Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
 
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+if isdirectory('/usr/bin/fzf')
+  Plug '/usr/bin/fzf' | Plug 'junegunn/fzf.vim'
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
 endif
+
+Plug 'airblade/vim-gitgutter'
 
 "}}}
 
@@ -186,12 +185,32 @@ nnoremap <silent> <leader>pp :GonvimAg<CR>
 " Vanilla {{{    
 else
 
+" file manager
+Plug 'ptzz/lf.vim'
+" Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+" Plug 'jeetsukumaran/vim-filebeagle'
+
 Plug 'easymotion/vim-easymotion'
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
+
 " coc
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-pairs',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-prettier',
+\ 'coc-json',
+\ 'coc-emmet',
+\ 'coc-python',
+\ 'coc-omnisharp'
+\ ]
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_leader() ? "\<TAB>" :
@@ -436,14 +455,93 @@ augroup END
 "let g:ale_python_pyls_auto_pipenv = 0
 
 " lf
-" let g:lf_replace_netrw = 1
-" map <leader>ff :LfNewTab<CR>
+let g:lf_replace_netrw = 1
+map <leader>ff :LfNewTab<CR>
 
 " ranger
 " let g:ranger_replace_netrw = 1
 " map <leader>ff :RangerNewTab<CR>
 
-colorscheme wal
+" Netrw
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_winsize = 20
+"
+" function! OpenToRight()
+"   :normal v
+"   let g:path=expand('%:p')
+"   :q!
+"   execute 'belowright vnew' g:path
+"   :normal <C-w>l
+" endfunction
+"
+" function! OpenBelow()
+"   :normal v
+"   let g:path=expand('%:p')
+"   :q!
+"   execute 'belowright new' g:path
+"   :normal <C-w>l
+" endfunction
+"
+"
+" function! NetrwMappings()
+"     " Hack fix to make ctrl-l work properly
+"     noremap <buffer> <A-l> <C-w>l
+"     noremap <buffer> <C-l> <C-w>l
+"     noremap <silent> <A-f> :call ToggleNetrw()<CR>
+"     noremap <buffer> V :call OpenToRight()<cr>
+"     noremap <buffer> H :call OpenBelow()<cr>
+" endfunction
+"
+" augroup netrw_mappings
+"     autocmd!
+"     autocmd filetype netrw call NetrwMappings()
+" augroup END
+"
+" " Allow for netrw to be toggled
+" function! ToggleNetrw()
+"     if g:NetrwIsOpen
+"         let i = bufnr("$")
+"         while (i >= 1)
+"             if (getbufvar(i, "&filetype") == "netrw")
+"                 silent exe "bwipeout " . i
+"             endif
+"             let i-=1
+"         endwhile
+"         let g:NetrwIsOpen=0
+"     else
+"         let g:NetrwIsOpen=1
+"         silent Lexplore
+"     endif
+" endfunction
+"
+" " Check before opening buffer on any file
+" function! NetrwOnBufferOpen()
+"   if exists('b:noNetrw')
+"       return
+"   endif
+"   call ToggleNetrw()
+" endfun
+"
+" " Close Netrw if it's the only buffer open
+" autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+"
+" " Make netrw act like a project Draw
+" augroup ProjectDrawer
+"   autocmd!
+"       	" Don't open Netrw
+"   autocmd VimEnter ~/.config/joplin/tmp/*,/tmp/calcurse*,~/.calcurse/notes/*,~/vimwiki/*,*/.git/COMMIT_EDITMSG let b:noNetrw=1
+"   autocmd VimEnter * :call NetrwOnBufferOpen()
+" augroup END
+"
+" let g:NetrwIsOpen=0
+
+" spacegray.vim
+let g:spacegray_low_contrast = 1
+let g:spacegray_use_italics = 1
+
+colorscheme faith
 
 source ~/.config/nvim/statusline/faith.vim
     
@@ -471,7 +569,5 @@ let g:closetag_close_shortcut = '<leader>>'
 " highlight hi DiffAdd ctermbg=0
 hi DiffChange ctermbg=0
 hi DiffDelete ctermbg=0
-
-colorscheme nord
 
 "}}}

@@ -159,13 +159,13 @@ ripgrep
 rofi
 rpcs3-git
 ruby
-rust
 scream-pulse
 screen
 skypeforlinux-stable-bin
 smartmontools
 smbclient
 socat
+spectrwm
 stow
 sudo
 sxhkd

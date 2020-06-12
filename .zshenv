@@ -16,11 +16,8 @@ export XMODIFIERS=@im=fcitx
 
 system_type=$(uname -s)
 
-# Allow cmake to use all 12 threads
-export CMAKE_BUILD_PARALLEL_LEVEL=12
-
 if [ "$system_type" = "Darwin" ]; then
-    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:/home/faith/.npm/bin:/home/faith/.bin:$PATH"
+    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:~/.npm/bin:~/.local/bin:$PATH"
 else
     export PATH="$PATH:/home/faith/go/bin/:/home/faith/.cargo/bin:/home/faith/.local/bin:/home/faith/.npm/bin"
 fi

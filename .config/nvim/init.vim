@@ -10,7 +10,7 @@ nnoremap <silent> <c-j> :wincmd j<CR>
 nnoremap <silent> <c-h> :wincmd h<CR>
 nnoremap <silent> <c-l> :wincmd l<CR>
 
-"set termguicolors
+set termguicolors 
 set noshowmode
 set showcmd
 set shiftwidth=4
@@ -40,6 +40,7 @@ if exists('veonim')
 " color schemes 
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajh17/Spacegray.vim'
 
 "  auto pairs
 Plug 'alvan/vim-closetag'
@@ -126,7 +127,9 @@ Plug 'neomake/neomake'
 " color schemes 
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'ajh17/Spacegray.vim'
+Plug 'ajh17/spacegray.vim'
+Plug 'fxn/vim-monochrome'
+Plug 'cocopon/iceberg.vim'
 
 "  auto pairs
 Plug 'alvan/vim-closetag'
@@ -541,16 +544,13 @@ map <leader>ff :LfNewTab<CR>
 let g:spacegray_low_contrast = 1
 let g:spacegray_use_italics = 1
 
-colorscheme faith
-
-source ~/.config/nvim/statusline/faith.vim
+colorscheme nord
     
 endif
 
 endif
 
-"}}}
-
+"}}} 
 " Global plugin config {{{
 
 " closetag 

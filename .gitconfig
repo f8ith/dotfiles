@@ -7,3 +7,5 @@
 #	email = faith@Jamies-MacBook.local
 [credential]
 	helper = store
+[hub]
+	protocol = https

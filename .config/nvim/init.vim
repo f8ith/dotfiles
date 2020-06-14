@@ -243,34 +243,48 @@ endfunction
 
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+nnoremap <silent> <leader><leader>p :RG<CR>
 
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
- 
-  let height = float2nr(10)
-  let width = float2nr(80)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 1
- 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
- 
-  call nvim_open_win(buf, v:true, opts)
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+" -- old config 
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+"
+" function! FloatingFZF()
+"   let buf = nvim_create_buf(v:false, v:true)
+"   call setbufvar(buf, '&signcolumn', 'no')
+"  
+"   let height = float2nr(10)
+"   let width = float2nr(80)
+"   let horizontal = float2nr((&columns - width) / 2)
+"   let vertical = 1
+"  
+"   let opts = {
+"         \ 'relative': 'editor',
+"         \ 'row': vertical,
+"         \ 'col': horizontal,
+"         \ 'width': width,
+"         \ 'height': height,
+"         \ 'style': 'minimal'
+"         \ }
+"  
+"   call nvim_open_win(buf, v:true, opts)
+" endfunction
+"
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <leader>rn <Plug>(coc-rename)
 xnoremap <leader>f  <Plug>(coc-format-selected)
@@ -293,7 +307,7 @@ nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>pp  :<C-u>CocListResume<CR>
 
 " neomake 
 let g:neomake_liveserver_maker = {

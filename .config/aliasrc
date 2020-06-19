@@ -29,4 +29,3 @@ alias r=". ranger"
 alias ls="exa -l"
 alias exa="exa -l"
 alias l="lfcd"
-alias primusrun="vblank_mode=0 primusrun" # Disable VSYNC on Primusrun (Bumblebee)

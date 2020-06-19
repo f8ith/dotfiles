@@ -152,6 +152,8 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
+" vim
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "}}}
@@ -190,13 +192,15 @@ else
 
 " file manager
 Plug 'ptzz/lf.vim'
-" Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-" Plug 'jeetsukumaran/vim-filebeagle'
 
 Plug 'easymotion/vim-easymotion'
+
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
+
+" async commands
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
@@ -309,13 +313,8 @@ nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <leader>pp  :<C-u>CocListResume<CR>
 
-" neomake 
-let g:neomake_liveserver_maker = {
-     \ 'exe': 'live-server',
-     \ 'args': '--quiet'
-     \ }
-
-let g:neomake_html_enabled_makers = ['liveserver']
+" asyncrun
+command! Liveserver AsyncRun -cwd=<root> live-server --quiet
 
 " lightline
 let g:lightline = {
@@ -375,6 +374,7 @@ endfunction
 " autocmd
 augroup filetypes
     autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
+    autocmd FileType html :Liveserver
     autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
     autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup END

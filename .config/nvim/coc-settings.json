@@ -4,5 +4,7 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "",
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/usr/local/bin/black"
 }

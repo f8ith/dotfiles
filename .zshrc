@@ -53,10 +53,6 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
-if [[ uname != 'Darwin' ]] ; then
-    neofetch
-fi
-
 # Load using the for-syntax
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \

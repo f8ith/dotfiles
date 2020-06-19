@@ -142,6 +142,7 @@ super + {Left,Down,Up,Right}
 
 #: misc {{{
 ctrl + Print
-        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices" 
+#        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices" 
+        vfio a && notify-send "Attached usb devices" 
 
 #}}}

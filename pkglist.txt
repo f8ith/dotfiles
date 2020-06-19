@@ -2,7 +2,6 @@ adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
 alacritty
 alsa-utils
-amdvlk
 archivemount
 atool
 aurutils
@@ -29,6 +28,7 @@ cnijfilter2
 code
 conky
 cool-retro-term
+cozette-otb
 cpuset-git
 cups
 cups-filters
@@ -38,6 +38,8 @@ debtap
 discord
 dmidecode
 dnsmasq
+docker
+docker-compose
 dosfstools
 dragon-drag-and-drop-git
 dunst
@@ -60,7 +62,6 @@ fcitx-ui-light
 feh
 ffmpegthumbnailer
 ffnvcodec-headers
-firefox
 firefox-developer-edition
 flex
 fontforge
@@ -68,7 +69,6 @@ fzf
 gcc
 gimp
 git
-github-cli-bin
 gnome-video-effects
 go
 gonvim-fork
@@ -82,6 +82,7 @@ gst-plugins-ugly
 gstreamer-vaapi
 guvcview
 hardinfo
+heroku-cli-nightly
 htop
 hub
 inter-font
@@ -107,10 +108,10 @@ maven
 mercurial
 meson
 mono
+mono-msbuild
 mpv
 multimc5
 nasm
-neofetch
 neovim
 nerd-fonts-complete
 net-tools
@@ -130,6 +131,7 @@ opencl-nvidia
 openrazer-meta
 openssh
 os-prober
+otf-arsenal
 otf-hermit
 otf-nerd-fonts-monacob-mono
 owlink-git
@@ -196,7 +198,7 @@ v4l2loopback-dkms-git
 veonim
 vi
 virt-manager
-vulkan-mesa-layer
+vulkan-mesa-layers
 vulkan-radeon
 vulkan-validation-layers
 whatsapp-nativefier-dark

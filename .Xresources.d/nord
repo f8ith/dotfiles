@@ -21,7 +21,7 @@
 *.cursorColor:  nord4
 *.fading: 35
 *.fadeColor: nord3
-*.highlight: nord7
+*.highlight: nord9
 
 *.color0: nord1
 *.color1: nord11

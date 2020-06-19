@@ -136,14 +136,10 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
-" visuals
-Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
-
-
 " motions
 Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
 
 if isdirectory('/usr/bin/fzf')
   Plug '/usr/bin/fzf' | Plug 'junegunn/fzf.vim'
@@ -189,6 +185,11 @@ nnoremap <silent> <leader>pp :GonvimAg<CR>
 
 " Vanilla {{{    
 else
+
+" visuals
+Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " file manager
 Plug 'ptzz/lf.vim'

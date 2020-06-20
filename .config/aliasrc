@@ -1,10 +1,12 @@
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
+alias np='nvim -w PKGBUILD'
 alias more=less
 alias nv=nvim
 alias snv="sudo nvim"
+alias v=nvim
+alias sv="sudo nvim"
 alias f=feh
 alias vi=nvim
 alias vim=nvim

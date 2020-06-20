@@ -327,7 +327,7 @@ keys.globalkeys = gears.table.join(
     -- Run program (d for dmenu ;)
     awful.key({ superkey }, "d",
         function()
-            awful.spawn.with_shell("rofi -matching fuzzy -show combi")
+            awful.spawn.with_shell("rofi -theme launcher -matching fuzzy -show combi")
         end,
         {description = "rofi launcher", group = "launcher"}),
 
@@ -454,8 +454,6 @@ keys.globalkeys = gears.table.join(
         {description = "send STOP signal to all firefox processes", group = "other"}),
     awful.key({ superkey, shiftkey }, "F7", function() awful.spawn.with_shell("freeze -u firefox") end,
         {description = "send CONT signal to all firefox processes", group = "other"}),
-    awful.key({ superkey }, "q", function() apps.scratchpad() end,
-        {description = "scratchpad", group = "launcher"}),
     -- Max layout
     -- Single tap: Set max layout
     -- Double tap: Also disable floating for ALL visible clients in the tag
@@ -540,7 +538,7 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "grave", function() sidebar.visible = not sidebar.visible end,
         {description = "show or hide sidebar", group = "awesome"}),
     -- Toggle wibar(s)
-    awful.key({ superkey, shiftkey }, "b", wibars_toggle,
+    awful.key({ superkey, shiftkey }, "b", function() wibars_toggle() end,
         {description = "show or hide wibar(s)", group = "awesome"}),
     -- Emacs (O for org mode)
     awful.key({ superkey }, "o", apps.org,
@@ -688,7 +686,7 @@ keys.clientkeys = gears.table.join(
         {description = "normal mode", group = "client"}),
 
     -- Close client
-    awful.key({ superkey, shiftkey   }, "q",      function (c) c:kill() end,
+    awful.key({ superkey }, "q",      function (c) c:kill() end,
         {description = "close", group = "client"}),
     awful.key({ altkey }, "F4",      function (c) c:kill() end,
         {description = "close", group = "client"}),

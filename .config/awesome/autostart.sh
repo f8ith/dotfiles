@@ -29,7 +29,7 @@ xrdb ~/.Xresources
 
 # Mpv input file
 # if [ ! -e /tmp/mpv.fifo ]; then
-    mkfifo /tmp/mpv.fifo
+#     mkfifo /tmp/mpv.fifo
 # fi
 
 # Desktop effects
@@ -40,7 +40,7 @@ xrdb ~/.Xresources
 # run numlockx
 
 # Network manager tray icon
-run nm-applet
+# run nm-applet
 
 # Kill redshift processes
 # pkill redshift

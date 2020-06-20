@@ -60,31 +60,31 @@ local exit_screen_theme = exit_screen_themes[2]
 -- User variables and preferences
 user = {
     -- >> Default applications <<
-    terminal = "kitty -1",
-    floating_terminal = "kitty -1",
-    browser = "firefox",
+    terminal = "alacritty",
+    floating_terminal = "alacritty",
+    browser = "firefox-developer-edition",
     file_manager = "thunar",
-    tmux = "kitty -1 -e tmux new",
-    editor = "kitty -1 --class editor -e vim",
+    tmux = "alacritty -e tmux new",
+    editor = "alacritty --working-directory ~/git --class editor -e nvim .",
     -- editor = "emacs",
 
     -- >> Search <<
     -- web_search_cmd = "exo-open https://duckduckgo.com/?q="
-    web_search_cmd = "xdg-open https://duckduckgo.com/?q=",
+    web_search_cmd = "xdg-open https://google.com/?q=",
     -- web_search_cmd = "exo-open https://www.google.com/search?q="
 
     -- >> User profile <<
     profile_picture = os.getenv("HOME").."/.config/awesome/profile.png",
 
     -- >> Music <<
-    music_client = "kitty -1 --class music -e ncmpcpp",
+    -- music_client = "kitty -1 --class music -e ncmpcpp",
 
     -- >> Screenshots <<
     -- Make sure the directory exists
     screenshot_dir = os.getenv("HOME") .. "/Pictures/Screenshots/",
 
     -- >> Email <<
-    email_client = "kitty -1 --class email -e neomutt",
+    email_client = "gmail",
 
     -- >> Sidebar <<
     sidebar_hide_on_mouse_leave = true,
@@ -94,7 +94,7 @@ user = {
     -- You can set this to whatever you want or leave it empty in
     -- order to unlock with just the Enter key.
     -- lock_screen_password = "",
-    lock_screen_password = "awesome",
+    lock_screen_password = "Jamie0917",
 
     -- >> Battery <<
     -- You will receive notifications when your battery reaches these
@@ -106,8 +106,8 @@ user = {
     -- Get your key and find your city id at
     -- https://openweathermap.org/
     -- (You will need to make an account!)
-    openweathermap_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    openweathermap_city_id = "yyyyyy",
+    openweathermap_key = "91c774966e11ab0c564b9c7efb8ad6fe",
+    openweathermap_city_id = "1819729",
     -- > Use "metric" for Celcius, "imperial" for Fahrenheit
     weather_units = "metric",
 }
@@ -221,9 +221,9 @@ screen_height = awful.screen.focused().geometry.height
 -- ===================================================================
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
     awful.layout.suit.floating,
     awful.layout.suit.max,
+    awful.layout.suit.tile,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.tile.top,
@@ -294,7 +294,8 @@ awful.screen.connect_for_each_screen(function(s)
     local tagnames = beautiful.tagnames or { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }
     -- Create all tags at once (without seperate configuration for each tag)
     awful.tag(tagnames, s, layouts)
--- Create tags with seperate configuration for each tag
+
+    -- Create tags with seperate configuration for each tag
     -- awful.tag.add(tagnames[1], {
     --     layout = layouts[1],
     --     screen = s,
@@ -700,6 +701,7 @@ awful.rules.rules = {
                 "Terraria.bin.x86",
                 "dontstarve_steam",
                 "Wine",
+                "editor",
             },
             instance = {
                 "synthetik.exe",
@@ -719,6 +721,7 @@ awful.rules.rules = {
                 "Signal",
                 "Slack",
                 "TeamSpeak 3",
+                "whatsapp-nativefier-d52542",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[3] }
@@ -728,7 +731,6 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "editor",
                 -- "Emacs",
                 -- "Subl3",
             },
@@ -745,10 +747,10 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "htop",
+                "bashtop",
             },
             instance = {
-                "htop",
+                "bashtop",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[5] }
@@ -769,10 +771,10 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "email",
+                "gmail-nativefier-804458",
             },
             instance = {
-                "email",
+                "gmail-nativefier-804458",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[7] }
@@ -797,10 +799,7 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "mpvtube",
-            },
-            icon_name = {
-                "mpvtube",
+                "virt-manager",
             },
         },
         properties = { screen = 1, floating = false, tag = awful.screen.focused().tags[9] },
@@ -819,7 +818,6 @@ awful.rules.rules = {
             class = {
                 "Transmission",
                 "Deluge",
-                "VirtualBox Manager",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[10] }

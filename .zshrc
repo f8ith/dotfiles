@@ -65,10 +65,10 @@ zinit wait lucid light-mode for \
 zinit wait"2" lucid for \
     wfxr/forgit \
 
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
+# zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+#     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+#     pick"direnv" src="zhook.zsh" for \
+#         direnv/direnv
 
 eval "$(starship init zsh)"
 

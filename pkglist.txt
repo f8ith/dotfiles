@@ -28,7 +28,6 @@ cnijfilter2
 code
 conky
 cool-retro-term
-cozette-otb
 cpuset-git
 cups
 cups-filters
@@ -167,7 +166,6 @@ skypeforlinux-stable-bin
 smartmontools
 smbclient
 socat
-spectrwm
 stow
 sudo
 sxhkd
@@ -191,7 +189,6 @@ ttf-monaco
 ttf-roboto
 ttf-roboto-mono
 unclutter
-unity-editor-beta
 usbutils
 uthash
 v4l2loopback-dkms-git

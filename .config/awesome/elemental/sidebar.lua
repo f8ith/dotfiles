@@ -414,7 +414,7 @@ sidebar:setup {
         cpu,
         temperature,
         ram,
-        battery,
+        -- battery,
         helpers.vertical_pad(20),
         disk,
         helpers.vertical_pad(40),

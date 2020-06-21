@@ -3,6 +3,7 @@ adobe-source-han-serif-tw-fonts
 alacritty
 alsa-utils
 archivemount
+archlinuxcn-keyring
 atool
 aurutils
 autoconf
@@ -45,7 +46,7 @@ dunst
 ebtables
 edk2-ovmf
 efibootmgr
-emacs
+emacs-git
 evtest
 exa
 fakeroot
@@ -136,6 +137,7 @@ otf-nerd-fonts-monacob-mono
 owlink-git
 p7zip
 pacman-contrib
+pandoc
 papirus-icon-theme
 patch
 pavucontrol

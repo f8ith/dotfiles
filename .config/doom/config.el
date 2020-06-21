@@ -55,3 +55,23 @@
 (after! flycheck
  (setq
   flycheck-check-syntax-automatically '(mode-enabled save idle-change)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bf387180109d222aee6bb089db48ed38403a1e330c9ec69fe1f52460a8936b66" "8feca8afd3492985094597385f6a36d1f62298d289827aaa0d8a62fe6889b33c" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "3d3807f1070bb91a68d6638a708ee09e63c0825ad21809c87138e676a60bda5d" "e2acbf379aa541e07373395b977a99c878c30f20c3761aac23e9223345526bcc" default))
+ '(jdee-db-active-breakpoint-face-colors (cons "#171F24" "#237AD3"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#171F24" "#579C4C"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#171F24" "#777778"))
+ '(objed-cursor-color "#D16969")
+ '(package-selected-packages '(github-modern-theme))
+ '(rustic-ansi-faces
+   ["#1e1e1e" "#D16969" "#579C4C" "#D7BA7D" "#339CDB" "#C586C0" "#85DDFF" "#d4d4d4"]))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

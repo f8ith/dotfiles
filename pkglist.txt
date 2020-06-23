@@ -20,6 +20,7 @@ bluez-hid2hci
 bluez-plugins
 bluez-tools
 bluez-utils-compat
+brave-bin
 bridge-utils
 bspwm
 clang
@@ -46,7 +47,7 @@ dunst
 ebtables
 edk2-ovmf
 efibootmgr
-emacs-git
+emacs
 evtest
 exa
 fakeroot
@@ -134,6 +135,7 @@ os-prober
 otf-arsenal
 otf-hermit
 otf-nerd-fonts-monacob-mono
+otf-overpass
 owlink-git
 p7zip
 pacman-contrib
@@ -149,6 +151,7 @@ playerctl
 polybar
 pulseaudio-alsa
 pulseaudio-bluetooth
+pulseeffects
 pulsemixer
 python-notify2
 python-pillow

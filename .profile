@@ -29,3 +29,5 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 # python path
 export PYTHONPATH=/home/faith/.cache/pypoetry/virtualenvs/*
+
+export PATH="$HOME/.poetry/bin:$PATH"

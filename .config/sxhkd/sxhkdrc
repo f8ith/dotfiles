@@ -73,7 +73,7 @@ super + v
 
 #: BSPWM {{{
 
-super + w
+super + q
 	bspc node -{c,k}
 
 super + f

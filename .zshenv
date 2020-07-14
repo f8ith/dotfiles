@@ -1,8 +1,9 @@
 # Default Programs
 
 export EDITOR="nvim"
-export TERMINAL="alacritty" 
-export BROWSER="firefox-developer-edition" 
+export VISUAL="emacsclient -c"
+export TERMINAL="kitty" 
+export BROWSER="firefox" 
 export READER="zathura"
 
 # Fcitx settings

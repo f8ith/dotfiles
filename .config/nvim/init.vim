@@ -139,7 +139,6 @@ Plug 'jiangmiao/auto-pairs'
 " motions
 Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-fugitive'
 
 if isdirectory('/usr/bin/fzf')
   Plug '/usr/bin/fzf' | Plug 'junegunn/fzf.vim'
@@ -192,8 +191,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " file manager
-Plug 'ptzz/lf.vim'
-Plug 'rbgrouleff/bclose.vim'
+" Plug 'ptzz/lf.vim'
+" Plug 'rbgrouleff/bclose.vim'
+Plug 'preservim/nerdtree'
 
 Plug 'easymotion/vim-easymotion'
 
@@ -473,8 +473,14 @@ augroup END
 "let g:ale_python_pyls_auto_pipenv = 0
 
 " lf
-let g:lf_replace_netrw = 1
-map <leader>ff :LfNewTab<CR>
+" let g:lf_replace_netrw = 1
+" map <leader>ff :LfNewTab<CR>
+
+" nerdtree {{
+let NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+"}}
 
 " ranger
 " let g:ranger_replace_netrw = 1

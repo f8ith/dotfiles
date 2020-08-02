@@ -69,52 +69,10 @@
  '(package-selected-packages '(github-modern-theme))
  '(rustic-ansi-faces
    ["#1e1e1e" "#D16969" "#579C4C" "#D7BA7D" "#339CDB" "#C586C0" "#85DDFF" "#d4d4d4"]))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
-(require 'mu4e)
-
-(setq
- mue4e-headers-skip-duplicates  t
- mu4e-view-show-images t
- mu4e-view-show-addresses t
- mu4e-compose-format-flowed nil
- mu4e-date-format "%y/%m/%d"
- mu4e-headers-date-format "%Y/%m/%d"
- mu4e-change-filenames-when-moving t
- mu4e-attachments-dir "~/Downloads"
-
- mu4e-maildir       "~/.mail"   ;; top-level Maildir
- ;; note that these folders below must start with /
- ;; the paths are relative to maildir root
- ;; mu4e-refile-folder "/Archive"
- mu4e-sent-folder   "/Sent Mail"
- ;; mu4e-drafts-folder "/Drafts"
- ;; mu4e-trash-folder  "/Trash")
-
-;; this setting allows to re-sync and re-index mail
-;; by pressing U
-(setq mu4e-get-mail-command  "mbsync -a")
-
-(defun my-mu4e-action-view-with-xwidget (msg)
-  "View the body of the message inside xwidget-webkit."
-  (unless (fboundp 'xwidget-webkit-browse-url)
-    (mu4e-error "No xwidget support available"))
-  (let* ((html (mu4e-message-field msg :body-html))
-          (txt (mu4e-message-field msg :body-txt))
-          (tmpfile (format "%s%x.html" temporary-file-directory (random t))))
-    (unless (or html txt)
-      (mu4e-error "No body part for this message"))
-    (with-temp-buffer
-      ;; simplistic -- but note that it's only an example...
-      (insert (or html (concat "<pre>" txt "</pre>")))
-      (write-file tmpfile)
-      (xwidget-webkit-browse-url (concat "file://" tmpfile) t))))
-
-(add-to-list 'mu4e-view-actions
-  '("xViewXWidget" . my-mu4e-action-view-with-xwidget) t)

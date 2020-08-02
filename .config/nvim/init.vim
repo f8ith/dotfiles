@@ -5,18 +5,15 @@ let mapleader=" "
 set foldmethod=marker
 set timeoutlen=200 ttimeoutlen=0
 
-nnoremap <silent> <c-k> :wincmd k<CR>
-nnoremap <silent> <c-j> :wincmd j<CR>
-nnoremap <silent> <c-h> :wincmd h<CR>
-nnoremap <silent> <c-l> :wincmd l<CR>
-
-set termguicolors 
+set termguicolors
 set noshowmode
 set showcmd
 set shiftwidth=4
 set expandtab
 set completeopt-=preview
 set clipboard+=unnamedplus
+set lazyredraw
+let NERDTreeHighlightCursorline = 0
 
 syntax enable
 
@@ -33,112 +30,73 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "}}}
 
-" Veonim {{{
+" VSCode {{{
 
-if exists('veonim')
+if exists('g:vscode')
+" VSCode extension
+Plug 'asvetliakov/vim-easymotion'
+call plug#end()
+finish
+endif
 
-" color schemes 
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'NLKNguyen/papercolor-theme'
-Plug 'ajh17/Spacegray.vim'
+"}}}
 
-"  auto pairs
+" plugins {{{
+
+" global {{{
+" Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" color schemes
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajh17/spacegray.vim'
+Plug 'fxn/vim-monochrome'
+Plug 'cocopon/iceberg.vim'
+Plug 'ayu-theme/ayu-vim'
+
+" auto pairs
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
-" visuals
-Plug 'sheerun/vim-polyglot'
-
 " motions
 Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
+"Plug 'preservim/nerdcommenter'
 
-Plug 'easymotion/vim-easymotion'
-" smooth scroll
-Plug 'yuttie/comfortable-motion.vim'
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-call plug#end()
-
-" extensions for web dev
-let g:vscode_extensions = [
-  \'vscode.typescript-language-features',
-  \'vscode.css-language-features',
-  \'vscode.html-language-features',
-  \'ms-python.python',
-\]
-
-" multiple nvim instances
-nno <silent> <c-t>c :Veonim vim-create<cr>
-nno <silent> <c-g> :Veonim vim-switch<cr>
-nno <silent> <c-t>, :Veonim vim-rename<cr>
-
-" workleader functions
-nno <silent> <c-p> :Veonim files<cr>
-nno <silent> <leader>e :Veonim explorer<cr>
-nno <silent> <leader>b :Veonim buffers<cr>
-nno <silent> <leader>d :Veonim change-dir<cr>
-"or with a starting dir: nno <silent> ,d :Veonim change-dir ~/proj<cr>
-
-" searching text
-nno <silent> <leader>fw :Veonim grep-word<cr>
-vno <silent> <leader>fw :Veonim grep-selection<cr>
-nno <silent> <leader>fa :Veonim grep<cr>
-nno <silent> <leader>ff :Veonim grep-resume<cr>
-nno <silent> <leader>fb :Veonim buffer-search<cr>
-
-" language features
-nno <silent> sr :Veonim rename<cr>
-nno <silent> sd :Veonim definition<cr>
-nno <silent> si :Veonim implementation<cr>
-nno <silent> st :Veonim type-definition<cr>
-nno <silent> sf :Veonim references<cr>
-nno <silent> sh :Veonim hover<cr>
-nno <silent> sl :Veonim symbols<cr>
-nno <silent> so :Veonim workleader-symbols<cr>
-nno <silent> sq :Veonim code-action<cr>
-nno <silent> sk :Veonim highlight<cr>
-nno <silent> sK :Veonim highlight-clear<cr>
-nno <silent> <leader>n :Veonim next-usage<cr>
-nno <silent> <leader>p :Veonim prev-usage<cr>
-nno <silent> sp :Veonim show-problem<cr>
-nno <silent> ]g :Veonim next-problem<cr>
-nno <silent> [g :Veonim prev-problem<cr>
-
-set guifont=Roboto\ Mono:h16
+" async commands
+Plug 'skywind3000/asyncrun.vim'
 
 "}}}
 
-" Global plugins {{{
+" Gonvim {{{
+
+if exists('g:gonvim_running')
+
+Plug 'akiyosi/gonvim-fuzzy'
+Plug 'easymotion/vim-easymotion'
+
+
+"}}}
+
+" Vanilla {{{
 else
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" visuals
+Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'Yggdroot/indentLine'
 
-" ordinary neovim
-" Plug 'itchyny/lightline.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" async live server
-Plug 'neomake/neomake'
-
-" color schemes 
-Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ajh17/spacegray.vim'
-Plug 'fxn/vim-monochrome'
-Plug 'cocopon/iceberg.vim'
-
-"  auto pairs
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-
-" motions
-Plug 'justinmk/vim-sneak'
-Plug 'tomtom/tcomment_vim'
 
 if isdirectory('/usr/bin/fzf')
   Plug '/usr/bin/fzf' | Plug 'junegunn/fzf.vim'
@@ -147,108 +105,34 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
-" vim
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-"}}}
-
-" VSCode {{{
-if exists('g:vscode')
-
-" VSCode extension
-Plug 'asvetliakov/vim-easymotion'
-call plug#end()
-finish
-    
-"}}}
-
-" Gonvim {{{
-
-elseif exists('g:gonvim_running')
-
-Plug 'akiyosi/gonvim-fuzzy'  
-Plug 'easymotion/vim-easymotion'
-" smooth scroll
-Plug 'yuttie/comfortable-motion.vim'
-
-call plug#end()
-
-let g:gonvim_fuzzy_ag_cmd = 'rg --no-heading --column --color never'
-nnoremap <silent> <leader>f :GonvimFilerOpen<CR>
-nnoremap <silent> <C-p> :GonvimFuzzyFiles<CR>
-nnoremap <silent> <leader>p :GonvimFuzzyBLines<CR>
-nnoremap <silent> <leader>pp :GonvimAg<CR>
-
-"}}}
-
-" Vanilla {{{    
-else
-
-" visuals
-Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " file manager
 " Plug 'ptzz/lf.vim'
 " Plug 'rbgrouleff/bclose.vim'
-Plug 'preservim/nerdtree'
-
+" Plug 'preservim/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'lambdalisue/fern.vim'
 Plug 'easymotion/vim-easymotion'
 
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
 
-" async commands
-Plug 'skywind3000/asyncrun.vim'
+endif
 
 call plug#end()
 
-" coc
-let g:coc_global_extensions = [
-\ 'coc-snippets',
-\ 'coc-pairs',
-\ 'coc-tsserver',
-\ 'coc-html',
-\ 'coc-css',
-\ 'coc-prettier',
-\ 'coc-json',
-\ 'coc-emmet',
-\ 'coc-python',
-\ 'coc-omnisharp'
-\ ]
+"}}}
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_leader() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"}}}
 
-function! s:check_back_leader() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
- 
-nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
-nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
+" configuration {{{
 
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" vanilla {{{
 
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
-nnoremap <silent> <leader><leader>p :RG<CR>
+nnoremap <silent> <leader>p :RG<CR>
 
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -266,18 +150,18 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" -- old config 
+" -- old config
 " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 "
 " function! FloatingFZF()
 "   let buf = nvim_create_buf(v:false, v:true)
 "   call setbufvar(buf, '&signcolumn', 'no')
-"  
+"
 "   let height = float2nr(10)
 "   let width = float2nr(80)
 "   let horizontal = float2nr((&columns - width) / 2)
 "   let vertical = 1
-"  
+"
 "   let opts = {
 "         \ 'relative': 'editor',
 "         \ 'row': vertical,
@@ -286,112 +170,26 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "         \ 'height': height,
 "         \ 'style': 'minimal'
 "         \ }
-"  
+"
 "   call nvim_open_win(buf, v:true, opts)
 " endfunction
 "
-autocmd CursorHold * silent call CocActionAsync('highlight')
-nnoremap <leader>rn <Plug>(coc-rename)
-xnoremap <leader>f  <Plug>(coc-format-selected)
-xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-nnoremap <leader>ac  <Plug>(coc-codeaction)
-nnoremap <leader>qf  <Plug>(coc-fix-current)
-xnoremap if <Plug>(coc-funcobj-i)
-xnoremap af <Plug>(coc-funcobj-a)
-onoremap if <Plug>(coc-funcobj-i)
-onoremap af <Plug>(coc-funcobj-a)
 
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
-nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <leader>pp  :<C-u>CocListResume<CR>
-
-" asyncrun
-command! Liveserver AsyncRun -cwd=<root> live-server --quiet
-
-" lightline
-let g:lightline = {
-  \ 'colorscheme': 'nord',
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
-  \   ],
-  \   'right': [
-  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent', 'wordcount' ],
-  \     [ 'blame' ]
-  \   ],
-  \ },
-  \ 'component_function': {
-  \   'wordcount': 'WordCount',
-  \   'blame': 'LightlineGitBlame',
-  \ }
-\ }
-let g:lightline.seperator = { 'left': '', 'right': ''}
-let g:lightline.subseparator = { 'left': '|', 'right': '' }
-
-function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  " return blame
-  return winwidth(0) > 120 ? blame : ''
-endfunction
-
-function! WordCount()
-    let currentmode = mode()
-    if !exists("g:lastmode_wc")
-        let g:lastmode_wc = currentmode
-    endif
-    if &modified || !exists("b:wordcount") || currentmode =~? '\c.*v' || currentmode != g:lastmode_wc
-        let g:lastmode_wc = currentmode
-        let l:old_position = getpos('.')
-        let l:old_status = v:statusmsg
-        execute "silent normal g\<c-g>"
-        if v:statusmsg == "--No lines in buffer--"
-            let b:wordcount = 0
-        else
-            let s:split_wc = split(v:statusmsg)
-            if index(s:split_wc, "Selected") < 0
-                let b:wordcount = str2nr(s:split_wc[11])
-            else
-                let b:wordcount = str2nr(s:split_wc[5])
-            endif
-            let v:statusmsg = l:old_status
-        endif
-        call setpos('.', l:old_position)
-        return b:wordcount . " words"
-    else
-        return b:wordcount . " words"
-    endif
-endfunction
-
-" autocmd
-augroup filetypes
-    autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
-    autocmd FileType html :Liveserver
-    autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-augroup END
-
-" NERDTree
+" nerdtree
 " autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " autocmd vimenter * NERDTree
 " noremap <leader>f :NERDTreeToggle<CR>
+"
+" let NERDTreeMinimalUI = 1
+" let g:NERDTreeStatusline = '%#NonText#'
+" let g:NERDTreeDirArrowExpandable = ''
+" let g:NERDTreeDirArrowCollapsible = ''
 
 " defx
 " function! s:defx_my_settings() abort
-"   " Define mappings
 "   nnoremap <silent><buffer><expr> <CR>
-"   \ defx#do_action('open')
+"   \ defx#do_action('drop')
 "   nnoremap <silent><buffer><expr> c
 "   \ defx#do_action('copy')
 "   nnoremap <silent><buffer><expr> m
@@ -399,13 +197,11 @@ augroup END
 "   nnoremap <silent><buffer><expr> p
 "   \ defx#do_action('paste')
 "   nnoremap <silent><buffer><expr> l
-"   \ defx#do_action('open')
+"   \ defx#do_action('open_tree', 'toggle', 'nested')
 "   nnoremap <silent><buffer><expr> E
-"   \ defx#do_action('open', 'vsplit')
+"   \ defx#do_action('drop', 'vsplit')
 "   nnoremap <silent><buffer><expr> P
-"   \ defx#do_action('open', 'pedit')
-"   nnoremap <silent><buffer><expr> o
-"   \ defx#do_action('open_or_close_tree')
+"   \ defx#do_action('drop', 'pedit')
 "   nnoremap <silent><buffer><expr> K
 "   \ defx#do_action('new_directory')
 "   nnoremap <silent><buffer><expr> N
@@ -449,22 +245,33 @@ augroup END
 "   \ defx#do_action('redraw')
 "   nnoremap <silent><buffer><expr> <C-g>
 "   \ defx#do_action('print')
+"
+"   call defx#custom#option('_', {
+"   \ 'root_marker': ':',
+"   \ })
+"
+"   call defx#custom#column('filename', {
+"   \ 'root_marker_highlight': 'Ignore',
+"   \ })
+"
+"   call defx#custom#column('icon', {
+"   \ 'directory_icon': '',
+"   \ 'opened_icon': '',
+"   \ 'root_icon': ' ',
+"   \ })
+"
 " endfunction
-
-" function! s:open_defx_if_directory()
-"   let l:full_path = expand(expand('%:p'))
-"   if isdirectory(l:full_path)
-"     Defx `expand('%:p')`
-"   endif
-" endfunction
-" 
+"
 " augroup defx_config
 "   autocmd!
 "   autocmd FileType defx call s:defx_my_settings()
-"   autocmd BufEnter * call s:open_defx_if_directory()
+"   " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"   autocmd vimenter * Defx -split=vertical -winwidth=30 -direction=topleft -auto-cd
+"   autocmd BufWritePost * call defx#redraw()
 " augroup END
+"
+" nnoremap <silent> <leader>f :Defx -split=vertical -winwidth=30 -direction=topleft -auto-cd<CR>
 
-" nnoremap <silent> <leader>f :Defx -auto-cd<CR>
 " ale
 "let g:ale_linters = {
 "\ 'python': ['flake8']
@@ -475,12 +282,6 @@ augroup END
 " lf
 " let g:lf_replace_netrw = 1
 " map <leader>ff :LfNewTab<CR>
-
-" nerdtree {{
-let NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-"}}
 
 " ranger
 " let g:ranger_replace_netrw = 1
@@ -561,20 +362,141 @@ let g:NERDTreeDirArrowCollapsible = ''
 "
 " let g:NetrwIsOpen=0
 
-" spacegray.vim
-let g:spacegray_low_contrast = 1
-let g:spacegray_use_italics = 1
+" coc
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-prettier',
+\ 'coc-json',
+\ 'coc-emmet',
+\ 'coc-python',
+\ 'coc-omnisharp'
+\ ]
 
-colorscheme nord
-    
-endif
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_leader() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-endif
+function! s:check_back_leader() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-"}}} 
-" Global plugin config {{{
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 
-" closetag 
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <leader>rn <Plug>(coc-rename)
+xnoremap <leader>ff  <Plug>(coc-format-selected)
+xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>ac  <Plug>(coc-codeaction)
+nnoremap <leader>qf  <Plug>(coc-fix-current)
+xnoremap if <Plug>(coc-funcobj-i)
+xnoremap af <Plug>(coc-funcobj-a)
+onoremap if <Plug>(coc-funcobj-i)
+onoremap af <Plug>(coc-funcobj-a)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+
+nnoremap <silent> <leader>e :CocCommand explorer<CR>
+
+" asyncrun
+command! Liveserver AsyncRun -cwd=<root> live-server --quiet
+
+" lightline
+let g:lightline = {
+  \ 'colorscheme': 'nord',
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  \   ],
+  \   'right': [
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent', 'wordcount' ],
+  \     [ 'blame' ]
+  \   ],
+  \ },
+  \ 'component_function': {
+  \   'wordcount': 'WordCount',
+  \   'blame': 'LightlineGitBlame',
+  \ }
+\ }
+let g:lightline.seperator = { 'left': '', 'right': ''}
+let g:lightline.subseparator = { 'left': '|', 'right': '|' }
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+
+function! WordCount()
+    let currentmode = mode()
+    if !exists("g:lastmode_wc")
+        let g:lastmode_wc = currentmode
+    endif
+    if &modified || !exists("b:wordcount") || currentmode =~? '\c.*v' || currentmode != g:lastmode_wc
+        let g:lastmode_wc = currentmode
+        let l:old_position = getpos('.')
+        let l:old_status = v:statusmsg
+        execute "silent normal g\<c-g>"
+        if v:statusmsg == "--No lines in buffer--"
+            let b:wordcount = 0
+        else
+            let s:split_wc = split(v:statusmsg)
+            if index(s:split_wc, "Selected") < 0
+                let b:wordcount = str2nr(s:split_wc[11])
+            else
+                let b:wordcount = str2nr(s:split_wc[5])
+            endif
+            let v:statusmsg = l:old_status
+        endif
+        call setpos('.', l:old_position)
+        return b:wordcount . " words"
+    else
+        return b:wordcount . " words"
+    endif
+endfunction
+
+" autocmd
+augroup filetypes
+    autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
+    autocmd FileType html :Liveserver
+    autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup END
+
+autocmd InsertEnter * norm zz
+autocmd BufWritePre * %s/\s\+$//e
+
+
+" closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 let g:closetag_filetypes = 'html,xhtml,phtml'
@@ -590,5 +512,30 @@ let g:closetag_close_shortcut = '<leader>>'
 " highlight hi DiffAdd ctermbg=0
 hi DiffChange ctermbg=0
 hi DiffDelete ctermbg=0
+
+" spacegray.vim
+let g:spacegray_low_contrast = 1
+let g:spacegray_use_italics = 1
+
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+
+" tcomment
+let g:tcomment#options = {'col': 1}
+
+let ayucolor="light"  " for light version of theme
+colorscheme nord
+
+noremap <silent> <Leader>d :Fern . -drawer -width=35 -toggle<CR><C-w>=
+noremap <silent> <Leader>f :Fern . -drawer -reveal=% -width=35<CR><C-w>=
+noremap <silent> <Leader>. :Fern %:h -drawer -width=35<CR><C-w>=
+
+
+source ~/.config/nvim/statusline/faith.vim
 
 "}}}

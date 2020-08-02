@@ -1,1 +1,1 @@
-theme/elenapan/rc.lua
+stow/faith/rc.lua

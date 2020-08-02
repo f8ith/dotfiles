@@ -74,14 +74,14 @@ set statusline+=%=
 " Padding
 set statusline+=\ 
 " Current scroll percentage and total lines of the file
-set statusline+=%#MyStatuslinePercentageBody#%P
-set statusline+=\/\%#MyStatuslinePercentageBody#%L
+" set statusline+=%#MyStatuslinePercentageBody#%P
+" set statusline+=\/\%#MyStatuslinePercentageBody#%L
 " Padding
-set statusline+=\ 
+" set statusline+=\ 
 " Filetype
-set statusline+=%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}
+" set statusline+=%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}
 " padding
-set statusline+=\ 
+" set statusline+=\ 
 " Setup the colors
 hi StatusLine          ctermfg=5     ctermbg=NONE     cterm=NONE
 hi StatusLineNC        ctermfg=8     ctermbg=NONE     cterm=bold

@@ -15,6 +15,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+# performance
+# export RADV_PERFTEST=aco
+
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then

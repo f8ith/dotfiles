@@ -1,1 +1,1 @@
-theme/elenapan/apps.lua
+stow/faith/apps.lua

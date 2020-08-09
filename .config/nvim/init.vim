@@ -1,4 +1,4 @@
-" Global {{{
+" Vim Options {{{
 
 let mapleader=" "
 
@@ -13,7 +13,6 @@ set expandtab
 set completeopt-=preview
 set clipboard+=unnamedplus
 set lazyredraw
-let NERDTreeHighlightCursorline = 0
 
 syntax enable
 
@@ -26,9 +25,12 @@ set shortmess+=c
 set signcolumn=yes
 filetype plugin on
 
+set guifont=Iosevka\ Fixed:h14
 call plug#begin('~/.local/share/nvim/plugged')
 
 "}}}
+
+" plugins {{{
 
 " VSCode {{{
 
@@ -36,16 +38,18 @@ if exists('g:vscode')
 " VSCode extension
 Plug 'asvetliakov/vim-easymotion'
 call plug#end()
-finish
-endif
 
 "}}}
 
-" plugins {{{
-
-" global {{{
+" vanilla {{{
+else
 " Plug 'itchyny/lightline.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
+
 
 " color schemes
 Plug 'arcticicestudio/nord-vim'
@@ -54,6 +58,8 @@ Plug 'ajh17/spacegray.vim'
 Plug 'fxn/vim-monochrome'
 Plug 'cocopon/iceberg.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'connorholyday/vim-snazzy'
+Plug 'joshdick/onedark.vim'
 
 " auto pairs
 Plug 'alvan/vim-closetag'
@@ -63,29 +69,23 @@ Plug 'jiangmiao/auto-pairs'
 " motions
 Plug 'justinmk/vim-sneak'
 Plug 'tomtom/tcomment_vim'
+Plug 'svermeulen/vim-cutlass'
+Plug 'svermeulen/vim-yoink'
+Plug 'svermeulen/vim-subversive'
 "Plug 'preservim/nerdcommenter'
 
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'shumphrey/fugitive-gitlab.vim'
 
-" async commands
-Plug 'skywind3000/asyncrun.vim'
-
-"}}}
-
-" Gonvim {{{
-
-if exists('g:gonvim_running')
-
-Plug 'akiyosi/gonvim-fuzzy'
-Plug 'easymotion/vim-easymotion'
-
-
-"}}}
-
-" Vanilla {{{
-else
+" tools
+Plug 'mbbill/undotree'
+Plug 'samoshkin/vim-mergetool'
+Plug 'sedm0784/vim-you-autocorrect'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -109,26 +109,22 @@ endif
 " file manager
 " Plug 'ptzz/lf.vim'
 " Plug 'rbgrouleff/bclose.vim'
-" Plug 'preservim/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'lambdalisue/fern.vim'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'easymotion/vim-easymotion'
 
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
 
-endif
-
 call plug#end()
+endif
 
 "}}}
 
 "}}}
 
 " configuration {{{
-
-" vanilla {{{
 
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
@@ -174,17 +170,6 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "   call nvim_open_win(buf, v:true, opts)
 " endfunction
 "
-
-" nerdtree
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" autocmd vimenter * NERDTree
-" noremap <leader>f :NERDTreeToggle<CR>
-"
-" let NERDTreeMinimalUI = 1
-" let g:NERDTreeStatusline = '%#NonText#'
-" let g:NERDTreeDirArrowExpandable = ''
-" let g:NERDTreeDirArrowCollapsible = ''
 
 " defx
 " function! s:defx_my_settings() abort
@@ -265,7 +250,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " augroup defx_config
 "   autocmd!
 "   autocmd FileType defx call s:defx_my_settings()
-"   " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "   autocmd vimenter * Defx -split=vertical -winwidth=30 -direction=topleft -auto-cd
 "   autocmd BufWritePost * call defx#redraw()
 " augroup END
@@ -273,12 +258,16 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " nnoremap <silent> <leader>f :Defx -split=vertical -winwidth=30 -direction=topleft -auto-cd<CR>
 
 " ale
-"let g:ale_linters = {
-"\ 'python': ['flake8']
-"\}
-"let g:ale_list_window_size = 5
-"let g:ale_python_pyls_auto_pipenv = 0
 
+let g:ale_list_window_size = 5
+let g:ale_open_list = 1
+let g:ale_linters = {
+\ 'python': ['prospector'],
+\ 'cs': ['OmniSharp']
+\}
+let g:ale_fixers = ['black']
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
 " lf
 " let g:lf_replace_netrw = 1
 " map <leader>ff :LfNewTab<CR>
@@ -363,72 +352,84 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " let g:NetrwIsOpen=0
 
 " coc
-let g:coc_global_extensions = [
-\ 'coc-snippets',
-\ 'coc-tsserver',
-\ 'coc-html',
-\ 'coc-css',
-\ 'coc-prettier',
-\ 'coc-json',
-\ 'coc-emmet',
-\ 'coc-python',
-\ 'coc-omnisharp'
-\ ]
+" let g:coc_global_extensions = [
+" \ 'coc-snippets',
+" \ 'coc-tsserver',
+" \ 'coc-html',
+" \ 'coc-css',
+" \ 'coc-prettier',
+" \ 'coc-json',
+" \ 'coc-emmet',
+" \ 'coc-python',
+" \ 'coc-omnisharp'
+" \ ]
+"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_leader() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+" function! s:check_back_leader() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+" nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+" nnoremap <silent> gd <Plug>(coc-definition)
+" nnoremap <silent> gy <Plug>(coc-type-definition)
+" nnoremap <silent> gi <Plug>(coc-implementation)
+" nnoremap <silent> gr <Plug>(coc-references)
+"
+"
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+"
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" nnoremap <leader>rn <Plug>(coc-rename)
+" xnoremap <leader>ff  <Plug>(coc-format-selected)
+" xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+" nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+" nnoremap <leader>ac  <Plug>(coc-codeaction)
+" nnoremap <leader>qf  <Plug>(coc-fix-current)
+" xnoremap if <Plug>(coc-funcobj-i)
+" xnoremap af <Plug>(coc-funcobj-a)
+" onoremap if <Plug>(coc-funcobj-i)
+" onoremap af <Plug>(coc-funcobj-a)
+"
+" command! -nargs=0 Format :call CocAction('format')
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+"
+" nnoremap <silent> <leader>e :CocCommand explorer<CR>
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_leader() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><C-g>     deoplete#undo_completion()
+inoremap <expr><C-l>     deoplete#complete_common_string()
 
-function! s:check_back_leader() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  deoplete#close_popup()
+inoremap <expr><C-e>  deoplete#cancel_popup()
 
-nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
-nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-nnoremap <leader>rn <Plug>(coc-rename)
-xnoremap <leader>ff  <Plug>(coc-format-selected)
-xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-nnoremap <leader>ac  <Plug>(coc-codeaction)
-nnoremap <leader>qf  <Plug>(coc-fix-current)
-xnoremap if <Plug>(coc-funcobj-i)
-xnoremap af <Plug>(coc-funcobj-a)
-onoremap if <Plug>(coc-funcobj-i)
-onoremap af <Plug>(coc-funcobj-a)
-
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
-nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-
-nnoremap <silent> <leader>e :CocCommand explorer<CR>
-
-" asyncrun
-command! Liveserver AsyncRun -cwd=<root> live-server --quiet
-
+call deoplete#custom#option('sources', {
+		\ 'cs': ['omnisharp'],
+		\})
 " lightline
 let g:lightline = {
   \ 'colorscheme': 'nord',
@@ -531,10 +532,97 @@ let g:tcomment#options = {'col': 1}
 let ayucolor="light"  " for light version of theme
 colorscheme nord
 
-noremap <silent> <Leader>d :Fern . -drawer -width=35 -toggle<CR><C-w>=
-noremap <silent> <Leader>f :Fern . -drawer -reveal=% -width=35<CR><C-w>=
-noremap <silent> <Leader>. :Fern %:h -drawer -width=35<CR><C-w>=
+let g:indentLine_char = ''
+let g:indentLine_first_char = ''
+let g:indentLine_showFirstIndentLevel = 1
 
+" Open lazygit
+nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
+
+" yoink
+let g:yoinkIncludeDeleteOperations = 1
+" nnoremap nn <plug>(YoinkPostPasteSwapBack)
+" nnoremap pp <plug>(YoinkPostPasteSwapForward)
+
+" nnoremap p <plug>(YoinkPaste_p)
+" nnoremap P <plug>(YoinkPaste_P)
+
+" cutlass
+nnoremap m d
+xnoremap m d
+nnoremap mm dd
+nnoremap M D
+
+" subversive
+nnoremap <leader>s <plug>(SubversiveSubstitute)
+nnoremap <leader>ss <plug>(SubversiveSubstituteLine)
+nnoremap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
+
+nnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
+xnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
+nnoremap <leader><leader>ss <plug>(SubversiveSubstituteWordRange)
+
+" nvim tree
+let g:lua_tree_size = 40 "30 by default
+let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:lua_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:lua_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:lua_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:lua_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:lua_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
+let g:lua_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:lua_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:lua_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \}
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath
+
+" You can edit keybindings be defining this variable
+" You don't have to define all keys.
+" NOTE: the 'edit' key will wrap/unwrap a folder and open a file
+let g:lua_tree_bindings = {
+    \ 'edit':            ['<CR>', 'o'],
+    \ 'edit_vsplit':     '<C-v>',
+    \ 'edit_split':      '<C-x>',
+    \ 'edit_tab':        '<C-t>',
+    \ 'toggle_ignored':  'I',
+    \ 'toggle_dotfiles': 'H',
+    \ 'preview':         '<Tab>',
+    \ 'cd':              'C',
+    \ 'create':          'a',
+    \ 'remove':          'D',
+    \ 'rename':          'r',
+    \ 'cut':             'd',
+    \ 'copy':            'y',
+    \ 'paste':           'p',
+    \ 'prev_git_item':   '[c',
+    \ 'next_git_item':   ']c',
+    \ }
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:lua_tree_icons = {
+    \ 'default': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★"
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': ""
+    \   }
+    \ }
+
+nnoremap <leader>e :LuaTreeToggle<CR>
+nnoremap <leader>r :LuaTreeRefresh<CR>
+nnoremap <leader>n :LuaTreeFindFile<CR>
 
 source ~/.config/nvim/statusline/faith.vim
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-picom -b
-xrandr -r 144 
+picom -b --experimental-backends
+xrandr -r 144
 xrdb -load ~/.Xresources &
 #git config --global credential.helper store &
 unclutter &

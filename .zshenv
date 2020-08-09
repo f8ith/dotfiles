@@ -1,9 +1,8 @@
 # Default Programs
 
 export EDITOR="nvim"
-export VISUAL="emacsclient -c"
-export TERMINAL="kitty" 
-export BROWSER="firefox" 
+export TERMINAL="kitty"
+export BROWSER="firefox"
 export READER="zathura"
 
 # Fcitx settings
@@ -16,14 +15,14 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 # performance
-# export RADV_PERFTEST=aco
+export RADV_PERFTEST=aco
 
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
     export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:~/.npm/bin:~/.local/bin:$PATH"
 else
-    export PATH="$PATH:/home/faith/go/bin/:/home/faith/.cargo/bin:/home/faith/.local/bin:/home/faith/.npm/bin"
+    export PATH="$PATH:/home/faith/bin:/home/faith/go/bin/:/home/faith/.cargo/bin:/home/faith/.local/bin:/home/faith/.npm/bin"
 fi
 
 export GO111MODULE=on
@@ -33,3 +32,5 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 # python language server
 export PYTHONPATH=/home/faith/.cache/pypoetry/virtualenvs/*
+
+eval "$(dircolors ~/.dir_colors)"

@@ -49,7 +49,6 @@ dunst
 ebtables
 edk2-ovmf
 efibootmgr
-emacs27-git
 evtest
 exa
 fakeroot
@@ -75,7 +74,6 @@ gcc
 gimp
 git
 gnome-video-effects
-gnvim
 go
 groff
 grub
@@ -103,9 +101,8 @@ jstest-gtk-git
 kitty
 kvantum-qt5
 latte-dock
+lazygit
 lib32-libva-mesa-driver
-lib32-opencl-mesa
-lib32-opencl-nvidia
 lib32-vkd3d
 lib32-vulkan-radeon
 libreoffice-fresh
@@ -113,11 +110,11 @@ libretro-mupen64plus-next
 libselinux
 libva-mesa-driver
 libva-vdpau-driver
-libvirt
 light-git
 linux
 linux-firmware
 lshw
+lua53
 lutris
 lxappearance-gtk3
 ly-git
@@ -135,8 +132,7 @@ mono-msbuild
 mpv
 multimc5
 nasm
-neovide
-neovim
+neovim-nightly
 nerd-fonts-complete
 net-tools
 network-manager-applet
@@ -149,11 +145,10 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 ntfs-3g
-nvidia
-nvidia-settings
 nyrna
 obs-studio
-opencl-nvidia
+onivim2-git
+opencl-amd
 openrazer-meta
 openssh
 os-prober
@@ -163,7 +158,6 @@ otf-overpass
 owlink-git
 p7zip
 pacman-contrib
-pandoc
 papirus-icon-theme
 patch
 pavucontrol
@@ -181,7 +175,6 @@ pulsemixer
 python-notify2
 python-pillow
 python-pip
-qemu
 qt5ct
 ragel
 ranger
@@ -235,7 +228,6 @@ usbutils
 uthash
 v4l2loopback-dkms-git
 vi
-virt-manager
 vkd3d
 vulkan-mesa-layers
 vulkan-radeon
@@ -257,6 +249,7 @@ xorg-xcursorgen
 xorg-xinit
 xorg-xinput
 xterm
+xwinwrap-git
 yadm-git
 yarn
 yay
@@ -265,3 +258,4 @@ zathura
 zathura-cb
 zathura-pdf-mupdf
 zsh
+zsync

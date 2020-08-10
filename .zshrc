@@ -1,4 +1,3 @@
-
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -59,6 +58,10 @@ bindkey '^e' edit-command-line
 fpath=(${ASDF_DIR}/completions $fpath)
 source ~/.poetry/env
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Load using the for-syntax
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
@@ -102,5 +105,4 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
 

@@ -46,10 +46,15 @@ else
 " Plug 'itchyny/lightline.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete-lsp'
+" Plug 'zchee/deoplete-jedi'
+" Plug 'OmniSharp/omnisharp-vim'
+" Plug 'dense-analysis/ale'
 
+" built in lsp
+" Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'neovim/nvim-lsp'
 
 " color schemes
 Plug 'arcticicestudio/nord-vim'
@@ -86,6 +91,7 @@ Plug 'sedm0784/vim-you-autocorrect'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
+Plug 'mattn/emmet-vim'
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -109,9 +115,9 @@ endif
 " file manager
 " Plug 'ptzz/lf.vim'
 " Plug 'rbgrouleff/bclose.vim'
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'kyazdani42/nvim-tree.lua'
 Plug 'easymotion/vim-easymotion'
 
 " smooth scroll
@@ -259,15 +265,16 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " ale
 
-let g:ale_list_window_size = 5
-let g:ale_open_list = 1
-let g:ale_linters = {
-\ 'python': ['prospector'],
-\ 'cs': ['OmniSharp']
-\}
-let g:ale_fixers = ['black']
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
+" let g:ale_list_window_size = 5
+" let g:ale_open_list = 1
+" let g:ale_linters = {
+" \ 'python': ['prospector'],
+" \ 'cs': ['OmniSharp']
+" \}
+" let g:ale_fixers = ['black']
+" let g:ale_sign_error = ''
+" let g:ale_sign_warning = ''
+
 " lf
 " let g:lf_replace_netrw = 1
 " map <leader>ff :LfNewTab<CR>
@@ -427,9 +434,6 @@ inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  deoplete#close_popup()
 inoremap <expr><C-e>  deoplete#cancel_popup()
 
-call deoplete#custom#option('sources', {
-		\ 'cs': ['omnisharp'],
-		\})
 " lightline
 let g:lightline = {
   \ 'colorscheme': 'nord',
@@ -563,27 +567,21 @@ xnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
 nnoremap <leader><leader>ss <plug>(SubversiveSubstituteWordRange)
 
 " nvim tree
-let g:lua_tree_size = 40 "30 by default
-let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-let g:lua_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
-let g:lua_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-let g:lua_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
-let g:lua_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:lua_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
-let g:lua_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:lua_tree_size = 40
+let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__' ]
+let g:lua_tree_auto_open = 0
+let g:lua_tree_auto_close = 1
+let g:lua_tree_follow = 1
+let g:lua_tree_indent_markers = 1
+let g:lua_tree_hide_dotfiles = 1
+let g:lua_tree_git_hl = 1
 let g:lua_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
 let g:lua_tree_show_icons = {
     \ 'git': 1,
     \ 'folders': 1,
     \ 'files': 1,
     \}
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath
 
-" You can edit keybindings be defining this variable
-" You don't have to define all keys.
-" NOTE: the 'edit' key will wrap/unwrap a folder and open a file
 let g:lua_tree_bindings = {
     \ 'edit':            ['<CR>', 'o'],
     \ 'edit_vsplit':     '<C-v>',
@@ -623,6 +621,52 @@ let g:lua_tree_icons = {
 nnoremap <leader>e :LuaTreeToggle<CR>
 nnoremap <leader>r :LuaTreeRefresh<CR>
 nnoremap <leader>n :LuaTreeFindFile<CR>
+
+" built in lsp
+lua require'nvim_lsp'.pyls.setup{}
+
+" completion.nvim
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" diagonstic.nvim
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_insert_delay = 1
+nnoremap <silent> <leader>a :OpenDiagnostic<CR>
+nnoremap <silent> <C-j> :PrevDiagnosticCycle<CR>
+nnoremap <silent> <C-k> :NextDiagnosticCycle<CR>
+call sign_define("LspDiagnosticsErrorSign", {"text" : "", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "", "texthl" : "LspDiagnosticsHint"})
+
+:lua << EOF
+  local nvim_lsp = require('nvim_lsp')
+
+  local on_attach = function(_, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    require'diagnostic'.on_attach()
+    -- require'completion'.on_attach()
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  end
+
+  local servers = {'pyls', 'vimls', 'jsonls'}
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+    }
+  end
+EOF
 
 source ~/.config/nvim/statusline/faith.vim
 

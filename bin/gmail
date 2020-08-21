@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cd ~/.local/share/nativefier/gmail-linux-x64 && ./gmail &

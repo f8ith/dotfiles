@@ -1,0 +1,1 @@
+firejail --noprofile --blacklist=/sys/class/hidraw/ steam

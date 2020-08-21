@@ -1,0 +1,49 @@
+#!/bin/bash
+
+VLOCK=0
+
+if [[ $XAUTHORITY ]]
+then
+	echo "refusing to run inside xorg session"
+	exit 1
+fi
+
+cd "$(dirname -- "${0}")" || exit 2
+
+while true
+do
+	cat << EOF
+select your gpu for x session
+	c for current
+	n for nvidia
+	r for radeon
+	q for quit (manual tty)
+EOF
+
+	read -r gpu
+
+	case $gpu in
+		c)
+			;;
+		n)
+			sudo /home/faith/.local/share/vfio/nvidia.sh ;;
+		r)
+			sudo /home/faith/.local/share/vfio/radeon.sh ;;
+		q)
+			exit 0 ;;
+		*)
+			echo "invalid option, quit"
+			exit 3 ;;
+		esac
+
+	echo "starting x"
+        cd "$HOME"
+
+	if [[ $VLOCK == 1 ]]
+	then
+		startx > /dev/null 2>&1 &
+		vlock
+	else
+		startx  > /dev/null 2>&1
+	fi
+done

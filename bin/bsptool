@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+usage()
+{
+    echo """Usage: $(basename $0) [<arguments>]
+    -r,--run  <instance> <command> <focus:true/false>  Run command unless instance is running and focus if specified 
+    Example: bsptool -r editor "kitty --class editor -e nvim" true"""
+}
+
+run_or_raise()
+{
+    wid=$(xdotool search -classname $1 | head -n 1)
+    
+    # Using "-z" check if $pid is empty, if so execute the process
+    if [ -z "$wid" ]; then
+       echo "$1 not running... executing..."
+       $2 &
+    else
+       # process was found, find the first visible window and activate it
+       echo "Found process $1 with WID $wid"
+    
+       # using xdotool [http://www.semicomplete.com/projects/xdotool/] get the first
+       # visible windows using $pid. Redirect stderr to /dev/null and only select
+       # the first visible windows using head
+       # wid=$(xdotool search --onlyvisible --pid $pid 2>/dev/null | head -n 1)
+    
+
+       # if $wid is empty the process does not have any visible windows... do nothing
+       if [ -z "$wid" ]; then
+         echo "Didn't find any visible windows for process $1 with PID: $pid"
+       else
+         # send the window id ($wid) from the window stack to xdotool
+         if [ "$3" == "true" ]; then
+            echo "Activating first windows in stack"
+            xdotool windowactivate $wid
+         fi
+       fi
+    fi
+}
+
+main()
+{
+  #Argument formatting
+	local argv=("$@");
+	# argc is the count of arguments
+	local argc=${#argv[@]};
+
+	# this is important to ensure globbing is active
+	shopt -s extglob;
+
+	# Handle compressed short options
+	re="(^| )\\-[[:alnum:]]{2,}"; # regex to detect shortoptions
+	# we evaluate this as a long string, thus ${argv[*]}, instead of ${argv[@]}
+	if [[ "${argv[*]}" =~ $re ]]; then
+		local compiled_args=();
+		for ((i=0; i<argc; i++)); do
+			if [[ "${argv[$i]}" =~ $re ]]; then
+				local compressed_args="${argv[$i]#*-}";
+				for ((r=0; r<${#compressed_args}; r++)); do
+					compiled_args+=("-${compressed_args:$r:1}");
+				done
+				shift;
+				compiled_args+=("$@");
+				## recurse
+				main "${compiled_args[@]}";
+				## we "pass" the exit code back up the recursions to the OS
+				exit $?;
+			fi
+			compiled_args+=("${argv[$i]}");
+			shift;
+		done
+		exit;
+	fi
+
+	#Check arguments
+	while [ "$1" != "" ]; do
+		case $1 in
+			-r | --run )
+				shift
+                                run_or_raise "$@"
+				;;
+			-h | --help )
+				usage
+        exit
+        ;;
+      -?*)
+        printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+		esac
+		shift
+	done
+}
+
+main "$@"

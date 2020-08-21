@@ -1,0 +1,90 @@
+#!/bin/bash
+
+if [[ $XAUTHORITY ]]
+then
+	echo "refusing to run inside xorg session"
+	exit 1
+fi
+
+set -e
+
+#if [[ $EUID -ne 0 ]]
+#then
+#        echo "this script must be run as the super-user"
+#        exit 1
+#fi
+
+for dev in "0000:0a:00.0" "0000:0a:00.1"
+do
+	if [[ -e "/sys/bus/pci/drivers/vfio-pci/$dev" ]]
+	then
+		echo -n "$dev clearing device driver matching rules..."
+		echo > "/sys/bus/pci/devices/$dev/driver_override"
+		echo " done"
+
+		echo -n "$dev unbinding device from current driver..."
+		echo "$dev" > "/sys/bus/pci/devices/$dev/driver/unbind"
+		while [[ -e "/sys/bus/pci/devices/$dev/driver" ]]
+		do
+			sleep 0.1
+		done
+		echo " done"
+	fi
+done
+
+for dev in "0000:0a:00.0" 
+do
+	if [[ ! -e "/sys/bus/pci/drivers/amdgpu/$dev" ]]
+	then
+		echo -n "$dev binding device to amdgpu driver..."
+		echo "$dev" > "/sys/bus/pci/drivers/amdgpu/bind"
+		while [[ ! -e "/sys/bus/pci/devices/$dev/driver" ]]
+		do
+			sleep 0.1
+		done
+		echo " done"
+	fi
+done
+
+for dev in "0000:0a:00.1"
+do
+	if [[ ! -e "/sys/bus/pci/drivers/snd_hda_intel/$dev" ]]
+	then
+		echo -n "$dev binding device to snd_hda_intel driver..."
+		echo "$dev" > "/sys/bus/pci/drivers/snd_hda_intel/bind"
+		while [[ ! -e "/sys/bus/pci/devices/$dev/driver" ]]
+		do
+			sleep 0.1
+		done
+		echo " done"
+	fi
+done
+
+vmname=$(sudo virsh list | sed -n '3p' | sed -nr 's/ *[0-9]+ +(.*) +running/\1/p')
+
+if [ -n "$vmname" ]; then
+      echo "Shutting down virtual machine"
+      sudo virsh shutdown $vmname
+fi
+
+if ! grep -qs '/mnt/HDD' /proc/mounts; then
+    sudo ntfs-3g -o uid=1000,gid=1000,rw,user,exec,umask=000 /dev/disk/by-uuid/966C1FEC6C1FC5C1 /mnt/HDD
+fi
+
+cd "$(dirname -- "${0}")" || exit 2
+
+
+if [ $# -ge 1 ]; then
+#        echo -e "${awesome} -c ~/.config/awesome/xrun.lua &\npicom &\nxrandr -r 144&\n${game}" > ${tmpgame}
+    game="$(which $1)"
+    awesome="$(which awesome)"
+    tmpgame="/tmp/tmpgame.sh"
+    DISPLAY=:1.0
+    echo -e "${awesome} &\npicom &\nxrandr -r 144&\n${game}" > ${tmpgame}
+    echo "starting ${game}"
+    xinit ${tmpgame} -- :1 -xf86config radeon_run.conf || exit 1
+else
+    cd $HOME
+    xinit -- :1 -configdir game.conf.d || exit 1
+fi
+

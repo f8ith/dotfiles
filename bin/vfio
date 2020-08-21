@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+monitor=15
+#bus=$(sudo ddcutil detect | rg 'dev' | awk '{print $3}' | cut -c 10-11)
+sleep .1
+devices=(1532:0219 046d:c539 046d:c087 057e:2009)
+vmname=$(sudo virsh list | sed -n '3p' | sed -nr 's/ *[0-9]+ +(.*) +running/\1/p')
+
+usage() {
+    echo "help"
+}
+
+attach_device() {
+    vmname=$1
+    device=(${2//:/ })
+    action=$3
+    xml_name="/tmp/device-${device[0]}:${device[1]}.xml"
+
+    echo "<hostdev mode='subsystem' type='usb'>"      > $xml_name
+    echo "  <source>"                                >> $xml_name
+    echo "          <vendor id='0x${device[0]}'/>"   >> $xml_name
+    echo "          <product id='0x${device[1]}'/>"  >> $xml_name
+    echo "  </source>"                               >> $xml_name
+    echo "</hostdev>"                                >> $xml_name
+
+    sudo virsh $action-device $vmname $xml_name
+}
+
+attach() {
+    #sudo ddcutil setvcp 60 $monitor --bus=$bus
+    for dev in "${devices[@]}"
+    do
+        attach_device "$vmname" $dev attach
+    done
+}
+
+detach() {
+    for dev in "${devices[@]}"
+    do
+        attach_device "$vmname" $dev detach
+    done
+}
+
+main() {
+    commands=$1
+    shift
+    for c in $(seq 1 ${#commands})
+    do
+        case ${commands:c-1:1} in
+           a )
+                attach $@
+           	;;
+           d )
+                detach $@
+           	;;
+           h )
+           	usage
+                ;;
+           - )
+                ;;
+           * )
+               printf 'WARN: Unknown option (ignored): %s\n' "$c" >&2
+        esac
+    done
+}
+
+main "$@"
+

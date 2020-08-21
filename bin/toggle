@@ -1,0 +1,12 @@
+#!/bin/sh
+# Toggles a problem on and off
+
+ID=$(pgrep "$1")
+PROCESS=$1
+shift
+
+if [ -z "$ID" ]; then
+  $PROCESS $@
+else
+  killall $PROCESS
+fi

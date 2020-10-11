@@ -1,12 +1,12 @@
 ! colors
-#include ".Xresources.d/nord"
+#include ".Xresources.d/ayu-mirage"
 
 ! dmenu
 dmenu.background: background
 dmenu.foreground: foreground
 dmenu.selforeground: background
 dmenu.selbackground: foreground
-st.font: Hack Nerd Font Mono:style=Regular:size=16:antialias=false:autohint=false
+st.font: SFMono Nerd Font:style=Regular:size=16:antialias=true:autohint=true
 st.alpha: 1.0
 st.borderpx: 50
 

@@ -1,3 +1,3 @@
-export PATH="$HOME/.poetry/bin:$PATH"
-
-export PATH="$HOME/.poetry/bin:$PATH"
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  startx
+fi

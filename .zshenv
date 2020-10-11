@@ -2,8 +2,8 @@
 
 export EDITOR="nvim"
 export TERMINAL="kitty"
-export BROWSER="firefox"
-export READER="zathura"
+export BROWSER="chromium"
+export READER="chromium"
 
 # Fcitx settings
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -17,12 +17,15 @@ export XMODIFIERS=@im=fcitx
 # performance
 export RADV_PERFTEST=aco
 
+# XDG Directories
+export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
+
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
-    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:~/.npm/bin:~/.local/bin:$PATH"
+    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:$HOME/.local/bin:$PATH"
 else
-    export PATH="$PATH:/home/faith/bin:/home/faith/go/bin/:/home/faith/.cargo/bin:/home/faith/.local/bin:/home/faith/.npm/bin"
+    export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$PATH"
 fi
 
 export GO111MODULE=on
@@ -31,6 +34,9 @@ export GO111MODULE=on
 export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*.coffee=:*.cpp=:*.css=:*.d=:*.dart=:*.erl=:*.exs=:*.fs=:*.go=:*.h=:*.hh=:*.hpp=:*.hs=:*.html=:*.java=:*.jl=:*.js=:*.json=:*.lua=:*.md=:*.php=:*.pl=:*.pro=:*.py=:*.rb=:*.rs=:*.scala=:*.ts=:*.vim=:*.cmd=:*.ps1=:*.sh=:*.bash=:*.zsh=:*.fish=:*.tar=:*.tgz=:*.arc=:*.arj=:*.taz=:*.lha=:*.lz4=:*.lzh=:*.lzma=:*.tlz=:*.txz=:*.tzo=:*.t7z=:*.zip=:*.z=:*.dz=:*.gz=:*.lrz=:*.lz=:*.lzo=:*.xz=:*.zst=:*.tzst=:*.bz2=:*.bz=:*.tbz=:*.tbz2=:*.tz=:*.deb=:*.rpm=:*.jar=:*.war=:*.ear=:*.sar=:*.rar=:*.alz=:*.ace=:*.zoo=:*.cpio=:*.7z=:*.rz=:*.cab=:*.wim=:*.swm=:*.dwm=:*.esd=:*.jpg=:*.jpeg=:*.mjpg=:*.mjpeg=:*.gif=:*.bmp=:*.pbm=:*.pgm=:*.ppm=:*.tga=:*.xbm=:*.xpm=:*.tif=:*.tiff=:*.png=:*.svg=:*.svgz=:*.mng=:*.pcx=:*.mov=:*.mpg=:*.mpeg=:*.m2v=:*.mkv=:*.webm=:*.ogm=:*.mp4=:*.m4v=:*.mp4v=:*.vob=:*.qt=:*.nuv=:*.wmv=:*.asf=:*.rm=:*.rmvb=:*.flc=:*.avi=:*.fli=:*.flv=:*.gl=:*.dl=:*.xcf=:*.xwd=:*.yuv=:*.cgm=:*.emf=:*.ogv=:*.ogx=:*.aac=:*.au=:*.flac=:*.m4a=:*.mid=:*.midi=:*.mka=:*.mp3=:*.mpc=:*.ogg=:*.ra=:*.wav=:*.oga=:*.opus=:*.spx=:*.xspf=:*.pdf="
 
 # python language server
-export PYTHONPATH=/home/faith/.cache/pypoetry/virtualenvs/*
+export PYTHONPATH=$HOME/.cache/pypoetry/virtualenvs/*
 
-eval "$(dircolors ~/.dir_colors)"
+export LS_COLORS="$(vivid generate ayu)"
+
+# nnn
+# export NNN_PLUG="p:preview-tui"

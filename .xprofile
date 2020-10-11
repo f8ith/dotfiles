@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-picom -b --experimental-backends
-xrandr -r 144
+transmission-daemon
+#picom -b --experimental-backends
+#xrandr -r 144
 xrdb -load ~/.Xresources &
 #git config --global credential.helper store &
 unclutter &
 fcitx &
-nyrna &
-emacs --daemon &
+simple-agent &

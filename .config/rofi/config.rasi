@@ -9,7 +9,7 @@ configuration {
     fixed-num-lines: true;
     show-icons: false;
     sidebar-mode: true;
-    combi-modi: "window,run";
+    combi-modi: "window,run,drun";
     separator-style: "none";
     hide-scrollbar: true;
     fullscreen: false;
@@ -208,4 +208,4 @@ textbox-prompt-colon {
     text-color: inherit;
 }
 
-@import "nord.rasi"
+@import "ayu-mirage.rasi"

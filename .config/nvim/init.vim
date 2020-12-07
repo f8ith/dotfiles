@@ -13,6 +13,7 @@ set expandtab
 set completeopt-=preview
 set clipboard+=unnamedplus
 set lazyredraw
+set icm=nosplit
 
 syntax enable
 
@@ -23,7 +24,19 @@ set updatetime=100
 set shortmess+=c
 filetype plugin on
 
-set guifont=Iosevka\ Fixed:h14
+let g:clipboard = {
+      \   'name': 'xsel_override',
+      \   'copy': {
+      \      '+': 'xsel --input --clipboard',
+      \      '*': 'xsel --input --primary',
+      \    },
+      \   'paste': {
+      \      '+': 'xsel --output --clipboard',
+      \      '*': 'xsel --output --primary',
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 "}}}
@@ -35,14 +48,31 @@ call plug#begin('~/.local/share/nvim/plugged')
 if exists('g:vscode')
 
 " motions
-Plug 'justinmk/vim-sneak'
+Plug 'unblevable/quick-scope'
+Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
-"Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-surround'
 Plug 'asvetliakov/vim-easymotion'
 
 call plug#end()
+
+" cutlass
+nnoremap m d
+xnoremap m d
+nnoremap mm dd
+nnoremap M D
+
+
+" subversive
+nmap <leader>s <plug>(SubversiveSubstitute)
+nmap <leader>ss <plug>(SubversiveSubstituteLine)
+nmap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
+
+nmap <leader><leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader><leader>s <plug>(SubversiveSubstituteRange)
+nmap <leader><leader>ss <plug>(SubversiveSubstituteWordRange)
+
 
 "}}}
 
@@ -115,10 +145,10 @@ endif
 " Plug 'kyazdani42/nvim-tree.lua'
 
 " motions
-Plug 'justinmk/vim-sneak'
+Plug 'unblevable/quick-scope'
 Plug 'tomtom/tcomment_vim'
 Plug 'svermeulen/vim-cutlass'
-"Plug 'svermeulen/vim-yoink'
+Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
@@ -131,9 +161,6 @@ call plug#end()
 set relativenumber
 set signcolumn=yes
 
-"}}}
-
-" global {{{
 
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
@@ -344,7 +371,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 
@@ -470,11 +497,12 @@ nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
 
 " yoink
 let g:yoinkIncludeDeleteOperations = 1
-" nnoremap nn <plug>(YoinkPostPasteSwapBack)
-" nnoremap pp <plug>(YoinkPostPasteSwapForward)
+let g:yoinkAutoFormatPaste='1'
+nmap <C-n> <plug>(YoinkPostPasteSwapBack)
+nmap <C-m> <plug>(YoinkPostPasteSwapForward)
 
-" nnoremap p <plug>(YoinkPaste_p)
-" nnoremap P <plug>(YoinkPaste_P)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
 
 " cutlass
 nnoremap m d
@@ -483,9 +511,9 @@ nnoremap mm dd
 nnoremap M D
 
 " subversive
-nnoremap <leader>s <plug>(SubversiveSubstitute)
-nnoremap <leader>ss <plug>(SubversiveSubstituteLine)
-nnoremap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
+nmap <leader>s <plug>(SubversiveSubstitute)
+nmap <leader>ss <plug>(SubversiveSubstituteLine)
+nmap <leader>S <plug>(SubversiveSubstituteToEndOfLine)
 
 nnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
 xnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
@@ -606,8 +634,12 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 source ~/.config/nvim/statusline/faith.vim
 
 endif
 "}}}
+
 "}}}

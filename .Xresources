@@ -1,5 +1,5 @@
 ! colors
-#include ".Xresources.d/ayu-mirage"
+#include ".Xresources.d/nord"
 
 ! dmenu
 dmenu.background: background

@@ -36,7 +36,7 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 # python language server
 export PYTHONPATH=$HOME/.cache/pypoetry/virtualenvs/*
 
-export LS_COLORS="$(vivid generate ayu)"
+eval "$(dircolors -b ~/.dir_colors)"
 
 # nnn
 # export NNN_PLUG="p:preview-tui"

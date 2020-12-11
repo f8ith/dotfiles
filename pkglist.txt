@@ -27,6 +27,7 @@ chrome-gnome-shell
 chromium
 citra-git
 clang
+clinfo
 cmake
 cnijfilter-common
 cnijfilter2
@@ -40,6 +41,7 @@ cups-filters
 cups-pdf
 ddcutil
 debtap
+discord
 dmidecode
 dnsmasq
 docker
@@ -54,7 +56,6 @@ ebtables
 edk2-ovmf
 efibootmgr
 evtest
-exa
 fakeroot
 fbreader
 fcitx-cloudpinyin
@@ -259,7 +260,6 @@ v4l2loopback-dkms-git
 vi
 vifm
 visual-studio-code-bin
-vivid
 vkd3d
 vulkan-mesa-layers
 vulkan-radeon

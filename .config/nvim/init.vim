@@ -14,7 +14,6 @@ set completeopt-=preview
 set clipboard+=unnamedplus
 set lazyredraw
 set icm=nosplit
-
 syntax enable
 
 set nu rnu
@@ -24,18 +23,7 @@ set updatetime=100
 set shortmess+=c
 filetype plugin on
 
-let g:clipboard = {
-      \   'name': 'xsel_override',
-      \   'copy': {
-      \      '+': 'xsel --input --clipboard',
-      \      '*': 'xsel --input --primary',
-      \    },
-      \   'paste': {
-      \      '+': 'xsel --output --clipboard',
-      \      '*': 'xsel --output --primary',
-      \   },
-      \   'cache_enabled': 1,
-      \ }
+nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -49,7 +37,7 @@ if exists('g:vscode')
 
 " motions
 Plug 'unblevable/quick-scope'
-Plug 'svermeulen/vim-yoink'
+" Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-surround'
@@ -58,10 +46,10 @@ Plug 'asvetliakov/vim-easymotion'
 call plug#end()
 
 " cutlass
-nnoremap m d
-xnoremap m d
-nnoremap mm dd
-nnoremap M D
+nnoremap <leader>d d
+xnoremap <leader>d d
+nnoremap <leader>dd dd
+nnoremap <leader>D D
 
 
 " subversive
@@ -100,6 +88,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 " auto pairs
 Plug 'alvan/vim-closetag'
@@ -148,7 +137,7 @@ endif
 Plug 'unblevable/quick-scope'
 Plug 'tomtom/tcomment_vim'
 Plug 'svermeulen/vim-cutlass'
-Plug 'svermeulen/vim-yoink'
+" Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
@@ -474,6 +463,13 @@ hi DiffDelete ctermbg=0
 let g:spacegray_low_contrast = 1
 let g:spacegray_use_italics = 1
 
+" gruvbox
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_strings = 1
+
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -486,7 +482,8 @@ let g:NERDToggleCheckAllLines = 1
 let g:tcomment#options = {'col': 1}
 
 let ayucolor="mirage"  " for light version of theme
-colorscheme ayu
+let &background="light"
+colorscheme automata
 
 let g:indentLine_char = ''
 let g:indentLine_first_char = ''
@@ -496,19 +493,19 @@ let g:indentLine_showFirstIndentLevel = 1
 nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
 
 " yoink
-let g:yoinkIncludeDeleteOperations = 1
-let g:yoinkAutoFormatPaste='1'
-nmap <C-n> <plug>(YoinkPostPasteSwapBack)
-nmap <C-m> <plug>(YoinkPostPasteSwapForward)
-
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
+" let g:yoinkIncludeDeleteOperations = 1
+" let g:yoinkAutoFormatPaste='1'
+" nmap <C-n> <plug>(YoinkPostPasteSwapBack)
+" nmap <C-m> <plug>(YoinkPostPasteSwapForward)
+"
+" nmap p <plug>(YoinkPaste_p)
+" nmap P <plug>(YoinkPaste_P)
 
 " cutlass
-nnoremap m d
-xnoremap m d
-nnoremap mm dd
-nnoremap M D
+nnoremap <leader>d d
+xnoremap <leader>d d
+nnoremap <leader>dd dd
+nnoremap <leader>D D
 
 " subversive
 nmap <leader>s <plug>(SubversiveSubstitute)

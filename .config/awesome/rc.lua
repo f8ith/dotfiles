@@ -18,9 +18,10 @@ local themes = {
     "ephemeral",    -- 4 --
     "amarena",      -- 5 --
     "faith",        -- 6 --
+    "automata",     -- 7 --
 }
 -- Change this number to use a different theme
-local theme = themes[6]
+local theme = themes[7]
 -- ===================================================================
 -- Affects the window appearance: titlebar, titlebar buttons...
 local decoration_themes = {
@@ -37,7 +38,7 @@ local bar_themes = {
     "skyfall",      -- 3 -- Weather, taglist, window buttons, pop-up tray
     "ephemeral",    -- 4 -- Taglist, start button, tasklist, and more buttons
     "amarena",      -- 5 -- Minimal taglist and dock with autohide
-    "faith",        -- 6 -- my config
+    "faith",        -- 6 -- Thinbars
 }
 local bar_theme = bar_themes[6]
 
@@ -59,8 +60,9 @@ local notification_theme = notification_themes[3]
 local sidebar_themes = {
     "lovelace",       -- 1 -- Uses image icons
     "amarena",        -- 2 -- Text-only (consumes less RAM)
+    "automata",       -- 3 -- Light themed
 }
-local sidebar_theme = sidebar_themes[2]
+local sidebar_theme = sidebar_themes[3]
 -- ===================================================================
 local dashboard_themes = {
     "skyfall",        -- 1 --

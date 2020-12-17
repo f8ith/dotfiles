@@ -1,0 +1,54 @@
+
+cursor #b26f5f
+cursor_text_color background
+
+url_color #5e6666
+
+active_border_color #727b59
+inactive_border_color #cac4af
+bell_border_color #b4af9a
+
+active_tab_foreground #4f4d45
+active_tab_background #e2dbc0
+
+inactive_tab_foreground #4f4d45
+inactive_tab_background #e2dbc0
+
+foreground #363530
+background #e2dbc0
+
+selection_foreground #e2dbc0
+selection_background #5e6666
+
+color0 #4f4d45
+color8 #67655a
+
+color1 #cd664d
+color9 #D17D64
+
+color2 #727b59
+color10 #888E6E
+
+color3 #3ba99f
+color11 #5CB3A6
+
+color4 #5e6666
+color12 #787D78
+
+color5 #50403c
+color13 #6D5F56
+
+color6 #4e4c43
+color14 #6C695C
+
+color7 #959183
+color15 #cac4af
+
+mark1_foreground #e2dbc0
+mark1_background #4e4c43
+
+mark2_foreground #e2dbc0
+mark2_background #50403c
+
+mark3_foreground #e2dbc0
+mark3_background #3ba99f

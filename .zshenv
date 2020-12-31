@@ -23,9 +23,11 @@ export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
-    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:$HOME/.local/bin:$PATH"
+    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:$HOME/bin:$PATH"
+    eval "$(gdircolors -b ~/.dir_colors)"
 else
     export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$PATH"
+    eval "$(dircolors -b ~/.dir_colors)"
 fi
 
 export GO111MODULE=on
@@ -36,7 +38,6 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 # python language server
 export PYTHONPATH=$HOME/.cache/pypoetry/virtualenvs/*
 
-eval "$(dircolors -b ~/.dir_colors)"
 
 # nnn
 # export NNN_PLUG="p:preview-tui"

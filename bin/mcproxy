@@ -9,6 +9,7 @@ from wakeonlan import send_magic_packet
 
 server_mac = "e0:d5:5e:a6:37:59"
 server_ip = "192.168.1.6"
+server_mode = False
 user = "faith"
 
 
@@ -25,11 +26,12 @@ def start(instance_name):
     ):
         send_magic_packet(server_mac)
         run_command(["msm", "servermode"])
+        server_mode = True
     run_command(["msm", "start", instance_name])
 
 
 def stop(instance_name):
-    run_command(["msm", "stop", instance_name])
+    run_command(["msm", "stop", instance_name, server_mode])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+import time
+
+from wakeonlan import send_magic_packet
+
+
+server_mac = "e0:d5:5e:a6:37:59"
+server_ip = "192.168.1.6"
+user = "faith"
+
+
+def run_command(args):
+    subprocess.run(["ssh", f"{user}@{server_ip}"] + args)
+
+
+def start(instance_name):
+    if (
+        subprocess.run(
+            ["ssh", "-q", "-o", "ConnectTimeout=1", f"{user}@{server_ip}", "exit"]
+        ).returncode
+        == 255
+    ):
+        send_magic_packet(server_mac)
+        run_command(["msm", "servermode"])
+    run_command(["msm", "start", instance_name])
+
+
+def stop(instance_name):
+    run_command(["msm", "stop", instance_name])
+
+
+if __name__ == "__main__":
+    if sys.argv[1] in globals() and sys.argv[2]:
+        globals()[sys.argv[1]](sys.argv[2])

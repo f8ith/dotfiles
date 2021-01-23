@@ -14,9 +14,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-# performance
-export RADV_PERFTEST=aco
-
 # XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
 
@@ -26,7 +23,7 @@ if [ "$system_type" = "Darwin" ]; then
     export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:$HOME/bin:$PATH"
     eval "$(gdircolors -b ~/.dir_colors)"
 else
-    export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$PATH"
+    export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
     eval "$(dircolors -b ~/.dir_colors)"
 fi
 
@@ -37,7 +34,3 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 # python language server
 export PYTHONPATH=$HOME/.cache/pypoetry/virtualenvs/*
-
-
-# nnn
-# export NNN_PLUG="p:preview-tui"

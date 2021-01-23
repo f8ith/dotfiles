@@ -19,7 +19,7 @@ syntax enable
 set nu rnu
 set hidden
 set cmdheight=2
-set updatetime=100
+set updatetime=50
 set shortmess+=c
 filetype plugin on
 
@@ -92,8 +92,7 @@ Plug 'morhetz/gruvbox'
 
 " auto pairs
 Plug 'alvan/vim-closetag'
-Plug 'jiangmiao/auto-pairs'
-
+Plug 'Raimondi/delimitMate'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -141,6 +140,7 @@ Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+
 
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
@@ -453,7 +453,7 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '<leader>>'
+let g:closetag_close_shortcut = '>>'
 
 " highlight hi DiffAdd ctermbg=0
 hi DiffChange ctermbg=0

@@ -7,7 +7,6 @@ amd-ucode
 archivemount
 archlinuxcn-keyring
 atool
-aurutils
 autoconf
 autojump
 automake
@@ -24,7 +23,6 @@ bridge-utils
 capitaine-cursors
 castersoundboard-git
 chrome-gnome-shell
-chromium
 citra-git
 clang
 clinfo
@@ -55,6 +53,7 @@ dxvk-bin
 ebtables
 edk2-ovmf
 efibootmgr
+ethtool
 evtest
 fakeroot
 fbreader
@@ -110,7 +109,6 @@ icons-in-terminal
 inkscape
 inotify-tools
 inter-font
-iriunwebcam-bin
 joycond-cemuhook-git
 joycond-git
 joyutils
@@ -124,6 +122,7 @@ lib32-nvidia-utils
 lib32-vkd3d
 lib32-vulkan-radeon
 libretro-mupen64plus-next
+librnnoise
 libselinux
 libva-mesa-driver
 libva-vdpau-driver
@@ -158,6 +157,7 @@ nerd-fonts-complete
 net-tools
 network-manager-applet
 networkmanager
+nitroshare
 nodejs
 noip
 noto-fonts
@@ -184,6 +184,7 @@ p7zip
 pacman-contrib
 papirus-folders-git
 papirus-icon-theme
+paru
 patch
 pavucontrol
 pcsx2
@@ -191,17 +192,18 @@ perl-file-mimeinfo
 perl-image-exiftool
 picom-ibhagwan-git
 piper
+pipewire-alsa
+pipewire-pulse
 pkgconf
 plata-theme
 playerctl
 protontricks
-pulseaudio-alsa
-pulseaudio-bluetooth
-pulseeffects
+pulseeffects-git
 pulsemixer
 python-notify2
 python-pillow
 python-pip
+python-pipx
 python2
 qbittorrent
 qt5ct
@@ -264,9 +266,10 @@ vkd3d
 vulkan-mesa-layers
 vulkan-radeon
 vulkan-validation-layers
-wine
+webtorrent-cli
 wine-gecko
 wine-mono
+wine-staging
 winetricks
 wireguard-tools
 wireshark-qt
@@ -280,6 +283,7 @@ xf86-video-amdgpu
 xorg-fonts-misc
 xorg-server
 xorg-xcursorgen
+xorg-xev
 xorg-xinit
 xorg-xinput
 xsel
@@ -287,7 +291,6 @@ xterm
 xwinwrap-git
 yadm-git
 yarn
-yay
 yuzu-git
 zoom
 zsh

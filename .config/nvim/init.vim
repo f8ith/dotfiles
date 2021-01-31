@@ -80,15 +80,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neovim/nvim-lsp'
 
 " color schemes
-Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ajh17/spacegray.vim'
-Plug 'fxn/vim-monochrome'
-Plug 'cocopon/iceberg.vim'
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'ajh17/spacegray.vim'
+" Plug 'fxn/vim-monochrome'
+" Plug 'cocopon/iceberg.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'connorholyday/vim-snazzy'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
+" Plug 'connorholyday/vim-snazzy'
+" Plug 'joshdick/onedark.vim'
+" Plug 'morhetz/gruvbox'
 
 " auto pairs
 Plug 'alvan/vim-closetag'
@@ -112,7 +112,7 @@ endif
 
 " visuals
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'Yggdroot/indentLine'
 
@@ -128,8 +128,7 @@ endif
 " file manager
 " Plug 'ptzz/lf.vim'
 " Plug 'rbgrouleff/bclose.vim'
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 " Plug 'kyazdani42/nvim-tree.lua'
 
 " motions
@@ -144,6 +143,9 @@ Plug 'easymotion/vim-easymotion'
 
 " smooth scroll
 Plug 'yuttie/comfortable-motion.vim'
+
+" statusline
+Plug 'akinsho/nvim-bufferline.lua'
 
 call plug#end()
 
@@ -481,9 +483,9 @@ let g:NERDToggleCheckAllLines = 1
 " tcomment
 let g:tcomment#options = {'col': 1}
 
-let ayucolor="mirage"  " for light version of theme
+let ayucolor="light"  " for light version of theme
 let &background="light"
-colorscheme automata
+colorscheme ayu
 
 let g:indentLine_char = ''
 let g:indentLine_first_char = ''
@@ -634,7 +636,9 @@ let g:vista#renderer#icons = {
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-source ~/.config/nvim/statusline/faith.vim
+lua require'bufferline'.setup{}
+
+" source ~/.config/nvim/statusline/faith.vim
 
 endif
 "}}}

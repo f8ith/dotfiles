@@ -152,7 +152,7 @@ multimc5
 mupdf
 nasm
 nautilus
-neovim-nightly
+neovim-nightly-bin
 nerd-fonts-complete
 net-tools
 network-manager-applet

@@ -15,6 +15,7 @@ alias sxhkdrc="nvim ~/.config/sxhkd/sxhkdrc"
 alias polyconf="nvim ~/.config/polybar/config"
 alias vimrc="nvim ~/.config/nvim/init.vim"
 alias initvim="nvim ~/.config/nvim/init.vim"
+alias initlua="nvim ~/.config/nvim/init.lua"
 alias sudo='sudo '
 alias yabairc="nvim ~/.config/yabai/yabairc"
 alias aliasrc="~/.config/aliasrc"

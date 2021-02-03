@@ -1,5 +1,5 @@
 ! colors
-#include ".Xresources.d/automata"
+#include ".Xresources.d/ayu"
 
 ! dmenu
 dmenu.background: background

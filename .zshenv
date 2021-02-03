@@ -2,8 +2,6 @@
 
 export EDITOR="nvim"
 export TERMINAL="kitty"
-export BROWSER="chromium"
-export READER="chromium"
 
 # Fcitx settings
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -25,6 +23,8 @@ if [ "$system_type" = "Darwin" ]; then
 else
     export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
     eval "$(dircolors -b ~/.dir_colors)"
+    export BROWSER="google-chrome-stable"
+    export READER="google-chrome-stable"
 fi
 
 export GO111MODULE=on

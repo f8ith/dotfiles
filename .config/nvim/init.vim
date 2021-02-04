@@ -192,69 +192,14 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " nnoremap <silent> <leader>e :CocCommand explorer<CR>
 
 " deoplete
-" let g:deoplete#enable_at_startup = 1
-" inoremap <expr><C-g>     deoplete#undo_completion()
-" inoremap <expr><C-l>     deoplete#complete_common_string()
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><C-g>     deoplete#undo_completion()
+inoremap <expr><C-l>     deoplete#complete_common_string()
 
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-y>  deoplete#close_popup()
-" inoremap <expr><C-e>  deoplete#cancel_popup()
-
-" lightline
-let g:lightline = {
-  \ 'colorscheme': 'nord',
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
-  \   ],
-  \   'right': [
-  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent', 'wordcount' ],
-  \     [ 'blame' ]
-  \   ],
-  \ },
-  \ 'component_function': {
-  \   'wordcount': 'WordCount',
-  \   'blame': 'LightlineGitBlame',
-  \ }
-\ }
-let g:lightline.seperator = { 'left': '', 'right': ''}
-let g:lightline.subseparator = { 'left': '|', 'right': '|' }
-
-function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  " return blame
-  return winwidth(0) > 120 ? blame : ''
-endfunction
-
-function! WordCount()
-    let currentmode = mode()
-    if !exists("g:lastmode_wc")
-        let g:lastmode_wc = currentmode
-    endif
-    if &modified || !exists("b:wordcount") || currentmode =~? '\c.*v' || currentmode != g:lastmode_wc
-        let g:lastmode_wc = currentmode
-        let l:old_position = getpos('.')
-        let l:old_status = v:statusmsg
-        execute "silent normal g\<c-g>"
-        if v:statusmsg == "--No lines in buffer--"
-            let b:wordcount = 0
-        else
-            let s:split_wc = split(v:statusmsg)
-            if index(s:split_wc, "Selected") < 0
-                let b:wordcount = str2nr(s:split_wc[11])
-            else
-                let b:wordcount = str2nr(s:split_wc[5])
-            endif
-            let v:statusmsg = l:old_status
-        endif
-        call setpos('.', l:old_position)
-        return b:wordcount . " words"
-    else
-        return b:wordcount . " words"
-    endif
-endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  deoplete#close_popup()
+inoremap <expr><C-e>  deoplete#cancel_popup()
 
 " autocmd
 augroup filetypes
@@ -310,9 +255,10 @@ let ayucolor="light"  " for light version of theme
 let &background="light"
 colorscheme ayu
 
-let g:indentLine_char = ''
-let g:indentLine_first_char = ''
-let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_char = '│'
+let g:indentLine_first_char = '│'
+let g:indentLine_setColors = 0
+let g:indentLine_showFirstIndentLevel = 0
 
 " Open lazygit
 nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
@@ -396,9 +342,6 @@ nnoremap <leader><leader>ss <plug>(SubversiveSubstituteWordRange)
 " nnoremap <leader>e :LuaTreeToggle<CR>
 " nnoremap <leader>r :LuaTreeRefresh<CR>
 " nnoremap <leader>n :LuaTreeFindFile<CR>
-
-" built in lsp
-" lua require'nvim_lsp'.pyls.setup{}
 
 " completion.nvim
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

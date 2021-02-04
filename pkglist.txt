@@ -6,6 +6,7 @@ alsa-utils
 amd-ucode
 archivemount
 archlinuxcn-keyring
+aritim-light-gtk
 atool
 autoconf
 autojump

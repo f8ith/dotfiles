@@ -52,6 +52,7 @@ use 'Raimondi/delimitMate'
 -- git
 use 'tpope/vim-fugitive'
 use 'lambdalisue/gina.vim'
+use 'christoomey/vim-conflicted'
 
 -- tools
 use 'mbbill/undotree'

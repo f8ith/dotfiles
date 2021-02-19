@@ -1,0 +1,38 @@
+
+! general
+! super soft contrast: *background: #dad4bb
+! soft contrast
+*background: #dfd8bf
+*foreground: #686458
+
+! blacks
+*color0: rgb:78/74/66
+*color8: rgb:89/84/74
+
+! reds
+*color1: rgb:cd/66/4d
+*color9: rgb:d0/7c/63
+
+! greens
+*color2: rgb:72/7b/59
+*color10: rgb:87/8d/6d
+
+! yellows
+*color3: rgb:3b/a9/9f
+*color11: rgb:5b/b2/a5
+
+! blues
+*color4: rgb:5e/66/66
+*color12: rgb:77/7c/77
+
+! magentas
+*color5: rgb:50/40/3c
+*color13: rgb:6c/5e/55
+
+! cyans
+*color6: rgb:4e/4c/43
+*color14: rgb:6a/67/5b
+
+! whites
+*color7: rgb:b9/b4/9f
+*color15: rgb:ca/c4/ad

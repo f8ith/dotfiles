@@ -61,7 +61,6 @@ lua require('faith.plugins')
 
 set signcolumn=yes
 
-
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
 nnoremap <silent> <leader>p :RG<CR>
@@ -253,7 +252,7 @@ let g:tcomment#options = {'col': 1}
 
 let ayucolor="light"  " for light version of theme
 let &background="light"
-colorscheme ayu
+colorscheme serenade
 
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
@@ -402,7 +401,8 @@ let g:vista#renderer#icons = {
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" source ~/.config/nvim/statusline/faith.vim
+"CHADTree
+nnoremap <silent> <leader>e :CHADopen<CR>
 
 endif
 "}}}

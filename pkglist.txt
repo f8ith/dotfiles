@@ -7,6 +7,7 @@ amd-ucode
 archivemount
 archlinuxcn-keyring
 aritim-light-gtk
+asetroot
 atool
 autoconf
 autojump
@@ -88,7 +89,6 @@ gnome-themes-extra
 gnome-tweaks
 gnome-video-effects
 gnu-netcat
-gnvim
 go
 google-chrome
 groff
@@ -206,7 +206,6 @@ python-pillow
 python-pip
 python-pipx
 python2
-qbittorrent
 qt5ct
 ragel
 ranger
@@ -238,6 +237,7 @@ thunar-archive-plugin
 thunar-volman
 tldr
 tmux
+transmission-cli
 trash-cli
 ttf-courier-prime-code
 ttf-croscore

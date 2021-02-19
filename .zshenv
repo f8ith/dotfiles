@@ -1,7 +1,9 @@
 # Default Programs
 
 export EDITOR="nvim"
+export VISUAL="nvr -cc split --remote-wait"
 export TERMINAL="kitty"
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 
 # Fcitx settings
 export QT_QPA_PLATFORMTHEME="qt5ct"

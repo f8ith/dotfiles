@@ -64,7 +64,7 @@ use 'mattn/emmet-vim'
 use 'liuchengxu/vista.vim'
 
 -- file manager
-use {'ms-jpq/chadtree', branch = 'chad', run = ':UpdateRemotePlugins'}
+use 'kyazdani42/nvim-tree.lua'
 
 -- motions
 use 'unblevable/quick-scope'

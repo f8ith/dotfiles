@@ -13,25 +13,25 @@ super + Print
 	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" -t 2000
 
 super + shift + Print
-        alacritty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
+        kitty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
 
 
 #}}}
 
 #: media keys {{{
 
-XF86AudioRaiseVolume 
+XF86AudioRaiseVolume
         amixer -D default set Master 5%+ && amixer -D default set Master unmute && notify-send -t 200 "  $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
 
-XF86AudioLowerVolume 
+XF86AudioLowerVolume
         amixer -D default set Master 5%- && amixer -D default set Master unmute && notify-send -t 200 " $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
 
-XF86AudioMute 
+XF86AudioMute
         pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 200 ""
 
 XF86AudioPlay
 	playerctl -p ShairportSync play-pause
-	
+
 XF86AudioNext
 	playerctl -p ShairportSync next
 
@@ -43,19 +43,19 @@ XF86AudioPrev
 #: apps {{{
 
 super + Return
-        alacritty
+        kitty
 
 super + shift + Return
-        alacritty --class floating_terminal
+        kitty --class floating_terminal
 
 super + d
-        rofi -theme launcher matching fuzzy -show combi
+        rofi launcher matching fuzzy -show combi
 
 super + e
-        bsptool -r editor "alacritty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
+        bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
 super + shift + f
-        alacritty --class file_manager --title lf --working-directory ~ -e startlf
+        kitty --class file_manager --title lf --working-directory ~ -e startlf
 
 
 super + shift + r
@@ -66,7 +66,7 @@ super + Escape
         bash ~/.config/rofi/android/powermenu.sh
 
 # vm controls
-super + v 
+super + v
         bash ~/.config/rofi/android/vm.sh
 
 #}}}
@@ -142,7 +142,7 @@ super + {Left,Down,Up,Right}
 
 #: misc {{{
 ctrl + Print
-#        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices" 
-        vfio a && notify-send "Attached usb devices" 
+#        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices"
+        vfio a && notify-send "Attached usb devices"
 
 #}}}

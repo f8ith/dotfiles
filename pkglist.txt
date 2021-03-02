@@ -7,6 +7,7 @@ amd-ucode
 archivemount
 archlinuxcn-keyring
 aritim-light-gtk
+aseprite
 asetroot
 atool
 autoconf
@@ -21,7 +22,9 @@ bluez-hid2hci
 bluez-plugins
 bluez-tools
 bluez-utils-compat
+bottom
 bridge-utils
+bspwm
 capitaine-cursors
 castersoundboard-git
 chrome-gnome-shell
@@ -51,6 +54,7 @@ dosbox
 dosfstools
 dragon-drag-and-drop-git
 duck
+dunst
 dxvk-bin
 ebtables
 edk2-ovmf
@@ -104,7 +108,6 @@ guvcview
 gvfs
 hardinfo
 heroku-cli
-hid-nintendo-dkms
 htop
 icons-in-terminal
 inkscape
@@ -191,13 +194,14 @@ pavucontrol
 pcsx2
 perl-file-mimeinfo
 perl-image-exiftool
-picom-ibhagwan-git
+picom-jonaburg-git
 piper
 pipewire-alsa
 pipewire-pulse
 pkgconf
 plata-theme
 playerctl
+polybar
 protontricks
 pulseeffects-git
 pulsemixer
@@ -228,6 +232,7 @@ socat
 steam
 stow
 sudo
+sxhkd
 tabbed
 tela-icon-theme-git
 testdisk
@@ -278,6 +283,7 @@ wireshark-qt
 xarchiver
 xautolock
 xclip
+xcompmgr
 xdg-user-dirs
 xdotool
 xf86-input-evdev

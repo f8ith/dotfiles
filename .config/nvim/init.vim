@@ -286,105 +286,6 @@ nnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
 xnoremap <leader><leader>s <plug>(SubversiveSubstituteRange)
 nnoremap <leader><leader>ss <plug>(SubversiveSubstituteWordRange)
 
-" nvim tree
-" let g:lua_tree_size = 40
-" let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache', '__pycache__' ]
-" let g:lua_tree_auto_open = 0
-" let g:lua_tree_auto_close = 1
-" let g:lua_tree_follow = 1
-" let g:lua_tree_indent_markers = 1
-" let g:lua_tree_hide_dotfiles = 1
-" let g:lua_tree_git_hl = 1
-" let g:lua_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-" let g:lua_tree_show_icons = {
-"     \ 'git': 1,
-"     \ 'folders': 1,
-"     \ 'files': 1,
-"     \}
-"
-" let g:lua_tree_bindings = {
-"     \ 'edit':            ['<CR>', 'o'],
-"     \ 'edit_vsplit':     '<C-v>',
-"     \ 'edit_split':      '<C-x>',
-"     \ 'edit_tab':        '<C-t>',
-"     \ 'toggle_ignored':  'I',
-"     \ 'toggle_dotfiles': 'H',
-"     \ 'preview':         '<Tab>',
-"     \ 'cd':              'C',
-"     \ 'create':          'a',
-"     \ 'remove':          'D',
-"     \ 'rename':          'r',
-"     \ 'cut':             'd',
-"     \ 'copy':            'y',
-"     \ 'paste':           'p',
-"     \ 'prev_git_item':   '[c',
-"     \ 'next_git_item':   ']c',
-"     \ }
-"
-" " default will show icon by default if no icon is provided
-" " default shows no icon by default
-" let g:lua_tree_icons = {
-"     \ 'default': '',
-"     \ 'git': {
-"     \   'unstaged': "✗",
-"     \   'staged': "✓",
-"     \   'unmerged': "",
-"     \   'renamed': "➜",
-"     \   'untracked': "★"
-"     \   },
-"     \ 'folder': {
-"     \   'default': "",
-"     \   'open': ""
-"     \   }
-"     \ }
-"
-" nnoremap <leader>e :LuaTreeToggle<CR>
-" nnoremap <leader>r :LuaTreeRefresh<CR>
-" nnoremap <leader>n :LuaTreeFindFile<CR>
-
-" completion.nvim
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" diagonstic.nvim
-" let g:diagnostic_enable_virtual_text = 1
-" let g:diagnostic_insert_delay = 1
-" nnoremap <silent> <leader>a :OpenDiagnostic<CR>
-" nnoremap <silent> <C-j> :PrevDiagnosticCycle<CR>
-" nnoremap <silent> <C-k> :NextDiagnosticCycle<CR>
-" call sign_define("LspDiagnosticsErrorSign", {"text" : "", "texthl" : "LspDiagnosticsError"})
-" call sign_define("LspDiagnosticsWarningSign", {"text" : "", "texthl" : "LspDiagnosticsWarning"})
-" call sign_define("LspDiagnosticsInformationSign", {"text" : "", "texthl" : "LspDiagnosticsInformation"})
-" call sign_define("LspDiagnosticsHintSign", {"text" : "", "texthl" : "LspDiagnosticsHint"})
-"
-" :lua << EOF
-"   local nvim_lsp = require('nvim_lsp')
-"
-"   local on_attach = function(_, bufnr)
-"     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-"     require'diagnostic'.on_attach()
-"     require'completion'.on_attach()
-"
-"     -- Mappings.
-"     local opts = { noremap=true, silent=true }
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-"     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-"     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-"   end
-"
-"   local servers = {'pyls', 'vimls', 'jsonls'}
-"   for _, lsp in ipairs(servers) do
-"     nvim_lsp[lsp].setup {
-"       on_attach = on_attach,
-"     }
-"   end
-" EOF
-
 " undotree
 nnoremap <F5> :UndotreeToggle<cr>
 
@@ -401,8 +302,42 @@ let g:vista#renderer#icons = {
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-"CHADTree
-nnoremap <silent> <leader>e :CHADopen<CR>
+"nvim-tree
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:nvim_tree_auto_open = 1
+let g:nvim_tree_auto_close = 1
+let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard']
+let g:nvim_tree_follow = 1
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_tab_open = 1
+let g:nvim_tree_width_allow_resize  = 1
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ }
+
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★"
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': "",
+    \   'symlink': "",
+    \   }
+    \ }
+
+nnoremap <leader>e :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
 endif
 "}}}

@@ -305,7 +305,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "nvim-tree
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
 let g:nvim_tree_auto_open = 1
-let g:nvim_tree_auto_close = 1
+let g:nvim_tree_auto_close = 0
 let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard']
 let g:nvim_tree_follow = 1
 let g:nvim_tree_indent_markers = 1
@@ -338,6 +338,21 @@ let g:nvim_tree_icons = {
 nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
+
+" lspsaga
+nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent>gr :Lspsaga rename<CR>
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent> gd :Lspsaga preview_definition<CR>
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+" bufferline
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>]b :BufferLineCyclePrev<CR>
 
 endif
 "}}}

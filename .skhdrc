@@ -1,5 +1,5 @@
 # open terminal
-alt - return : alacritty
+alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -32,7 +32,7 @@ shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
 # destroy desktop
-alt - w : yabai -m window --close
+alt - q : yabai -m window --close
 
 # fast focus desktop
 alt - x : yabai -m space --focus recent
@@ -50,19 +50,19 @@ alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
 # send window to desktop and follow focus
-shift + alt - x : yabai -m window --space recent; 
+shift + alt - x : yabai -m window --space recent;
 shift + alt - z : yabai -m window --space prev;
 shift + alt - c : yabai -m window --space next;
 shift + alt - 1 : yabai -m window --space  1;
-shift + alt - 2 : yabai -m window --space  2; 
-shift + alt - 3 : yabai -m window --space  3; 
-shift + alt - 4 : yabai -m window --space  4; 
-shift + alt - 5 : yabai -m window --space  5; 
-shift + alt - 6 : yabai -m window --space  6; 
-shift + alt - 7 : yabai -m window --space  7; 
-shift + alt - 8 : yabai -m window --space  8; 
-shift + alt - 9 : yabai -m window --space  9; 
-shift + alt - 0 : yabai -m window --space 10; 
+shift + alt - 2 : yabai -m window --space  2;
+shift + alt - 3 : yabai -m window --space  3;
+shift + alt - 4 : yabai -m window --space  4;
+shift + alt - 5 : yabai -m window --space  5;
+shift + alt - 6 : yabai -m window --space  6;
+shift + alt - 7 : yabai -m window --space  7;
+shift + alt - 8 : yabai -m window --space  8;
+shift + alt - 9 : yabai -m window --space  9;
+shift + alt - 0 : yabai -m window --space 10;
 
 # focus # move window
 alt - left : yabai -m window --move rel:-20:0

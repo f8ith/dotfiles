@@ -53,7 +53,7 @@ bindkey '^e' edit-command-line
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # asdf
-# . $HOME/.asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 source ~/.poetry/env

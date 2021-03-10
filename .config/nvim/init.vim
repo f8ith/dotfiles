@@ -310,7 +310,6 @@ let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard']
 let g:nvim_tree_follow = 1
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
-let g:nvim_tree_tab_open = 1
 let g:nvim_tree_width_allow_resize  = 1
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
@@ -353,6 +352,7 @@ nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_sag
 " bufferline
 nnoremap <silent>[b :BufferLineCycleNext<CR>
 nnoremap <silent>]b :BufferLineCyclePrev<CR>
+nnoremap <silent><leader>bd :Bdelete<CR>
 
 endif
 "}}}

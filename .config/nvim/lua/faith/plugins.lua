@@ -20,6 +20,16 @@ use {
   config = function()
   require'lspconfig'.pyright.setup{}
   require'lspconfig'.gopls.setup{}
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.vuels.setup{}
+  require'lspconfig'.jsonls.setup{}
+  require'lspconfig'.cssls.setup{}
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  require'lspconfig'.html.setup {
+    capabilities = capabilities,
+  }
   end
 }
 
@@ -80,8 +90,8 @@ use 'sheerun/vim-polyglot'
 use 'kyazdani42/nvim-web-devicons'
 use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
 use 'Yggdroot/indentLine'
-use 'yuttie/comfortable-motion.vim'
 use {'akinsho/nvim-bufferline.lua', config = function() require'bufferline'.setup{} end}
+use 'moll/vim-bbye'
 use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 

@@ -15,20 +15,90 @@ use 'wbthomason/packer.nvim'
 use 'b3nj5m1n/kommentary'
 
 -- built in lsp
+use 'nvim-lua/lsp-status.nvim'
 use {
   'neovim/nvim-lspconfig',
   config = function()
-  require'lspconfig'.pyright.setup{}
-  require'lspconfig'.gopls.setup{}
-  require'lspconfig'.tsserver.setup{}
-  require'lspconfig'.vuels.setup{}
-  require'lspconfig'.jsonls.setup{}
-  require'lspconfig'.cssls.setup{}
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  require'lspconfig'.html.setup {
-    capabilities = capabilities,
+  local lsp_status = require("lsp-status")
+  local nvim_lsp = require "lspconfig"
+  local servers = {
+      "html",
+      "cssls",
+      "jsonls",
+      "vuels",
+      "bashls",
+      "tsserver",
+      "pyright"
+  }
+
+  for _, lsp in ipairs(servers) do
+      nvim_lsp[lsp].setup {
+          capabilities = lsp_status.capabilities
+      }
+  end
+
+  -- Setup diagnostics formaters and linters for non LSP provided files
+  nvim_lsp.diagnosticls.setup {
+      on_attach = on_attach,
+      capabilities = lsp_status.capabilities,
+      cmd = {"diagnostic-languageserver", "--stdio"},
+      filetypes = {
+          "lua",
+          "sh",
+          "markdown",
+          "json",
+          "yaml",
+          "toml"
+      },
+      init_options = {
+          linters = {
+              shellcheck = {
+                  command = "shellcheck",
+                  debounce = 100,
+                  args = {"--format", "json", "-"},
+                  sourceName = "shellcheck",
+                  parseJson = {
+                      line = "line",
+                      column = "column",
+                      endLine = "endLine",
+                      endColumn = "endColumn",
+                      message = "${message} [${code}]",
+                      security = "level"
+                  },
+                  securities = {
+                      error = "error",
+                      warning = "warning",
+                      info = "info",
+                      style = "hint"
+                  }
+              },
+              markdownlint = {
+                  command = "markdownlint",
+                  isStderr = true,
+                  debounce = 100,
+                  args = {"--stdin"},
+                  offsetLine = 0,
+                  offsetColumn = 0,
+                  sourceName = "markdownlint",
+                  formatLines = 1,
+                  formatPattern = {
+                      "^.*?:\\s?(\\d+)(:(\\d+)?)?\\s(MD\\d{3}\\/[A-Za-z0-9-/]+)\\s(.*)$",
+                      {
+                          line = 1,
+                          column = 3,
+                          message = {4}
+                      }
+                  }
+              }
+          },
+          filetypes = {
+              sh = "shellcheck",
+              markdown = "markdownlint"
+          },
+    }
   }
   end
 }
@@ -67,11 +137,11 @@ use 'christoomey/vim-conflicted'
 
 -- tools
 use 'mbbill/undotree'
-use 'samoshkin/vim-mergetool'
 use 'sedm0784/vim-you-autocorrect'
 use 'tpope/vim-unimpaired'
 use 'mattn/emmet-vim'
 use 'liuchengxu/vista.vim'
+use 'dense-analysis/ale'
 
 -- file manager
 use 'kyazdani42/nvim-tree.lua'

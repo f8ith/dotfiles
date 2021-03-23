@@ -1,6 +1,7 @@
 acpid
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
+akvcam-dkms
 alacritty
 alsa-utils
 amd-ucode
@@ -53,6 +54,7 @@ dolphin-emu
 dosbox
 dosfstools
 dragon-drag-and-drop-git
+droidcam
 duck
 dunst
 dxvk-bin
@@ -80,6 +82,7 @@ fontforge
 fortune-mod
 freeoffice
 fzf
+gamemode
 gcc
 gdm
 gimp
@@ -101,6 +104,7 @@ gst-libav
 gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
+gst-plugins-pulseeffects-git
 gst-plugins-ugly
 gstreamer-vaapi
 gtk-engine-murrine
@@ -126,7 +130,6 @@ lib32-nvidia-utils
 lib32-vkd3d
 lib32-vulkan-radeon
 libretro-mupen64plus-next
-librnnoise
 libselinux
 libva-mesa-driver
 libva-vdpau-driver
@@ -222,9 +225,12 @@ retroarch-assets-xmb
 ripgrep
 rofi
 ruby
+ryujinx-ldn-bin
 scream
 screen
 seahorse
+shellcheck-static
+shfmt
 skypeforlinux-stable-bin
 smartmontools
 smbclient
@@ -265,6 +271,7 @@ unp
 unrar
 usbutils
 uthash
+v4l2loopback-dc-dkms
 v4l2loopback-dkms-git
 vi
 vifm

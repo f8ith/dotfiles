@@ -13,6 +13,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export BROWSER="firefox"
+export READER="firefox"
 
 # XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
@@ -25,8 +27,6 @@ if [ "$system_type" = "Darwin" ]; then
 else
     export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
     eval "$(dircolors -b ~/.dir_colors)"
-    export BROWSER="google-chrome-stable"
-    export READER="google-chrome-stable"
 fi
 
 export GO111MODULE=on

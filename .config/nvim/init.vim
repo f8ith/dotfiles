@@ -110,11 +110,13 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " let g:ale_list_window_size = 5
 " let g:ale_open_list = 1
-" let g:ale_linters = {
-" \ 'python': ['prospector'],
-" \ 'cs': ['OmniSharp']
-" \}
-" let g:ale_fixers = ['black']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'html': ['prettier'],
+\   'python': ['flake8', 'black']
+\}
+let g:ale_fix_on_save = 1
 " let g:ale_sign_error = ''
 " let g:ale_sign_warning = ''
 
@@ -256,7 +258,7 @@ colorscheme serenade
 
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
-let g:indentLine_setColors = 0
+let g:indentLine_color_gui = '#3F464B'
 let g:indentLine_showFirstIndentLevel = 0
 
 " Open lazygit

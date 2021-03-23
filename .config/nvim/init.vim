@@ -10,6 +10,7 @@ set noshowmode
 set showcmd
 set shiftwidth=4
 set expandtab
+set tabstop=4
 set completeopt-=preview
 set clipboard+=unnamedplus
 set lazyredraw
@@ -21,7 +22,7 @@ set hidden
 set cmdheight=2
 set updatetime=50
 set shortmess+=c
-filetype plugin on
+filetype plugin indent on
 
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 

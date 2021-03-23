@@ -148,10 +148,9 @@ use 'kyazdani42/nvim-tree.lua'
 
 -- motions
 use 'unblevable/quick-scope'
-use 'tomtom/tcomment_vim'
 use 'svermeulen/vim-cutlass'
 -- use 'svermeulen/vim-yoink'
-use 'svermeulen/vim-subversive'
+-- use 'svermeulen/vim-subversive'
 use 'tpope/vim-surround'
 use 'easymotion/vim-easymotion'
 

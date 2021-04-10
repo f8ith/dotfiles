@@ -36,7 +36,14 @@ use {
 
   for _, lsp in ipairs(servers) do
       nvim_lsp[lsp].setup {
-          capabilities = lsp_status.capabilities
+          capabilities = lsp_status.capabilities,
+          handlers = {
+            ["textDocument/publishDiagnostics"] = vim.lsp.with(
+              vim.lsp.diagnostic.on_publish_diagnostics, {
+                virtual_text = false
+              }
+            ),
+          }
       }
   end
 
@@ -169,9 +176,9 @@ use {
   requires = {'kyazdani42/nvim-web-devicons'}
 }
 
-use {
-  'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-  config = function() require('gitsigns').setup() end
-}
+-- use {
+--   'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+--   config = function() require('gitsigns').setup() end
+-- }
 
 end)

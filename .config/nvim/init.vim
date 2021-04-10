@@ -15,6 +15,7 @@ set completeopt-=preview
 set clipboard+=unnamedplus
 set lazyredraw
 set icm=nosplit
+set wrap!
 syntax enable
 
 set nu rnu
@@ -111,6 +112,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " let g:ale_list_window_size = 5
 " let g:ale_open_list = 1
+let g:ale_hover_cursor = 0
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
@@ -352,6 +354,12 @@ vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
+autocmd CursorHold * silent :Lspsaga show_cursor_diagnostics
+
+" nvim lsp
+let g:diagnostic_enable_virtual_text = 0
+let g:diagnostic_show_sign = 0
+
 " bufferline
 nnoremap <silent>[b :BufferLineCycleNext<CR>
 nnoremap <silent>]b :BufferLineCyclePrev<CR>
@@ -359,5 +367,4 @@ nnoremap <silent><leader>bd :Bdelete<CR>
 
 endif
 "}}}
-
 "}}}

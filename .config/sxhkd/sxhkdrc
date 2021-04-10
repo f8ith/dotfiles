@@ -145,4 +145,9 @@ ctrl + Print
 #        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices"
         vfio a && notify-send "Attached usb devices"
 
+ctrl
+		compton -b --experimental-backends
+
+super + shift + z
+		toggle picom -b --experimental-backends
 #}}}

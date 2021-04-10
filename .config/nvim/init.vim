@@ -361,8 +361,8 @@ let g:diagnostic_enable_virtual_text = 0
 let g:diagnostic_show_sign = 0
 
 " bufferline
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCyclePrev<CR>
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
 
 endif

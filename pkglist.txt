@@ -11,6 +11,7 @@ aritim-light-gtk
 aseprite
 asetroot
 atool
+audacity
 autoconf
 autojump
 automake
@@ -63,6 +64,7 @@ edk2-ovmf
 efibootmgr
 ethtool
 evtest
+eww-git
 fakeroot
 fbreader
 fcitx-cloudpinyin
@@ -104,7 +106,6 @@ gst-libav
 gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
-gst-plugins-pulseeffects-git
 gst-plugins-ugly
 gstreamer-vaapi
 gtk-engine-murrine
@@ -206,8 +207,9 @@ plata-theme
 playerctl
 polybar
 protontricks
-pulseeffects-git
+pulseeffects
 pulsemixer
+python-magic
 python-notify2
 python-pillow
 python-pip
@@ -225,6 +227,7 @@ retroarch-assets-xmb
 ripgrep
 rofi
 ruby
+rustup
 ryujinx-ldn-bin
 scream
 screen

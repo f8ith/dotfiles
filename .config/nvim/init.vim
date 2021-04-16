@@ -112,24 +112,17 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " let g:ale_list_window_size = 5
 " let g:ale_open_list = 1
-let g:ale_hover_cursor = 0
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'prettier'],
-\   'html': ['prettier'],
-\   'python': ['black']
-\}
-let g:ale_fix_on_save = 1
+" let g:ale_enabled = 0
+" let g:ale_hover_cursor = 0
+" let g:ale_fixers = {
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \   'javascript': ['eslint', 'prettier'],
+" \   'html': ['prettier'],
+" \   'python': ['black']
+" \}
+" let g:ale_fix_on_save = 1
 " let g:ale_sign_error = ''
 " let g:ale_sign_warning = ''
-
-" lf
-" let g:lf_replace_netrw = 1
-" map <leader>ff :LfNewTab<CR>
-
-" ranger
-" let g:ranger_replace_netrw = 1
-" map <leader>ff :RangerNewTab<CR>
 
 " coc
 " let g:coc_global_extensions = [
@@ -214,7 +207,8 @@ augroup END
 
 autocmd InsertEnter * norm zz
 autocmd BufWritePre * %s/\s\+$//e
-
+command Fix :lua vim.lsp.buf.formatting()
+autocmd BufWritePost * :Fix
 
 " closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'

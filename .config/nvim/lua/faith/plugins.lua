@@ -58,7 +58,8 @@ use {
           "markdown",
           "json",
           "yaml",
-          "toml"
+          "toml",
+          "python"
       },
       init_options = {
           linters = {
@@ -99,12 +100,54 @@ use {
                           message = {4}
                       }
                   }
+              },
+              eslint = {
+                sourceName = "eslint",
+                command = "eslint_d",
+                rootPatterns = {".eslintrc.js", "package.json"},
+                debounce = 100,
+                args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+                parseJson = {
+                    errorsRoot = "[0].messages",
+                    line = "line",
+                    column = "column",
+                    endLine = "endLine",
+                    endColumn = "endColumn",
+                    message = "${message} [${ruleId}]",
+                    security = "severity"
+                },
+                securities = {[2] = "error", [1] = "warning"}
               }
           },
           filetypes = {
-              sh = "shellcheck",
-              markdown = "markdownlint"
+            sh = "shellcheck",
+            markdown = "markdownlint",
+            javascript = "eslint",
+            vue = "eslint"
           },
+          formatters = {
+            shfmt = {
+                command = "shfmt",
+                args = {"-i", "2", "-bn", "-ci", "-sr"}
+            },
+            prettier = {
+                command = "prettier",
+                args = {"--stdin-filepath", "%filepath"},
+            },
+            black = {
+                command = "black",
+                args = {"--diff", "%filepath"},
+            }
+          },
+        formatFiletypes = {
+            sh = "shfmt",
+            json = "prettier",
+            yaml = "prettier",
+            toml = "prettier",
+            markdown = "prettier",
+            lua = "prettier",
+            python = "black"
+        }
     }
   }
   end
@@ -148,7 +191,6 @@ use 'sedm0784/vim-you-autocorrect'
 use 'tpope/vim-unimpaired'
 use 'mattn/emmet-vim'
 use 'liuchengxu/vista.vim'
-use 'dense-analysis/ale'
 
 -- file manager
 use 'kyazdani42/nvim-tree.lua'

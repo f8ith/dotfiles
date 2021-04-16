@@ -133,3 +133,7 @@ shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || bre
 
 # Disable rshift
 0x3D : yas
+
+# screenshot
+cmd + shift - c : /Users/faith/.asdf/shims/qrsh clipboard -c
+cmd + ctrl + shift - c : /Users/faith/.asdf/shims/qrsh screen

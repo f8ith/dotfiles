@@ -228,7 +228,6 @@ ripgrep
 rofi
 ruby
 rustup
-ryujinx-ldn-bin
 scream
 screen
 seahorse
@@ -246,6 +245,7 @@ tabbed
 tela-icon-theme-git
 testdisk
 texinfo
+thefuck
 thunar
 thunar-archive-plugin
 thunar-volman
@@ -309,7 +309,6 @@ xterm
 xwinwrap-git
 yadm-git
 yarn
-yuzu-git
 zoom
 zsh
 zsync

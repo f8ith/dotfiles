@@ -21,6 +21,13 @@ use {
   config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      'documentation',
+      'detail',
+      'additionalTextEdits',
+    }
+  }
 
   local lsp_status = require("lsp-status")
   local nvim_lsp = require "lspconfig"
@@ -160,8 +167,36 @@ use {
   saga.init_lsp_saga()
   end
 }
-use {'Shougo/deoplete.nvim', run = ':UpdateRemotePlugins'}
-use 'Shougo/deoplete-lsp'
+--use {'Shougo/deoplete.nvim', run = ':UpdateRemotePlugins'}
+--use 'Shougo/deoplete-lsp'
+use {
+  'hrsh7th/nvim-compe',
+  config = function()
+  require'compe'.setup {
+    enabled = true;
+    autocomplete = true;
+    debug = false;
+    min_length = 1;
+    preselect = 'enable';
+    throttle_time = 80;
+    source_timeout = 200;
+    incomplete_delay = 400;
+    max_abbr_width = 100;
+    max_kind_width = 100;
+    max_menu_width = 100;
+    documentation = true;
+
+    source = {
+      path = true;
+      buffer = true;
+      calc = true;
+      nvim_lsp = true;
+      nvim_lua = true;
+      vsnip = true;
+    };
+  }
+  end
+}
 
 
 -- color schemes
@@ -178,7 +213,8 @@ use 'b4skyx/serenade'
 
 -- auto pairs
 use 'alvan/vim-closetag'
-use 'Raimondi/delimitMate'
+-- use 'Raimondi/delimitMate'
+use 'cohama/lexima.vim'
 
 -- git
 use 'tpope/vim-fugitive'

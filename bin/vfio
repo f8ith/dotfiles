@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-monitor=15
-#bus=$(sudo ddcutil detect | rg 'dev' | awk '{print $3}' | cut -c 10-11)
+monitor=0x0f
 sleep .1
-devices=(1532:0219 046d:c539 046d:c087 057e:2009)
+devices=(1532:0219 046d:c539 046d:c087)
 vmname=$(sudo virsh list | sed -n '3p' | sed -nr 's/ *[0-9]+ +(.*) +running/\1/p')
 
 usage() {
@@ -27,7 +26,7 @@ attach_device() {
 }
 
 attach() {
-    #sudo ddcutil setvcp 60 $monitor --bus=$bus
+    sudo ddcutil setvcp 60 $monitor
     for dev in "${devices[@]}"
     do
         attach_device "$vmname" $dev attach

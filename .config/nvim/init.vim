@@ -11,7 +11,7 @@ set showcmd
 set shiftwidth=4
 set expandtab
 set tabstop=4
-set completeopt-=preview
+set completeopt=menuone,noselect
 set clipboard+=unnamedplus
 set lazyredraw
 set icm=nosplit
@@ -25,6 +25,7 @@ set updatetime=50
 set shortmess+=c
 filetype plugin indent on
 
+set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 
 "}}}
@@ -189,14 +190,14 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " nnoremap <silent> <leader>e :CocCommand explorer<CR>
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><C-g>     deoplete#undo_completion()
-inoremap <expr><C-l>     deoplete#complete_common_string()
-
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  deoplete#close_popup()
-inoremap <expr><C-e>  deoplete#cancel_popup()
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><C-g>     deoplete#undo_completion()
+" inoremap <expr><C-l>     deoplete#complete_common_string()
+"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  deoplete#close_popup()
+" inoremap <expr><C-e>  deoplete#cancel_popup()
 
 " autocmd
 augroup filetypes
@@ -360,5 +361,6 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
 
 endif
+let g:neovide_refresh_rate=140
 "}}}
 "}}}

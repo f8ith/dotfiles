@@ -30,6 +30,7 @@ bspwm
 capitaine-cursors
 castersoundboard-git
 chrome-gnome-shell
+chrony
 citra-git
 clang
 clinfo
@@ -46,7 +47,6 @@ cups-filters
 cups-pdf
 ddcutil
 debtap
-discord
 dmidecode
 dnsmasq
 docker
@@ -99,7 +99,6 @@ gnome-tweaks
 gnome-video-effects
 gnu-netcat
 go
-google-chrome
 groff
 grub
 gst-libav
@@ -114,6 +113,7 @@ gvfs
 hardinfo
 heroku-cli
 htop
+i2c-tools
 icons-in-terminal
 inkscape
 inotify-tools
@@ -134,6 +134,7 @@ libretro-mupen64plus-next
 libselinux
 libva-mesa-driver
 libva-vdpau-driver
+libvirt
 light-git
 linux
 linux-firmware
@@ -160,6 +161,7 @@ multimc5
 mupdf
 nasm
 nautilus
+neovide-git
 neovim-nightly-bin
 nerd-fonts-complete
 net-tools
@@ -224,16 +226,19 @@ reflector
 retroarch
 retroarch-assets-ozone
 retroarch-assets-xmb
+ripcord-arch-libs
 ripgrep
 rofi
 ruby
 rustup
+samba
 scream
 screen
 seahorse
 shellcheck-static
 shfmt
 skypeforlinux-stable-bin
+slippi-online-appimage
 smartmontools
 smbclient
 socat
@@ -267,6 +272,7 @@ ttf-monaco
 ttf-roboto
 ttf-roboto-mono
 ttf-typicons
+uivonim-git
 unclutter
 undefined-medium-fonts
 unityhub
@@ -278,6 +284,7 @@ v4l2loopback-dc-dkms
 v4l2loopback-dkms-git
 vi
 vifm
+virt-manager
 visual-studio-code-bin
 vkd3d
 vulkan-mesa-layers

@@ -520,7 +520,7 @@ debug:
 #   - ~AppKeypad
 #   - AppKeypad
 key_bindings:
-  {% if YADM_OS == "Darwin" %}
+  {% if yadm.os == "Darwin" %}
   # (macOS only)
   - { key: Key0,   mods: Command, action: ResetFontSize    }
   - { key: Equals, mods: Command, action: IncreaseFontSize }

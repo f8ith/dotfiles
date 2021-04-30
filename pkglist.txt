@@ -108,6 +108,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
 gtk-engine-murrine
+gtk2-perl
 guvcview
 gvfs
 hardinfo
@@ -179,8 +180,11 @@ ntfs-3g
 ntp
 nvidia
 nvidia-settings
+obconf
+obmenu-generator
 obs-studio
 ofono
+openbox
 opencl-mesa
 opencl-nvidia
 openrazer-meta
@@ -194,13 +198,14 @@ p7zip
 pacman-contrib
 papirus-folders-git
 papirus-icon-theme
+parcellite
 paru
 patch
 pavucontrol
 pcsx2
 perl-file-mimeinfo
 perl-image-exiftool
-picom-jonaburg-git
+picom-git
 piper
 pipewire-alsa
 pipewire-pulse
@@ -254,6 +259,7 @@ thefuck
 thunar
 thunar-archive-plugin
 thunar-volman
+tint2
 tldr
 tmux
 transmission-cli
@@ -311,6 +317,7 @@ xorg-xcursorgen
 xorg-xev
 xorg-xinit
 xorg-xinput
+xorg-xwininfo
 xsel
 xterm
 xwinwrap-git

@@ -143,7 +143,7 @@ use {
             },
             black = {
                 command = "black",
-                args = {"--diff", "%filepath"},
+                args = {"%filepath"},
             }
           },
         formatFiletypes = {

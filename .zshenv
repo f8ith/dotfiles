@@ -14,7 +14,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export BROWSER="firefox"
+export BROWSER="osuroute"
 export READER="firefox"
 
 # XDG Directories

@@ -243,6 +243,7 @@ seahorse
 shellcheck-static
 shfmt
 skypeforlinux-stable-bin
+slim
 slippi-online-appimage
 smartmontools
 smbclient

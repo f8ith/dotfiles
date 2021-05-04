@@ -209,7 +209,7 @@ use 'ayu-theme/ayu-vim'
 use 'b4skyx/serenade'
 -- use 'connorholyday/vim-snazzy'
 -- use 'joshdick/onedark.vim'
--- use 'morhetz/gruvbox'
+use 'morhetz/gruvbox'
 
 -- auto pairs
 use 'alvan/vim-closetag'
@@ -244,7 +244,23 @@ use 'sheerun/vim-polyglot'
 use 'kyazdani42/nvim-web-devicons'
 use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
 use 'Yggdroot/indentLine'
-use {'akinsho/nvim-bufferline.lua', config = function() require'bufferline'.setup{} end}
+use {
+  'akinsho/nvim-bufferline.lua',
+  config = function()
+    require'bufferline'.setup{
+        highlights = {
+            fill = {
+                guifg = '#fafafa',
+                guibg = '#fafafa'
+            },
+            tab_close = {
+                guifg = '#ff9940',
+                guibg = '#fafafa'
+            },
+        }
+    }
+  end
+  }
 use 'moll/vim-bbye'
 use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

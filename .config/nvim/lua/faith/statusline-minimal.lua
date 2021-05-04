@@ -70,6 +70,8 @@ local nord_colors = {
   red = "#BF616A"
 }
 
+local colors = ayu_colors
+
 local buffer_not_empty = function()
   if fn.empty(fn.expand("%:t")) ~= 1 then
     return true
@@ -83,7 +85,7 @@ section.left[1] = {
     --provider = function()
     --  return "  "
     --end,
-    highlight = {serenade_colors.green, serenade_colors.line_bg}
+    highlight = {colors.green, colors.line_bg}
   }
 }
 section.left[2] = {
@@ -91,38 +93,38 @@ section.left[2] = {
     provider = function()
       -- auto change color according the vim mode
       local mode_color = {
-        n = serenade_colors.magenta,
-        i = serenade_colors.green,
-        v = serenade_colors.blue,
-        [""] = serenade_colors.blue,
-        V = serenade_colors.blue,
-        c = serenade_colors.red,
-        no = serenade_colors.magenta,
-        s = serenade_colors.orange,
-        S = serenade_colors.orange,
-        [""] = serenade_colors.orange,
-        ic = serenade_colors.yellow,
-        R = serenade_colors.purple,
-        Rv = serenade_colors.purple,
-        cv = serenade_colors.red,
-        ce = serenade_colors.red,
-        r = serenade_colors.cyan,
-        rm = serenade_colors.cyan,
-        ["r?"] = serenade_colors.cyan,
-        ["!"] = serenade_colors.red,
-        t = serenade_colors.red
+        n = colors.magenta,
+        i = colors.green,
+        v = colors.blue,
+        [""] = colors.blue,
+        V = colors.blue,
+        c = colors.red,
+        no = colors.magenta,
+        s = colors.orange,
+        S = colors.orange,
+        [""] = colors.orange,
+        ic = colors.yellow,
+        R = colors.purple,
+        Rv = colors.purple,
+        cv = colors.red,
+        ce = colors.red,
+        r = colors.cyan,
+        rm = colors.cyan,
+        ["r?"] = colors.cyan,
+        ["!"] = colors.red,
+        t = colors.red
       }
       cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
       return "  "
     end,
-    highlight = {serenade_colors.red, serenade_colors.line_bg, "bold"}
+    highlight = {colors.red, colors.line_bg, "bold"}
   }
 }
 section.left[3] = {
   FileIcon = {
     provider = "FileIcon",
     condition = buffer_not_empty,
-    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, serenade_colors.line_bg}
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
   }
 }
 section.left[4] = {
@@ -133,8 +135,8 @@ section.left[4] = {
     end,
     condition = buffer_not_empty,
     separator = " ",
-    separator_highlight = {serenade_colors.purple, serenade_colors.bg},
-    highlight = {serenade_colors.purple, serenade_colors.line_bg, "bold"}
+    separator_highlight = {colors.purple, colors.bg},
+    highlight = {colors.purple, colors.line_bg, "bold"}
   }
 }
 
@@ -144,7 +146,7 @@ section.right[1] = {
       return " "
     end,
     condition = require("galaxyline.provider_vcs").check_git_workspace,
-    highlight = {serenade_colors.orange, serenade_colors.line_bg}
+    highlight = {colors.orange, colors.line_bg}
   }
 }
 section.right[2] = {
@@ -152,8 +154,8 @@ section.right[2] = {
     provider = "GitBranch",
     condition = require("galaxyline.provider_vcs").check_git_workspace,
     separator = "",
-    separator_highlight = {serenade_colors.purple, serenade_colors.bg},
-    highlight = {serenade_colors.orange, serenade_colors.line_bg, "bold"}
+    separator_highlight = {colors.purple, colors.bg},
+    highlight = {colors.orange, colors.line_bg, "bold"}
   }
 }
 
@@ -170,7 +172,7 @@ section.right[3] = {
     provider = "DiffAdd",
     condition = checkwidth,
     icon = " ",
-    highlight = {serenade_colors.green, serenade_colors.line_bg}
+    highlight = {colors.green, colors.line_bg}
   }
 }
 section.right[4] = {
@@ -178,7 +180,7 @@ section.right[4] = {
     provider = "DiffModified",
     condition = checkwidth,
     icon = "柳",
-    highlight = {serenade_colors.yellow, serenade_colors.line_bg}
+    highlight = {colors.yellow, colors.line_bg}
   }
 }
 section.right[5] = {
@@ -186,7 +188,7 @@ section.right[5] = {
     provider = "DiffRemove",
     condition = checkwidth,
     icon = " ",
-    highlight = {serenade_colors.red, serenade_colors.line_bg}
+    highlight = {colors.red, colors.line_bg}
   }
 }
 
@@ -195,8 +197,8 @@ section.right[6] = {
     provider = "DiagnosticError",
     separator = " ",
     icon = " ",
-    highlight = {serenade_colors.red, serenade_colors.line_bg},
-    separator_highlight = {serenade_colors.bg, serenade_colors.bg}
+    highlight = {colors.red, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
   }
 }
 section.right[7] = {
@@ -204,8 +206,8 @@ section.right[7] = {
     provider = "DiagnosticWarn",
     -- separator = " ",
     icon = " ",
-    highlight = {serenade_colors.yellow, serenade_colors.line_bg},
-    separator_highlight = {serenade_colors.bg, serenade_colors.bg}
+    highlight = {colors.yellow, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
   }
 }
 
@@ -214,8 +216,8 @@ section.right[8] = {
     -- separator = " ",
     provider = "DiagnosticInfo",
     icon = " ",
-    highlight = {serenade_colors.green, serenade_colors.line_bg},
-    separator_highlight = {serenade_colors.bg, serenade_colors.bg}
+    highlight = {colors.green, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
   }
 }
 
@@ -224,8 +226,8 @@ section.right[9] = {
     provider = "DiagnosticHint",
     -- separator = " ",
     icon = " ",
-    highlight = {serenade_colors.blue, serenade_colors.line_bg},
-    separator_highlight = {serenade_colors.bg, serenade_colors.bg}
+    highlight = {colors.blue, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
   }
 }
 
@@ -233,8 +235,8 @@ section.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = ' ',
-    separator_highlight = {'NONE',serenade_colors.bg},
-    highlight = {serenade_colors.blue,serenade_colors.bg,'bold'}
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.blue,colors.bg,'bold'}
   }
 }
 
@@ -251,13 +253,13 @@ section.short_line_left[2] = {
       return fname
     end,
     condition = buffer_not_empty,
-    highlight = {serenade_colors.white,serenade_colors.bg,'bold'}
+    highlight = {colors.white,colors.bg,'bold'}
   }
 }
 
 section.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
-    highlight = {serenade_colors.fg,serenade_colors.bg}
+    highlight = {colors.fg,colors.bg}
   }
 }

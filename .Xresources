@@ -1,5 +1,5 @@
 ! colors
-#include ".Xresources.d/serenade"
+#include ".Xresources.d/sakura"
 
 ! dmenu
 dmenu.background: background

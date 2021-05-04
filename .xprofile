@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
 export NeovideMultiGrid
-picom -b --experimental-backends
-#xrdb -load ~/.Xresources &
+xrdb -load ~/.Xresources &
 git config --global credential.helper store &
 unclutter &
 fcitx &

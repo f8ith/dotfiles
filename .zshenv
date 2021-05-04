@@ -2,7 +2,7 @@
 
 export EDITOR="nvim"
 export VISUAL="nvr -cc split --remote-wait"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 export NeovideMultiGrid
 

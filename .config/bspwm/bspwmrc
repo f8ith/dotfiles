@@ -6,6 +6,7 @@ sxhkd &
 killall dunst
 dunst &
 ~/.fehbg &
+picom -b --experimental-backends
 . ~/.config/polybar/launch.sh &
 
 # Colors

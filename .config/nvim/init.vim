@@ -252,7 +252,7 @@ let g:tcomment#options = {'col': 1}
 
 let ayucolor="light"  " for light version of theme
 let &background="light"
-colorscheme serenade
+colorscheme ayu
 
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'

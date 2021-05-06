@@ -205,7 +205,7 @@ use {
 -- use 'ajh17/spacegray.vim'
 -- use 'fxn/vim-monochrome'
 -- use 'cocopon/iceberg.vim'
-use 'ayu-theme/ayu-vim'
+use 'Luxed/ayu-vim'
 use 'b4skyx/serenade'
 -- use 'connorholyday/vim-snazzy'
 -- use 'joshdick/onedark.vim'
@@ -250,11 +250,19 @@ use {
     require'bufferline'.setup{
         highlights = {
             fill = {
-                guifg = '#fafafa',
+                guifg = '#ffffff',
+                guibg = '#ffffff'
+            },
+            tab = {
+                guifg = '#e7e8e9',
                 guibg = '#fafafa'
             },
             tab_close = {
                 guifg = '#ff9940',
+                guibg = '#fafafa'
+            },
+            indicator_selected = {
+                guifg = '#fafafa',
                 guibg = '#fafafa'
             },
         }
@@ -270,9 +278,9 @@ use {
   requires = {'kyazdani42/nvim-web-devicons'}
 }
 
--- use {
---   'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
---   config = function() require('gitsigns').setup() end
--- }
+use {
+  'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+  config = function() require('gitsigns').setup() end
+}
 
 end)

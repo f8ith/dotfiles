@@ -79,7 +79,7 @@ local buffer_not_empty = function()
   return false
 end
 
-section.left[1] = {
+--[[ section.left[1] = {
   FirstElement = {
     provider = function() return '│ ' end,
     --provider = function()
@@ -126,8 +126,9 @@ section.left[3] = {
     condition = buffer_not_empty,
     highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
   }
-}
-section.left[4] = {
+} ]]
+
+section.left[1] = {
   FileName = {
     -- provider = "FileName",
     provider = function()

@@ -22,13 +22,7 @@ export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
 
 system_type=$(uname -s)
 
-if [ "$system_type" = "Darwin" ]; then
-    export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/python@3.8/bin:$HOME/bin:$PATH"
-    eval "$(gdircolors -b ~/.dir_colors)"
-else
-    export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
-    eval "$(dircolors -b ~/.dir_colors)"
-fi
+export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
 
 export GO111MODULE=on
 

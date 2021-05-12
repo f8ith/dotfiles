@@ -38,7 +38,8 @@ use {
       "vuels",
       "bashls",
       "tsserver",
-      "pyright"
+      "pyright",
+      "gopls"
   }
 
   for _, lsp in ipairs(servers) do
@@ -250,8 +251,8 @@ use {
     require'bufferline'.setup{
         highlights = {
             fill = {
-                guifg = '#ffffff',
-                guibg = '#ffffff'
+                guifg = '#fafafa',
+                guibg = '#8A9199'
             },
             tab = {
                 guifg = '#e7e8e9',
@@ -259,7 +260,7 @@ use {
             },
             tab_close = {
                 guifg = '#ff9940',
-                guibg = '#fafafa'
+                guibg = '#e7e8e9'
             },
             indicator_selected = {
                 guifg = '#fafafa',

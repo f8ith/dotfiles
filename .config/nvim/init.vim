@@ -256,7 +256,7 @@ colorscheme ayu
 
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
-let g:indentLine_color_gui = '#3F464B'
+let g:indentLine_color_gui = '#e7e8e9'
 let g:indentLine_showFirstIndentLevel = 0
 
 " Open lazygit

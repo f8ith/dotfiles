@@ -1,9 +1,10 @@
 local wezterm = require 'wezterm';
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font"),
+  font = wezterm.font("SFMono Nerd Font Mono"),
   color_scheme = "ayu_light",
   use_dead_keys = false,
+  tab_bar_at_bottom = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},

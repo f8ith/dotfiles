@@ -47,6 +47,7 @@ cups-filters
 cups-pdf
 ddcutil
 debtap
+discord_arch_electron
 dmidecode
 dnsmasq
 docker
@@ -62,6 +63,7 @@ dxvk-bin
 ebtables
 edk2-ovmf
 efibootmgr
+emacs
 ethtool
 evtest
 eww-git
@@ -179,6 +181,7 @@ npm
 ntfs-3g
 ntp
 nvidia
+nvidia-container-toolkit
 nvidia-settings
 obconf
 obmenu-generator
@@ -231,9 +234,9 @@ reflector
 retroarch
 retroarch-assets-ozone
 retroarch-assets-xmb
-ripcord-arch-libs
 ripgrep
 rofi
+rpiplay-git
 ruby
 rustup
 samba
@@ -298,6 +301,7 @@ vulkan-mesa-layers
 vulkan-radeon
 vulkan-validation-layers
 webtorrent-cli
+wezterm
 wine-gecko
 wine-mono
 wine-staging

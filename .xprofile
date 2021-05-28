@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 export NeovideMultiGrid
+
 xrdb -load ~/.Xresources &
 git config --global credential.helper store &
 unclutter &

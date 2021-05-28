@@ -7,7 +7,7 @@ set timeoutlen=200 ttimeoutlen=0
 
 set termguicolors
 set noshowmode
-set showcmd
+set noshowcmd
 set shiftwidth=4
 set expandtab
 set tabstop=4
@@ -20,9 +20,9 @@ syntax enable
 
 set nu rnu
 set hidden
-set cmdheight=2
+set cmdheight=1
 set updatetime=50
-set shortmess+=c
+set shortmess+=F
 filetype plugin indent on
 
 set guifont=SFMono\ Nerd\ Font:h16
@@ -209,7 +209,7 @@ augroup END
 autocmd InsertEnter * norm zz
 autocmd BufWritePre * %s/\s\+$//e
 command Fix :lua vim.lsp.buf.formatting()
-autocmd BufWritePost * :Fix
+" autocmd BufWritePost * :Fix
 
 " closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'

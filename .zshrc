@@ -16,6 +16,8 @@ export KEYTIMEOUT=1
 # bindkey -M menuselect 'l' vi-forward-char
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey -v '^?' backward-delete-char
+bindkey '^n' expand-or-complete
+bindkey '^p' reverse-menu-complete
 
 # lfcd () {
 #     tmp="$(mktemp)"

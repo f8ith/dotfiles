@@ -32,10 +32,9 @@ shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
 # destroy desktop
-alt - q : yabai -m window --close
+shift + alt - q : yabai -m window --close
 
 # fast focus desktop
-alt - x : yabai -m space --focus recent
 alt - z : yabai -m space --focus prev
 alt - c : yabai -m space --focus next
 alt - 1 : yabai -m space --focus 1
@@ -50,7 +49,6 @@ alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
 # send window to desktop and follow focus
-shift + alt - x : yabai -m window --space recent;
 shift + alt - z : yabai -m window --space prev;
 shift + alt - c : yabai -m window --space next;
 shift + alt - 1 : yabai -m window --space  1;
@@ -85,20 +83,16 @@ alt + ctrl + alt - l : yabai -m window --resize right:-20:0
 # rotate tree
 alt - r : yabai -m space --rotate 90
 
-# mirror tree y-axis
-alt - y : yabai -m space --mirror y-axis
-
-# mirror tree x-axis
-alt - x : yabai -m space --mirror x-axis
-
 # toggle desktop offset
 alt - 0x1B : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # toggle window parent zoom
 # alt - d : yabai -m window --toggle zoom-parent
 
-# toggle window fullscreen zoom
-alt - f : yabai -m window --toggle zoom-fullscreen
+# toggle window zoom
+alt - x : yabai -m query --spaces --window | grep '"type":"float"' && yabai -m space --layout bsp;\
+          yabai -m query --windows --window | grep '"floating":1' && yabai -m window --toggle float;\
+          yabai -m window --toggle zoom-fullscreen;
 
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen

@@ -8,7 +8,7 @@ return {
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
-    { key = "|", mods = "LEADER|SHIFT",       action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     { key = "z", mods = "LEADER",       action="TogglePaneZoomState" },
     { key = "c", mods = "LEADER",       action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     { key = "h", mods = "LEADER",       action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -72,5 +72,5 @@ return {
         -- can also be used for `inactive_tab`.
       },
     }
-  }
+  },
 }

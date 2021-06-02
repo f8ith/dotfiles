@@ -63,6 +63,7 @@ dxvk-bin
 ebtables
 edk2-ovmf
 efibootmgr
+efm-langserver
 emacs
 ethtool
 evtest
@@ -84,7 +85,6 @@ firejail
 flex
 fontforge
 fortune-mod
-freeoffice
 fzf
 gamemode
 gcc
@@ -114,7 +114,7 @@ gtk2-perl
 guvcview
 gvfs
 hardinfo
-heroku-cli
+heroku-cli-bin
 htop
 i2c-tools
 icons-in-terminal
@@ -133,6 +133,7 @@ lib32-libva-mesa-driver
 lib32-nvidia-utils
 lib32-vkd3d
 lib32-vulkan-radeon
+libreoffice-fresh
 libretro-mupen64plus-next
 libselinux
 libva-mesa-driver
@@ -193,6 +194,7 @@ opencl-nvidia
 openrazer-meta
 openssh
 os-prober
+osu-lazer-bin
 otf-arsenal
 otf-hermit
 otf-overpass
@@ -202,7 +204,7 @@ pacman-contrib
 papirus-folders-git
 papirus-icon-theme
 parcellite
-paru
+paru-bin
 patch
 pavucontrol
 pcsx2
@@ -316,6 +318,7 @@ xdg-user-dirs
 xdotool
 xf86-input-evdev
 xf86-video-amdgpu
+xidlehook
 xorg-fonts-misc
 xorg-server
 xorg-xcursorgen

@@ -6,6 +6,8 @@
 # ---
 source "$HOME"/.owl4ce_var
 
+export PRIMARY_DISPLAY="DP-4"
+
 # there was once a pulseaudio here
 
 # UI Appearance
@@ -18,8 +20,18 @@ picom -b > /dev/null 2>&1
 # lxpolkit > /dev/null 2>&1 &
 
 # Sessions Autolock
-xautolock -time "$AUTOLOCK_MINUTE" -locker "$($DEFAPPS_EXEC -g lockscreen)" -detectsleep -resetsaver -corners 00-- -cornersize 1000 \
-  -notifier "$EXNOTIFY_SEND -i $ICON_GLADIENT_DIR/lock.png 'Lockscreen' 'Will be locked in 5s from now'" -notify 5 > /dev/null 2>&1 &
+#xautolock -time "$AUTOLOCK_MINUTE" -locker "$($DEFAPPS_EXEC -g lockscreen)" -detectsleep -resetsaver -corners 00-- -cornersize 1000 \
+#  -notifier "$EXNOTIFY_SEND -i $ICON_GLADIENT_DIR/lock.png 'Lockscreen' 'Will be locked in 5s from now'" -notify 5 > /dev/null 2>&1 &
+xidlehook \
+  -canceller \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 60 \
+    "xrandr --output $PRIMARY_DISPLAY --brightness .1" \
+    "xrandr --output $PRIMARY_DISPLAY --brightness 1" \
+  `# Undim & lock after 10 more seconds` \
+  --timer 10 \
+    "$($DEFAPPS_EXEC -g lockscreen)" \
 
 # Start MPD player (+notification-sender)
 #"$MPD_TCD"

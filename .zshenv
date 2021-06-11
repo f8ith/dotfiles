@@ -22,7 +22,7 @@ export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
 
 system_type=$(uname -s)
 
-export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
+export PATH="/usr/local/Cellar/mingw-w64/8.0.2/toolchain-x86_64/bin:$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/.npm/bin:$PATH"
 
 export GO111MODULE=on
 

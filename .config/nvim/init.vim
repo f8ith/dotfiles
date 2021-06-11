@@ -23,7 +23,6 @@ set hidden
 set cmdheight=1
 set updatetime=50
 set shortmess+=F
-filetype plugin indent on
 
 set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
@@ -65,24 +64,25 @@ lua require('faith.plugins')
 set signcolumn=yes
 
 " fzf
-nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
-nnoremap <silent> <leader>p :RG<CR>
+"
+" nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+" nnoremap <silent> <leader>p :RG<CR>
 
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+" set wildmode=list:longest,list:full
+" set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+" let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
 
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+" function! RipgrepFzf(query, fullscreen)
+"   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+"   let initial_command = printf(command_fmt, shellescape(a:query))
+"   let reload_command = printf(command_fmt, '{q}')
+"   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+"   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+" endfunction
+" command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " -- old config
 " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -212,10 +212,10 @@ command Fix :lua vim.lsp.buf.formatting()
 " autocmd BufWritePost * :Fix
 
 " closetag
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
-let g:closetag_filetypes = 'html,xhtml,phtml'
-let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
+let g:closetag_filetypes = 'html,xhtml,phtml,vue,javascriptvue'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,tsx'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
@@ -258,6 +258,10 @@ let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
 let g:indentLine_color_gui = '#e7e8e9'
 let g:indentLine_showFirstIndentLevel = 0
+let g:indent_blankline_filetype_exclude = ["help", "terminal", "dashboard"]
+let g:indent_blankline_buftype_exclude = ["terminal"]
+let g:indent_blankline_show_trailing_blankline_indent = 0
+let g:indent_blankline_use_treesitter = 1
 
 " Open lazygit
 nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
@@ -359,6 +363,8 @@ let g:diagnostic_show_sign = 0
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
+
+highlight NvimTreeNormal guibg=#ffffff
 
 endif
 let g:neovide_refresh_rate=140

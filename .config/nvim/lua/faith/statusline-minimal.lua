@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local fn = vim.fn
 local gl = require("galaxyline")
 local section = gl.section
-gl.short_line_list = {"packer", "CHADTREE", "LuaTree", "packager", "Floaterm", "coc-explorer"}
+gl.short_line_list = {"packer", "CHADTREE", "LuaTree", "packager", "Floaterm", "coc-explorer", "NvimTree"}
 
 local serenade_colors = {
   bg = "#2a2f33",
@@ -34,6 +34,7 @@ local ayu_colors = {
   grey = "#5c6773",
   blue = "#73d8ff",
   red = "#ff3333",
+  accent = "#ff9940"
 }
 
 local one_dark_colors = {
@@ -79,16 +80,17 @@ local buffer_not_empty = function()
   return false
 end
 
---[[ section.left[1] = {
+section.left[1] = {
   FirstElement = {
-    provider = function() return '│ ' end,
+    --provider = function() return '│ ' end,
+    provider = function() return '▎ ' end,
     --provider = function()
     --  return "  "
     --end,
-    highlight = {colors.green, colors.line_bg}
+    highlight = {colors.accent, colors.line_bg}
   }
 }
-section.left[2] = {
+--[[section.left[2] = {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
@@ -120,15 +122,16 @@ section.left[2] = {
     highlight = {colors.red, colors.line_bg, "bold"}
   }
 }
-section.left[3] = {
+]]
+section.left[2] = {
   FileIcon = {
     provider = "FileIcon",
     condition = buffer_not_empty,
     highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
   }
-} ]]
+}
 
-section.left[1] = {
+section.left[3] = {
   FileName = {
     -- provider = "FileName",
     provider = function()
@@ -232,16 +235,16 @@ section.right[9] = {
   }
 }
 
-section.short_line_left[1] = {
+--[[ section.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = ' ',
     separator_highlight = {'NONE',colors.bg},
     highlight = {colors.blue,colors.bg,'bold'}
   }
-}
+} ]]
 
-section.short_line_left[2] = {
+--[[ section.short_line_left[2] = {
   SFileName = {
     provider = function ()
       local fileinfo = require('galaxyline.provider_fileinfo')
@@ -263,4 +266,4 @@ section.short_line_right[1] = {
     provider= 'BufferIcon',
     highlight = {colors.fg,colors.bg}
   }
-}
+} ]]

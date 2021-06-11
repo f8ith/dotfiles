@@ -1,10 +1,11 @@
 local wezterm = require 'wezterm';
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font", {weight="Regular", italic=false}),
 {% if yadm.os == "Darwin" %}
+  font = wezterm.font("SFMono Nerd Font"),
   font_size = 14,
 {% else %}
+  font = wezterm.font("SFMono Nerd Font Mono"),
   font_size = 12,
 {% endif %}
   color_scheme = "ayu_light",

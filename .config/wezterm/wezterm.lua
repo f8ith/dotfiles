@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm';
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font", {weight="Regular", italic=false}),
+  font = wezterm.font("SFMono Nerd Font Mono", {weight="Regular", italic=false}),
   font_size = 12,
   color_scheme = "ayu_light",
   use_dead_keys = false,

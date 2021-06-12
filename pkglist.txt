@@ -129,6 +129,7 @@ jstest-gtk-git
 kitty
 kvantum-qt5
 lazygit
+lf-bin
 lib32-libva-mesa-driver
 lib32-nvidia-utils
 lib32-vkd3d
@@ -214,6 +215,8 @@ piper
 pipewire-alsa
 pipewire-pulse
 pkgconf
+plank
+plank-theme-numix
 plata-theme
 playerctl
 polybar

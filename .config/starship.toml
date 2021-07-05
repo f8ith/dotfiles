@@ -6,4 +6,3 @@
 format = "[\\$](bold green) "
 error_symbol = "✗"
 success_symbol = "[\\$](bold green) "
-use_symbol_for_status = true

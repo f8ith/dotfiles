@@ -7,7 +7,7 @@ return {
 {% else %}
   font_size = 12,
 {% endif %}
-  color_scheme = "ayu_light",
+  color_scheme = "PaleNightHC",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {

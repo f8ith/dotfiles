@@ -3,7 +3,7 @@ return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
   font = wezterm.font("SFMono Nerd Font"),
   font_size = 14,
-  color_scheme = "ayu_light",
+  color_scheme = "PaleNightHC",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {

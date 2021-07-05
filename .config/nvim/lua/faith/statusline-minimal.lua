@@ -4,6 +4,23 @@ local gl = require("galaxyline")
 local section = gl.section
 gl.short_line_list = {"packer", "CHADTREE", "LuaTree", "packager", "Floaterm", "coc-explorer", "NvimTree"}
 
+local palenight_colors = {
+  bg = "#292D3E",
+  fg = "#cccccc",
+  line_bg = "#292D3E",
+  red = "#ff5370",
+  green = "#C3E88D",
+  yellow = "#ffcb6b",
+  orange = "#F78C6C",
+  blue = "#82b1ff",
+  darkblue = "#82b1ff",
+  purple = "#c792ea",
+  magenta = "#939ede",
+  cyan = "#89DDFF",
+  grey = "#697098",
+  accent = "#c792ea",
+}
+
 local serenade_colors = {
   bg = "#2a2f33",
   fg = "#bfddb2",
@@ -71,7 +88,7 @@ local nord_colors = {
   red = "#BF616A"
 }
 
-local colors = ayu_colors
+local colors = palenight_colors
 
 local buffer_not_empty = function()
   if fn.empty(fn.expand("%:t")) ~= 1 then
@@ -133,17 +150,54 @@ section.left[2] = {
 
 section.left[3] = {
   FileName = {
-    -- provider = "FileName",
-    provider = function()
+    provider = "FileName",
+    --[[ provider = function()
       return fn.expand("%:F")
-    end,
+    end, ]]
     condition = buffer_not_empty,
     separator = " ",
     separator_highlight = {colors.purple, colors.bg},
     highlight = {colors.purple, colors.line_bg, "bold"}
   }
 }
+section.left[4] = {
+  DiagnosticError = {
+    provider = "DiagnosticError",
+    separator = " ",
+    icon = " ",
+    highlight = {colors.red, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
+  }
+}
+section.left[5] = {
+  DiagnosticWarn = {
+    provider = "DiagnosticWarn",
+    -- separator = " ",
+    icon = " ",
+    highlight = {colors.yellow, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
+  }
+}
 
+section.left[6] = {
+  DiagnosticInfo = {
+    -- separator = " ",
+    provider = "DiagnosticInfo",
+    icon = " ",
+    highlight = {colors.green, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
+  }
+}
+--[[
+section.left[7] = {
+  DiagnosticHint = {
+    provider = "DiagnosticHint",
+    -- separator = " ",
+    icon = " ",
+    highlight = {colors.blue, colors.line_bg},
+    separator_highlight = {colors.bg, colors.bg}
+  }
+} ]]
 section.right[1] = {
   GitIcon = {
     provider = function()
@@ -157,8 +211,8 @@ section.right[2] = {
   GitBranch = {
     provider = "GitBranch",
     condition = require("galaxyline.provider_vcs").check_git_workspace,
-    separator = "",
-    separator_highlight = {colors.purple, colors.bg},
+    --[[ separator = "",
+    separator_highlight = {colors.purple, colors.bg}, ]]
     highlight = {colors.orange, colors.line_bg, "bold"}
   }
 }
@@ -170,7 +224,7 @@ local checkwidth = function()
   end
   return false
 end
-
+--[[
 section.right[3] = {
   DiffAdd = {
     provider = "DiffAdd",
@@ -194,46 +248,7 @@ section.right[5] = {
     icon = " ",
     highlight = {colors.red, colors.line_bg}
   }
-}
-
-section.right[6] = {
-  DiagnosticError = {
-    provider = "DiagnosticError",
-    separator = " ",
-    icon = " ",
-    highlight = {colors.red, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
-  }
-}
-section.right[7] = {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    -- separator = " ",
-    icon = " ",
-    highlight = {colors.yellow, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
-  }
-}
-
-section.right[8] = {
-  DiagnosticInfo = {
-    -- separator = " ",
-    provider = "DiagnosticInfo",
-    icon = " ",
-    highlight = {colors.green, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
-  }
-}
-
-section.right[9] = {
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    -- separator = " ",
-    icon = " ",
-    highlight = {colors.blue, colors.line_bg},
-    separator_highlight = {colors.bg, colors.bg}
-  }
-}
+} ]]
 
 --[[ section.short_line_left[1] = {
   BufferType = {

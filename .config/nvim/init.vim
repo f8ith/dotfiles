@@ -251,8 +251,10 @@ let g:NERDToggleCheckAllLines = 1
 let g:tcomment#options = {'col': 1}
 
 let ayucolor="light"  " for light version of theme
-let &background="light"
-colorscheme ayu
+let &background="dark"
+let g:palenight_terminal_italics=1
+colorscheme palenight
+
 
 let g:indentLine_char = '│'
 let g:indentLine_first_char = '│'
@@ -364,7 +366,7 @@ nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
 
-highlight NvimTreeNormal guibg=#ffffff
+" highlight NvimTreeNormal guibg=#ffffff
 
 endif
 let g:neovide_refresh_rate=140

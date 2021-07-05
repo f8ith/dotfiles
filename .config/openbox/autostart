@@ -36,5 +36,11 @@ xidlehook \
 # Start MPD player (+notification-sender)
 #"$MPD_TCD"
 
+#dock
+XDG_SESSION_TYPE=x11 plank &
+
+#polybar
+~/.config/polybar/launch.sh
+
 # wallpaper
 ~/.fehbg &

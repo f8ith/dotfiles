@@ -1,7 +1,6 @@
 acpid
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
-akvcam-dkms
 alacritty
 alsa-utils
 amd-ucode
@@ -12,6 +11,7 @@ aseprite
 asetroot
 atool
 audacity
+aurutils
 autoconf
 autojump
 automake
@@ -129,6 +129,7 @@ jstest-gtk-git
 kitty
 kvantum-qt5
 lazygit
+lf-bin
 lib32-libva-mesa-driver
 lib32-nvidia-utils
 lib32-vkd3d
@@ -204,7 +205,6 @@ pacman-contrib
 papirus-folders-git
 papirus-icon-theme
 parcellite
-paru-bin
 patch
 pavucontrol
 pcsx2
@@ -215,6 +215,8 @@ piper
 pipewire-alsa
 pipewire-pulse
 pkgconf
+plank
+plank-theme-numix
 plata-theme
 playerctl
 polybar
@@ -233,9 +235,6 @@ ranger
 raw-thumbnailer
 redshift
 reflector
-retroarch
-retroarch-assets-ozone
-retroarch-assets-xmb
 ripgrep
 rofi
 rpiplay-git
@@ -293,7 +292,6 @@ unrar
 usbutils
 uthash
 v4l2loopback-dc-dkms
-v4l2loopback-dkms-git
 vi
 vifm
 virt-manager
@@ -302,7 +300,6 @@ vkd3d
 vulkan-mesa-layers
 vulkan-radeon
 vulkan-validation-layers
-webtorrent-cli
 wezterm
 wine-gecko
 wine-mono

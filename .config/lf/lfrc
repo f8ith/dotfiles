@@ -1,8 +1,7 @@
 set preview true
 set previewer ~/.config/lf/previewer
 set cleaner ~/.config/lf/cleaner
-set nohidden 
-set color256 true
+set nohidden
 set icons true
 set ignorecase true
 
@@ -28,7 +27,7 @@ cmd open ${{
 }}
 
 cmd mkdir ${{
-  printf "Directory Name: " 
+  printf "Directory Name: "
   read ans
   mkdir $ans
 }}

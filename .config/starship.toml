@@ -1,5 +1,8 @@
+# format = """
+# [┌───](bold green) $directory$rust$package
+# [└─](bold green) """
+
 [character]
-symbol = "➜"
+format = "[\\$](bold green) "
 error_symbol = "✗"
-success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-use_symbol_for_status = true
+success_symbol = "[\\$](bold green) "

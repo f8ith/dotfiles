@@ -250,6 +250,7 @@ use {
 -- use 'ajh17/spacegray.vim'
 -- use 'fxn/vim-monochrome'
 -- use 'cocopon/iceberg.vim'
+use 'drewtempelmeyer/palenight.vim'
 use 'Luxed/ayu-vim'
 use 'b4skyx/serenade'
 -- use 'connorholyday/vim-snazzy'
@@ -292,6 +293,7 @@ use 'Yggdroot/indentLine'
 use {
   'akinsho/nvim-bufferline.lua',
   config = function()
+<<<<<<< HEAD
     --[[ ayu dark
     local bg = "#0a0e1a"
     local bg2 = "#1b2733"
@@ -301,6 +303,9 @@ use {
     local accent2 = "#00010a"
     local accent3 = "#e6b673" ]]
 
+=======
+    --[[ ayu light
+>>>>>>> refs/remotes/origin/master
     local bg = "#fafafa"
     local bg2 = "#e7e8e9"
     local bg3 = "#e1e1e2"
@@ -308,6 +313,14 @@ use {
     local accent = "#ff9940"
     local accent2 = "#ff3333"
     local accent3 = "#ffc94a"
+    ]]
+    local bg = "#292d3e"
+    local bg2 = "#3e4251"
+    local bg3 = "#3E4452"
+    local fg = "#cccccc"
+    local accent = "#F78C6C"
+    local accent2 = "#ff5370"
+    local accent3 = "#ffcb6b"
     require'bufferline'.setup{
         options = {
           numbers = "none",

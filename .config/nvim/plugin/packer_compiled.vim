@@ -62,8 +62,9 @@ time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
@@ -125,12 +126,12 @@ _G.packer_plugins = {
     path = "/home/faith/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
   ["nvim-bufferline.lua"] = {
-    config = { "\27LJ\2\nµ\b\0\0\r\0-\0H'\0\0\0'\1\1\0'\2\2\0'\3\3\0'\4\4\0'\5\5\0'\6\6\0006\a\a\0'\t\b\0B\a\2\0029\a\t\a5\t\r\0005\n\n\0004\v\3\0005\f\v\0>\f\1\v=\v\f\n=\n\14\t5\n\17\0005\v\15\0=\0\16\v=\v\18\n5\v\19\0=\0\16\v=\v\20\n5\v\21\0=\3\22\v=\1\16\v=\v\23\n5\v\24\0=\2\22\v=\0\16\v=\v\25\n5\v\26\0=\2\22\v=\1\16\v=\v\27\n5\v\28\0=\1\22\v=\1\16\v=\v\29\n5\v\30\0=\4\22\v=\1\16\v=\v\31\n5\v \0=\3\22\v=\0\16\v=\v!\n5\v\"\0=\4\22\v=\1\16\v=\v#\n5\v$\0=\4\22\v=\1\16\v=\v%\n5\v&\0=\5\22\v=\1\16\v=\v'\n5\v(\0=\6\22\v=\0\16\v=\v)\n5\v*\0=\4\22\v=\0\16\v=\v+\n=\n,\tB\a\2\1K\0\1\0\15highlights\21modified_visible\1\0\0\rmodified\1\0\0\22modified_selected\1\0\0\14tab_close\1\0\0\17tab_selected\1\0\0\btab\1\0\0\23indicator_selected\1\0\0\22separator_visible\1\0\0\23separator_selected\1\0\0\14separator\1\0\0\20buffer_selected\nguifg\1\0\1\bgui\tbold\15background\1\0\0\tfill\1\0\0\nguibg\1\0\0\foptions\1\0\0\foffsets\1\0\3\14highlight\14Directory\rfiletype\rNvimTree\15text_align\tleft\1\0\20\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\20separator_style\tthin\23right_trunc_marker\bÔÇ©\25enforce_regular_tabs\2\22left_trunc_marker\bÔÇ®\fsort_by\14directory\15close_icon\bÔÄç\18modified_icon\b‚óè\27always_show_bufferline\2\22buffer_close_icon\bÔôï\19indicator_icon\b‚ñé\rmappings\2\fnumbers\tnone\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\nsetup\15bufferline\frequire\f#ffc94a\f#ff3333\f#ff9940\f#5c6773\f#e1e1e2\f#e7e8e9\f#fafafa\0" },
+    config = { "\27LJ\2\nµ\b\0\0\r\0-\0H'\0\0\0'\1\1\0'\2\2\0'\3\3\0'\4\4\0'\5\5\0'\6\6\0006\a\a\0'\t\b\0B\a\2\0029\a\t\a5\t\r\0005\n\n\0004\v\3\0005\f\v\0>\f\1\v=\v\f\n=\n\14\t5\n\17\0005\v\15\0=\0\16\v=\v\18\n5\v\19\0=\0\16\v=\v\20\n5\v\21\0=\3\22\v=\1\16\v=\v\23\n5\v\24\0=\2\22\v=\0\16\v=\v\25\n5\v\26\0=\2\22\v=\1\16\v=\v\27\n5\v\28\0=\1\22\v=\1\16\v=\v\29\n5\v\30\0=\4\22\v=\1\16\v=\v\31\n5\v \0=\3\22\v=\0\16\v=\v!\n5\v\"\0=\4\22\v=\1\16\v=\v#\n5\v$\0=\4\22\v=\1\16\v=\v%\n5\v&\0=\5\22\v=\1\16\v=\v'\n5\v(\0=\6\22\v=\0\16\v=\v)\n5\v*\0=\4\22\v=\0\16\v=\v+\n=\n,\tB\a\2\1K\0\1\0\15highlights\21modified_visible\1\0\0\rmodified\1\0\0\22modified_selected\1\0\0\14tab_close\1\0\0\17tab_selected\1\0\0\btab\1\0\0\23indicator_selected\1\0\0\22separator_visible\1\0\0\23separator_selected\1\0\0\14separator\1\0\0\20buffer_selected\nguifg\1\0\1\bgui\tbold\15background\1\0\0\tfill\1\0\0\nguibg\1\0\0\foptions\1\0\0\foffsets\1\0\3\rfiletype\rNvimTree\14highlight\14Directory\15text_align\tleft\1\0\20\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\22buffer_close_icon\bÔôï\19indicator_icon\b‚ñé\rmappings\2\fnumbers\tnone\fsort_by\14directory\27always_show_bufferline\2\25enforce_regular_tabs\2\20separator_style\tthin\nsetup\15bufferline\frequire\f#ffc94a\f#ff3333\f#ff9940\f#5c6773\f#e1e1e2\f#e7e8e9\f#fafafa\0" },
     loaded = true,
     path = "/home/faith/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-compe"] = {
-    config = { "\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\vbuffer\2\tcalc\2\tpath\2\nvsnip\2\rnvim_lua\2\rnvim_lsp\2\1\0\f\19max_kind_width\3d\19max_abbr_width\3d\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\ndebug\1\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\18documentation\2\19max_menu_width\3d\nsetup\ncompe\frequire\0" },
+    config = { "\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\vbuffer\2\rnvim_lsp\2\tcalc\2\tpath\2\rnvim_lua\2\nvsnip\2\1\0\f\19max_abbr_width\3d\18documentation\2\19max_menu_width\3d\19max_kind_width\3d\ndebug\1\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\nsetup\ncompe\frequire\0" },
     loaded = true,
     path = "/home/faith/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
@@ -227,25 +228,25 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: gitsigns.nvim
-time("Config for gitsigns.nvim", true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time("Config for gitsigns.nvim", false)
 -- Config for: lspsaga.nvim
 time("Config for lspsaga.nvim", true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
 time("Config for lspsaga.nvim", false)
--- Config for: snap
-time("Config for snap", true)
-try_loadstring("\27LJ\2\nÄ\2\0\0\b\1\v\1\"-\0\0\0009\0\0\0005\2\4\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2-\5\0\0009\5\1\5'\a\3\0B\5\2\0A\3\0\2=\3\5\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\a\3=\3\a\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\b\3=\3\b\0024\3\3\0-\4\0\0009\4\1\4'\6\t\0B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\0¿\nviews\17preview.file\16multiselect\vselect\16select.file\rproducer\1\0\0\26producer.ripgrep.file\17consumer.fzf\bget\brun\3ÄÄ¿ô\4Ë\1\0\0\a\1\n\1\29-\0\0\0009\0\0\0005\2\3\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2=\3\4\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\6\3=\3\6\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\a\3=\3\a\0024\3\3\0-\4\0\0009\4\1\4'\6\b\0B\4\2\0?\4\0\0=\3\t\2B\0\2\1K\0\1\0\0¿\nviews\20preview.vimgrep\16multiselect\vselect\19select.vimgrep\rproducer\1\0\0\29producer.ripgrep.vimgrep\bget\brun\3ÄÄ¿ô\4ã\1\1\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0015\3\4\0005\4\5\0003\5\6\0B\1\4\0019\1\2\0009\1\3\0015\3\a\0005\4\b\0003\5\t\0B\1\4\0012\0\0ÄK\0\1\0\0\1\2\0\0\14<Leader>p\1\2\0\0\6n\0\1\2\0\0\n<C-p>\1\2\0\0\6n\bmap\rregister\tsnap\frequire\0", "config", "snap")
-time("Config for snap", false)
+-- Config for: gitsigns.nvim
+time("Config for gitsigns.nvim", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time("Config for gitsigns.nvim", false)
 -- Config for: galaxyline.nvim
 time("Config for galaxyline.nvim", true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29faith.statusline-minimal\frequire\0", "config", "galaxyline.nvim")
 time("Config for galaxyline.nvim", false)
+-- Config for: snap
+time("Config for snap", true)
+try_loadstring("\27LJ\2\nÄ\2\0\0\b\1\v\1\"-\0\0\0009\0\0\0005\2\4\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2-\5\0\0009\5\1\5'\a\3\0B\5\2\0A\3\0\2=\3\5\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\a\3=\3\a\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\b\3=\3\b\0024\3\3\0-\4\0\0009\4\1\4'\6\t\0B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\0¿\nviews\17preview.file\16multiselect\vselect\16select.file\rproducer\1\0\0\26producer.ripgrep.file\17consumer.fzf\bget\brun\3ÄÄ¿ô\4Ë\1\0\0\a\1\n\1\29-\0\0\0009\0\0\0005\2\3\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2=\3\4\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\6\3=\3\6\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\a\3=\3\a\0024\3\3\0-\4\0\0009\4\1\4'\6\b\0B\4\2\0?\4\0\0=\3\t\2B\0\2\1K\0\1\0\0¿\nviews\20preview.vimgrep\16multiselect\vselect\19select.vimgrep\rproducer\1\0\0\29producer.ripgrep.vimgrep\bget\brun\3ÄÄ¿ô\4ã\1\1\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0015\3\4\0005\4\5\0003\5\6\0B\1\4\0019\1\2\0009\1\3\0015\3\a\0005\4\b\0003\5\t\0B\1\4\0012\0\0ÄK\0\1\0\0\1\2\0\0\14<Leader>p\1\2\0\0\6n\0\1\2\0\0\n<C-p>\1\2\0\0\6n\bmap\rregister\tsnap\frequire\0", "config", "snap")
+time("Config for snap", false)
 -- Config for: nvim-compe
 time("Config for nvim-compe", true)
-try_loadstring("\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\vbuffer\2\tcalc\2\tpath\2\nvsnip\2\rnvim_lua\2\rnvim_lsp\2\1\0\f\19max_kind_width\3d\19max_abbr_width\3d\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\ndebug\1\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\18documentation\2\19max_menu_width\3d\nsetup\ncompe\frequire\0", "config", "nvim-compe")
+try_loadstring("\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\vbuffer\2\rnvim_lsp\2\tcalc\2\tpath\2\rnvim_lua\2\nvsnip\2\1\0\f\19max_abbr_width\3d\18documentation\2\19max_menu_width\3d\19max_kind_width\3d\ndebug\1\21incomplete_delay\3ê\3\19source_timeout\3»\1\18throttle_time\3P\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\nsetup\ncompe\frequire\0", "config", "nvim-compe")
 time("Config for nvim-compe", false)
 -- Config for: nvim-lspconfig
 time("Config for nvim-lspconfig", true)
@@ -253,7 +254,7 @@ try_loadstring("\27LJ\2\nπ\2\0\5\n\0\r\0)\v\0\0\0X\5\2Ä\v\2\0\0X\5\1ÄK\0\1\0006\
 time("Config for nvim-lspconfig", false)
 -- Config for: nvim-bufferline.lua
 time("Config for nvim-bufferline.lua", true)
-try_loadstring("\27LJ\2\nµ\b\0\0\r\0-\0H'\0\0\0'\1\1\0'\2\2\0'\3\3\0'\4\4\0'\5\5\0'\6\6\0006\a\a\0'\t\b\0B\a\2\0029\a\t\a5\t\r\0005\n\n\0004\v\3\0005\f\v\0>\f\1\v=\v\f\n=\n\14\t5\n\17\0005\v\15\0=\0\16\v=\v\18\n5\v\19\0=\0\16\v=\v\20\n5\v\21\0=\3\22\v=\1\16\v=\v\23\n5\v\24\0=\2\22\v=\0\16\v=\v\25\n5\v\26\0=\2\22\v=\1\16\v=\v\27\n5\v\28\0=\1\22\v=\1\16\v=\v\29\n5\v\30\0=\4\22\v=\1\16\v=\v\31\n5\v \0=\3\22\v=\0\16\v=\v!\n5\v\"\0=\4\22\v=\1\16\v=\v#\n5\v$\0=\4\22\v=\1\16\v=\v%\n5\v&\0=\5\22\v=\1\16\v=\v'\n5\v(\0=\6\22\v=\0\16\v=\v)\n5\v*\0=\4\22\v=\0\16\v=\v+\n=\n,\tB\a\2\1K\0\1\0\15highlights\21modified_visible\1\0\0\rmodified\1\0\0\22modified_selected\1\0\0\14tab_close\1\0\0\17tab_selected\1\0\0\btab\1\0\0\23indicator_selected\1\0\0\22separator_visible\1\0\0\23separator_selected\1\0\0\14separator\1\0\0\20buffer_selected\nguifg\1\0\1\bgui\tbold\15background\1\0\0\tfill\1\0\0\nguibg\1\0\0\foptions\1\0\0\foffsets\1\0\3\14highlight\14Directory\rfiletype\rNvimTree\15text_align\tleft\1\0\20\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\20separator_style\tthin\23right_trunc_marker\bÔÇ©\25enforce_regular_tabs\2\22left_trunc_marker\bÔÇ®\fsort_by\14directory\15close_icon\bÔÄç\18modified_icon\b‚óè\27always_show_bufferline\2\22buffer_close_icon\bÔôï\19indicator_icon\b‚ñé\rmappings\2\fnumbers\tnone\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\nsetup\15bufferline\frequire\f#ffc94a\f#ff3333\f#ff9940\f#5c6773\f#e1e1e2\f#e7e8e9\f#fafafa\0", "config", "nvim-bufferline.lua")
+try_loadstring("\27LJ\2\nµ\b\0\0\r\0-\0H'\0\0\0'\1\1\0'\2\2\0'\3\3\0'\4\4\0'\5\5\0'\6\6\0006\a\a\0'\t\b\0B\a\2\0029\a\t\a5\t\r\0005\n\n\0004\v\3\0005\f\v\0>\f\1\v=\v\f\n=\n\14\t5\n\17\0005\v\15\0=\0\16\v=\v\18\n5\v\19\0=\0\16\v=\v\20\n5\v\21\0=\3\22\v=\1\16\v=\v\23\n5\v\24\0=\2\22\v=\0\16\v=\v\25\n5\v\26\0=\2\22\v=\1\16\v=\v\27\n5\v\28\0=\1\22\v=\1\16\v=\v\29\n5\v\30\0=\4\22\v=\1\16\v=\v\31\n5\v \0=\3\22\v=\0\16\v=\v!\n5\v\"\0=\4\22\v=\1\16\v=\v#\n5\v$\0=\4\22\v=\1\16\v=\v%\n5\v&\0=\5\22\v=\1\16\v=\v'\n5\v(\0=\6\22\v=\0\16\v=\v)\n5\v*\0=\4\22\v=\0\16\v=\v+\n=\n,\tB\a\2\1K\0\1\0\15highlights\21modified_visible\1\0\0\rmodified\1\0\0\22modified_selected\1\0\0\14tab_close\1\0\0\17tab_selected\1\0\0\btab\1\0\0\23indicator_selected\1\0\0\22separator_visible\1\0\0\23separator_selected\1\0\0\14separator\1\0\0\20buffer_selected\nguifg\1\0\1\bgui\tbold\15background\1\0\0\tfill\1\0\0\nguibg\1\0\0\foptions\1\0\0\foffsets\1\0\3\rfiletype\rNvimTree\14highlight\14Directory\15text_align\tleft\1\0\20\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\22buffer_close_icon\bÔôï\19indicator_icon\b‚ñé\rmappings\2\fnumbers\tnone\fsort_by\14directory\27always_show_bufferline\2\25enforce_regular_tabs\2\20separator_style\tthin\nsetup\15bufferline\frequire\f#ffc94a\f#ff3333\f#ff9940\f#5c6773\f#e1e1e2\f#e7e8e9\f#fafafa\0", "config", "nvim-bufferline.lua")
 time("Config for nvim-bufferline.lua", false)
 
 -- Command lazy-loads

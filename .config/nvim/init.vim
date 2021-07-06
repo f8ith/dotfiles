@@ -367,6 +367,7 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
 
 highlight NvimTreeNormal guibg=#ffffff
+" highlight NvimTreeNormal guibg=#0f1419
 
 endif
 let g:neovide_refresh_rate=140

@@ -292,6 +292,15 @@ use 'Yggdroot/indentLine'
 use {
   'akinsho/nvim-bufferline.lua',
   config = function()
+    --[[ ayu dark
+    local bg = "#0a0e1a"
+    local bg2 = "#1b2733"
+    local bg3 = "#304357"
+    local fg = "#b3b1ad"
+    local accent = "#e6b450"
+    local accent2 = "#00010a"
+    local accent3 = "#e6b673" ]]
+
     local bg = "#fafafa"
     local bg2 = "#e7e8e9"
     local bg3 = "#e1e1e2"

@@ -414,17 +414,12 @@
     <!-- run apps -->
     <keybind key="W-d">
       <action name="Execute">
-        <command>bash -c 'rofi launcher matching fuzzy -show combi'</command>
+        <command>bash -c '~/.config/rofi/bin/launcher_colorful'</command>
       </action>
     </keybind>
     <keybind key="W-S-l">
       <action name="Execute">
         <command>bash -c '~/.config/openbox/scripts/default-apps/launch lockscreen'</command>
-      </action>
-    </keybind>
-    <keybind key="W-r">
-      <action name="Execute">
-        <command>bash -c '~/.config/rofi/scripts/appsmenu.sh'</command>
       </action>
     </keybind>
     <keybind key="W-Prior">

@@ -121,6 +121,7 @@ icons-in-terminal
 inkscape
 inotify-tools
 inter-font
+jdk-openjdk
 joycond-cemuhook-git
 joycond-git
 joyutils
@@ -221,7 +222,6 @@ plata-theme
 playerctl
 polybar
 protontricks
-pulseeffects
 pulsemixer
 python-magic
 python-notify2
@@ -235,6 +235,7 @@ ranger
 raw-thumbnailer
 redshift
 reflector
+renameutils
 ripgrep
 rofi
 rpiplay-git

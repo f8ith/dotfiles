@@ -88,7 +88,7 @@ local nord_colors = {
   red = "#BF616A"
 }
 
-local colors = palenight_colors
+local colors = one_dark_colors
 
 local buffer_not_empty = function()
   if fn.empty(fn.expand("%:t")) ~= 1 then

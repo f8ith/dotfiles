@@ -254,7 +254,7 @@ use 'drewtempelmeyer/palenight.vim'
 use 'Luxed/ayu-vim'
 use 'b4skyx/serenade'
 -- use 'connorholyday/vim-snazzy'
--- use 'joshdick/onedark.vim'
+use 'navarasu/onedark.nvim'
 use 'morhetz/gruvbox'
 
 -- auto pairs

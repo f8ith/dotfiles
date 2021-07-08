@@ -368,13 +368,6 @@ nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>bd :Bdelete<CR>
 
-<<<<<<< HEAD
-highlight NvimTreeNormal guibg=#ffffff
-" highlight NvimTreeNormal guibg=#0f1419
-=======
-" highlight NvimTreeNormal guibg=#ffffff
->>>>>>> refs/remotes/origin/master
-
 endif
 let g:neovide_refresh_rate=140
 "}}}

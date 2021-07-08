@@ -1,4 +1,25 @@
 local wezterm = require 'wezterm';
+
+local ayu_colors = {
+  bg = "#e7e8e9",
+  bg2 = "#fafafa",
+  fg = "#575f66"
+}
+
+local palenight_colors = {
+  bg = "#292d3e",
+  bg2 = "#3e4452",
+  fg = "#cccccc"
+}
+
+local one_dark_colors = {
+  bg = "#282C34",
+  bg2 = "#5c6370",
+  fg = "#81a1c1",
+}
+
+local colors = one_dark_colors
+
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
 {% if yadm.os == "Darwin" %}
@@ -8,7 +29,7 @@ return {
   font = wezterm.font("SFMono Nerd Font Mono"),
   font_size = 12,
 {% endif %}
-  color_scheme = "PaleNightHC",
+  color_scheme = "OneHalfDark",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {
@@ -42,86 +63,45 @@ return {
     { key = "x", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
   },
   colors = {
-    tab_bar = {
+   tab_bar = {
 
-      -- The color of the strip that goes along the top of the window
-      background = "#292d3e",
+     -- The color of the strip that goes along the top of the window
+     background = colors.bg,
 
-      -- The active tab is the one that has focus in the window
-      active_tab = {
-        -- The color of the background area for the tab
-        bg_color = "#3e4452",
-        -- The color of the text for the tab
-        fg_color = "#cccccc",
+     -- The active tab is the one that has focus in the window
+     active_tab = {
+       -- The color of the background area for the tab
+       bg_color = colors.bg2,
+       -- The color of the text for the tab
+       fg_color = colors.fg,
 
-        -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
-        -- label shown for this tab.
-        -- The default is "Normal"
-        intensity = "Normal",
+       -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
+       -- label shown for this tab.
+       -- The default is "Normal"
+       intensity = "Normal",
 
-        -- Specify whether you want "None", "Single" or "Double" underline for
-        -- label shown for this tab.
-        -- The default is "None"
-        underline = "None",
+       -- Specify whether you want "None", "Single" or "Double" underline for
+       -- label shown for this tab.
+       -- The default is "None"
+       underline = "None",
 
-        -- Specify whether you want the text to be italic (true) or not (false)
-        -- for this tab.  The default is false.
-        italic = false,
+       -- Specify whether you want the text to be italic (true) or not (false)
+       -- for this tab.  The default is false.
+       italic = false,
 
-        -- Specify whether you want the text to be rendered with strikethrough (true)
-        -- or not for this tab.  The default is false.
-        strikethrough = false,
-      },
+       -- Specify whether you want the text to be rendered with strikethrough (true)
+       -- or not for this tab.  The default is false.
+       strikethrough = false,
+     },
 
-      -- Inactive tabs are the tabs that do not have focus
-      inactive_tab = {
-        bg_color = "#292d3e",
-        fg_color = "#cccccc",
+     -- Inactive tabs are the tabs that do not have focus
+     inactive_tab = {
+       bg_color = colors.bg,
+       fg_color = colors.fg,
 
-        -- The same options that were listed under the `active_tab` section above
-        -- can also be used for `inactive_tab`.
-      },
-    }
-
---    tab_bar = {
---
---      -- The color of the strip that goes along the top of the window
---      background = "#e7e8e9",
---
---      -- The active tab is the one that has focus in the window
---      active_tab = {
---        -- The color of the background area for the tab
---        bg_color = "#fafafa",
---        -- The color of the text for the tab
---        fg_color = "#575f66",
---
---        -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
---        -- label shown for this tab.
---        -- The default is "Normal"
---        intensity = "Normal",
---
---        -- Specify whether you want "None", "Single" or "Double" underline for
---        -- label shown for this tab.
---        -- The default is "None"
---        underline = "None",
---
---        -- Specify whether you want the text to be italic (true) or not (false)
---        -- for this tab.  The default is false.
---        italic = false,
---
---        -- Specify whether you want the text to be rendered with strikethrough (true)
---        -- or not for this tab.  The default is false.
---        strikethrough = false,
---      },
---
---      -- Inactive tabs are the tabs that do not have focus
---      inactive_tab = {
---        bg_color = "#e7e8e9",
---        fg_color = "#575f66",
---
---        -- The same options that were listed under the `active_tab` section above
---        -- can also be used for `inactive_tab`.
---      },
---    }
+       -- The same options that were listed under the `active_tab` section above
+       -- can also be used for `inactive_tab`.
+     },
+   }
   },
 }

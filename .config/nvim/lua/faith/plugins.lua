@@ -288,12 +288,11 @@ use 'easymotion/vim-easymotion'
 -- eyecandy
 use 'sheerun/vim-polyglot'
 use 'kyazdani42/nvim-web-devicons'
-use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
+use 'norcalli/nvim-colorizer.lua'
 use 'Yggdroot/indentLine'
 use {
   'akinsho/nvim-bufferline.lua',
   config = function()
-<<<<<<< HEAD
     --[[ ayu dark
     local bg = "#0a0e1a"
     local bg2 = "#1b2733"
@@ -303,9 +302,7 @@ use {
     local accent2 = "#00010a"
     local accent3 = "#e6b673" ]]
 
-=======
     --[[ ayu light
->>>>>>> refs/remotes/origin/master
     local bg = "#fafafa"
     local bg2 = "#e7e8e9"
     local bg3 = "#e1e1e2"
@@ -314,13 +311,13 @@ use {
     local accent2 = "#ff3333"
     local accent3 = "#ffc94a"
     ]]
-    local bg = "#292d3e"
-    local bg2 = "#3e4251"
-    local bg3 = "#3E4452"
-    local fg = "#cccccc"
-    local accent = "#F78C6C"
-    local accent2 = "#ff5370"
-    local accent3 = "#ffcb6b"
+    local bg = '#282c34'
+    local bg2 = '#3E4452'
+    local bg3 = '#5c6370'
+    local fg = '#abb2bf'
+    local accent = '#FF8800'
+    local accent2 = '#ec5f67'
+    local accent3 = '#fabd2f'
     require'bufferline'.setup{
         options = {
           numbers = "none",
@@ -351,8 +348,8 @@ use {
           offsets = {{filetype = "NvimTree", highlight = "Directory", text_align = "left"}},
         },
         highlights = {
-             fill = {
-                 guibg = bg
+            fill = {
+                guibg = bg
              },
             background = {
                 guibg = bg

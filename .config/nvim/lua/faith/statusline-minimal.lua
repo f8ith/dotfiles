@@ -88,7 +88,8 @@ local nord_colors = {
   red = "#BF616A"
 }
 
-local colors = one_dark_colors
+--local colors = one_dark_colors
+local colors = require('galaxyline.colors')
 
 local buffer_not_empty = function()
   if fn.empty(fn.expand("%:t")) ~= 1 then

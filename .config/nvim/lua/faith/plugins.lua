@@ -311,9 +311,9 @@ use {
     local accent2 = "#ff3333"
     local accent3 = "#ffc94a"
     ]]
-    local bg = '#282c34'
-    local bg2 = '#3E4452'
-    local bg3 = '#5c6370'
+    local bg = '#21252b'
+    local bg2 = '#282c34'
+    local bg3 = '#3e4452'
     local fg = '#abb2bf'
     local accent = '#FF8800'
     local accent2 = '#ec5f67'
@@ -322,9 +322,6 @@ use {
         options = {
           numbers = "none",
           mappings = true,
-          -- NOTE: this plugin is designed with this icon in mind,
-          -- and so changing this is NOT recommended, this is intended
-          -- as an escape hatch for people who cannot bear it for whatever reason
           indicator_icon = '▎',
           buffer_close_icon = '',
           modified_icon = '●',
@@ -404,24 +401,6 @@ use {
                 guibg = bg
             }
         }
-        --[[ highlights = {
-            fill = {
-                guifg = '#fafafa',
-                guibg = '#e7e8e9'
-            },
-            tab = {
-                guifg = '#e7e8e9',
-                guibg = '#fafafa'
-            },
-            tab_close = {
-                guifg = '#ff9940',
-                guibg = '#e7e8e9'
-            },
-            indicator_selected = {
-                guifg = '#fafafa',
-                guibg = '#fafafa'
-            },
-        } ]]
     }
   end
   }

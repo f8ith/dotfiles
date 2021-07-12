@@ -13,24 +13,25 @@ local palenight_colors = {
 }
 
 local one_dark_colors = {
-  bg = "#282C34",
-  bg2 = "#5c6370",
-  fg = "#81a1c1",
+  bg = "#21252b",
+  bg2 = "#282C34",
+  fg = "#ABB2BF",
+  accent = "#C678DD"
 }
 
 local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font"),
-  font_size = 14,
+  font = wezterm.font("SFMono Nerd Font Mono"),
+  font_size = 12,
   color_scheme = "OneHalfDark",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
-    { key = "|", mods = "LEADER|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     { key = "z", mods = "LEADER",       action="TogglePaneZoomState" },
     { key = "c", mods = "LEADER",       action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     { key = "h", mods = "LEADER",       action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -64,7 +65,7 @@ return {
        -- The color of the background area for the tab
        bg_color = colors.bg2,
        -- The color of the text for the tab
-       fg_color = colors.fg,
+       fg_color = colors.accent,
 
        -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
        -- label shown for this tab.

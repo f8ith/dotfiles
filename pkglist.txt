@@ -45,6 +45,7 @@ cronie
 cups
 cups-filters
 cups-pdf
+ddclient
 ddcutil
 debtap
 discord_arch_electron
@@ -101,6 +102,7 @@ gnome-tweaks
 gnome-video-effects
 gnu-netcat
 go
+gradle
 groff
 grub
 gst-libav
@@ -168,7 +170,7 @@ mupdf
 nasm
 nautilus
 neovide-git
-neovim-nightly-bin
+neovim
 nerd-fonts-complete
 net-tools
 network-manager-applet
@@ -253,6 +255,7 @@ slippi-online-appimage
 smartmontools
 smbclient
 socat
+starship
 steam
 stow
 sudo
@@ -268,7 +271,6 @@ thunar-volman
 tint2
 tldr
 tmux
-transmission-cli
 trash-cli
 ttf-courier-prime-code
 ttf-croscore

@@ -3,6 +3,5 @@
 # [└─](bold green) """
 
 [character]
-format = "[\\$](bold green) "
 error_symbol = "✗"
-success_symbol = "[\\$](bold green) "
+success_symbol = "asdf "

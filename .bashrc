@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-[[ $- != *i* ]] && return
-
 colors() {
 	local fgc bgc vals seq0
 
@@ -27,7 +25,8 @@ colors() {
 			printf " ${seq0}TEXT\e[m"
 			printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
 		done
-		echo; echo
+		echo
+		echo
 	done
 }
 
@@ -35,7 +34,7 @@ colors() {
 
 # Change the window title of X terminals
 case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+	xterm* | rxvt* | Eterm* | aterm | kterm | gnome* | interix | konsole*)
 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
 		;;
 	screen*)
@@ -45,26 +44,26 @@ esac
 
 use_color=true
 
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
+safe_term=${TERM//[^[:alnum:]]/?} # sanitize TERM
 match_lhs=""
-[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
+[[ -f ~/.dir_colors ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
 [[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
+[[ -z ${match_lhs} ]] \
 	&& type -P dircolors >/dev/null \
 	&& match_lhs=$(dircolors --print-database)
 [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
 
-if ${use_color} ; then
+if ${use_color}; then
 	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-	if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
+	if type -P dircolors >/dev/null; then
+		if [[ -f ~/.dir_colors ]]; then
 			eval $(dircolors -b ~/.dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
+		elif [[ -f /etc/DIR_COLORS ]]; then
 			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
 	fi
 
-	if [[ ${EUID} == 0 ]] ; then
+	if [[ ${EUID} == 0 ]]; then
 		PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
 	else
 		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
@@ -75,7 +74,7 @@ if ${use_color} ; then
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
 else
-	if [[ ${EUID} == 0 ]] ; then
+	if [[ ${EUID} == 0 ]]; then
 		# show root@ when we don't have colors
 		PS1='\u@\h \W \$ '
 	else
@@ -85,64 +84,59 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-xhost +local:root > /dev/null 2>&1
+xhost +local:root >/dev/null 2>&1
 complete -cf sudo
 shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend
 
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+ex() {
+	if [ -f $1 ]; then
+		case $1 in
+			*.tar.bz2) tar xjf $1 ;;
+			*.tar.gz) tar xzf $1 ;;
+			*.bz2) bunzip2 $1 ;;
+			*.rar) unrar x $1 ;;
+			*.gz) gunzip $1 ;;
+			*.tar) tar xf $1 ;;
+			*.tbz2) tar xjf $1 ;;
+			*.tgz) tar xzf $1 ;;
+			*.zip) unzip $1 ;;
+			*.Z) uncompress $1 ;;
+			*.7z) 7z x $1 ;;
+			*) echo "'$1' cannot be extracted via ex()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
-lfcd () {
-    tmp="$(mktemp)"
-    fid="$(mktemp)"
-    startlf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
-    id="$(cat "$fid")"
-    archivemount_dir="/tmp/__lf_archivemount_$id"
-    if [ -f "$archivemount_dir" ]; then
-        cat "$archivemount_dir" | \
-            while read -r line; do
-                sudo umount "$line"
-                rmdir "$line"
-            done
-        rm -f "$archivemount_dir"
-    fi
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
+lfcd() {
+	tmp="$(mktemp)"
+	fid="$(mktemp)"
+	startlf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+	id="$(cat "$fid")"
+	archivemount_dir="/tmp/__lf_archivemount_$id"
+	if [ -f "$archivemount_dir" ]; then
+		cat "$archivemount_dir" \
+			| while read -r line; do
+				sudo umount "$line"
+				rmdir "$line"
+			done
+		rm -f "$archivemount_dir"
+	fi
+	if [ -f "$tmp" ]; then
+		dir="$(cat "$tmp")"
+		rm -f "$tmp"
+		if [ -d "$dir" ]; then
+			if [ "$dir" != "$(pwd)" ]; then
+				cd "$dir"
+			fi
+		fi
+	fi
 }
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-
-if [[ uname != 'Darwin' ]] ; then
-    neofetch
-fi
 
 eval "$(starship init bash)"

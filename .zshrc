@@ -64,6 +64,9 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 # Load using the for-syntax
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
@@ -81,7 +84,6 @@ zinit wait"2" lucid for \
 #     pick"direnv" src="zhook.zsh" for \
 #         direnv/direnv
 
-eval "$(starship init zsh)"
 
 zstyle ':completion:*' menu select
 _comp_options+=(globdots)		# Include hidden files.
@@ -100,16 +102,7 @@ function zle-keymap-select {
   fi
 }
 zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
 
-__git_files () {
-    _wanted files expl 'local files' _files
-}
-
-zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
@@ -123,3 +116,5 @@ if [ "$system_type" = "Darwin" ]; then
 else
     eval "$(dircolors -b ~/.dir_colors)"
 fi
+
+eval "$(starship init zsh)"

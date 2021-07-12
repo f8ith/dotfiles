@@ -13,9 +13,10 @@ local palenight_colors = {
 }
 
 local one_dark_colors = {
-  bg = "#282C34",
-  bg2 = "#5c6370",
-  fg = "#81a1c1",
+  bg = "#21252b",
+  bg2 = "#282C34",
+  fg = "#ABB2BF",
+  accent = "#C678DD"
 }
 
 local colors = one_dark_colors
@@ -73,7 +74,7 @@ return {
        -- The color of the background area for the tab
        bg_color = colors.bg2,
        -- The color of the text for the tab
-       fg_color = colors.fg,
+       fg_color = colors.accent,
 
        -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
        -- label shown for this tab.

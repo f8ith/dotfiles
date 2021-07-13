@@ -4,4 +4,4 @@
 
 [character]
 error_symbol = "✗"
-success_symbol = "asdf "
+success_symbol = "[\\$](bold green)"

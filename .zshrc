@@ -69,11 +69,8 @@ zinit light jeffreytse/zsh-vi-mode
 
 # Load using the for-syntax
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
       zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
 
 zinit wait"2" lucid for \
@@ -116,5 +113,3 @@ if [ "$system_type" = "Darwin" ]; then
 else
     eval "$(dircolors -b ~/.dir_colors)"
 fi
-
-eval "$(starship init zsh)"

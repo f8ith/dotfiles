@@ -1,5 +1,5 @@
 # open terminal
-alt - return : wezterm
+alt - return : open /Applications/wezterm.app
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -131,3 +131,4 @@ shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || bre
 # screenshot
 cmd + shift - c : /Users/faith/.asdf/shims/qrsh clipboard -c
 cmd + ctrl + shift - c : /Users/faith/.asdf/shims/qrsh screen
+cmd + ctrl + shift - q : /Users/faith/.asdf/shims/qrsh camera

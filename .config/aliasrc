@@ -27,12 +27,9 @@ alias lfrc="nvim ~/.config/lf/lfrc"
 alias dunstrc="nvim ~/.config/dunst/dunstrc"
 alias ddd="dragon-drag-and-drop"
 alias dragon="dragon-drag-and-drop"
-if [ "$system_type" = "Darwin" ]; then
-  alias ls="gls -l --color=always"
-else
-  alias ls="ls -l --color=always"
-fi
+alias ls="ls -l --color=always"
 alias spectrconf="nv ~/.config/spectrwm/spectrwm.conf"
 alias usbinfo="sudo less /sys/kernel/debug/usb/devices"
 alias poetry-import="cat requirements.txt | perl -pe 's/([<=>]+)/:$1/' | xargs -t -n 1 -I {} poetry add '{}'"
 alias proton="$HOME/.local/share/Steam/compatibilitytools.d/Proton-5.9-GE-3-ST/dist/bin/wine"
+alias prun="poetry run"

@@ -2,7 +2,7 @@
 
 #: Fonts {{{
 
-font_family      SFMono Nerd Font Light
+font_family      SFMono Nerd Font
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -13,13 +13,7 @@ font_size 14.0
 font_size 12.0
 {% endif %}
 
-
-adjust_line_height  0
-adjust_column_width 0
-
 disable_ligatures always
-
-box_drawing_scale 0.001, 1, 1.5, 2
 
 #: }}}
 
@@ -150,7 +144,7 @@ background_opacity 1.0
 dynamic_background_opacity no
 dim_opacity 0.75
 
-include ~/.config/kitty/themes/serenade
+include ~/.config/kitty/themes/onedark
 
 #: }}}
 

@@ -1,7 +1,7 @@
 # Default Programs
 
-export EDITOR="nvr -cc split --remote-wait"
-export VISUAL="nvr -cc split --remote-wait"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export TERMINAL="wezterm"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 export NeovideMultiGrid

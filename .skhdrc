@@ -1,5 +1,5 @@
 # open terminal
-alt - return : wezterm
+alt - return : open /Applications/wezterm.app
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -125,9 +125,7 @@ ctrl + alt - d : yabai -m space --layout float
 # reload skhd and yabai
 shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" || brew services restart skhd
 
-# Disable rshift
-0x3D : yas
-
 # screenshot
 cmd + shift - c : /Users/faith/.asdf/shims/qrsh clipboard -c
 cmd + ctrl + shift - c : /Users/faith/.asdf/shims/qrsh screen
+cmd + ctrl + shift - q : /Users/faith/.asdf/shims/qrsh camera

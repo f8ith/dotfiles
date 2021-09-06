@@ -1,5 +1,5 @@
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%~ %{$reset_color%}->%b "
 
 HISTSIZE=10000
 SAVEHIST=10000
@@ -7,15 +7,6 @@ HISTFILE=~/.cache/zsh/history
 
 source ~/.zinit/bin/zinit.zsh
 
-# vi mode
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
 
@@ -60,21 +51,15 @@ bindkey '^e' edit-command-line
 fpath=(${ASDF_DIR}/completions $fpath)
 source ~/.poetry/env
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+# fi
 
-zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
+zinit light zdharma/fast-syntax-highlighting 
+zinit light zsh-users/zsh-autosuggestions 
+zinit light zsh-users/zsh-completions 
 
-# Load using the for-syntax
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
 
 zinit wait"2" lucid for \
     wfxr/forgit \
@@ -85,27 +70,8 @@ zinit wait"2" lucid for \
 #         direnv/direnv
 
 
-zstyle ':completion:*' menu select
-_comp_options+=(globdots)		# Include hidden files.
-
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
+#zstyle ':completion:*' menu select
+#_comp_options+=(globdots)		# Include hidden files.
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -113,8 +79,9 @@ eval $(thefuck --alias)
 
 if [ "$system_type" = "Darwin" ]; then
     eval "$(gdircolors -b ~/.dir_colors)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    alias ls="gls -l --color=always"
 else
     eval "$(dircolors -b ~/.dir_colors)"
 fi
 
-eval "$(starship init zsh)"

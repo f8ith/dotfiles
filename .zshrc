@@ -1,5 +1,5 @@
 autoload -U colors && colors
-PS1="%~ %{$reset_color%}->%b "
+PS1="%~ %{$reset_color%}%b "
 
 HISTSIZE=10000
 SAVEHIST=10000

@@ -15,7 +15,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export BROWSER="osuroute"
-export READER="firefox"
+export READER="google-chrome-stable"
 
 # XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots

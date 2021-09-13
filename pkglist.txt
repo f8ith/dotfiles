@@ -61,6 +61,7 @@ droidcam
 duck
 dunst
 dxvk-bin
+easyeffects
 ebtables
 edk2-ovmf
 efibootmgr
@@ -102,7 +103,9 @@ gnome-tweaks
 gnome-video-effects
 gnu-netcat
 go
+google-chrome
 gradle
+grapejuice-git
 groff
 grub
 gst-libav
@@ -123,6 +126,7 @@ icons-in-terminal
 inkscape
 inotify-tools
 inter-font
+iw
 jdk-openjdk
 joycond-cemuhook-git
 joycond-git
@@ -175,7 +179,10 @@ nerd-fonts-complete
 net-tools
 network-manager-applet
 networkmanager
+nftables
 nitroshare
+nkit
+nnn
 nodejs
 noip
 noto-fonts
@@ -183,6 +190,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+nsz-git
 ntfs-3g
 ntp
 nvidia
@@ -197,6 +205,7 @@ opencl-mesa
 opencl-nvidia
 openrazer-meta
 openssh
+opentabletdriver
 os-prober
 osu-lazer-bin
 otf-arsenal
@@ -243,6 +252,7 @@ rofi
 rpiplay-git
 ruby
 rustup
+ryujinx-ldn-bin
 samba
 scream
 screen
@@ -271,6 +281,7 @@ thunar-volman
 tint2
 tldr
 tmux
+transmission-gtk
 trash-cli
 ttf-courier-prime-code
 ttf-croscore
@@ -306,7 +317,7 @@ vulkan-validation-layers
 wezterm
 wine-gecko
 wine-mono
-wine-staging
+wine-tkg-staging-fsync-git
 winetricks
 wireguard-tools
 wireshark-qt
@@ -326,6 +337,7 @@ xorg-xev
 xorg-xinit
 xorg-xinput
 xorg-xwininfo
+xournalpp
 xsel
 xterm
 xwinwrap-git

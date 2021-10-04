@@ -175,14 +175,14 @@ return packer.startup(
             event = "CursorMoved"
         }
 
-        use {
-            "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
-            config = function()
-                require("plugins.others").comment()
-            end
-        }
-
+--         use {
+--             "terrortylor/nvim-comment",
+--             cmd = "CommentToggle",
+--             config = function()
+--                 require("plugins.others").comment()
+--             end
+--         }
+ 
         use {
             "glepnir/dashboard-nvim",
             cmd = {

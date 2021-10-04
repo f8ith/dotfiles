@@ -78,10 +78,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 eval $(thefuck --alias)
 
 if [ "$system_type" = "Darwin" ]; then
-    eval "$(gdircolors -b ~/.dir_colors)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
     alias ls="gls -l --color=always"
-else
-    eval "$(dircolors -b ~/.dir_colors)"
 fi
 

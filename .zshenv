@@ -31,3 +31,4 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 # python language server
 export PYTHONPATH=$HOME/.cache/pypoetry/virtualenvs/*
+export LS_COLORS="$(vivid generate one-dark)"

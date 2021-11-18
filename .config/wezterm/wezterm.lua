@@ -23,24 +23,15 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-{% if yadm.os == "Darwin" %}
-  font = wezterm.font("SFMono Nerd Font"),
-  font_size = 14,
-{% else %}
   font = wezterm.font("SFMono Nerd Font Mono"),
   font_size = 12,
-{% endif %}
   color_scheme = "OneDark",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
-{% if yadm.os == "Darwin" %}
-    { key = "|", mods = "LEADER|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
-{% else %}
     { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
-{% endif %}
     { key = "z", mods = "LEADER",       action="TogglePaneZoomState" },
     { key = "c", mods = "LEADER",       action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     { key = "h", mods = "LEADER",       action=wezterm.action{ActivatePaneDirection="Left"}},

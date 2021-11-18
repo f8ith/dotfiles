@@ -1,6 +1,6 @@
 set preview true
 set previewer ~/.config/lf/previewer
-set cleaner ~/.config/lf/cleaner
+set cleaner ~/.config/lf/clear_img.sh
 set nohidden
 set icons true
 set ignorecase true

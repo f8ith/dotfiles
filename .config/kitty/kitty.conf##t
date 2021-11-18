@@ -144,7 +144,7 @@ background_opacity 1.0
 dynamic_background_opacity no
 dim_opacity 0.75
 
-include ~/.config/kitty/themes/onedark
+include ~/.config/kitty/themes/tokyonight
 
 #: }}}
 

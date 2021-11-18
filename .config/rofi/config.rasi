@@ -1,6 +1,1 @@
-/** Basic config file **/
-
-configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus";
-}
+@theme "/home/faith/.config/rofi/themes/onedark_mini.rasi"

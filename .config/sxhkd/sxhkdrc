@@ -3,16 +3,16 @@
 Print
         maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved" -t 2000
 
-super + ctrl + c
+alt + ctrl + c
 	notify-send "Select an area to capture" -t 1000 && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured" -t 2000
 
-super + shift + c
+alt + shift + c
         notify-send "Select an area to copy to clipboard" -t 1000 && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"  -t 2000
 
-super + Print
+alt + Print
 	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" -t 2000
 
-super + shift + Print
+alt + shift + Print
         kitty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
 
 
@@ -42,47 +42,39 @@ XF86AudioPrev
 
 #: apps {{{
 
-super + Return
+alt + Return
         kitty
 
-super + shift + Return
+alt + shift + Return
         kitty --class floating_terminal
 
-super + d
-        rofi launcher matching fuzzy -show combi
+alt + d
+        rofi -show drun -show-icons -icon-theme "Papirus-Dark"
 
-super + e
+alt + e
         bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
-super + shift + f
+alt + shift + f
         kitty --class file_manager --title lf --working-directory ~ -e startlf
 
 
-super + shift + r
+alt + shift + r
 	$HOME/.config/bspwm/bspwmrc
-
-# powermenu
-super + Escape
-        bash ~/.config/rofi/android/powermenu.sh
-
-# vm controls
-super + v
-        bash ~/.config/rofi/android/vm.sh
 
 #}}}
 
 #: BSPWM {{{
 
-super + q
+alt + shift + q
 	bspc node -{c,k}
 
-super + f
-	~/.config/bspwm/fullscreen.sh
+alt + f
+        bspc node -t '~fullscreen'
 
-super + y
+alt + y
 	bspc node @focused:/ -R 90
 
-super + g
+alt + g
 	bspc node -s biggest.local
 
 
@@ -90,36 +82,36 @@ super + g
 # state/flags
 #
 
-super + {t,shift + t,s}
+alt + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
 
 
 # focus/swap
 
-super + {_,shift + }{h,j,k,l}
+alt + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-super + {p,b,comma,period}
+alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-super + c
+alt + c
 	bspc node -{f,s} next.local
 
 
-super + {_,shift + }{1-9,0}
+alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
 #
 # preselect
 #
 
-super + {u,o}
+alt + {u,o}
 	bspc node -p {south,east}
 
-super + ctrl + {1-9}
+alt + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-super + ctrl + space
+alt + ctrl + space
 	bspc node -p cancel
 
 ctrl + space
@@ -129,13 +121,13 @@ ctrl + space
 # move/resize
 #
 
-super + ctrl + {h,j,k,l}
+alt + ctrl + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 super + alt + {h,j,k,l}
         bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-super + {Left,Down,Up,Right}
+alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #}}}
@@ -148,6 +140,6 @@ ctrl + Print
 ctrl
 		compton -b --experimental-backends
 
-super + shift + z
+alt + shift + z
 		toggle picom -b --experimental-backends
 #}}}

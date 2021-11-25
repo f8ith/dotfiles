@@ -1,433 +1,416 @@
-<!-- **
-** Widgets config for EWW
-** Created by : @adi1090x
-** -->
-
 <eww>
-    <variables>
+  <definitions>
+  <def name="player">
+      <box orientation="v" space-evenly="false">
+        <box class="musicart" style="background-image: url('{{cover}}');">{{art}}</box>
+        <box class="musictitle">{{music3}}</box>
+        <box class="musicartist">{{music2}}</box>
+        <box orientation="h" halign="center" class="musicbtn" space-evenly="false">
+          <button onclick="playerctl previous"></button> 
+          <button onclick="playerctl play-pause">{{musicstat}}</button>
+          <button onclick="playerctl next"></button>
+        </box>
+        <box orientation="h" class="volume" space-evenly="false" halign="center">
+          <scale min="0" max="101" value="{{volume}}" onchange="amixer -D pulse sset Master {}%"/>
+        </box>
+      </box>
+    </def>
+    <def name="smol_calendar">
+      <box orientation="v"  space-evenly="false">
+        <box class="number_day">{{number_day}}</box>
+        <box class="month">{{month}}</box>
+      </box>
+    </def>
+    <def name="weather_side">
+      <box orientation="h"  space-evenly="false">
+        <box class="weather-icon-side" style="color: {{weather-hex}}">{{weather-icon}}</box>
+        <box class="weather-info-side" orientation="v" space-evenly="false">
+          <box class="temperature-side">{{temperature}}  </box>
+          <box class="weather-stat-side">{{weather-stat-side}}</box>
+        </box>
+      </box>
+    </def>
+    <def name="player_side">
+      <box orientation="h"  space-evenly="false">
+        <box class="musicart-side" style="background-image: url('{{cover}}');">{{art}}</box>
+        <box class="musicstuff-side" orientation="v" space-evenly="false">
+          <box class="musicinfo-side">{{music3}}</box>
+          <box orientation="h" halign="center" class="musicbtn-side" space-evenly="false">
+            <button onclick="playerctl previous"></button> 
+            <button class="pause-play-side" onclick="playerctl play-pause">{{musicstat}}</button>
+            <button onclick="playerctl next"></button>
+          </box>
+        </box>
+      </box>
+    </def>
+    <def name="time_side">
+      <box orientation="v" space-evenly="false">
+        <box orientation="h" class="time-side" space-evenly="true">
+          <box class="hour-side">{{hour}}</box>
+          <box class="minute-side">{{min}}</box>
+        </box>
+        <box class="day-side">{{day}}</box>
+      </box>
+    </def>
+    <def name="sliders_side">
+      <box orientation="v" space-evenly="false" class="sliders-side">
+        <box orientation="h" class="slider-vol-side" space-evenly="false">
+          <box class="label-vol-side"></box>
+          <scale min="0" max="101" value="{{volume}}" onchange="amixer -D pulse sset Master {}%"/>
+        </box>
+        <box orientation="h" class="slider-bright-side" space-evenly="false">
+          <box class="label-bright-side"></box>
+          <scale min="0" max="101" value="{{bright}}" onchange="brightnessctl s {}%"/>
+        </box>
+        <box orientation="h" class="slider-ram-side" space-evenly="false">
+          <box class="label-ram-side"></box>
+          <scale min="0" active="false" max="101" value="{{ram-used}}"/>
+        </box>
+        <box orientation="h" class="slider-battery-side" space-evenly="false">
+          <box class="label-battery-side">{{bat-icon}}</box>
+          <scale min="0" active="false" max="101" value="{{battery-remaining}}"/>
+        </box>
+      </box>
+    </def>
+    <def name="sys_side">
+      <box orientation="v" space-evenly="false">
+        <button class="search-side" onclick="~/bin/launcher.sh">  Search...</button>
+        <box orientation="h" halign="center" class="sysbtn" space-evenly="true">
+          <button class="shutdown-side" onclick="~/.config/eww/scripts/shutdown.sh"></button> 
+          <button class="reboot-side" onclick="~/.config/eww/scripts/reboot.sh"></button>
+          <button class="lock-side" onclick="~/.config/eww/scripts/lockscreen.sh"></button>
+          <button class="suspend-side" onclick="~/.config/eww/scripts/suspend.sh"></button>
+          <button class="logout-side" onclick="~/.config/eww/scripts/logout.sh"></button>
+        </box>
+      </box>
+    </def>
+    <def name="calendar_full">
+        <box orientation="v" halign="center" space-evenly="false">
+           <box class="calendar_title">     {{day}}, {{number_day}} {{month_full}} {{year_full}}</box>
+          <!-- <box class="calendar">
+            <calendar show-details="true"/>
+          </box>  -->
+        </box>
+    </def>
+    <def name="search_full">
+      <box orientation="h" space-evenly="true">
+        <button class="search-full" onclick="~/bin/launcher.sh"></button>
+      </box>
+    </def>
+    <def name="power_full">
+      <box orientation="h" space-evenly="true">
+        <button class="power-full" onclick="~/.config/eww/scripts/shutdown.sh"></button>
+      </box>
+    </def>
+    <def name="reboot_full">
+      <box orientation="h" space-evenly="true">
+        <button class="reboot-full" onclick="~/.config/eww/scripts/reboot.sh"></button>
+      </box>
+    </def>
+    <def name="lock_full">
+      <box orientation="h" space-evenly="true">
+        <button class="lock-full" onclick="~/.config/eww/scripts/lockscreen.sh"></button>
+      </box>
+    </def>
+    <def name="suspend_full">
+      <box orientation="h" space-evenly="true">
+        <button class="suspend-full" onclick="~/.config/eww/scripts/suspend.sh"></button>
+      </box>
+    </def>
+    <def name="logout_full">
+      <box orientation="h" space-evenly="true">
+        <button class="logout-full" onclick="~/.config/eww/scripts/logout.sh"></button>
+      </box>
+    </def>
+    <def name="close_full">
+      <box orientation="h" space-evenly="true">
+        <button class="power-full" onclick="~/bin/centerkill"></button>
+      </box>
+    </def>
+    <def name="profile">
+    <box orientation="v" space-evenly="false" class="profile">
+        <box orientation="h" space-evenly="false">
+          <box class="pfp"></box>
+        </box>
+        <box orientation="v" space-evenly="false"> 
+          <box class="pfptxt" valign="center">*Insert-Name-Here*</box>
+          <box class="subpfptxt" halign="center">*Some-cheeky-line*</box>
+        </box>
+      </box>
+    </def>
+    <def name="weather">
+      <box orientation="v" space-evenly="false">
+        <box orientation="h"  space-evenly="false">
+          <box class="weather-icon" style="color: {{weather-hex}}">{{weather-icon}}</box>
+          <box class="temperature">{{temperature}}  </box>
+        </box>
+        <box orientation="v" space-evenly="false">
+          <box class="weather-stat">{{weather-stat}}</box>
+          <box class="weather-quote-head">{{weather-quote}}</box>
+          <box class="weather-quote-tail">{{weather-quote2}}</box>
+        </box>
+      </box>
+    </def>
+     <def name="home_dir">
+      <box orientation="v" space-evenly="true" class="home-dir">
+        <button class="l1" onclick="(thunar ~/{{l1}})">{{l1-processed}}</button>
+        <button class="l2" onclick="(thunar ~/{{l2}})">{{l2-processed}}</button>
+        <button class="l3" onclick="(thunar ~/{{l3}})">{{l3-processed}}</button>
+        <button class="l4" onclick="(thunar ~/{{l4}})">{{l4-processed}}</button>
+        <button class="l5" onclick="(thunar ~/{{l5}})">{{l5-processed}}</button>
+        <button class="l6" onclick="(thunar ~/{{l6}})">{{l6-processed}}</button>
+      </box>
+    </def>
+    <def name="quote">
+      <box orientation="v" space-evenly="false" class="quote-box">
+        <label class="quote-main" halign="start" text="{{quote}}{{quote-gen}}" wrap="true" width="25"/>
+        <label class="quote-tail" halign="start" text="{{quote-tail}}" wrap="true" width="25"/>
+        <label class="quote-author" text="- {{author-quote}}" halign="end"/>
+      </box>
+    </def>
+    <def name="screenshot">
+      <box orientation="v" space-evenly="true">
+        <button class="screenshot-icon" onclick="flameshot gui"></button>
+      </box>
+    </def>
+    <def name="vpn">
+      <box orientation="v" space-evenly="true">
+	      <button class="vpn-icon" onclick="~/.config/eww/scripts/vpntoggle" style="color: {{vpn-hex}}">嬨{{getvpnstat}}</button>
+      </box>
+    </def>
+    <def name="incognito">
+      <box orientation="v" space-evenly="true">
+        <button class="incognito-icon" onclick="firefox -private-window">﫸</button>
+      </box>
+    </def>
+    <def name="blur_full">
+      <box orientation="v" space-evenly="true">
+      </box>
+    </def>
+    <!-- <def name="powermenu">
+       <box orientation="h" halign="center" class="sysbtn" space-evenly="true">
+          <button class="shutdown-side" onclick="~/.config/eww/scripts/shutdown.sh"></button> 
+          <button class="reboot-side" onclick="~/.config/eww/scripts/reboot.sh"></button>
+          <button class="lock-side" onclick="~/.config/eww/scripts/lockscreen.sh"></button>
+          <button class="suspend-side" onclick="~/.config/eww/scripts/suspend.sh"></button>
+          <button class="logout-side" onclick="~/.config/eww/scripts/logout.sh"></button>
+          <button class="lock-side" onclick="exec ~/bin/eww close powermenu"></button>
+        </box>
+    </def> -->
 
-        <!-- Profile vars -->
-        <var name="IMAGE">images/profile.jpg</var>
-        <var name="NAME">YOUR NAME</var>
-		<script-var name="UNAME" interval="5m">whoami</script-var>
+  </definitions>
 
-        <!-- System vars -->
-		<script-var name="HOST" interval="5s">hostname</script-var>
-		<script-var name="CPU_USAGE" interval="1s">~/.config/eww/scripts/sys_info --cpu</script-var>
-		<script-var name="MEM_USAGE" interval="1s">~/.config/eww/scripts/sys_info --mem</script-var>
-		<script-var name="BLIGHT" interval="1s">~/.config/eww/scripts/sys_info --blight</script-var>
-		<script-var name="BATTERY" interval="5s">~/.config/eww/scripts/sys_info --bat</script-var>
+  <variables>
+    <!-- Music vars -->
+    <script-var name="music" interval="5s">playerctl metadata --format '{{ artist }} - {{ title }}'</script-var>
+    <script-var name="music2" interval="5s">playerctl metadata --format '{{ artist }}'</script-var>
+    <script-var name="music3" interval="5s">~/.config/eww/scripts/gettitle</script-var>
+    <script-var name="art" interval="5s">~/.config/eww/scripts/getart</script-var>
+    <script-var name="volume" interval="3ms">~/.config/eww/scripts/getvol</script-var>
+    <script-var name="bright" interval="1ms">~/.config/eww/scripts/getbri</script-var>
+    <script-var name="musicstat" interval="1s">~/bin/spotifystatus</script-var>
+    <script-var name="cover" interval="5s">~/.config/eww/scripts/echoart</script-var>
 
-        <!-- Time vars -->
-		<script-var name="HOUR" interval="5s">date +"%I"</script-var>
-		<script-var name="MIN" interval="5s">date +"%M"</script-var>
-		<script-var name="MER" interval="5s">date +"%p"</script-var>
-		<script-var name="DAY" interval="5s">date +"%A"</script-var>
+    <!--Date vars-->
+    <script-var name="number_day" interval="5h">date "+%d"</script-var>
+    <script-var name="month" interval="10h">date "+%b"</script-var>
+    <script-var name="min" interval="10s">date "+%M"</script-var>
+    <script-var name="hour" interval="30m">date "+%H"</script-var>
+    <script-var name="day" interval="15h">~/.config/eww/scripts/getday</script-var>
+    <script-var name="month_full" interval="15h">date "+%B"</script-var>
+    <script-var name="year_full" interval="15h">date "+%Y"</script-var>
 
-        <!-- Uptime vars -->
-		<script-var name="UPHOUR" interval="5s">uptime -p | awk '{print $2 " " $3}' | sed 's/,//g'</script-var>
-		<script-var name="UPMIN" interval="5s">uptime -p | awk '{print $4 " " $5}'</script-var>
+    <!--Weather vars-->
+    <script-var name="weather-icon" interval="20m">cat /tmp/xmonad/weather/weather-icon</script-var>
+    <script-var name="temperature" interval="20m">cat /tmp/xmonad/weather/weather-degree</script-var>
+    <script-var name="weather-hex" interval="20m">cat /tmp/xmonad/weather/weather-hex</script-var>
+    <script-var name="weather-quote" interval="20m">~/.config/eww/scripts/getwethquote</script-var>
+    <script-var name="weather-quote2" interval="20m">~/.config/eww/scripts/getwethquote2</script-var>
+    <script-var name="weather-stat" interval="20m">cat /tmp/xmonad/weather/weather-stat</script-var>
+    <script-var name="weather-stat-side" interval="20m">~/.config/eww/scripts/weather-trimmer</script-var>
 
-        <!-- Music vars -->
-		<script-var name="SONG" interval="1s">~/.config/eww/scripts/music_info --song</script-var>
-		<script-var name="ARTIST" interval="1s">~/.config/eww/scripts/music_info --artist</script-var>
-		<script-var name="STATUS" interval="1s">~/.config/eww/scripts/music_info --status</script-var>
-		<script-var name="CURRENT" interval="1s">~/.config/eww/scripts/music_info --time</script-var>
-		<script-var name="COVER" interval="1s">~/.config/eww/scripts/music_info --cover</script-var>
-		<script-var name="CTIME" interval="1s">~/.config/eww/scripts/music_info --ctime</script-var>
-		<script-var name="TTIME" interval="1s">~/.config/eww/scripts/music_info --ttime</script-var>
+    <!--Big brain RAM vars-->
+    <script-var name="ram-used" interval="1s">~/.config/eww/scripts/getram</script-var>
 
-		<!--Weather vars-->
-		<script-var name="ICON" interval="15m">~/.config/eww/scripts/weather_info --icon</script-var>
-		<script-var name="STAT" interval="15m">~/.config/eww/scripts/weather_info --stat</script-var>
-		<script-var name="TEMP" interval="15m">~/.config/eww/scripts/weather_info --temp</script-var>
-		<script-var name="HEX" interval="15m">~/.config/eww/scripts/weather_info --hex</script-var>
-		<script-var name="QUOTE" interval="15m">~/.config/eww/scripts/weather_info --quote</script-var>
-		<script-var name="QUOTE2" interval="15m">~/.config/eww/scripts/weather_info --quote2</script-var>
+    <!--Battery charge vars-->
+    <script-var name="battery-remaining" interval="2m">cat /sys/class/power_supply/BAT0/capacity</script-var>
+    <script-var name="bat-icon" interval="2m">~/.config/tint2/scripts/battery.sh</script-var>
 
-        <!-- Apps vars -->
-		<script-var name="MAILS" interval="5m">~/.config/eww/scripts/mails</script-var>
+    <!-- Home-dir stuff -->
+    <script-var name="l1-processed" interval="20h">~/.config/eww/scripts/home-dir/l1-processed</script-var>
+    <script-var name="l2-processed" interval="20h">~/.config/eww/scripts/home-dir/l2-processed</script-var>
+    <script-var name="l3-processed" interval="20h">~/.config/eww/scripts/home-dir/l3-processed</script-var>
+    <script-var name="l4-processed" interval="20h">~/.config/eww/scripts/home-dir/l4-processed</script-var>
+    <script-var name="l5-processed" interval="20h">~/.config/eww/scripts/home-dir/l5-processed</script-var>
+    <script-var name="l6-processed" interval="20h">~/.config/eww/scripts/home-dir/l6-processed</script-var>
 
-        <!-- Files vars -->
-		<script-var name="FREE" interval="5s">df -h / | awk '{print $4}' | tail -n 1 | sed 's/G/GB/'</script-var>
+    <script-var name="l1" interval="20h">~/.config/eww/scripts/home-dir/l1</script-var>
+    <script-var name="l2" interval="20h">~/.config/eww/scripts/home-dir/l2</script-var>
+    <script-var name="l3" interval="20h">~/.config/eww/scripts/home-dir/l3</script-var>
+    <script-var name="l4" interval="20h">~/.config/eww/scripts/home-dir/l4</script-var>
+    <script-var name="l5" interval="20h">~/.config/eww/scripts/home-dir/l5</script-var>
+    <script-var name="l6" interval="20h">~/.config/eww/scripts/home-dir/l6</script-var>
 
-    </variables>
+    <!-- Quote vars -->
+    <script-var name="author-quote" interval="10m">cat /tmp/xmonad/quotes/author</script-var>
+    <script-var name="quote" interval="10m">cat /tmp/xmonad/quotes/quote</script-var>
+    <script-var name="quote-gen" interval="30m">~/.config/eww/scripts/quotes</script-var>
+    <script-var name="quote-tail" interval="10m">cat /tmp/xmonad/quotes/quote-tail</script-var>
 
-<!-- ******************************************************************************** -->
+    <!--Vpn stats-->
+    <script-var name="getvpnstat" interval="10s">~/.config/eww/scripts/getvpnstat</script-var>
+    <script-var name="vpn-hex" interval="10s">cat /tmp/xmonad/vpnstat-hex</script-var>
 
-    <definitions>
+  </variables>
 
-        <!-- background -->
-		<def name="bg">
-			<box class="bg"></box>
-		</def>
+  <windows>
+    <!-- Sidebar stuff -->
 
-		<!-- profile -->
-		<def name="user">
-			<box class="genwin" orientation="v" spacing="35" space-evenly="false" vexpand="false" hexpand="false">
-				<box style="background-image: url('{{IMAGE}}');" class="face" halign="center"/>
-				<label class="fullname" halign="center" wrap="true" limit-width="25" text="{{NAME}}"/>
-				<label class="username" halign="center" wrap="true" limit-width="25" text="{{UNAME}}"/>
-			</box>
-		</def>
+    <window name="smol_calendar">
+      <geometry x="10px" y="45px" width="80px" height="80px"/>
+      <widget>
+        <smol_calendar/>
+      </widget>
+    </window>
+    <window name="weather_side">
+      <geometry x="95px" y="45px" width="215px" height="80px"/>
+      <widget>
+        <weather_side/>
+      </widget>
+    </window>
+    <window name="player_side">
+      <geometry x="10px" y="270px" width="300px" height="110px"/>
+      <widget>
+        <player_side/>
+      </widget>
+    </window>
+    <window name="time_side">
+      <geometry x="10px" y="130px" width="300px" height="135px"/>
+      <widget>
+        <time_side/>
+      </widget>
+    </window>
+    <window name="sliders_side">
+      <geometry x="10px" y="385px" width="300px" height="205px"/>
+      <widget>
+        <sliders_side/>
+      </widget>
+    </window>
+    <window name="sys_side">
+      <geometry x="10px" y="595px" width="300px" height="153px"/>
+      <widget>
+        <sys_side/>
+      </widget>
+    </window>
 
-		<!-- system -->
-		<def name="system">
-			<box class="genwin" vexpand="false" hexpand="false">
-				<box orientation="v" spacing="35" halign="center" valign="center" space-evenly="false" vexpand="false" hexpand="false">
-					<box class="cpu_bar" orientation="h" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="iconcpu" text=""/>
-						<scale min="0" max="100" value="{{CPU_USAGE}}" active="false"/>
-					</box>
-					<box class="mem_bar" orientation="h" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="iconmem" text=""/>
-						<scale min="0" max="100" value="{{MEM_USAGE}}" active="false"/>
-					</box>
-					<box class="bright_bar" orientation="h" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="iconbright" text=""/>
-						<scale min="0" max="100" value="{{BLIGHT}}" active="false"/>
-					</box>
-					<box class="bat_bar" orientation="h" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="iconbat" text=""/>
-						<scale min="0" max="100" value="{{BATTERY}}" active="false"/>
-					</box>
-				</box>
-			</box>
-		</def>
-
-		<!-- clock -->
-		<def name="clock">
-			<box class="genwin" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-				<label class="time_hour" valign="start" wrap="true" limit-width="25" text="{{HOUR}}"/>
-				<label class="time_min" valign="end" wrap="true" limit-width="25" text="{{MIN}}"/>
-				<box orientation="v" spacing="25" space-evenly="false" vexpand="false" hexpand="false">
-					<label class="time_mer" halign="end" wrap="true" limit-width="25" text="{{MER}}"/>
-					<label class="time_day" halign="end" wrap="true" limit-width="25" text="{{DAY}}"/>
-				</box>
-			</box>
-		</def>
-
-		<!-- uptime -->
-		<def name="uptime">
-			<box class="genwin">
-				<box orientation="h" halign="center" spacing="40" space-evenly="false" vexpand="false" hexpand="false">
-					<label class="icontimer" valign="center" text="祥"/>
-					<box orientation="v" valign="center" spacing="0" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="uphour" halign="start" wrap="true" limit-width="25" text="{{UPHOUR}}"/>
-						<label class="upmin" halign="start" wrap="true" limit-width="25" text="{{UPMIN}}"/>
-					</box>
-				</box>
-			</box>
-		</def>
-
-		<!-- Music -->
-		<def name="music">
-			<box class="genwin" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-				<box class="album_art" vexpand="false" hexpand="false" style="background-image: url('{{COVER}}');">
-				</box>
-				<box orientation="v" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-					<label halign="center" class="song" wrap="true" limit-width="20" text="{{SONG}}"/>
-					<label halign="center" class="artist" wrap="true" limit-width="15" text="{{ARTIST}}"/>
-					<box orientation="h" spacing="20" halign="center" space-evenly="true" vexpand="false" hexpand="false">
-						<button class="btn_prev" onclick="~/.config/eww/scripts/music_info --prev">玲</button>
-						<button class="btn_play" onclick="~/.config/eww/scripts/music_info --toggle">{{STATUS}}</button>
-						<button class="btn_next" onclick="~/.config/eww/scripts/music_info --next">怜</button>
-					</box>
-					<box class="music_bar" halign="center" vexpand="false" hexpand="false">
-						<scale onscroll="mpc -q seek +1" min="0" active="true" max="100" value="{{CURRENT}}"/>
-					</box>
-				</box>
-			</box>
-		</def>
-
-		<!-- github -->
-		<def name="github">
-			<box class="github" vexpand="false" hexpand="false">
-				<button class="iconweb" onclick="~/.config/eww/scripts/open_links --gh"></button>
-			</box>
-		</def>
-
-		<!-- reddit -->
-		<def name="reddit">
-			<box class="reddit" vexpand="false" hexpand="false">
-				<button class="iconweb" onclick="~/.config/eww/scripts/open_links --rd">樓</button>
-			</box>
-		</def>
-
-		<!-- twitter -->
-		<def name="twitter">
-			<box class="twitter" vexpand="false" hexpand="false">
-				<button class="iconweb" onclick="~/.config/eww/scripts/open_links --tw"></button>
-			</box>
-		</def>
-
-		<!-- youtube -->
-		<def name="youtube">
-			<box class="youtube" vexpand="false" hexpand="false">
-				<button class="iconweb" onclick="~/.config/eww/scripts/open_links --yt"></button>
-			</box>
-		</def>
-
-		<!-- mail -->
-		<def name="mail">
-			<box class="mail">
-				<box orientation="h" halign="center" spacing="20" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconmail" onclick="~/.config/eww/scripts/open_links --mail"></button>
-					<box class="mailbox" space-evenly="false" vexpand="false" hexpand="false">
-						<button class="label_mails" onclick="~/.config/eww/scripts/open_links --mail">{{MAILS}}</button>
-					</box>
-				</box>
-			</box>
-		</def>
-
-		<!-- weather -->
-		<def name="weather">
-			<box class="genwin">
-				<box orientation="v" spacing="10" space-evenly="false" vexpand="false" hexpand="false">
-					<box orientation="h" vexpand="false" hexpand="false">
-						<label class="iconweather" halign="start" style="color: {{HEX}};" text="{{ICON}}"/>
-						<label class="label_temp" halign="end" text="{{TEMP}}"/>
-					</box>
-					<box orientation="v" spacing="10" halign="center" space-evenly="false" vexpand="false" hexpand="false">
-						<label class="label_stat" text="{{STAT}}"/>
-						<label class="label_quote" text="{{QUOTE}}"/>
-						<label class="label_quote" text="{{QUOTE2}}"/>
-					</box>
-				</box>
-			</box>
-		</def>
-
-		<!-- apps -->
-		<def name="apps">
-			<box class="genwin" orientation="v" space-evenly="false" vexpand="false" hexpand="false">
-				<box class="appbox" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button style="background-image: url('images/icons/firefox.svg');" class="app_fox" onclick="~/.config/eww/scripts/open_apps --ff"/>
-					<button style="background-image: url('images/icons/telegram.svg');" class="app_telegram" onclick="~/.config/eww/scripts/open_apps --tg"/>
-					<button style="background-image: url('images/icons/discord.svg');" class="app_discord" onclick="~/.config/eww/scripts/open_apps --dc"/>
-				</box>				
-				<box class="appbox" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button style="background-image: url('images/icons/terminal.svg');" class="app_terminal" onclick="~/.config/eww/scripts/open_apps --tr"/>
-					<button style="background-image: url('images/icons/files.svg');" class="app_files" onclick="~/.config/eww/scripts/open_apps --fm"/>
-					<button style="background-image: url('images/icons/geany.svg');" class="app_geany" onclick="~/.config/eww/scripts/open_apps --ge"/>
-				</box>				
-				<box class="appbox" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button style="background-image: url('images/icons/code.svg');" class="app_code" onclick="~/.config/eww/scripts/open_apps --cd"/>
-					<button style="background-image: url('images/icons/gimp.svg');" class="app_gimp" onclick="~/.config/eww/scripts/open_apps --gp"/>
-					<button style="background-image: url('images/icons/virtualbox.svg');" class="app_vbox" onclick="~/.config/eww/scripts/open_apps --vb"/>
-				</box>				
-			</box>
-		</def>
-
-		<!-- power buttons -->
-		<def name="logout">
-			<box class="genwin" vexpand="false" hexpand="false">
-				<button class="btn_logout" onclick="openbox --exit"></button>
-			</box>
-		</def>
-		<def name="sleep">
-			<box class="genwin" vexpand="false" hexpand="false">
-				<button class="btn_sleep" onclick="systemctl suspend"></button>
-			</box>
-		</def>
-		<def name="reboot">
-			<box class="genwin" vexpand="false" hexpand="false">
-				<button class="btn_reboot" onclick="systemctl reboot"></button>
-			</box>
-		</def>
-		<def name="poweroff">
-			<box class="genwin" vexpand="false" hexpand="false">
-				<button class="btn_poweroff" onclick="systemctl poweroff"></button>
-			</box>
-		</def>
-
-		<!-- folders -->
-		<def name="folders">
-			<box class="genwin" orientation="v" space-evenly="false" vexpand="false" hexpand="false">
-				<box class="hddbox" orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<box space-evenly="false" vexpand="false" hexpand="false">
-						<button class="hddicon" onclick="~/.config/eww/scripts/open_apps --fm"></button>
-					</box>
-					<label class="fs_sep" text="|"/>
-					<box space-evenly="false" vexpand="false" hexpand="false">
-						<label class="hdd_label" wrap="true" limit-width="25" text="{{FREE}}"/>
-					</box>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder1" onclick="~/.config/eww/scripts/open_folders --docs"></button>
-					<button class="label_folder1" onclick="~/.config/eww/scripts/open_folders --docs">Documents</button>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder2" onclick="~/.config/eww/scripts/open_folders --dl"></button>
-					<button class="label_folder2" onclick="~/.config/eww/scripts/open_folders --dl">Downloads</button>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder3" onclick="~/.config/eww/scripts/open_folders --music"></button>
-					<button class="label_folder3" onclick="~/.config/eww/scripts/open_folders --music">Music</button>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder4" onclick="~/.config/eww/scripts/open_folders --pics"></button>
-					<button class="label_folder4" onclick="~/.config/eww/scripts/open_folders --pics">Pictures</button>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder5" onclick="~/.config/eww/scripts/open_folders --cfg">ﮛ</button>
-					<button class="label_folder5" onclick="~/.config/eww/scripts/open_folders --cfg">~/.config</button>
-				</box>
-				<box orientation="h" space-evenly="false" vexpand="false" hexpand="false">
-					<button class="iconfolder6" onclick="~/.config/eww/scripts/open_folders --local">ﮛ</button>
-					<button class="label_folder6" onclick="~/.config/eww/scripts/open_folders --local">~/.local</button>
-				</box>
-			</box>
-		</def>
-
-    </definitions>
-
-<!-- ******************************************************************************** -->
-
-    <windows>
-
-		<!-- background -->
-		<window name="background" stacking="fg" focusable="false" screen="1">
-			<geometry x="0" y="0" width="1920px" height="1080px"/>
-			<widget>
-				<bg/>
-			</widget>
-		</window>
-
-		<!-- profile -->
-		<window name="profile" stacking="fg" focusable="false" screen="1">
-			<geometry x="150" y="150" width="350" height="440"/>
-			<widget>
-				<user/>
-			</widget>
-		</window>
-
-		<!-- system -->
-		<window name="system" stacking="fg" focusable="false" screen="1">
-			<geometry x="150" y="605" width="350" height="325"/>
-			<widget>
-				<system/>
-			</widget>
-		</window>
-
-		<!-- clock -->
-		<window name="clock" stacking="fg" focusable="false" screen="1">
-			<geometry x="515" y="150" width="350" height="155"/>
-			<widget>
-				<clock/>
-			</widget>
-		</window>
-
-		<!-- uptime -->
-		<window name="uptime" stacking="fg" focusable="false" screen="1">
-			<geometry x="515" y="320" width="350" height="155"/>
-			<widget>
-				<uptime/>
-			</widget>
-		</window>
-
-		<!-- music -->
-		<window name="music" stacking="fg" focusable="false" screen="1">
-			<geometry x="515" y="490" width="610" height="280"/>
-			<widget>
-				<music/>
-			</widget>
-		</window>
-
-		<!-- github -->
-		<window name="github" stacking="fg" focusable="false" screen="1">
-			<geometry x="515" y="785" width="141" height="145"/>
-			<widget>
-				<github/>
-			</widget>
-		</window>
-
-		<!-- reddit -->
-		<window name="reddit" stacking="fg" focusable="false" screen="1">
-			<geometry x="671" y="785" width="141" height="145"/>
-			<widget>
-				<reddit/>
-			</widget>
-		</window>
-
-		<!-- twitter -->
-		<window name="twitter" stacking="fg" focusable="false" screen="1">
-			<geometry x="827" y="785" width="141" height="145"/>
-			<widget>
-				<twitter/>
-			</widget>
-		</window>
-
-		<!-- youtube -->
-		<window name="youtube" stacking="fg" focusable="false" screen="1">
-			<geometry x="983" y="785" width="142" height="145"/>
-			<widget>
-				<youtube/>
-			</widget>
-		</window>
-
-		<!-- weather -->
-		<window name="weather" stacking="fg" focusable="false" screen="1">
-			<geometry x="880" y="150" width="550" height="325"/>
-			<widget>
-				<weather/>
-			</widget>
-		</window>
-
-		<!-- apps -->
-		<window name="apps" stacking="fg" focusable="false" screen="1">
-			<geometry x="1140" y="490" width="290" height="280"/>
-			<widget>
-				<apps/>
-			</widget>
-		</window>
-
-		<!-- mail -->
-		<window name="mail" stacking="fg" focusable="false" screen="1">
-			<geometry x="1140" y="785" width="290" height="145"/>
-			<widget>
-				<mail/>
-			</widget>
-		</window>
-
-		<!-- logout -->
-		<window name="logout" stacking="fg" focusable="false" screen="1">
-			<geometry x="1445" y="150" width="155" height="155"/>
-			<widget>
-				<logout/>
-			</widget>
-		</window>
-
-		<!-- sleep -->
-		<window name="sleep" stacking="fg" focusable="false" screen="1">
-			<geometry x="1615" y="150" width="155" height="155"/>
-			<widget>
-				<sleep/>
-			</widget>
-		</window>
-
-		<!-- reboot -->
-		<window name="reboot" stacking="fg" focusable="false" screen="1">
-			<geometry x="1445" y="320" width="155" height="155"/>
-			<widget>
-				<reboot/>
-			</widget>
-		</window>
-
-		<!-- poweroff -->
-		<window name="poweroff" stacking="fg" focusable="false" screen="1">
-			<geometry x="1615" y="320" width="155" height="155"/>
-			<widget>
-				<poweroff/>
-			</widget>
-		</window>
-
-		<!-- folders -->
-		<window name="folders" stacking="fg" focusable="false" screen="1">
-			<geometry x="1445" y="490" width="325" height="440"/>
-			<widget>
-				<folders/>
-			</widget>
-		</window>
-
-    </windows>
+    <!-- Main Stuff -->
+    <!-- <window name="calendar_full">
+      <geometry x="505px" y="100px" width="690px" height="100px"/>
+      <widget>
+        <calendar_full/>
+      </widget>
+    </window> -->
+    <window name="search_full">
+      <geometry x="390" y="750" width="120px" height="122px"/>
+      <widget>
+        <search_full/>
+      </widget>
+    </window>
+    <window name="power_full">
+      <geometry x="1410px" y="220px" width="120px" height="120px"/>
+      <widget>
+        <power_full/>
+      </widget>
+    </window>
+     <window name="reboot_full">
+      <geometry x="1410px" y="350px" width="120px" height="121px"/>
+      <widget>
+        <reboot_full/>
+      </widget>
+    </window>
+    <window name="lock_full">
+      <geometry x="1410px" y="482px" width="120px" height="121px"/>
+      <widget>
+        <lock_full/>
+      </widget>
+    </window>
+     <window name="suspend_full">
+      <geometry x="1410px" y="614px" width="120px" height="122px"/>
+      <widget>
+        <suspend_full/>
+      </widget>
+    </window>
+     <window name="logout_full">
+      <geometry x="1410px" y="748px" width="120px" height="122px"/>
+      <widget>
+        <logout_full/>
+      </widget>
+    </window>
+     <window name="close_full">
+      <geometry x="633px" y="861px" width="110px" height="122px"/>
+      <widget>
+        <close_full/>
+      </widget>
+    </window>
+     <window name="player">
+      <geometry x="1056px" y="308px" width="300px" height="400px"/>
+      <widget>
+        <player/>
+      </widget>
+    </window>
+    <window name="profile">
+      <geometry x="390px" y="220px" width="340px" height="520px"/>
+      <widget>
+        <profile/>
+      </widget>
+    </window>
+     <window name="weather">
+      <geometry x="740px" y="220px" width="410px" height="400px"/>
+      <widget>
+        <weather/>
+      </widget>
+    </window>
+     <window name="home_dir">
+      <geometry x="1160px" y="350px" width="240px" height="520px"/>
+      <widget>
+        <home_dir/>
+      </widget>
+    </window>
+    <window name="quote">
+      <geometry x="520px" y="750px" width="630px" height="120px"/>
+      <widget>
+        <quote/>
+      </widget>
+    </window>
+     <window name="screenshot">
+      <geometry x="1160px" y="220px" width="240px" height="120px"/>
+      <widget>
+        <screenshot/>
+      </widget>
+    </window>
+    <window name="vpn-icon">
+      <geometry x="740px" y="630px" width="200px" height="110px"/>
+      <widget>
+        <vpn/>
+      </widget>
+    </window>
+    <window name="incognito-icon">
+      <geometry x="950px" y="630px" width="200px" height="110px"/>
+      <widget>
+        <incognito/>
+      </widget>
+    </window>
+    <window name="blur_full">
+      <geometry x="0px" y="0px" width="100%" height="100%"/>
+      <widget>
+        <blur_full/>
+      </widget>
+    </window>
+    <!-- <window name="powermenu" focusable="true">
+      <geometry x="35%" y="20%" width="30%" height="40%"/>
+      <widget>
+        <powermenu/>
+      </widget>
+    </window> -->
+  </windows>
 </eww>

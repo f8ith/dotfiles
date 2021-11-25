@@ -1,46 +1,45 @@
-#!/usr/bin/env bash
-
-FILE="$1"
-TMP_FILE="${PREVIEW_TMP}/tmp.png"
-
-function draw_clear {
-    >"${UEBERZUG_FIFO}" declare -A -p cmd=( \
-        [action]=remove [identifier]="$1" )
+#!/bin/sh
+draw() {
+  ~/.config/lf/draw_img.sh "$@"
+  exit 1
 }
 
-
-function draw_image {
-    >"${UEBERZUG_FIFO}" declare -A -p cmd=( \
-        [action]=add [identifier]="$6" \
-	[x]="$4" [y]="$5" [width]="$3" [height]="$2" \
-	[scaler]=fit_contain [scaling_position_x]=0.5 [scaling_position_y]=0.5 \
-	[path]="${FILE}" )
+hash() {
+  printf '%s/.cache/lf/%s' "$HOME" \
+    "$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}')"
 }
 
-function draw_video {
-    ffmpegthumbnailer -t 0% -q 3 -s "$(expr ${TEXT_WIDTH} \* $3)" \
-        -c jpeg -i "${FILE}" -o "${TMP_FILE}"
-    FILE="${TMP_FILE}"
-    draw_image "$@"
+cache() {
+  if [ -f "$1" ]; then
+    draw "$@"
+  fi
 }
 
+file="$1"
+shift
 
-function draw_pdf {
-    pdftoppm -png -f 1 -l 1 -jpeg -tiffcompression jpeg \
-        -scale-to-x "$(expr ${TEXT_WIDTH} \* $3)" -scale-to-y -1 \
-        -singlefile "${FILE}" "${TMP_FILE%.png}"
-    FILE="${TMP_FILE}"
-    draw_image "$@"
-}
+if [ -n "$FIFO_UEBERZUG" ]; then
+  case "$(file -Lb --mime-type -- "$file")" in
+    image/*)
+      orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file")"
+      if [ -n "$orientation" ] && [ "$orientation" != 1 ]; then
+        cache="$(hash "$file").jpg"
+        cache "$cache" "$@"
+        convert -- "$file" -auto-orient "$cache"
+        draw "$cache" "$@"
+      else
+        draw "$file" "$@"
+      fi
+      ;;
+    video/*)
+      cache="$(hash "$file").jpg"
+      cache "$cache" "$@"
+      ffmpegthumbnailer -i "$file" -o "$cache" -s 0
+      draw "$cache" "$@"
+      ;;
+  esac
+fi
 
-case $(file -b --mime-type "${FILE}") in
-    text/*) draw_clear "$6" ; cat "${FILE}" ;;
-    image/*) draw_image "$@" ;;
-    video/*) draw_video "$@" ;;
-    application/pdf) draw_pdf "$@" ;;
-    application/gzip|application/x-xz) draw_clear "$6" ; tar tf "$1" ;;
-    application/zip) draw_clear "$6" ; unzip -Z -1 "$1" ;;
-    *) draw_clear "$6" ;;
-esac
-
+file -Lb -- "$1" | fold -s -w "$width"
 exit 0
+

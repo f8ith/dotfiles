@@ -5,5 +5,5 @@ export NeovideMultiGrid
 xrdb -load ~/.Xresources &
 git config --global credential.helper store &
 unclutter &
-fcitx &
+fcitx5 &
 xset m 0 0

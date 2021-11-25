@@ -63,7 +63,7 @@ return {
     { key = "&", mods = "LEADER|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=true}}},
     { key = "x", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
   },
-  colors = {
+ colors = {
    tab_bar = {
 
      -- The color of the strip that goes along the top of the window

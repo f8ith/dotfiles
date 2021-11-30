@@ -10,6 +10,11 @@ source ~/.zinit/bin/zinit.zsh
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
 fpath+=~/.zfunc
+# asdf
+. $HOME/.asdf/asdf.sh
+# append completions to fpath
+fpath+=(${ASDF_DIR}/completions $fpath)
+
 
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -46,15 +51,6 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
-# asdf
-. $HOME/.asdf/asdf.sh
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# if type brew &>/dev/null; then
-#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-# fi
-
 zinit light jeffreytse/zsh-vi-mode
 zinit light zdharma/fast-syntax-highlighting 
 zinit light zsh-users/zsh-autosuggestions 
@@ -63,12 +59,6 @@ zinit light zsh-users/zsh-completions
 
 zinit wait"2" lucid for \
     wfxr/forgit \
-
-# zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-#     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-#     pick"direnv" src="zhook.zsh" for \
-#         direnv/direnv
-
 
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
@@ -81,3 +71,8 @@ if [ "$system_type" = "Darwin" ]; then
 fi
 
 export LS_COLORS="$(vivid generate one-dark)"
+
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook zsh)"
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }

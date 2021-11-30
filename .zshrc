@@ -82,3 +82,5 @@ if [ "$system_type" = "Darwin" ]; then
     alias ls="gls -l --color=always"
 fi
 
+eval "$(asdf exec direnv hook zsh)"
+direnv() { asdf exec direnv "$@"; }     

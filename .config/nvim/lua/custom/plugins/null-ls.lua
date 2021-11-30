@@ -12,9 +12,6 @@ local sources = {
    b.formatting.prettierd.with {
       filetypes = { "html", "json", "markdown", "css", "javascript", "javascriptreact" },
    },
-   b.diagnostics.eslint.with {
-      command = "eslint_d",
-   },
 
 }
 

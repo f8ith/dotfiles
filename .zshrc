@@ -50,7 +50,6 @@ bindkey '^e' edit-command-line
 . $HOME/.asdf/asdf.sh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
-source ~/.poetry/env
 
 # if type brew &>/dev/null; then
 #   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -81,3 +80,4 @@ if [ "$system_type" = "Darwin" ]; then
     alias ls="gls -l --color=always"
 fi
 
+export LS_COLORS="$(vivid generate one-dark)"

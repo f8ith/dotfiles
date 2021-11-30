@@ -9,6 +9,7 @@ source ~/.zinit/bin/zinit.zsh
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
+fpath+=~/.zfunc
 
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -72,8 +73,6 @@ zinit wait"2" lucid for \
 
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
-
-export PATH="$HOME/.poetry/bin:$PATH"
 
 eval $(thefuck --alias)
 

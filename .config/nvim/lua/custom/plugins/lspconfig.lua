@@ -29,15 +29,19 @@ M.setup_lsp = function(attach, capabilities)
 
             -- Run nvchad's attach
             attach(client, bufnr)
-
-            -- Use nvim-code-action-menu for code actions for rust
-            buf_set_keymap(bufnr, "n", "<leader>ca", "lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
-            buf_set_keymap(bufnr, "v", "<leader>ca", "lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
          end
       end
 
       server:setup(opts)
+
       vim.cmd [[ do User LspAttachBuffers ]]
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+          vim.lsp.diagnostic.on_publish_diagnostics, {
+              virtual_text = false,
+              underline = true,
+              signs = true,
+          }
+      )
    end)
 end
 

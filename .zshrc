@@ -70,9 +70,6 @@ if [ "$system_type" = "Darwin" ]; then
     alias ls="gls -l --color=always"
 fi
 
-export LS_COLORS="$(vivid generate one-dark)"
-
-# Hook direnv into your shell.
 eval "$(asdf exec direnv hook zsh)"
-# A shortcut for asdf managed direnv.
-direnv() { asdf exec direnv "$@"; }
+direnv() { asdf exec direnv "$@"; }     
+export LS_COLORS="$(vivid generate one-dark)"

@@ -43,20 +43,13 @@ XF86AudioPrev
 #: apps {{{
 
 alt + Return
-        kitty
+        wezterm
 
 alt + shift + Return
-        kitty --class floating_terminal
+        wezterm --class floating_terminal
 
 alt + d
         rofi -show drun -show-icons -icon-theme "Papirus-Dark"
-
-alt + e
-        bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
-
-alt + shift + f
-        kitty --class file_manager --title lf --working-directory ~ -e startlf
-
 
 alt + shift + r
 	$HOME/.config/bspwm/bspwmrc

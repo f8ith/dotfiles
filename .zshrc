@@ -9,6 +9,7 @@ source ~/.zinit/bin/zinit.zsh
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
+fpath+=~/.zfunc
 
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -49,7 +50,6 @@ bindkey '^e' edit-command-line
 . $HOME/.asdf/asdf.sh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
-source ~/.poetry/env
 
 # if type brew &>/dev/null; then
 #   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -73,8 +73,6 @@ zinit wait"2" lucid for \
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 eval $(thefuck --alias)
 
 if [ "$system_type" = "Darwin" ]; then
@@ -82,5 +80,9 @@ if [ "$system_type" = "Darwin" ]; then
     alias ls="gls -l --color=always"
 fi
 
+<<<<<<< HEAD
 eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }     
+=======
+export LS_COLORS="$(vivid generate one-dark)"
+>>>>>>> 4d7d0a7490a7363bae5d2f6f31e0651fdbd25b01

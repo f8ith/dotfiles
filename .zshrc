@@ -4,6 +4,7 @@ PS1="%~ %{$reset_color%}%b "
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 source ~/.zinit/bin/zinit.zsh
 
@@ -65,11 +66,5 @@ zinit wait"2" lucid for \
 
 eval $(thefuck --alias)
 
-if [ "$system_type" = "Darwin" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    alias ls="gls -l --color=always"
-fi
-
 eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }     
-export LS_COLORS="$(vivid generate one-dark)"

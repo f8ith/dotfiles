@@ -140,3 +140,4 @@ lfcd() {
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 eval "$(starship init bash)"
+. "$HOME/.cargo/env"

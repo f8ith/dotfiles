@@ -23,15 +23,15 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font Mono"),
-  font_size = 12,
-  color_scheme = "OneDark",
+  font = wezterm.font("SFMono Nerd Font"),
+  font_size = 14,
+  color_scheme = "TokyoNight",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
-    { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    { key = "|", mods = "LEADER|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     { key = "z", mods = "LEADER",       action="TogglePaneZoomState" },
     { key = "c", mods = "LEADER",       action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     { key = "h", mods = "LEADER",       action=wezterm.action{ActivatePaneDirection="Left"}},
@@ -53,47 +53,5 @@ return {
     { key = "9", mods = "LEADER",       action=wezterm.action{ActivateTab=8}},
     { key = "&", mods = "LEADER|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=true}}},
     { key = "x", mods = "LEADER",       action=wezterm.action{CloseCurrentPane={confirm=true}}},
-  },
- colors = {
-   tab_bar = {
-
-     -- The color of the strip that goes along the top of the window
-     background = colors.bg,
-
-     -- The active tab is the one that has focus in the window
-     active_tab = {
-       -- The color of the background area for the tab
-       bg_color = colors.bg2,
-       -- The color of the text for the tab
-       fg_color = colors.accent,
-
-       -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
-       -- label shown for this tab.
-       -- The default is "Normal"
-       intensity = "Normal",
-
-       -- Specify whether you want "None", "Single" or "Double" underline for
-       -- label shown for this tab.
-       -- The default is "None"
-       underline = "None",
-
-       -- Specify whether you want the text to be italic (true) or not (false)
-       -- for this tab.  The default is false.
-       italic = false,
-
-       -- Specify whether you want the text to be rendered with strikethrough (true)
-       -- or not for this tab.  The default is false.
-       strikethrough = false,
-     },
-
-     -- Inactive tabs are the tabs that do not have focus
-     inactive_tab = {
-       bg_color = colors.bg,
-       fg_color = colors.fg,
-
-       -- The same options that were listed under the `active_tab` section above
-       -- can also be used for `inactive_tab`.
-     },
-   }
   },
 }

@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 sudo yabai --load-sa
+#brew services restart spacebar &
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -30,4 +31,4 @@ yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   0
 
-#yabai -m config external_bar main:20:0
+# yabai -m config external_bar main:26:0

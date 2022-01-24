@@ -4,11 +4,18 @@ PS1="%~ %{$reset_color%}%b "
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 source ~/.zinit/bin/zinit.zsh
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
+fpath+=~/.zfunc
+# asdf
+. $HOME/.asdf/asdf.sh
+# append completions to fpath
+fpath+=(${ASDF_DIR}/completions $fpath)
+
 
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -45,16 +52,6 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
-# asdf
-. $HOME/.asdf/asdf.sh
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-source ~/.poetry/env
-
-# if type brew &>/dev/null; then
-#   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-# fi
-
 zinit light jeffreytse/zsh-vi-mode
 zinit light zdharma/fast-syntax-highlighting 
 zinit light zsh-users/zsh-autosuggestions 
@@ -64,24 +61,10 @@ zinit light zsh-users/zsh-completions
 zinit wait"2" lucid for \
     wfxr/forgit \
 
-# zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-#     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-#     pick"direnv" src="zhook.zsh" for \
-#         direnv/direnv
-
-
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 eval $(thefuck --alias)
 
-if [ "$system_type" = "Darwin" ]; then
-    eval "$(gdircolors -b ~/.dir_colors)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    alias ls="gls -l --color=always"
-else
-    eval "$(dircolors -b ~/.dir_colors)"
-fi
-
+eval "$(asdf exec direnv hook zsh)"
+direnv() { asdf exec direnv "$@"; }     

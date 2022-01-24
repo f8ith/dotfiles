@@ -3,16 +3,16 @@
 Print
         maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved" -t 2000
 
-alt + ctrl + c
+super + ctrl + c
 	notify-send "Select an area to capture" -t 1000 && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured" -t 2000
 
-alt + shift + c
+super + shift + c
         notify-send "Select an area to copy to clipboard" -t 1000 && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"  -t 2000
 
-alt + Print
+super + Print
 	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" -t 2000
 
-alt + shift + Print
+super + shift + Print
         kitty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
 
 
@@ -42,39 +42,39 @@ XF86AudioPrev
 
 #: apps {{{
 
-alt + Return
+super + Return
         kitty
 
-alt + shift + Return
+super + shift + Return
         kitty --class floating_terminal
 
-alt + d
+super + d
         rofi -show drun -show-icons -icon-theme "Papirus-Dark"
 
-alt + e
+super + e
         bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
-alt + shift + f
+super + shift + f
         kitty --class file_manager --title lf --working-directory ~ -e startlf
 
 
-alt + shift + r
+super + shift + r
 	$HOME/.config/bspwm/bspwmrc
 
 #}}}
 
 #: BSPWM {{{
 
-alt + shift + q
+super + shift + q
 	bspc node -{c,k}
 
-alt + f
+super + f
         bspc node -t '~fullscreen'
 
-alt + y
+super + y
 	bspc node @focused:/ -R 90
 
-alt + g
+super + g
 	bspc node -s biggest.local
 
 
@@ -82,36 +82,36 @@ alt + g
 # state/flags
 #
 
-alt + {t,shift + t,s}
+super + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
 
 
 # focus/swap
 
-alt + {_,shift + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-alt + {p,b,comma,period}
+super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-alt + c
+super + c
 	bspc node -{f,s} next.local
 
 
-alt + {_,shift + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
 #
 # preselect
 #
 
-alt + {u,o}
+super + {u,o}
 	bspc node -p {south,east}
 
-alt + ctrl + {1-9}
+super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-alt + ctrl + space
+super + ctrl + space
 	bspc node -p cancel
 
 ctrl + space
@@ -121,13 +121,13 @@ ctrl + space
 # move/resize
 #
 
-alt + ctrl + {h,j,k,l}
+super + ctrl + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-super + alt + {h,j,k,l}
+alt + super + {h,j,k,l}
         bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-alt + {Left,Down,Up,Right}
+super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #}}}
@@ -140,6 +140,6 @@ ctrl + Print
 ctrl
 		compton -b --experimental-backends
 
-alt + shift + z
+super + shift + z
 		toggle picom -b --experimental-backends
 #}}}

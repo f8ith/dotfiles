@@ -10,6 +10,7 @@ map('v', '<leader>p', '"0p')
 local customPlugins = require "core.customPlugins"
 
 customPlugins.add(function(use)
+  use 'nyngwang/NeoRoot.lua'
   use "williamboman/nvim-lsp-installer"
   use 'ggandor/lightspeed.nvim'
   use {
@@ -32,4 +33,10 @@ customPlugins.add(function(use)
       require('nvim-ts-autotag').setup()
     end,
   }
+  use {
+    'puremourning/vimspector',
+    config = function()
+      vim.g.vimspector_enable_mappings = 'HUMAN'
+    end,
+   }
 end)

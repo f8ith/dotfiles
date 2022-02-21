@@ -1,37 +1,32 @@
--- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
--- This file is for NvChad options & tools, custom settings are split between here and 'lua/custom/init.lua'
+local map = require("core.utils").map
+require "custom.autocmds"
+
+map("v", "<leader>.", ":Lspsaga range_code_action<CR>")
+map("n", "gr", ":<C-U>Lspsaga rename<CR>")
+map('n','<C-p>','<cmd>lua require("fine-cmdline").open()<CR>')
+map('n', '<leader>p', '"0p')
+map('v', '<leader>p', '"0p')
 
 local M = {}
-M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
+M.options = {
+  tabstop = 2
+}
 
--- NOTE: To use this, make a copy with `cp example_chadrc.lua chadrc.lua`
+M.ui, M.mappings, M.plugins = {}, {}, {}
 
---------------------------------------------------------------------
-
--- To use this file, copy the structure of `core/default_config.lua`,
--- examples of setting relative number & changing theme:
-
--- M.options = {
---    relativenumber = true,
--- }
+local userPlugins = require "custom.plugins"
 
 M.ui = {
   theme = "tokyonight"
 }
 
--- NvChad included plugin options & overrides
 M.plugins = {
+   install = userPlugins,
    options = {
       lspconfig = {
         setup_lspconf = "custom.plugins.lspconfig",
       },
    },
-   -- To change the Packer `config` of a plugin that comes with NvChad,
-   -- add a table entry below matching the plugin github name
-   --              '-' -> '_', remove any '.lua', '.nvim' extensions
-   -- this string will be called in a `require`
-   --              use "(custom.configs).my_func()" to call a function
-   --              use "custom.blankline" to call a file
    default_plugin_config_replace = {
     nvim_tree = {
       view = {

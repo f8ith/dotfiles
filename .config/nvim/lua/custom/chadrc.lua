@@ -17,7 +17,7 @@ M.ui, M.mappings, M.plugins = {}, {}, {}
 local userPlugins = require "custom.plugins"
 
 M.ui = {
-  theme = "tokyonight"
+  theme = "gruvchad"
 }
 
 M.plugins = {

@@ -2,10 +2,10 @@ autoload -U colors && colors
 PS1="%~ %{$reset_color%}%b "
 
 # disable vi mode
-bindkey -e
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 source ~/.zinit/bin/zinit.zsh
 
@@ -53,6 +53,7 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
+zinit light jeffreytse/zsh-vi-mode
 zinit light zdharma/fast-syntax-highlighting 
 zinit light zsh-users/zsh-autosuggestions 
 zinit light zsh-users/zsh-completions 

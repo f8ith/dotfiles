@@ -1,0 +1,32 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set commentary
+set easymotion
+
+set showmode
+set so=5
+set incsearch
+set nu
+
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+nnoremap <leader>f <Plug>(easymotion-s)
+nnoremap <leader>e <Plug>(easymotion-f)
+nnoremap <S-Space> :action GotoNextError<CR>
+nnoremap ge :action ShowErrorDescription<CR>
+inoremap jk <Esc>
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap vd "_d
+xnoremap x "_d
+nnoremap vD "_D
+xnoremap P "0p
+xnoremap Y "+y
+
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>

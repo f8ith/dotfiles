@@ -32,6 +32,7 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 if [ "$system_type" = "Darwin" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     alias ls="gls -l --color=always"
+    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 else
     alias ls="ls -l --color=always"
 fi

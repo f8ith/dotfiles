@@ -1,6 +1,7 @@
 autoload -U colors && colors
 PS1="%~ %{$reset_color%}%b "
 
+# disable vi mode
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
@@ -68,3 +69,4 @@ eval $(thefuck --alias)
 
 eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }     
+

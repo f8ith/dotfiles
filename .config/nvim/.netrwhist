@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/faith/.config/youtube-dl'
+let g:netrw_dirhist_7='/Users/faith/git/nyaanime'
+let g:netrw_dirhist_6='/Users/faith/.asdf/shims'
+let g:netrw_dirhist_5='/Users/faith/MCServer/minecraft-server-hibernation_v2.0.0'
+let g:netrw_dirhist_4='/Users/faith/.config/ranger/plugins'
+let g:netrw_dirhist_3='/Users/faith/.config/ranger/plugins/ranger_devicons'
+let g:netrw_dirhist_2='/Users/faith/.config/ranger/plugins'
+let g:netrw_dirhist_1='/Users/faith/git/waffle-bot/waffle'
+let g:netrw_dirhist_0='/Users/faith/git/waffle-bot'
+let g:netrw_dirhist_9='/Users/faith/.config'

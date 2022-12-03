@@ -54,12 +54,10 @@ alt + Return
 
 alt + shift + Return
         wezterm --class floating_terminal
->>>>>>> cb65861009fc97ec88b5ac4dea032456671fb3a2
 
 super + d
         rofi -show drun -show-icons -icon-theme "Papirus-Dark"
 
-<<<<<<< HEAD
 super + e
         bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
@@ -68,9 +66,6 @@ super + shift + f
 
 
 super + shift + r
-=======
-alt + shift + r
->>>>>>> cb65861009fc97ec88b5ac4dea032456671fb3a2
 	$HOME/.config/bspwm/bspwmrc
 
 #}}}
@@ -149,9 +144,6 @@ ctrl + Print
 #        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices"
         vfio a && notify-send "Attached usb devices"
 
-ctrl
-		compton -b --experimental-backends
-
 super + shift + z
-		toggle picom -b --experimental-backends
+	toggle picom -b --experimental-backends
 #}}}

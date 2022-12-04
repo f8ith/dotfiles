@@ -23,15 +23,16 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font Mono"),
-  font_size = 12,
+  font = wezterm.font("Hack"),
+  font_size = 14,
   color_scheme = "Catppuccin Mocha",
   use_dead_keys = false,
+  use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
-    { key = "|", mods = "LEADER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+    { key = "|", mods = "LEADER|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
     { key = "z", mods = "LEADER",       action="TogglePaneZoomState" },
     { key = "c", mods = "LEADER",       action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     { key = "h", mods = "LEADER",       action=wezterm.action{ActivatePaneDirection="Left"}},

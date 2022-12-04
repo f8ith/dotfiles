@@ -26,6 +26,7 @@ set shortmess+=F
 
 set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
+inoremap jk <Esc>
 
 "}}}
 
@@ -234,7 +235,7 @@ let g:tcomment#options = {'col': 1}
 let ayucolor="light"  " for light version of theme
 let &background="dark"
 let g:palenight_terminal_italics=1
-colorscheme onedark
+colorscheme catppuccin-mocha
 
 
 let g:indentLine_char = '│'
@@ -313,21 +314,21 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 " lspsaga
-nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent>gr :Lspsaga rename<CR>
-nnoremap <silent> gs :Lspsaga signature_help<CR>
-nnoremap <silent> gd :Lspsaga preview_definition<CR>
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-
-autocmd CursorHold * silent :Lspsaga show_cursor_diagnostics
+" nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+" nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+" nnoremap <silent>gr :Lspsaga rename<CR>
+" nnoremap <silent> gs :Lspsaga signature_help<CR>
+" nnoremap <silent> gd :Lspsaga preview_definition<CR>
+" nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+" vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+" nnoremap <silent>K :Lspsaga hover_doc<CR>
+" nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+"
+" autocmd CursorHold * silent :Lspsaga show_cursor_diagnostics
 
 " nvim lsp
-let g:diagnostic_enable_virtual_text = 0
-let g:diagnostic_show_sign = 0
+" let g:diagnostic_enable_virtual_text = 0
+" let g:diagnostic_show_sign = 0
 
 " bufferline
 nnoremap <silent>]b :BufferLineCycleNext<CR>

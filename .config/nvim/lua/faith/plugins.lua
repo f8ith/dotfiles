@@ -14,101 +14,103 @@ return require('packer').startup(function()
 use 'wbthomason/packer.nvim'
 use 'b3nj5m1n/kommentary'
 
+use {'neoclide/coc.nvim', branch = 'release'}
+
 -- built in lsp
-use 'nvim-lua/lsp-status.nvim'
-use {
-  'neovim/nvim-lspconfig',
-  config = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      'documentation',
-      'detail',
-      'additionalTextEdits',
-    }
-  }
-
-  local lsp_status = require("lsp-status")
-  local nvim_lsp = require "lspconfig"
-  local servers = {
-      "html",
-      "cssls",
-      "jsonls",
-      "vuels",
-      "bashls",
-      "tsserver",
-      "pyright",
-      "gopls"
-  }
-
-  for _, lsp in ipairs(servers) do
-      nvim_lsp[lsp].setup {
-          capabilities = lsp_status.capabilities,
-          handlers = {
-            ["textDocument/publishDiagnostics"] = vim.lsp.with(
-              vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = false
-              }
-            ),
-          }
-      }
-  end
-
-  vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-      if err ~= nil or result == nil then
-          return
-      end
-      if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-          local view = vim.fn.winsaveview()
-          vim.lsp.util.apply_text_edits(result, bufnr)
-          vim.fn.winrestview(view)
-          if bufnr == vim.api.nvim_get_current_buf() then
-              vim.api.nvim_command("noautocmd :update")
-          end
-      end
-  end
-
-  local on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
-          vim.api.nvim_command [[augroup Format]]
-          vim.api.nvim_command [[autocmd! * <buffer>]]
-          vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-          vim.api.nvim_command [[augroup END]]
-      end
-  end
-
-  -- Setup diagnostics formaters and linters for non LSP provided files
-  nvim_lsp.efm.setup {
-      on_attach = on_attach,
-      capabilities = lsp_status.capabilities,
-      init_options = {
-          documentFormatting = true,
-          codeAction = true
-      },
-      filetypes = {
-        'javascript',
-        "lua",
-        "sh",
-        "markdown",
-        "json",
-        "yaml",
-        "toml",
-        "python"
-
-      }
-  }
-
-end
-}
-
-use {
-  'glepnir/lspsaga.nvim',
-  config = function()
-  local saga = require 'lspsaga'
-  saga.init_lsp_saga()
-  end
-}
+-- use 'nvim-lua/lsp-status.nvim'
+-- use {
+--   'neovim/nvim-lspconfig',
+--   config = function()
+--   local capabilities = vim.lsp.protocol.make_client_capabilities()
+--   capabilities.textDocument.completion.completionItem.snippetSupport = true
+--   capabilities.textDocument.completion.completionItem.resolveSupport = {
+--     properties = {
+--       'documentation',
+--       'detail',
+--       'additionalTextEdits',
+--     }
+--   }
+--
+--   local lsp_status = require("lsp-status")
+--   local nvim_lsp = require "lspconfig"
+--   local servers = {
+--       "html",
+--       "cssls",
+--       "jsonls",
+--       "vuels",
+--       "bashls",
+--       "tsserver",
+--       "pyright",
+--       "gopls"
+--   }
+--
+--   for _, lsp in ipairs(servers) do
+--       nvim_lsp[lsp].setup {
+--           capabilities = lsp_status.capabilities,
+--           handlers = {
+--             ["textDocument/publishDiagnostics"] = vim.lsp.with(
+--               vim.lsp.diagnostic.on_publish_diagnostics, {
+--                 virtual_text = false
+--               }
+--             ),
+--           }
+--       }
+--   end
+--
+--   vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+--       if err ~= nil or result == nil then
+--           return
+--       end
+--       if not vim.api.nvim_buf_get_option(bufnr, "modified") then
+--           local view = vim.fn.winsaveview()
+--           vim.lsp.util.apply_text_edits(result, bufnr)
+--           vim.fn.winrestview(view)
+--           if bufnr == vim.api.nvim_get_current_buf() then
+--               vim.api.nvim_command("noautocmd :update")
+--           end
+--       end
+--   end
+--
+--   local on_attach = function(client)
+--       if client.resolved_capabilities.document_formatting then
+--           vim.api.nvim_command [[augroup Format]]
+--           vim.api.nvim_command [[autocmd! * <buffer>]]
+--           vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
+--           vim.api.nvim_command [[augroup END]]
+--       end
+--   end
+--
+--   -- Setup diagnostics formaters and linters for non LSP provided files
+--   nvim_lsp.efm.setup {
+--       on_attach = on_attach,
+--       capabilities = lsp_status.capabilities,
+--       init_options = {
+--           documentFormatting = true,
+--           codeAction = true
+--       },
+--       filetypes = {
+--         'javascript',
+--         "lua",
+--         "sh",
+--         "markdown",
+--         "json",
+--         "yaml",
+--         "toml",
+--         "python"
+--
+--       }
+--   }
+--
+-- end
+-- }
+--
+-- use {
+--   'glepnir/lspsaga.nvim',
+--   config = function()
+--   local saga = require 'lspsaga'
+--   saga.init_lsp_saga()
+--   end
+-- }
 --use {'Shougo/deoplete.nvim', run = ':UpdateRemotePlugins'}
 --use 'Shougo/deoplete-lsp'
 use {
@@ -150,6 +152,7 @@ use {
 use 'drewtempelmeyer/palenight.vim'
 use 'Luxed/ayu-vim'
 use 'b4skyx/serenade'
+use { "catppuccin/nvim", as = "catppuccin" }
 -- use 'connorholyday/vim-snazzy'
 use 'navarasu/onedark.nvim'
 use 'morhetz/gruvbox'
@@ -216,7 +219,7 @@ use {
         options = {
           numbers = "none",
           mappings = true,
-          indicator_icon = '▎',
+          indicator = '▎',
           buffer_close_icon = '',
           modified_icon = '●',
           close_icon = '',
@@ -240,59 +243,61 @@ use {
         },
         highlights = {
             fill = {
-                guibg = bg
+                bg = bg
              },
             background = {
-                guibg = bg
+                bg = bg
             },
 
             -- buffer
             buffer_selected = {
-                guifg = fg,
-                guibg = bg2,
-                gui = "bold"
+                fg = fg,
+                bg = bg2,
+                underline = true,
+                undercurl = false,
+                bold = true
             },
             separator = {
-                guifg = bg3,
-                guibg = bg
+                fg = bg3,
+                bg = bg
             },
             separator_selected = {
-                guifg = bg3,
-                guibg = bg2
+                fg = bg3,
+                bg = bg2
             },
             separator_visible = {
-                guifg = bg2,
-                guibg = bg2
+                fg = bg2,
+                bg = bg2
             },
             indicator_selected = {
-                guifg = accent,
-                guibg = bg2
+                fg = accent,
+                bg = bg2
             },
 
             -- tabs over right
             tab = {
-                guifg = fg,
-                guibg = bg
+                fg = fg,
+                bg = bg
             },
              tab_selected = {
-                guifg = accent,
-                guibg = bg2
+                fg = accent,
+                bg = bg2
             },
              tab_close = {
-                guifg = accent,
-                guibg = bg2
+                fg = accent,
+                bg = bg2
             },
             modified_selected = {
-                guifg = accent2,
-                guibg = bg2
+                fg = accent2,
+                bg = bg2
             },
             modified = {
-                guifg = accent3,
-                guibg = bg
+                fg = accent3,
+                bg = bg
             },
             modified_visible = {
-                guifg = accent,
-                guibg = bg
+                fg = accent,
+                bg = bg
             }
         }
     }

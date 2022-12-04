@@ -7,7 +7,7 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-source ~/.zinit/bin/zinit.zsh
+source ~/.zinit/zinit.zsh
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
@@ -54,9 +54,9 @@ bindkey '^e' edit-command-line
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 zinit light jeffreytse/zsh-vi-mode
-zinit light zdharma/fast-syntax-highlighting 
-zinit light zsh-users/zsh-autosuggestions 
-zinit light zsh-users/zsh-completions 
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 
 
 zinit wait"2" lucid for \
@@ -65,8 +65,24 @@ zinit wait"2" lucid for \
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
 
-eval $(thefuck --alias)
-
 eval "$(asdf exec direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }     
+direnv() { asdf exec direnv "$@"; }
 
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+if [ "$system_type" = "Darwin" ]; then
+    eval "$(brew shellenv)"
+    alias ls="gls -l --color=always"
+    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+else
+    alias ls="ls -l --color=always"
+fi
+
+export LS_COLORS="$(vivid generate one-dark)"

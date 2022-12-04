@@ -2,7 +2,7 @@
 
 #: Fonts {{{
 
-font_family      SFMono Nerd Font
+font_family      Inconsolata Regular
 bold_font        auto
 italic_font      auto
 bold_italic_font auto

@@ -23,9 +23,9 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font"),
+  font = wezterm.font("Hack"),
   font_size = 14,
-  color_scheme = "TokyoNight",
+  color_scheme = "Catppuccin Mocha",
   use_dead_keys = false,
   tab_bar_at_bottom = true,
   keys = {

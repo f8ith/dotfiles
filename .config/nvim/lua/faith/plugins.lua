@@ -175,7 +175,13 @@ use 'mattn/emmet-vim'
 use 'liuchengxu/vista.vim'
 
 -- file manager
-use 'kyazdani42/nvim-tree.lua'
+use {
+  'kyazdani42/nvim-tree.lua',
+  config = function()
+  require("nvim-tree").setup()
+end
+}
+
 
 -- motions
 use 'unblevable/quick-scope'
@@ -208,6 +214,8 @@ use {
     local accent2 = "#ff3333"
     local accent3 = "#ffc94a"
     ]]
+
+    --[[ onedark?
     local bg = '#21252b'
     local bg2 = '#282c34'
     local bg3 = '#3e4452'
@@ -215,6 +223,9 @@ use {
     local accent = '#FF8800'
     local accent2 = '#ec5f67'
     local accent3 = '#fabd2f'
+    ]]
+
+
     require'bufferline'.setup{
         options = {
           numbers = "none",
@@ -241,65 +252,65 @@ use {
           sort_by = 'directory',
           offsets = {{filetype = "NvimTree", highlight = "Directory", text_align = "left"}},
         },
-        highlights = {
-            fill = {
-                bg = bg
-             },
-            background = {
-                bg = bg
-            },
-
-            -- buffer
-            buffer_selected = {
-                fg = fg,
-                bg = bg2,
-                underline = true,
-                undercurl = false,
-                bold = true
-            },
-            separator = {
-                fg = bg3,
-                bg = bg
-            },
-            separator_selected = {
-                fg = bg3,
-                bg = bg2
-            },
-            separator_visible = {
-                fg = bg2,
-                bg = bg2
-            },
-            indicator_selected = {
-                fg = accent,
-                bg = bg2
-            },
-
-            -- tabs over right
-            tab = {
-                fg = fg,
-                bg = bg
-            },
-             tab_selected = {
-                fg = accent,
-                bg = bg2
-            },
-             tab_close = {
-                fg = accent,
-                bg = bg2
-            },
-            modified_selected = {
-                fg = accent2,
-                bg = bg2
-            },
-            modified = {
-                fg = accent3,
-                bg = bg
-            },
-            modified_visible = {
-                fg = accent,
-                bg = bg
-            }
-        }
+--         highlights = {
+--             fill = {
+--                 bg = bg
+--              },
+--             background = {
+--                 bg = bg
+--             },
+--
+--             -- buffer
+--             buffer_selected = {
+--                 fg = fg,
+--                 bg = bg2,
+--                 underline = true,
+--                 undercurl = false,
+--                 bold = true
+--             },
+--             separator = {
+--                 fg = bg3,
+--                 bg = bg
+--             },
+--             separator_selected = {
+--                 fg = bg3,
+--                 bg = bg2
+--             },
+--             separator_visible = {
+--                 fg = bg2,
+--                 bg = bg2
+--             },
+--             indicator_selected = {
+--                 fg = accent,
+--                 bg = bg2
+--             },
+--
+--             -- tabs over right
+--             tab = {
+--                 fg = fg,
+--                 bg = bg
+--             },
+--              tab_selected = {
+--                 fg = accent,
+--                 bg = bg2
+--             },
+--              tab_close = {
+--                 fg = accent,
+--                 bg = bg2
+--             },
+--             modified_selected = {
+--                 fg = accent2,
+--                 bg = bg2
+--             },
+--             modified = {
+--                 fg = accent3,
+--                 bg = bg
+--             },
+--             modified_visible = {
+--                 fg = accent,
+--                 bg = bg
+--             }
+--         }
     }
   end
   }

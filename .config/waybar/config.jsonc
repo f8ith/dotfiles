@@ -1,0 +1,84 @@
+{
+  "position": "top",
+  "layer": "top",
+  "height": 52,
+  "modules-left": [
+    "wlr/workspaces"
+  ],
+  "modules-center": [
+    "custom/notification",
+    "tray",
+    "pulseaudio",
+    "custom/date",
+    "clock"
+  ],
+  "modules-right": [
+    "custom/media"
+  ],
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "〇",
+      "default": "一",
+      "active": "●"
+    }
+  },
+  "hyprland/window": {
+    "max-length": 30
+  },
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": " ",
+      "default": " "
+    },
+    "escape": true,
+    "exec": "$HOME/nix-config/dotfiles/waybar/scroll_spotify_status.sh"
+  },
+  "custom/date": {
+    "format": "   {}",
+    "interval": 3600,
+    "exec": "$HOME/nix-config/dotfiles/waybar/waybar-date.sh"
+  },
+  "clock": {
+    "format": "  {:%I:%M %p} ",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "network": {
+    "format-wifi": "   {essid}",
+    "format-ethernet": "{ifname}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected",
+    "tooltip-format-wifi": "Signal Strength: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}"
+  },
+  "pulseaudio": {
+    "format": "{icon}   {volume}%",
+    "format-muted": "ﱝ Muted",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  }
+}

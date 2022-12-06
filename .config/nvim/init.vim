@@ -302,7 +302,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " bufferline
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
-nnoremap <silent><leader>bd :Bdelete<CR>
+nnoremap <silent><leader>x :Bdelete<CR>
 
 endif
 let g:neovide_refresh_rate=140

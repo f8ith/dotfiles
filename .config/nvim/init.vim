@@ -121,7 +121,7 @@ let g:coc_global_extensions = [
 \ 'coc-pyright',
 \ 'coc-omnisharp',
 \ 'coc-lua',
-\ 'coc-cmake'
+\ 'coc-cmake',
 \ 'coc-rust-analyzer',
 \ 'coc-clangd'
 \ ]
@@ -174,6 +174,9 @@ nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
 "nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " deoplete
 " let g:deoplete#enable_at_startup = 1

@@ -125,11 +125,11 @@ let g:coc_global_extensions = [
 \ 'coc-clangd'
 \ ]
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_leader() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_leader() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_leader() abort
   let col = col('.') - 1
@@ -300,6 +300,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " let g:diagnostic_show_sign = 0
 
 " bufferline
+nnoremap <silent><TAB> :BufferLineCycleNext<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>x :Bdelete<CR>

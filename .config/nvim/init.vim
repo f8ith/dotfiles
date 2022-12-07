@@ -121,6 +121,7 @@ let g:coc_global_extensions = [
 \ 'coc-pyright',
 \ 'coc-omnisharp',
 \ 'coc-lua',
+\ 'coc-cmake'
 \ 'coc-rust-analyzer',
 \ 'coc-clangd'
 \ ]

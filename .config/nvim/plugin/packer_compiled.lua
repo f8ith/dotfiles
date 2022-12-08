@@ -116,11 +116,6 @@ _G.packer_plugins = {
     path = "/Users/emma/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
-  indentLine = {
-    loaded = true,
-    path = "/Users/emma/.local/share/nvim/site/pack/packer/start/indentLine",
-    url = "https://github.com/Yggdroot/indentLine"
-  },
   kommentary = {
     loaded = true,
     path = "/Users/emma/.local/share/nvim/site/pack/packer/start/kommentary",
@@ -140,7 +135,7 @@ _G.packer_plugins = {
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["nvim-bufferline.lua"] = {
-    config = { "\27LJ\2\nô\4\0\0\6\0\b\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0004\4\3\0005\5\4\0>\5\1\4=\4\5\3=\3\a\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\3\rfiletype\rNvimTree\14highlight\14Directory\15text_align\tleft\1\0\20\22buffer_close_icon\bÔôï\14indicator\b‚ñé\rmappings\2\fnumbers\tnone\fsort_by\14directory\27always_show_bufferline\2\25enforce_regular_tabs\2\20separator_style\tthin\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\nsetup\15bufferline\frequire\0" },
+    config = { "\27LJ\2\nô\4\0\0\6\0\b\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0004\4\3\0005\5\4\0>\5\1\4=\4\5\3=\3\a\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\3\15text_align\tleft\14highlight\14Directory\rfiletype\rNvimTree\1\0\20\25enforce_regular_tabs\2\fsort_by\14directory\rmappings\2\27always_show_bufferline\2\fnumbers\tnone\20separator_style\tthin\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\22buffer_close_icon\bÔôï\14indicator\b‚ñé\nsetup\15bufferline\frequire\0" },
     loaded = true,
     path = "/Users/emma/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua",
     url = "https://github.com/akinsho/nvim-bufferline.lua"
@@ -149,12 +144,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/emma/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
-  },
-  ["nvim-compe"] = {
-    config = { "\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\tcalc\2\rnvim_lua\2\tpath\2\nvsnip\2\vbuffer\2\rnvim_lsp\2\1\0\f\19source_timeout\3»\1\19max_kind_width\3d\19max_menu_width\3d\18documentation\2\19max_abbr_width\3d\21incomplete_delay\3ê\3\ndebug\1\18throttle_time\3P\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\nsetup\ncompe\frequire\0" },
-    loaded = true,
-    path = "/Users/emma/.local/share/nvim/site/pack/packer/start/nvim-compe",
-    url = "https://github.com/hrsh7th/nvim-compe"
   },
   ["nvim-tree.lua"] = {
     config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
@@ -266,22 +255,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: snap
-time([[Config for snap]], true)
-try_loadstring("\27LJ\2\nÄ\2\0\0\b\1\v\1\"-\0\0\0009\0\0\0005\2\4\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2-\5\0\0009\5\1\5'\a\3\0B\5\2\0A\3\0\2=\3\5\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\a\3=\3\a\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\b\3=\3\b\0024\3\3\0-\4\0\0009\4\1\4'\6\t\0B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\0¿\nviews\17preview.file\16multiselect\vselect\16select.file\rproducer\1\0\0\26producer.ripgrep.file\17consumer.fzf\bget\brun\3ÄÄ¿ô\4Ë\1\0\0\a\1\n\1\29-\0\0\0009\0\0\0005\2\3\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2=\3\4\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\6\3=\3\6\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\a\3=\3\a\0024\3\3\0-\4\0\0009\4\1\4'\6\b\0B\4\2\0?\4\0\0=\3\t\2B\0\2\1K\0\1\0\0¿\nviews\20preview.vimgrep\16multiselect\vselect\19select.vimgrep\rproducer\1\0\0\29producer.ripgrep.vimgrep\bget\brun\3ÄÄ¿ô\4ã\1\1\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0015\3\4\0005\4\5\0003\5\6\0B\1\4\0019\1\2\0009\1\3\0015\3\a\0005\4\b\0003\5\t\0B\1\4\0012\0\0ÄK\0\1\0\0\1\2\0\0\14<Leader>p\1\2\0\0\6n\0\1\2\0\0\n<C-p>\1\2\0\0\6n\bmap\rregister\tsnap\frequire\0", "config", "snap")
-time([[Config for snap]], false)
--- Config for: nvim-compe
-time([[Config for nvim-compe]], true)
-try_loadstring("\27LJ\2\nØ\2\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\vsource\1\0\6\tcalc\2\rnvim_lua\2\tpath\2\nvsnip\2\vbuffer\2\rnvim_lsp\2\1\0\f\19source_timeout\3»\1\19max_kind_width\3d\19max_menu_width\3d\18documentation\2\19max_abbr_width\3d\21incomplete_delay\3ê\3\ndebug\1\18throttle_time\3P\14preselect\venable\15min_length\3\1\17autocomplete\2\fenabled\2\nsetup\ncompe\frequire\0", "config", "nvim-compe")
-time([[Config for nvim-compe]], false)
--- Config for: nvim-bufferline.lua
-time([[Config for nvim-bufferline.lua]], true)
-try_loadstring("\27LJ\2\nô\4\0\0\6\0\b\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0004\4\3\0005\5\4\0>\5\1\4=\4\5\3=\3\a\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\3\rfiletype\rNvimTree\14highlight\14Directory\15text_align\tleft\1\0\20\22buffer_close_icon\bÔôï\14indicator\b‚ñé\rmappings\2\fnumbers\tnone\fsort_by\14directory\27always_show_bufferline\2\25enforce_regular_tabs\2\20separator_style\tthin\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\nsetup\15bufferline\frequire\0", "config", "nvim-bufferline.lua")
-time([[Config for nvim-bufferline.lua]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
@@ -290,10 +263,28 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for galaxyline.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29faith.statusline-minimal\frequire\0", "config", "galaxyline.nvim")
 time([[Config for galaxyline.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: nvim-bufferline.lua
+time([[Config for nvim-bufferline.lua]], true)
+try_loadstring("\27LJ\2\nô\4\0\0\6\0\b\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0004\4\3\0005\5\4\0>\5\1\4=\4\5\3=\3\a\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\3\15text_align\tleft\14highlight\14Directory\rfiletype\rNvimTree\1\0\20\25enforce_regular_tabs\2\fsort_by\14directory\rmappings\2\27always_show_bufferline\2\fnumbers\tnone\20separator_style\tthin\24persist_buffer_sort\1\24show_tab_indicators\2\20show_close_icon\2\28show_buffer_close_icons\2\22show_buffer_icons\2\rtab_size\3\18\22max_prefix_length\3\15\20max_name_length\3\18\23right_trunc_marker\bÔÇ©\22left_trunc_marker\bÔÇ®\15close_icon\bÔÄç\18modified_icon\b‚óè\22buffer_close_icon\bÔôï\14indicator\b‚ñé\nsetup\15bufferline\frequire\0", "config", "nvim-bufferline.lua")
+time([[Config for nvim-bufferline.lua]], false)
+-- Config for: snap
+time([[Config for snap]], true)
+try_loadstring("\27LJ\2\nÄ\2\0\0\b\1\v\1\"-\0\0\0009\0\0\0005\2\4\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2-\5\0\0009\5\1\5'\a\3\0B\5\2\0A\3\0\2=\3\5\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\a\3=\3\a\2-\3\0\0009\3\1\3'\5\6\0B\3\2\0029\3\b\3=\3\b\0024\3\3\0-\4\0\0009\4\1\4'\6\t\0B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\0¿\nviews\17preview.file\16multiselect\vselect\16select.file\rproducer\1\0\0\26producer.ripgrep.file\17consumer.fzf\bget\brun\3ÄÄ¿ô\4Ë\1\0\0\a\1\n\1\29-\0\0\0009\0\0\0005\2\3\0-\3\0\0009\3\1\3'\5\2\0B\3\2\2=\3\4\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\6\3=\3\6\2-\3\0\0009\3\1\3'\5\5\0B\3\2\0029\3\a\3=\3\a\0024\3\3\0-\4\0\0009\4\1\4'\6\b\0B\4\2\0?\4\0\0=\3\t\2B\0\2\1K\0\1\0\0¿\nviews\20preview.vimgrep\16multiselect\vselect\19select.vimgrep\rproducer\1\0\0\29producer.ripgrep.vimgrep\bget\brun\3ÄÄ¿ô\4ã\1\1\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0015\3\4\0005\4\5\0003\5\6\0B\1\4\0019\1\2\0009\1\3\0015\3\a\0005\4\b\0003\5\t\0B\1\4\0012\0\0ÄK\0\1\0\0\1\2\0\0\14<Leader>p\1\2\0\0\6n\0\1\2\0\0\n<C-p>\1\2\0\0\6n\bmap\rregister\tsnap\frequire\0", "config", "snap")
+time([[Config for snap]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.api.nvim_create_user_command, 'MarkdownPreview', function(cmdargs)
+          require('packer.load')({'markdown-preview.nvim'}, { cmd = 'MarkdownPreview', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'markdown-preview.nvim'}, { cmd = 'MarkdownPreview' }, _G.packer_plugins)
+          return vim.fn.getcompletion('MarkdownPreview ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 

@@ -105,3 +105,5 @@ n () # to cd on quit
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}

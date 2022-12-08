@@ -20,4 +20,5 @@ export XMODIFIERS=@im=fcitx5
 #export DESKTOP_SESSION=plasma
 #exec gnome-session
 #exec startplasma-x11
-exec bspwm
+#exec bspwm
+exec Hypr

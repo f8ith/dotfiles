@@ -23,11 +23,13 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("SFMono Nerd Font"),
+  font = wezterm.font("Meslo LG 5"),
   font_size = 14,
   color_scheme = "Catppuccin Mocha",
   use_dead_keys = false,
+  use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
+  enable_wayland = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
     { key = "-", mods = "LEADER",       action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},

@@ -80,10 +80,31 @@ zinit light-mode for \
 if [ "$system_type" = "Darwin" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
     eval "$(brew shellenv)"
-    alias ls="gls -l --color=always"
+    alias l="gls -lh --color=always"
+    alias ls="gls"
     export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 else
-    alias ls="ls -l --color=always"
+    alias l="ls -lh --color=always"
 fi
 
 export LS_COLORS="$(vivid generate one-dark)"
+
+export NNN_OPTS="H"
+export NNN_PLUG='p:preview-tui'
+#export SPLIT='v'
+
+n () # to cd on quit
+{
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    nnn -a "$@"
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}

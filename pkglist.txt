@@ -1,3 +1,5 @@
+acestream-engine
+acestream-launcher
 acpid
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
@@ -31,6 +33,7 @@ bspwm
 calibre
 capitaine-cursors
 castersoundboard-git
+catppuccin-gtk-theme-mocha
 chrome-gnome-shell
 chrony
 citra-git
@@ -64,7 +67,7 @@ dragon-drag-and-drop-git
 droidcam
 duck
 dunst
-dxvk-bin
+dxvk-async-git
 easyeffects
 ebtables
 edk2-ovmf
@@ -127,6 +130,8 @@ gvfs
 hardinfo
 heroku-cli-bin
 htop
+hypr-git
+hyprland-nvidia-git
 i2c-tools
 icons-in-terminal
 inkscape
@@ -151,6 +156,7 @@ lib32-nvidia-utils
 lib32-vkd3d
 libdrm
 libglvnd
+libp11
 libreoffice-fresh
 libretro-mupen64plus-next
 libselinux
@@ -165,7 +171,6 @@ linux-zen-headers
 lshw
 lua53
 luarocks
-lutris
 lxappearance-gtk3
 m4
 macchanger
@@ -217,6 +222,7 @@ openbox
 opencl-mesa
 opencl-nvidia
 openssh
+openssl-1.1
 opentabletdriver
 os-prober
 osu
@@ -258,6 +264,7 @@ python-pipx
 python2
 qbittorrent
 qt5-styleplugins
+qt5-wayland
 qt5ct
 ragel
 ranger
@@ -270,6 +277,7 @@ ripgrep
 rofi
 rpiplay-git
 ruby
+rust-analyzer
 rustup
 ryujinx-ldn-bin
 samba
@@ -292,6 +300,8 @@ stow
 stremio
 sudo
 sway
+swaync
+swww
 sxhkd
 tabbed
 testdisk
@@ -316,6 +326,7 @@ ttf-hack
 ttf-ibm-plex
 ttf-inconsolata
 ttf-mac-fonts
+ttf-meslo
 ttf-monaco
 ttf-roboto
 ttf-roboto-mono
@@ -352,7 +363,8 @@ winetricks
 wireguard-tools
 wireplumber
 wireshark-qt
-wlroots
+wl-clipboard
+wlroots-nvidia
 xarchiver
 xautolock
 xclip

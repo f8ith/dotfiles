@@ -121,15 +121,16 @@ let g:coc_global_extensions = [
 \ 'coc-pyright',
 \ 'coc-omnisharp',
 \ 'coc-lua',
+\ 'coc-cmake',
 \ 'coc-rust-analyzer',
 \ 'coc-clangd'
 \ ]
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_leader() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_leader() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_leader() abort
   let col = col('.') - 1
@@ -144,6 +145,10 @@ nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
 
+function! CheckBackspace() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -173,6 +178,15 @@ nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
 "nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " deoplete
 " let g:deoplete#enable_at_startup = 1
@@ -238,15 +252,15 @@ let &background="dark"
 let g:palenight_terminal_italics=1
 colorscheme catppuccin-mocha
 
-
-let g:indentLine_char = '│'
-let g:indentLine_first_char = '│'
-let g:indentLine_color_gui = '#e7e8e9'
-let g:indentLine_showFirstIndentLevel = 0
-let g:indent_blankline_filetype_exclude = ["help", "terminal", "dashboard"]
-let g:indent_blankline_buftype_exclude = ["terminal"]
-let g:indent_blankline_show_trailing_blankline_indent = 0
-let g:indent_blankline_use_treesitter = 1
+" indentLine
+" let g:indentLine_char = '│'
+" let g:indentLine_first_char = '│'
+" let g:indentLine_color_gui = '#e7e8e9'
+" let g:indentLine_showFirstIndentLevel = 0
+" let g:indent_blankline_filetype_exclude = ["help", "terminal", "dashboard"]
+" let g:indent_blankline_buftype_exclude = ["terminal"]
+" let g:indent_blankline_show_trailing_blankline_indent = 0
+" let g:indent_blankline_use_treesitter = 1
 
 " Open lazygit
 nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
@@ -300,9 +314,10 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " let g:diagnostic_show_sign = 0
 
 " bufferline
+nnoremap <silent><TAB> :BufferLineCycleNext<CR>
 nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent>[b :BufferLineCyclePrev<CR>
-nnoremap <silent><leader>bd :Bdelete<CR>
+nnoremap <silent><leader>x :Bdelete<CR>
 
 endif
 let g:neovide_refresh_rate=140

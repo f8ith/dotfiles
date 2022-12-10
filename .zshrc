@@ -7,7 +7,7 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-source ~/.zinit/zinit.zsh
+source ~/.zinit/bin/zinit.zsh
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
@@ -78,6 +78,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 if [ "$system_type" = "Darwin" ]; then
+    export PATH="$PATH:/opt/homebrew/bin"
     eval "$(brew shellenv)"
     alias l="gls -lh --color=always"
     alias ls="gls"

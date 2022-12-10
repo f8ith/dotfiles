@@ -23,7 +23,7 @@ local colors = one_dark_colors
 
 return {
   leader = { key="a", mods="CTRL", timeout_milliseconds=1000 },
-  font = wezterm.font("Hack"),
+  font = wezterm.font("Meslo LG 5"),
   font_size = 14,
   color_scheme = "Catppuccin Mocha",
   use_dead_keys = false,

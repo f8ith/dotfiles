@@ -14,31 +14,10 @@ return require('packer').startup(function()
 use 'wbthomason/packer.nvim'
 use 'b3nj5m1n/kommentary'
 
--- use {'neoclide/coc.nvim', branch = 'release'}
+use {'neoclide/coc.nvim', branch = 'release'}
 
 -- built in lsp
-use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
-
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
-
+-- use 'nvim-lua/lsp-status.nvim'
 -- use {
 --   'neovim/nvim-lspconfig',
 --   config = function()
@@ -132,6 +111,37 @@ use {
 --   saga.init_lsp_saga()
 --   end
 -- }
+--use {'Shougo/deoplete.nvim', run = ':UpdateRemotePlugins'}
+--use 'Shougo/deoplete-lsp'
+-- use {
+--   'hrsh7th/nvim-compe',
+--   config = function()
+--   require'compe'.setup {
+--     enabled = true;
+--     autocomplete = true;
+--     debug = false;
+--     min_length = 1;
+--     preselect = 'enable';
+--     throttle_time = 80;
+--     source_timeout = 200;
+--     incomplete_delay = 400;
+--     max_abbr_width = 100;
+--     max_kind_width = 100;
+--     max_menu_width = 100;
+--     documentation = true;
+--
+--     source = {
+--       path = true;
+--       buffer = true;
+--       calc = true;
+--       nvim_lsp = true;
+--       nvim_lua = true;
+--       vsnip = true;
+--     };
+--   }
+--   end
+-- }
+
 
 -- color schemes
 -- use 'arcticicestudio/nord-vim'
@@ -148,9 +158,9 @@ use 'navarasu/onedark.nvim'
 use 'morhetz/gruvbox'
 
 -- auto pairs
--- use 'alvan/vim-closetag'
+use 'alvan/vim-closetag'
 -- use 'Raimondi/delimitMate'
--- use 'cohama/lexima.vim'
+use 'cohama/lexima.vim'
 
 -- git
 use 'tpope/vim-fugitive'
@@ -311,12 +321,6 @@ use {
   'glepnir/galaxyline.nvim', branch = 'main', config = function() require'faith.statusline-minimal' end,
   requires = {'kyazdani42/nvim-web-devicons'}
 }
-
-use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
 
 use {
   'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },

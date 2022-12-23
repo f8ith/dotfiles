@@ -43,7 +43,7 @@ lua require('code.plugins')
 " vanilla {{{
 else
 
-lua require('faith')
+lua require('faith.plugins')
 
 set signcolumn=yes
 
@@ -110,22 +110,21 @@ set signcolumn=yes
 " let g:ale_sign_warning = ''
 
 " coc
-" let g:coc_global_extensions = [
-" \ 'coc-snippets',
-" \ 'coc-tsserver',
-" \ 'coc-html',
-" \ 'coc-css',
-" \ 'coc-prettier',
-" \ 'coc-json',
-" \ 'coc-emmet',
-" \ 'coc-pyright',
-" \ 'coc-omnisharp',
-" \ 'coc-lua',
-" \ 'coc-cmake',
-" \ 'coc-rust-analyzer',
-" \ 'coc-clangd',
-" \ 'coc-pairs'
-" \ ]
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-prettier',
+\ 'coc-json',
+\ 'coc-emmet',
+\ 'coc-pyright',
+\ 'coc-omnisharp',
+\ 'coc-lua',
+\ 'coc-cmake',
+\ 'coc-rust-analyzer',
+\ 'coc-clangd'
+\ ]
 
 " inoremap <silent><expr> <TAB>
 "       \ pumvisible() ? "\<C-n>" :
@@ -133,61 +132,61 @@ set signcolumn=yes
 "       \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_leader() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-" nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
-" nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-" nnoremap <silent> gd <Plug>(coc-definition)
-" nnoremap <silent> gy <Plug>(coc-type-definition)
-" nnoremap <silent> gi <Plug>(coc-implementation)
-" nnoremap <silent> gr <Plug>(coc-references)
-"
-" function! CheckBackspace() abort
-" let col = col('.') - 1
-" return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" nnoremap <leader>rn <Plug>(coc-rename)
-" xnoremap <leader>ff  <Plug>(coc-format-selected)
-" xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-" nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-" nnoremap <leader>ca  <Plug>(coc-codeaction)
-" nnoremap <leader>qf  <Plug>(coc-fix-current)
-" xnoremap if <Plug>(coc-funcobj-i)
-" xnoremap af <Plug>(coc-funcobj-a)
-" onoremap if <Plug>(coc-funcobj-i)
-" onoremap af <Plug>(coc-funcobj-a)
-"
-" command! -nargs=0 Format :call CocAction('format')
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-" nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
-" nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
-" nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-" nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-" nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
-" nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-"
-" inoremap <silent><expr> <TAB>
-"       \ coc#pum#visible() ? coc#pum#next(1) :
-"       \ CheckBackspace() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! s:check_back_leader() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+
+function! CheckBackspace() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <leader>rn <Plug>(coc-rename)
+xnoremap <leader>ff  <Plug>(coc-format-selected)
+xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>ca  <Plug>(coc-codeaction)
+nnoremap <leader>qf  <Plug>(coc-fix-current)
+xnoremap if <Plug>(coc-funcobj-i)
+xnoremap af <Plug>(coc-funcobj-a)
+onoremap if <Plug>(coc-funcobj-i)
+onoremap af <Plug>(coc-funcobj-a)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " deoplete
 " let g:deoplete#enable_at_startup = 1

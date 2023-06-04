@@ -12,11 +12,6 @@ source ~/.zinit/bin/zinit.zsh
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
 fpath+=~/.zfunc
-# asdf
-. $HOME/.asdf/asdf.sh
-# append completions to fpath
-fpath+=(${ASDF_DIR}/completions $fpath)
-
 
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -65,10 +60,6 @@ zinit wait"2" lucid for \
 #zstyle ':completion:*' menu select
 #_comp_options+=(globdots)		# Include hidden files.
 
-eval "$(asdf exec direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }
-
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -78,7 +69,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 if [ "$system_type" = "Darwin" ]; then
-    export PATH="$PATH:/opt/homebrew/bin"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/Cellar/llvm/15.0.7_1/bin:$PATH:"
     eval "$(brew shellenv)"
     alias l="gls -lh --color=always"
     alias ls="gls"
@@ -108,3 +99,13 @@ n () # to cd on quit
 }
 
 function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}
+
+# pnpm
+export PNPM_HOME="/Users/faith/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+eval "$(rtx activate zsh)"

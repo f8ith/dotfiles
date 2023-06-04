@@ -27,6 +27,8 @@ set shortmess+=F
 set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 inoremap jk <Esc>
+lua require('faith.remap')
+
 
 "}}}
 
@@ -36,14 +38,15 @@ inoremap jk <Esc>
 
 if exists('g:vscode')
 
-lua require('code.plugins')
+"lua require('code.plugins')
 
 "}}}
 
 " vanilla {{{
 else
 
-lua require('faith')
+lua require('faith.plugins')
+
 
 set signcolumn=yes
 

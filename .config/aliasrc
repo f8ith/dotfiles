@@ -33,3 +33,4 @@ alias poetry-import="cat requirements.txt | perl -pe 's/([<=>]+)/:$1/' | xargs -
 alias proton="$HOME/.local/share/Steam/compatibilitytools.d/Proton-5.9-GE-3-ST/dist/bin/wine"
 alias prun="poetry run"
 alias nnnp="nnn -a -P preview-tui"
+alias sqlite=sqlite3

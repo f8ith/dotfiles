@@ -254,7 +254,7 @@ let g:tcomment#options = {'col': 1}
 let ayucolor="light"  " for light version of theme
 let &background="dark"
 let g:palenight_terminal_italics=1
-colorscheme catppuccin-mocha
+colorscheme gruvbox
 
 " indentLine
 " let g:indentLine_char = '│'

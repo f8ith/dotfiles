@@ -17,7 +17,7 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
-      lua_opts.diagnostic.globals.insert("use")
+      lua_opts.settings.Lua.diagnostics.globals = {"use", "vim"}
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }

@@ -17,6 +17,7 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
+      lua_opts.diagnostic.globals.insert("use")
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }
@@ -24,24 +25,30 @@ require('mason-lspconfig').setup({
 
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
+local cmp_select = { behavior = cmp.SelectBehavior.Insert }
 local cmp_format = require('lsp-zero').cmp_format()
 
 cmp.setup({
+  sources = {
+    { name = 'nvim_lsp' }
+  },
+
   formatting = cmp_format,
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<Tab>'] = nil,
+    ['<S-Tab>'] = nil
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
+
+
 
 lsp.set_preferences({
   suggest_lsp_servers = false,
@@ -66,8 +73,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>lws", vim.lsp.buf.workspace_symbol, opts)
   vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
   vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>lrr", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, opts)

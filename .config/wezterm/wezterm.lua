@@ -28,7 +28,6 @@ return {
   color_scheme = 'Gruvbox dark, soft (base16)',
   use_dead_keys = false,
   use_fancy_tab_bar = false,
-  tab_bar_at_bottom = true,
   enable_wayland = true,
   keys = {
     { key = "a", mods = "LEADER|CTRL",  action = wezterm.action { SendString = "\x01" } },

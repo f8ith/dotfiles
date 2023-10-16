@@ -17,7 +17,7 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
-      lua_opts.settings.Lua.diagnostics.globals = {"use", "vim"}
+      lua_opts.settings.Lua.diagnostics.globals = { "use", "vim" }
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }
@@ -70,14 +70,14 @@ lsp.on_attach(function(client, bufnr)
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>lws", vim.lsp.buf.workspace_symbol, opts)
+  vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
   vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
   vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>lrr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 

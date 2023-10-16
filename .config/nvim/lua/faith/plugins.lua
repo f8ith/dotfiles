@@ -180,126 +180,13 @@ return require('packer').startup(function()
 
 	-- eyecandy
 	use 'sheerun/vim-polyglot'
-	use 'kyazdani42/nvim-web-devicons'
+	use 'nvim-tree/nvim-web-devicons'
 	use 'norcalli/nvim-colorizer.lua'
 	use {
 		'akinsho/nvim-bufferline.lua',
+		requires = 'nvim-tree/nvim-web-devicons',
 		config = function()
-			--[[ ayu dark
-    local bg = "#0a0e1a"
-    local bg2 = "#1b2733"
-    local bg3 = "#304357"
-    local fg = "#b3b1ad"
-    local accent = "#e6b450"
-    local accent2 = "#00010a"
-    local accent3 = "#e6b673" ]]
-
-			--[[ ayu light
-    local bg = "#fafafa"
-    local bg2 = "#e7e8e9"
-    local bg3 = "#e1e1e2"
-    local fg = "#5c6773"
-    local accent = "#ff9940"
-    local accent2 = "#ff3333"
-    local accent3 = "#ffc94a"
-    ]]
-
-			--[[ onedark?
-    local bg = '#21252b'
-    local bg2 = '#282c34'
-    local bg3 = '#3e4452'
-    local fg = '#abb2bf'
-    local accent = '#FF8800'
-    local accent2 = '#ec5f67'
-    local accent3 = '#fabd2f'
-    ]]
-
-
 			require 'bufferline'.setup {
-				options = {
-					numbers = "none",
-					mappings = true,
-					indicator = '▎',
-					buffer_close_icon = '',
-					modified_icon = '●',
-					close_icon = '',
-					left_trunc_marker = '',
-					right_trunc_marker = '',
-					max_name_length = 18,
-					max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-					tab_size = 18,
-					show_buffer_icons = true, -- disable filetype icons for buffers
-					show_buffer_close_icons = true,
-					show_close_icon = true,
-					show_tab_indicators = true,
-					persist_buffer_sort = false, -- whether or not custom sorted buffers should persist
-					-- can also be a table containing 2 custom separators
-					-- [focused and unfocused]. eg: { '|', '|' }
-					separator_style = "thin",
-					enforce_regular_tabs = true,
-					always_show_bufferline = true,
-					sort_by = 'directory',
-					offsets = { { filetype = "NvimTree", highlight = "Directory", text_align = "left" } },
-				},
-				--         highlights = {
-				--             fill = {
-				--                 bg = bg
-				--              },
-				--             background = {
-				--                 bg = bg
-				--             },
-				--
-				--             -- buffer
-				--             buffer_selected = {
-				--                 fg = fg,
-				--                 bg = bg2,
-				--                 underline = true,
-				--                 undercurl = false,
-				--                 bold = true
-				--             },
-				--             separator = {
-				--                 fg = bg3,
-				--                 bg = bg
-				--             },
-				--             separator_selected = {
-				--                 fg = bg3,
-				--                 bg = bg2
-				--             },
-				--             separator_visible = {
-				--                 fg = bg2,
-				--                 bg = bg2
-				--             },
-				--             indicator_selected = {
-				--                 fg = accent,
-				--                 bg = bg2
-				--             },
-				--
-				--             -- tabs over right
-				--             tab = {
-				--                 fg = fg,
-				--                 bg = bg
-				--             },
-				--              tab_selected = {
-				--                 fg = accent,
-				--                 bg = bg2
-				--             },
-				--              tab_close = {
-				--                 fg = accent,
-				--                 bg = bg2
-				--             },
-				--             modified_selected = {
-				--                 fg = accent2,
-				--                 bg = bg2
-				--             },
-				--             modified = {
-				--                 fg = accent3,
-				--                 bg = bg
-				--             },
-				--             modified_visible = {
-				--                 fg = accent,
-				--                 bg = bg
-				--             }
-				--         }
 			}
 		end
 	}

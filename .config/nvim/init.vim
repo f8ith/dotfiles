@@ -27,7 +27,6 @@ set shortmess+=F
 set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 inoremap jk <Esc>
-lua require('faith.remap')
 
 
 "}}}
@@ -38,6 +37,7 @@ lua require('faith.remap')
 
 if exists('g:vscode')
 
+lua require('faith.remap')
 "lua require('code.plugins')
 
 "}}}
@@ -45,7 +45,7 @@ if exists('g:vscode')
 " vanilla {{{
 else
 
-lua require('faith.plugins')
+lua require('faith')
 
 
 set signcolumn=yes
@@ -254,7 +254,7 @@ let g:tcomment#options = {'col': 1}
 let ayucolor="light"  " for light version of theme
 let &background="dark"
 let g:palenight_terminal_italics=1
-colorscheme catppuccin-mocha
+colorscheme gruvbox
 
 " indentLine
 " let g:indentLine_char = '│'

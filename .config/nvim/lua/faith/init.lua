@@ -1,2 +1,6 @@
 require("faith.plugins")
 require("faith.remap")
+require("faith.lsp")
+require("faith.undotree")
+require("faith.treesitter")
+require("faith.telescope")

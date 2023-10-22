@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import requests
+
+base_url="https://fireflies.chiculture.org.hk/api/quiz/assignments/2021-03-12"
+
+cookies = {'access.id': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjY0MmQyZmU0MzZmODZhM2NlYTAzOGMiLCJyb2xlcyI6WyJzdHVkZW50Il0sImx2IjoiczIiLCJzY2hvb2wiOiI1ZjNiZDJmZmU3MmU3MTRhNjYwMWJhZTIiLCJpYXQiOjE2MTgzMjkzNTUsImV4cCI6MTYxODMyOTY1NX0.Zyrh1D0GLcMJUnokai0oxflCv9eZvAGp4Vxsewgx_cY', 'refresh.id': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjY0MmQyZmU0MzZmODZhM2NlYTAzOGMiLCJpYXQiOjE2MTgzMjg5ODIsImV4cCI6MTYxOTYyNDk4Mn0.HigDnC3ArEZKv6cT2RAwIx6Xy_Gs0sQy2umrRYoPnc0'}
+r = requests.get(base_url, cookies=cookies)
+
+print(r.json)

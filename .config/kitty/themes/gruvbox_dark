@@ -3,7 +3,8 @@
 # For a copy, see https://opensource.org/licenses/MIT.
 
 # medium contrast: background  #282828
-background  #32302f
+# soft contrast: #32302f
+background  #282828
 foreground  #ebdbb2
 
 cursor                #928374

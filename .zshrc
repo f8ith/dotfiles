@@ -7,37 +7,40 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-source ~/.zinit/bin/zinit.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
 fpath+=~/.zfunc
 
-# lfcd () {
-#     tmp="$(mktemp)"
-#     fid="$(mktemp)"
-#     startlf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
-#     id="$(cat "$fid")"
-#     archivemount_dir="/tmp/__lf_archivemount_$id"
-#     if [ -f "$archivemount_dir" ]; then
-#         cat "$archivemount_dir" | \
-#             while read -r line; do
-#                 sudo umount "$line"
-#                 rmdir "$line"
-#             done
-#         rm -f "$archivemount_dir"
-#     fi
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         rm -f "$tmp"
-#         if [ -d "$dir" ]; then
-#             if [ "$dir" != "$(pwd)" ]; then
-#                 cd "$dir"
-#             fi
-#         fi
-#     fi
-# }
-# bindkey -s '^o' 'lfcd\n'
+lfcd () {
+    tmp="$(mktemp)"
+    fid="$(mktemp)"
+    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    id="$(cat "$fid")"
+    archivemount_dir="/tmp/__lf_archivemount_$id"
+    if [ -f "$archivemount_dir" ]; then
+        cat "$archivemount_dir" | \
+            while read -r line; do
+                sudo umount "$line"
+                rmdir "$line"
+            done
+        rm -f "$archivemount_dir"
+    fi
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -109,3 +112,14 @@ esac
 # pnpm end
 
 eval "$(rtx activate zsh)"
+### End of Zinit's installer chunk
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk

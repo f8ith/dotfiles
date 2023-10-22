@@ -2,7 +2,6 @@
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="wezterm"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 export NeovideMultiGrid
 

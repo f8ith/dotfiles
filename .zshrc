@@ -111,7 +111,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 ### End of Zinit's installer chunk
 
 # Load a few important annexes, without Turbo
@@ -123,3 +123,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

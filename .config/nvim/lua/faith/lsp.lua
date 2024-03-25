@@ -1,17 +1,17 @@
 local lsp = require("lsp-zero")
-
 lsp.preset("recommended")
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'html',
+    'clangd',
     'tsserver',
     'eslint',
-    'pylsp',
-    'clangd',
     'lua_ls',
     'rust_analyzer',
+    'pyright',
+    'cmake'
   },
   handlers = {
     lsp.default_setup,
@@ -22,7 +22,6 @@ require('mason-lspconfig').setup({
     end,
   }
 })
-
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Insert }
@@ -62,11 +61,6 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
-
-  if client.name == "eslint" then
-    vim.cmd.LspStop('eslint')
-    return
-  end
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)

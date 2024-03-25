@@ -13,31 +13,47 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 	use 'b3nj5m1n/kommentary'
 
-	-- use {'neoclide/coc.nvim', branch = 'release'}
+	use { 'neoclide/coc.nvim', branch = 'release' }
 
 	-- built in lsp
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			{ 'williamboman/mason.nvim' },
-			{ 'williamboman/mason-lspconfig.nvim' },
+	-- use {
+	-- 	'VonHeikemen/lsp-zero.nvim',
+	-- 	branch = 'v3.x',
+	-- 	requires = {
+	-- 		-- LSP Support
+	-- 		{ 'neovim/nvim-lspconfig' },
+	-- 		{ 'williamboman/mason.nvim' },
+	-- 		{ 'williamboman/mason-lspconfig.nvim' },
 
-			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-nvim-lua' },
+	-- 		-- Autocompletion
+	-- 		{ 'hrsh7th/nvim-cmp' },
+	-- 		{ 'hrsh7th/cmp-buffer' },
+	-- 		{ 'hrsh7th/cmp-path' },
+	-- 		{ 'saadparwaiz1/cmp_luasnip' },
+	-- 		{ 'hrsh7th/cmp-nvim-lsp' },
+	-- 		{ 'hrsh7th/cmp-nvim-lua' },
 
-			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'rafamadriz/friendly-snippets' },
-		}
-	}
+	-- 		-- Snippets
+	-- 		{ 'L3MON4D3/LuaSnip' },
+	-- 		{ 'rafamadriz/friendly-snippets' },
+	-- 	}
+	-- }
+
+	-- use {
+	-- 	"stevearc/conform.nvim",
+	-- 	config = function()
+	-- 		require("conform").setup({
+	-- 			formatters_by_ft = {
+	-- 				lua = { "stylua" },
+	-- 				javascript = { { "prettierd", "prettier" } },
+	-- 			},
+	-- 			format_on_save = {
+	-- 				timeout_ms = 500,
+	-- 				lsp_fallback = true,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- }
 
 	-- use {
 	--   'neovim/nvim-lspconfig',
@@ -139,16 +155,17 @@ return require('packer').startup(function()
 	-- use 'ajh17/spacegray.vim'
 	-- use 'fxn/vim-monochrome'
 	-- use 'cocopon/iceberg.vim'
-	use 'drewtempelmeyer/palenight.vim'
-	use 'Luxed/ayu-vim'
-	use 'b4skyx/serenade'
+	-- use 'drewtempelmeyer/palenight.vim'
+	-- use 'Luxed/ayu-vim'
+	-- use 'b4skyx/serenade'
 	use { "catppuccin/nvim", as = "catppuccin" }
 	-- use 'connorholyday/vim-snazzy'
-	use 'navarasu/onedark.nvim'
-	use 'morhetz/gruvbox'
+	-- use 'navarasu/onedark.nvim'
+	-- use 'morhetz/gruvbox'
 
 	-- auto pairs
-	-- use 'alvan/vim-closetag'
+	--use 'alvan/vim-closetag'
+	use 'AndrewRadev/tagalong.vim'
 	-- use 'Raimondi/delimitMate'
 	-- use 'cohama/lexima.vim'
 
@@ -168,7 +185,11 @@ return require('packer').startup(function()
 	use {
 		'kyazdani42/nvim-tree.lua',
 		config = function()
-			require("nvim-tree").setup()
+			require("nvim-tree").setup({
+				filters = {
+					git_ignored = false,
+				}
+			})
 		end
 	}
 
@@ -232,6 +253,4 @@ return require('packer').startup(function()
 			end)
 		end
 	}
-
-	use { 'mhartington/formatter.nvim' }
 end)

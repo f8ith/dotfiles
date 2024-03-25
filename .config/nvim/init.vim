@@ -112,118 +112,10 @@ set signcolumn=yes
 " let g:ale_sign_error = ''
 " let g:ale_sign_warning = ''
 
-" coc
-" let g:coc_global_extensions = [
-" \ 'coc-snippets',
-" \ 'coc-tsserver',
-" \ 'coc-html',
-" \ 'coc-css',
-" \ 'coc-prettier',
-" \ 'coc-json',
-" \ 'coc-emmet',
-" \ 'coc-pyright',
-" \ 'coc-omnisharp',
-" \ 'coc-lua',
-" \ 'coc-cmake',
-" \ 'coc-rust-analyzer',
-" \ 'coc-clangd',
-" \ 'coc-pairs'
-" \ ]
-
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_leader() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_leader() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-" nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
-" nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
-" nnoremap <silent> gd <Plug>(coc-definition)
-" nnoremap <silent> gy <Plug>(coc-type-definition)
-" nnoremap <silent> gi <Plug>(coc-implementation)
-" nnoremap <silent> gr <Plug>(coc-references)
-"
-" function! CheckBackspace() abort
-" let col = col('.') - 1
-" return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" nnoremap <leader>rn <Plug>(coc-rename)
-" xnoremap <leader>ff  <Plug>(coc-format-selected)
-" xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-" nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-" nnoremap <leader>ca  <Plug>(coc-codeaction)
-" nnoremap <leader>qf  <Plug>(coc-fix-current)
-" xnoremap if <Plug>(coc-funcobj-i)
-" xnoremap af <Plug>(coc-funcobj-a)
-" onoremap if <Plug>(coc-funcobj-i)
-" onoremap af <Plug>(coc-funcobj-a)
-"
-" command! -nargs=0 Format :call CocAction('format')
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-" nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
-" nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
-" nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
-" nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-" nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
-" nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
-"
-" inoremap <silent><expr> <TAB>
-"       \ coc#pum#visible() ? coc#pum#next(1) :
-"       \ CheckBackspace() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-" inoremap <expr><C-g>     deoplete#undo_completion()
-" inoremap <expr><C-l>     deoplete#complete_common_string()
-"
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-y>  deoplete#close_popup()
-" inoremap <expr><C-e>  deoplete#cancel_popup()
-
-" autocmd
-augroup filetypes
-    autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
-    autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-augroup END
-
-autocmd InsertEnter * norm zz
-autocmd BufWritePre * %s/\s\+$//e
-
-" closetag
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
-let g:closetag_filetypes = 'html,xhtml,phtml,vue,javascriptvue'
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,tsx'
-let g:closetag_emptyTags_caseSensitive = 1
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
-let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '>>'
+let ayucolor="light"  " for light version of theme
+let &background="dark"
+let g:palenight_terminal_italics=1
+colorscheme catppuccin
 
 " highlight hi DiffAdd ctermbg=0
 hi DiffChange ctermbg=0
@@ -248,13 +140,112 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
+" coc
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-prettier',
+\ 'coc-json',
+\ 'coc-emmet',
+\ 'coc-pyright',
+\ 'coc-omnisharp',
+\ 'coc-lua',
+\ 'coc-cmake',
+\ 'coc-rust-analyzer',
+\ 'coc-clangd',
+\ 'coc-pairs'
+\ ]
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+
+function! CheckBackspace() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <leader>rn <Plug>(coc-rename)
+xnoremap <leader>ff  <Plug>(coc-format-selected)
+xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
+nnoremap <leader>ca  <Plug>(coc-codeaction)
+nnoremap <leader>qf  <Plug>(coc-fix-current)
+xnoremap if <Plug>(coc-funcobj-i)
+xnoremap af <Plug>(coc-funcobj-a)
+onoremap if <Plug>(coc-funcobj-i)
+onoremap af <Plug>(coc-funcobj-a)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" deoplete
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><C-g>     deoplete#undo_completion()
+" inoremap <expr><C-l>     deoplete#complete_common_string()
+"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  deoplete#close_popup()
+" inoremap <expr><C-e>  deoplete#cancel_popup()
+
+" autocmd
+augroup filetypes
+    autocmd FileType ruby,json,haml,eruby,yaml,html,javascript,coffee,sass,cucumber,stylus,css,xml,htmldjango set ai ts=2 sw=2 sts=2 et
+    autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup END
+
+autocmd InsertEnter * norm zz
+autocmd BufWritePre * %s/\s\+$//e
+
+" closetag
+" let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+" let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
+" let g:closetag_filetypes = 'html,xhtml,phtml,vue,javascriptvue'
+" let g:closetag_xhtml_filetypes = 'xhtml,jsx,tsx'
+" let g:closetag_emptyTags_caseSensitive = 1
+" let g:closetag_regions = {
+"     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+"     \ 'javascript.jsx': 'jsxRegion',
+"     \ }
+" let g:closetag_shortcut = '>'
+" let g:closetag_close_shortcut = '>>'
+
+
 " tcomment
 let g:tcomment#options = {'col': 1}
 
-let ayucolor="light"  " for light version of theme
-let &background="dark"
-let g:palenight_terminal_italics=1
-colorscheme catppuccin
 
 " indentLine
 " let g:indentLine_char = '│'

@@ -72,7 +72,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 if [ "$system_type" = "Darwin" ]; then
-    export PATH="/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/Cellar/llvm/15.0.7_1/bin:$PATH:"
+    export PATH="/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin:$PATH:"
     eval "$(brew shellenv)"
     alias l="gls -lh --color=always"
     alias ls="gls"

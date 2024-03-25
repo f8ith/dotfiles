@@ -7,8 +7,11 @@
   "python.formatting.provider": "black",
   "snippets.ultisnips.pythonPrompt": false,
   "rust-analyzer.enable": true,
-  "rust-analyzer.inlayHints.typeHintsSeparator": "‣ ",
-  "rust-analyzer.inlayHints.chainingHintsSeparator": "‣ ",
-  "rust-analyzer.hoverActions.enable": true,
-  "rust-analyzer.inlayHints.chainingHints": true
+  "Lua.workspace.library": [
+    "/usr/local/share/nvim/runtime/lua",
+    "/usr/local/share/nvim/runtime/lua/vim",
+    "/usr/local/share/nvim/runtime/lua/vim/lsp"
+  ],
+  "Lua.diagnostics.globals": ["vim"],
+  "rust-analyzer.inlayHints.chainingHints.enable": true
 }

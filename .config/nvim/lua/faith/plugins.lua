@@ -13,7 +13,7 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 	use 'b3nj5m1n/kommentary'
 
-	use { 'neoclide/coc.nvim', branch = 'release' }
+	use { 'neoclide/coc.nvim', after = 'catppuccin', branch = 'release' }
 
 	-- built in lsp
 	-- use {

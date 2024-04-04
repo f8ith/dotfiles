@@ -25,6 +25,7 @@ map <leader>rn <Action>(RenameElement)
 map <leader>ca <Action>(ShowIntentionActions)
 map <leader>a <Action>(ActiveProblemsViewToolWindow)
 map <leader>t <Action>(ActiveTerminalToolWindow)
+map <leader>x <Action>(CloseEditor)
 
 map ]g <Action>(GotoNextError)
 map [g <Action>(GotoPreviousError)

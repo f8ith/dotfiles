@@ -159,8 +159,8 @@ let g:coc_global_extensions = [
 \ ]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
-nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
-nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> [d <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]d <Plug>(coc-diagnostic-next)
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
@@ -182,7 +182,6 @@ endfunction
 nnoremap <leader>rn <Plug>(coc-rename)
 xnoremap <leader>ff  <Plug>(coc-format-selected)
 xnoremap <leader>aa  <Plug>(coc-codeaction-selected)
-nnoremap <leader>aa  <Plug>(coc-codeaction-selected)
 nnoremap <leader>ca  <Plug>(coc-codeaction)
 nnoremap <leader>qf  <Plug>(coc-fix-current)
 xnoremap if <Plug>(coc-funcobj-i)

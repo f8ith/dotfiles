@@ -28,5 +28,5 @@ nnoremap vD "_D
 xnoremap P "0p
 xnoremap Y "+y
 
-nnoremap ]e :action GotoNextError<CR>
-nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>

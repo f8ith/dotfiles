@@ -13,9 +13,9 @@ $symlinks = @{
 
 # Winget dependencies
 $wingetDeps = @(
-    "Eza-community.Eza"
+    "eza-community.eza"
     "Git.Git"
-    "GitHub.Cli"
+    "GitHub.cli"
     "Microsoft.OpenJDK.21"
     "Microsoft.PowerShell"
     "OpenJS.NodeJS"

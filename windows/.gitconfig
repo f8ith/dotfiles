@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+	email = jamienibtong@gmail.com
+	name = faith
+[credential]
+	helper = store
+[hub]
+	protocol = https
+[pull]
+	rebase = false

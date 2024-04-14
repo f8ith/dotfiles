@@ -315,6 +315,18 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent><leader>x :Bdelete<CR>
 
 endif
-let g:neovide_refresh_rate=140
+
+if exists("g:neovide")
+  if has('macunix')
+    let g:neovide_refresh_rate=60
+  else
+    let g:neovide_refresh_rate=165
+  endif
+  let g:neovide_refresh_rate_idle = 5
+  let g:neovide_remember_window_size = v:true
+  let g:neovide_cursor_animation_length = 0.07
+  set autochdir
+  set guifont=Roboto\ Mono,Symbols\ Nerd\ Font\ Mono:h14
+endif
 "}}}
 "}}}

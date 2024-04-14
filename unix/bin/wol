@@ -1,0 +1,6 @@
+#!/bin/bash
+
+MAC="$2"
+Broadcast="$1"
+PortNumber=9
+echo -e $(echo $(printf 'f%.0s' {1..12}; printf "$(echo $MAC | sed 's/://g')%.0s" {1..16}) | sed -e 's/../\\x&/g') |  socat - UDP4-DATAGRAM:$Broadcast:$PortNumber,broadcast

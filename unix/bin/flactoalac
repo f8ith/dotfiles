@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bash -c 'for i in *.flac; do name=`echo "$i" | cut -d'.' -f1`; ffmpeg -i "$i" -c:v copy -acodec alac "${name}.m4a"; done;'

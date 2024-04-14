@@ -34,3 +34,4 @@ alias proton="$HOME/.local/share/Steam/compatibilitytools.d/Proton-5.9-GE-3-ST/d
 alias prun="poetry run"
 alias nnnp="nnn -a -P preview-tui"
 alias sqlite=sqlite3
+alias gitdf="git -C ~/dotfiles/"

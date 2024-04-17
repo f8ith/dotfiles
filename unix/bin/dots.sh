@@ -27,19 +27,6 @@ case $1 in
         cp -rsvf "$DOTFILES_HOME"/. ~
     fi
     ;;
-  pull)
-    git -C "$DOTFILES_HOME" pull
-    ;;
-  add)
-    git -C "$DOTFILES_HOME" add .
-    ;;
-  commit)
-    if [-n "$2"]; then
-      git -C "$DOTFILES_HOME" commit -m "$2"
-    else
-      git -C "$DOTFILES_HOME" commit
-    fi
-    ;;
   *)
     echo "Unknown command $1"
     exit 1

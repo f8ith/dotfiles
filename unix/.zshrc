@@ -1,16 +1,12 @@
 autoload -U colors && colors
-PS1="%~ %{$reset_color%}%b "
-
 # disable vi mode
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+#PS1="%~ %{$reset_color%}%b "
+#ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+PLUGINS_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh"
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
@@ -42,34 +38,12 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
-# Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-
-zinit light jeffreytse/zsh-vi-mode
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-
-
-zinit wait"2" lucid for \
-    wfxr/forgit \
-
-#zstyle ':completion:*' menu select
-#_comp_options+=(globdots)		# Include hidden files.
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
 
 if [ "$system_type" = "Darwin" ]; then
     export PATH="/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin:$PATH:"
@@ -103,27 +77,64 @@ n () # to cd on quit
 
 function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}
 
-# pnpm
 export PNPM_HOME="/Users/faith/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
 eval "$(mise activate zsh)"
-### End of Zinit's installer chunk
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-### End of Zinit's installer chunk
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+zupdate() {
+    function zcompile-many() {
+      local f
+      for f; do zcompile -R -- "$f".zwc "$f"; done
+    }
+    # Clone and compile to wordcode missing plugins.
+    if [[ ! -e $PLUGINS_HOME/zsh-syntax-highlighting ]]; then
+      git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
+    fi
+    if [[ ! -e $PLUGINS_HOME/zsh-autosuggestions ]]; then
+      git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
+    fi
+    if [[ ! -e $PLUGINS_HOME/powerlevel10k ]]; then
+      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $PLUGINS_HOME/powerlevel10k
+    fi
+    if [[ ! -e $PLUGINS_HOME/fast-syntax-highlighting ]]; then
+      git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git $PLUGINS_HOME/fast-syntax-highlighting
+    fi
+    for i in $PLUGINS_HOME/*/.git; do ( echo $i; cd $i/..; git pull; ) &; done
+    zcompile-many $PLUGINS_HOME/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh} &
+    zcompile-many $PLUGINS_HOME/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh} &
+    make -C $PLUGINS_HOME/powerlevel10k pkg &
+    zcompile-many $PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh &
+    wait
+    source ~/.zshrc
+}
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+autoload -Uz compinit && compinit
+[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
+unfunction zcompile-many
+_comp_options+=(globdots)		# Include hidden files.
+
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Load plugins.
+source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
+source $PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source ~/.p10k.zsh

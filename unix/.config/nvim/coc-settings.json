@@ -14,5 +14,6 @@
     "/usr/local/share/nvim/runtime/lua/vim/lsp"
   ],
   "Lua.diagnostics.globals": ["use", "vim"],
-  "rust-analyzer.inlayHints.chainingHints.enable": true
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+  "rust-analyzer.cargo.features": "all"
 }

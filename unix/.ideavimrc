@@ -5,6 +5,7 @@ let mapleader=" "
 set surround
 set commentary
 set easymotion
+set NERDTree
 
 set showmode
 set so=5
@@ -15,8 +16,7 @@ set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
 
-nnoremap <leader>f <Plug>(easymotion-s)
-nnoremap <leader>e <Plug>(easymotion-f)
+nnoremap <leader>e :NERDTreeToggle<CR>
 map <S-Space> <Action>(GotoNextError)
 map ge <Action>(ShowErrorDescription)
 map <Tab> <Action>(NextTab)

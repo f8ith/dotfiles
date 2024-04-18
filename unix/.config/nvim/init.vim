@@ -24,7 +24,6 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=F
 
-set guifont=SFMono\ Nerd\ Font:h16
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 inoremap jk <Esc>
 
@@ -143,6 +142,7 @@ let g:NERDToggleCheckAllLines = 1
 " coc
 let g:coc_global_extensions = [
 \ 'coc-snippets',
+\ 'coc-sh',
 \ 'coc-tsserver',
 \ 'coc-html',
 \ 'coc-css',
@@ -322,6 +322,7 @@ if exists("g:neovide")
   else
     let g:neovide_refresh_rate=165
   endif
+  let $PATH = $HOME."/.local/share/mise/shims/:".$PATH
   let g:neovide_refresh_rate_idle = 5
   let g:neovide_remember_window_size = v:true
   let g:neovide_cursor_animation_length = 0.07

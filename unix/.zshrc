@@ -6,7 +6,6 @@ HISTFILE=~/.cache/zsh/history
 #PS1="%~ %{$reset_color%}%b "
 #ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-PLUGINS_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh"
 
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
@@ -36,7 +35,6 @@ lfcd () {
         fi
     fi
 }
-bindkey -s '^o' 'lfcd\n'
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -75,6 +73,17 @@ n () # to cd on quit
     fi
 }
 
+vicd()
+{
+    local dst="$(command vifm --choose-dir - "$@")"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
+}
+bindkey -s '^o' 'vicd\n'
+
 function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}
 
 export PNPM_HOME="/Users/faith/Library/pnpm"
@@ -89,36 +98,25 @@ eval "$(mise activate zsh)"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-function zcompile-many() {
+zcompile_many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
 }
 
-zupdate() {
-    function zcompile-many() {
+compile_plugins() {
+    zcompile_many() {
       local f
       for f; do zcompile -R -- "$f".zwc "$f"; done
     }
     # Clone and compile to wordcode missing plugins.
-    if [[ ! -e $PLUGINS_HOME/zsh-syntax-highlighting ]]; then
-      git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
-    fi
-    if [[ ! -e $PLUGINS_HOME/zsh-autosuggestions ]]; then
-      git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
-    fi
-    if [[ ! -e $PLUGINS_HOME/powerlevel10k ]]; then
-      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $PLUGINS_HOME/powerlevel10k
-    fi
-    if [[ ! -e $PLUGINS_HOME/fast-syntax-highlighting ]]; then
-      git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git $PLUGINS_HOME/fast-syntax-highlighting
-    fi
-    for i in $PLUGINS_HOME/*/.git; do ( echo $i; cd $i/..; git pull; ) &; done
-    zcompile-many $PLUGINS_HOME/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh} &
-    zcompile-many $PLUGINS_HOME/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh} &
-    make -C $PLUGINS_HOME/powerlevel10k pkg &
-    zcompile-many $PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh &
+    set +m
+    {
+    zcompile_many $ZSH_PLUGINS_HOME/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh} &
+    zcompile_many $ZSH_PLUGINS_HOME/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}&
+    make -C $ZSH_PLUGINS_HOME/powerlevel10k pkg &
+    zcompile_many $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh& } &>/dev/null
     wait
-    source ~/.zshrc
+    set -m
 }
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -126,15 +124,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 autoload -Uz compinit && compinit
-[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
-unfunction zcompile-many
+[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile_many ~/.zcompdump
+unfunction zcompile_many
 _comp_options+=(globdots)		# Include hidden files.
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Load plugins.
-source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
-source $PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $ZSH_PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH_PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH_PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ~/.p10k.zsh

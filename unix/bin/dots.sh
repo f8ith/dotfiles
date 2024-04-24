@@ -46,14 +46,18 @@ update_repos() {
 
 
 bootstrap() {
-    git -C $DOTFILES_HOME pull --rebase
     echo "Updating git repos:"
+    if [[ ! $(git -C $DOTFILES_HOME pull --rebase) ]]; then
+      exit 1
+    fi
     update_repos
     make_links
     echo "Compiling zsh plugins..."
     source ~/.zshrc
     compile_plugins
 }
+
+
 case $1 in
   init|bootstrap|update)
     bootstrap

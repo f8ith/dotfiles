@@ -1,2 +1,4 @@
 unix/.config/nvim/plugin/packer_compiled.lua
 unix/.config/vifm/colors
+unix/.config/vifm/vifminfo.json
+.DS_Store

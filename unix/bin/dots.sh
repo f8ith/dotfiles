@@ -1,5 +1,9 @@
 #!/bin/zsh
+
 POSITIONAL_ARGS=()
+
+ZSH_PLUGINS_HOME="${ZSH_PLUGINS_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/zsh}"
+DOTFILES_HOME="${DOTFILES_HOME:-~/dotfiles/unix}"
 REPOS=(
   https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS_HOME/zsh-syntax-highlighting
   https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_PLUGINS_HOME/zsh-autosuggestions

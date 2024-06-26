@@ -53,8 +53,10 @@ else
     alias l="ls -lh --color=always"
 fi
 
-export LS_COLORS="$(vivid generate one-dark)"
+### Windows ###
+export PATH="$PATH:/mnt/c/Users/faith/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/faith/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/WINDOWS"
 
+export LS_COLORS="$(vivid generate one-dark)"
 export NNN_OPTS="H"
 export NNN_PLUG='p:preview-tui'
 #export SPLIT='v'

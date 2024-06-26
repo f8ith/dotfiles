@@ -49,6 +49,29 @@ lua require('faith')
 
 set signcolumn=yes
 
+function! Is_WSL() abort
+  let proc_version = '/proc/version'
+  return filereadable(proc_version)
+        \  ? !empty(filter(
+        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
+        \  : v:false
+endfunction
+
+if Is_WSL()
+    let g:clipboard = {
+                \   'name': 'WslClipboard',
+                \   'copy': {
+                \      '+': '/mnt/c/Windows/System32/clip.exe',
+                \      '*': '/mnt/c/Windows/System32/clip.exe',
+                \    },
+                \   'paste': {
+                \      '+': 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+                \      '*': 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+                \   },
+                \   'cache_enabled': 0,
+                \ }
+endif
+
 " fzf
 "
 " nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>

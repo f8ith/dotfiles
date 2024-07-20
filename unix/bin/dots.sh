@@ -31,9 +31,9 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 make_links() {
     echo "Making links..."
     if [ "$system_type" = "Darwin" ]; then
-      {/opt/homebrew/bin/gcp -rsvf "$DOTFILES_HOME"/. ~ } &>/dev/null
+      {/opt/homebrew/bin/gcp -rsv "$DOTFILES_HOME"/. ~ } &>/dev/null
     else
-      {cp -rsvf "$DOTFILES_HOME"/. ~ } &>/dev/null
+      {cp -rsv "$DOTFILES_HOME"/. ~ } &>/dev/null
     fi
 }
 

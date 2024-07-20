@@ -8,11 +8,10 @@ set timeoutlen=200 ttimeoutlen=0
 set termguicolors
 set noshowmode
 set noshowcmd
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
-set tabstop=4
+set tabstop=2
 set completeopt=menuone,noselect
-set clipboard+=unnamedplus
 set lazyredraw
 set icm=nosplit
 set wrap!

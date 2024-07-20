@@ -1,19 +1,22 @@
 * {
-  border: none;
-  border-radius: 0;
-  font-family: Recursive Sans Casual Static, JetBrainsMono Nerd Font;
+  border: #b4befe;
+  border-width: 5px;
+  border-radius: 10px;
+  font-family: Roboto Mono, Recursive Sans Casual Static,
+    JetBrainsMono Nerd Font;
   font-size: 14px;
   min-height: 0;
+  color: #cdd6f4;
 }
 
 window#waybar {
   background: transparent;
-  color: white;
+  color: #cdd6f4;
 }
 
 tooltip {
   background: #0f0f0f;
-  border-radius: 15px;
+  border-radius: 10px;
   border-width: 2px;
   border-style: solid;
   border-color: #262626;
@@ -47,19 +50,21 @@ tooltip {
   padding: 5px 10px;
 }
 
-#custom-date,
 #custom-notification,
 #custom-media,
 #custom-cava,
-#clock,
 #battery,
 #pulseaudio,
 #network,
 #workspaces,
 #tray {
   background-color: #181825;
-  padding: 5px 10px;
-  margin: 5px 0px;
+  padding: 10px;
+  margin: 20px;
+  border: #b4befe;
+  border-width: 2px;
+  border-radius: 10px;
+  border-style: solid;
 }
 
 #custom-media {
@@ -91,11 +96,11 @@ tooltip {
 }
 
 #custom-date {
-  color: #89dceb;
+  color: #cba6f7;
 }
 
 #clock {
-  color: #cba6f7;
+  color: #b4befe;
   border-radius: 0 15px 15px 0;
 }
 

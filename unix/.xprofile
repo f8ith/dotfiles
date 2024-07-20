@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-export NeovideMultiGrid
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 xrdb -load ~/.Xresources &
 git config --global credential.helper store &

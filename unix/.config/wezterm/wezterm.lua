@@ -32,7 +32,7 @@ config.font_size = 14
 config.color_scheme = 'Catppuccin Mocha'
 config.use_dead_keys = false
 config.use_fancy_tab_bar = false
-config.enable_wayland = true
+config.enable_wayland = false
 config.keys = {
     { key = "a", mods = "LEADER|CTRL", action = wezterm.action { SendString = "\x01" } },
     { key = "-", mods = "LEADER",      action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },

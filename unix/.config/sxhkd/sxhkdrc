@@ -1,33 +1,32 @@
 #: screenshots {{{
 
 Print
-        maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved" -t 2000
+  maim -q -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg && notify-send "Screenshot saved" -t 2000
 
 super + ctrl + c
 	notify-send "Select an area to capture" -t 1000 && maim -q -s -u -m 9 ~/Pictures/Screenshots/$(date +%Y.%m.%d-%H.%M.%S).jpg  && notify-send "Screenshot captured" -t 2000
 
 super + shift + c
-        notify-send "Select an area to copy to clipboard" -t 1000 && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"  -t 2000
+  notify-send "Select an area to copy to clipboard" -t 1000 && maim -q -s -u | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"  -t 2000
 
 super + Print
 	maim -q -u | xclip -selection clipboard -t image/png && notify-send "Screenshot captured" -t 2000
 
 super + shift + Print
-        kitty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
-
+  kitty --class file_manager --title lf --working-directory ~/Pictures/Screenshots -e startlf
 
 #}}}
 
 #: media keys {{{
 
 XF86AudioRaiseVolume
-        amixer -D default set Master 5%+ && amixer -D default set Master unmute && notify-send -t 200 "  $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
+  amixer -D default set Master 5%+ && amixer -D default set Master unmute && notify-send -t 200 "  $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
 
 XF86AudioLowerVolume
-        amixer -D default set Master 5%- && amixer -D default set Master unmute && notify-send -t 200 " $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
+  amixer -D default set Master 5%- && amixer -D default set Master unmute && notify-send -t 200 " $(amixer sget Master | awk -F 'Left:|[][]' 'BEGIN \{RS=""\}\{ print $3 \}')"
 
 XF86AudioMute
-        pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 200 ""
+  pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 200 ""
 
 XF86AudioPlay
 	playerctl -p ShairportSync play-pause
@@ -43,19 +42,19 @@ XF86AudioPrev
 #: apps {{{
 
 super + Return
-        wezterm
+  kitty
 
 super + shift + Return
-        wezterm --class floating_terminal
+  kitty --class floating_terminal
 
 super + d
-        rofi -show drun -show-icons -icon-theme "Papirus-Dark"
+  ~/.config/rofi/launchers/type-4/launcher.sh
 
 super + e
-        bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
+  bsptool -r editor "kitty --class editor --title nvim --working-directory /home/faith/git -e nvim" true
 
 super + shift + f
-        kitty --class file_manager --title lf --working-directory ~ -e startlf
+  kitty --class file_manager --title lf --working-directory ~ -e startlf
 
 
 super + shift + r
@@ -69,7 +68,7 @@ super + shift + q
 	bspc node -{c,k}
 
 super + f
-        bspc node -t '~fullscreen'
+  bspc node -t '~fullscreen'
 
 super + y
 	bspc node @focused:/ -R 90
@@ -125,7 +124,7 @@ super + ctrl + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 alt + super + {h,j,k,l}
-        bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+  bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
@@ -135,8 +134,11 @@ super + {Left,Down,Up,Right}
 #: misc {{{
 ctrl + Print
 #        vfio attach '1532:0219 046d:c539 046d:c087' && notify-send "Attached usb devices"
-        vfio a && notify-send "Attached usb devices"
+  vfio a && notify-send "Attached usb devices"
+
+super + z
+	polybar-msg cmd toggle
 
 super + shift + z
-	toggle picom -b --experimental-backends
+	toggle picom -b --no-vsync
 #}}}

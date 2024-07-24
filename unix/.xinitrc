@@ -3,12 +3,15 @@
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
-[ -f "$HOME/.xprofile" ] && . ~/.xprofile
+[ -f "$HOME/.xprofile" ] && . "$HOME"/.xprofile
 
 ## GNOME
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+#eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)"
+#export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 dbus-update-activation-environment --systemd DISPLAY
+
+export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 export IMSETTINGS_MODULE=fcitx5
 export INPUT_METHOD=fcitx5

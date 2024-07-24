@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+xwinwrap -d -st -ni -s -nf -b -un -argb -fs -fdt -- mpv --profile=wallpaper -stop-screensaver=no -wid WID ~/.config/mpv/background.mp4

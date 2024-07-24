@@ -41,6 +41,7 @@ capitaine-cursors
 castersoundboard-git
 catppuccin-gtk-theme-mocha
 ceph-bin
+chromium
 chrony
 clang
 clinfo
@@ -163,6 +164,7 @@ jstest-gtk-git
 kbct-git
 kde-gtk-config
 kdeconnect
+kdialog
 kdiskmark
 keyd
 kitty
@@ -180,6 +182,7 @@ lib32-nvidia-utils
 lib32-vkd3d
 libdrm
 libglvnd
+libgnome-keyring
 libp11
 libreoffice-fresh
 libretro-mupen64plus-next
@@ -234,7 +237,7 @@ nsz-git
 ntfs-3g
 ntp
 nvidia-container-toolkit
-nvidia-open-dkms
+nvidia-dkms
 nvidia-settings
 nwg-look
 obconf
@@ -274,6 +277,7 @@ plank
 plank-theme-numix
 plasma-desktop
 plata-theme
+polkit-gnome
 polybar
 postgresql
 protontricks
@@ -298,7 +302,7 @@ read-edid
 redshift
 reflector
 renameutils
-rofi-wayland
+rofi-lbonn-wayland-git
 rpiplay-git
 ruby
 rust-analyzer
@@ -306,6 +310,7 @@ rustup
 samba
 sbctl
 sbsigntools
+scrcpy
 scream
 screen
 sddm
@@ -328,6 +333,7 @@ sunshine
 sway
 swaync
 sxhkd
+syncthing
 tabbed
 tela-icon-theme
 testdisk
@@ -368,6 +374,7 @@ unrar
 usbutils
 uthash
 v4l2loopback-dc-dkms
+v4l2loopback-dkms
 vi
 vifm
 vim
@@ -394,6 +401,7 @@ xarchiver
 xautolock
 xclip
 xcompmgr
+xdo
 xdotool
 xf86-input-evdev
 xf86-input-vmmouse
@@ -402,6 +410,7 @@ xidlehook
 xorg-fonts-misc
 xorg-server
 xorg-server-devel
+xorg-server-xephyr
 xorg-xcursorgen
 xorg-xev
 xorg-xinit

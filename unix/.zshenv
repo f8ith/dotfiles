@@ -6,8 +6,6 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 export NeovideMultiGrid
 
 # Fcitx settings
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export XDG_CONFIG_HOME="$HOME/.config"
 export BROWSER="brave"
 export READER="brave"

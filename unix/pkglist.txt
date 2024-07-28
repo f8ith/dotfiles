@@ -146,6 +146,7 @@ inotify-tools
 inter-font
 iw
 jdk-openjdk
+jellyfin-media-player
 joycond-cemuhook-git
 joycond-git
 joyutils
@@ -203,7 +204,6 @@ mono-msbuild
 mpv
 mupdf
 nasm
-nautilus
 nbd
 ncdu
 neovim
@@ -301,6 +301,7 @@ scrcpy
 scream
 screen
 sddm
+sddm-theme-catppuccin
 sddm-theme-corners-git
 seahorse
 shfmt

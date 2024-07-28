@@ -28,7 +28,6 @@ export INPUT_METHOD=fcitx5
 export WAYLAND_IM_MODULE=fcitx5
 export QT_IM_MODULES="wayland;fcitx;ibus"
 
-
 export XDG_RUNTIME_DIR
 XDG_RUNTIME_DIR=/run/user/$(id -u)
 

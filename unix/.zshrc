@@ -1,3 +1,7 @@
+if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
+
 autoload -U colors && colors
 # disable vi mode
 HISTSIZE=10000

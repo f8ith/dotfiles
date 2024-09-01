@@ -9,6 +9,9 @@ $symlinks = @{
     "$ENV:PROGRAMFILES\WezTerm\wezterm_modules"                                                     = "..\unix\.config\wezterm\"
     "$HOME\.wezterm.lua"                                                                            = "..\unix\.config\wezterm\wezterm.lua"
     "$HOME\.ideavimrc"                                                                              = "..\unix\.ideavimrc"
+    "$HOME\komorebi.json"                                                                           = ".\komorebi.json"
+    "$HOME\applications.yaml"                                                                       = ".\applications.yaml"
+    "$HOME\.config\whkdrc"                                                                          = ".\whkdrc"
 }
 
 # Winget dependencies
@@ -79,3 +82,6 @@ git config --global --unset user.email | Out-Null
 git config --global --unset user.name | Out-Null
 git config --global user.email $currentGitEmail | Out-Null
 git config --global user.name $currentGitName | Out-Null
+git config --system core.longpaths true
+
+Set-ItemProperty 'HKLM:\System\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -value 1

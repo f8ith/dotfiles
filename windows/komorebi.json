@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.28/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 10,
+  "default_container_padding": 10,
+  "border": false,
+  "border_width": 5,
+  "border_offset": -1,
+  "border_colours": {
+    "single": "#b4befe",
+    "stack": "#fab387",
+    "monocle": "#1e1e2e",
+    "unfocused": "#1e1e2e"
+  },
+  "stackbar": {
+    "height": 40,
+    "mode": "OnStack",
+    "tabs": {
+      "width": 300,
+      "focused_text": "#fab387",
+      "unfocused_text": "#cdd6f4",
+      "background": "#1e1e2e"
+    }
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        { "name": "I", "layout": "BSP" },
+        { "name": "II", "layout": "VerticalStack" },
+        { "name": "III", "layout": "VerticalStack" },
+        { "name": "IV", "layout": "UltrawideVerticalStack" },
+        { "name": "V", "layout": "BSP" },
+        { "name": "VI", "layout": "BSP" },
+        { "name": "VII", "layout": "BSP" },
+        { "name": "VIII", "layout": "BSP" },
+        { "name": "IX", "layout": "BSP" },
+        { "name": "X", "layout": "BSP" }
+      ]
+    }
+  ]
+}

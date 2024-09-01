@@ -8,3 +8,5 @@
 	protocol = https
 [pull]
 	rebase = false
+[core]
+	longpaths = true

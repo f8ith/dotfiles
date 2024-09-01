@@ -3,14 +3,11 @@ if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
 fi
 
 autoload -U colors && colors
-# disable vi mode
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
-#PS1="%~ %{$reset_color%}%b "
-#ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
-
+bindkey -e
 bindkey '^n' expand-or-complete
 bindkey '^p' reverse-menu-complete
 fpath+=~/.zfunc
@@ -41,7 +38,7 @@ lfcd () {
 }
 
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+#bindkey '^e' edit-command-line
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -127,6 +124,11 @@ compile_plugins() {
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 autoload -Uz compinit && compinit

@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- local colors = one_dark_colors
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-    config.default_prog = { "pwsh", "-NoLogo" }
+    config.default_prog = { "wsl.exe" }
 end
 
 config.font = wezterm.font { family = "Roboto Mono", harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }, }

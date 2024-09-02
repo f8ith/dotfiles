@@ -35,3 +35,4 @@ alias prun="poetry run"
 alias nnnp="nnn -a -P preview-tui"
 alias sqlite=sqlite3
 alias gitdf="git -C ~/dotfiles/"
+alias ps="/mnt/c/Program\ Files/PowerShell/7/pwsh.exe -WorkingDirectory C:/Users/jamie"

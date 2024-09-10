@@ -1,7 +1,3 @@
-if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
-    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
-fi
-
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000

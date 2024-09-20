@@ -6,12 +6,12 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'html',
     'clangd',
-    'tsserver',
+    'ts_ls',
     'eslint',
     'lua_ls',
     'rust_analyzer',
     'pyright',
-    'cmake'
+    'cmake',
   },
   handlers = {
     lsp.default_setup,

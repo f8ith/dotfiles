@@ -13,132 +13,134 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 	use 'b3nj5m1n/kommentary'
 
-	use { 'neoclide/coc.nvim', after = 'catppuccin', branch = 'release' }
+	-- use { 'neoclide/coc.nvim', after = 'catppuccin', branch = 'release' }
 
 	-- built in lsp
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
+
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-nvim-lua' },
+
+			-- Snippets
+			{ 'L3MON4D3/LuaSnip' },
+			{ 'rafamadriz/friendly-snippets' },
+		}
+	}
+
+	use {
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { { "prettierd", "prettier" } },
+				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+			})
+		end,
+	}
+
 	-- use {
-	-- 	'VonHeikemen/lsp-zero.nvim',
-	-- 	branch = 'v3.x',
+	-- 	'neovim/nvim-lspconfig',
 	-- 	requires = {
-	-- 		-- LSP Support
-	-- 		{ 'neovim/nvim-lspconfig' },
-	-- 		{ 'williamboman/mason.nvim' },
-	-- 		{ 'williamboman/mason-lspconfig.nvim' },
-
-	-- 		-- Autocompletion
-	-- 		{ 'hrsh7th/nvim-cmp' },
-	-- 		{ 'hrsh7th/cmp-buffer' },
-	-- 		{ 'hrsh7th/cmp-path' },
-	-- 		{ 'saadparwaiz1/cmp_luasnip' },
-	-- 		{ 'hrsh7th/cmp-nvim-lsp' },
-	-- 		{ 'hrsh7th/cmp-nvim-lua' },
-
-	-- 		-- Snippets
-	-- 		{ 'L3MON4D3/LuaSnip' },
-	-- 		{ 'rafamadriz/friendly-snippets' },
-	-- 	}
-	-- }
-
-	-- use {
-	-- 	"stevearc/conform.nvim",
+	-- 		'nvim-lua/lsp-status.nvim'
+	-- 	},
 	-- 	config = function()
-	-- 		require("conform").setup({
-	-- 			formatters_by_ft = {
-	-- 				lua = { "stylua" },
-	-- 				javascript = { { "prettierd", "prettier" } },
-	-- 			},
-	-- 			format_on_save = {
-	-- 				timeout_ms = 500,
-	-- 				lsp_fallback = true,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- }
+	-- 		local capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- 		capabilities.textDocument.completion.completionItem.snippetSupport = true
+	-- 		capabilities.textDocument.completion.completionItem.resolveSupport = {
+	-- 			properties = {
+	-- 				'documentation',
+	-- 				'detail',
+	-- 				'additionalTextEdits',
+	-- 			}
+	-- 		}
 
-	-- use {
-	--   'neovim/nvim-lspconfig',
-	--   config = function()
-	--   local capabilities = vim.lsp.protocol.make_client_capabilities()
-	--   capabilities.textDocument.completion.completionItem.snippetSupport = true
-	--   capabilities.textDocument.completion.completionItem.resolveSupport = {
-	--     properties = {
-	--       'documentation',
-	--       'detail',
-	--       'additionalTextEdits',
-	--     }
-	--   }
-	--
-	--   local lsp_status = require("lsp-status")
-	--   local nvim_lsp = require "lspconfig"
-	--   local servers = {
-	--       "html",
-	--       "cssls",
-	--       "jsonls",
-	--       "vuels",
-	--       "bashls",
-	--       "tsserver",
-	--       "pyright",
-	--       "gopls"
-	--   }
-	--
-	--   for _, lsp in ipairs(servers) do
-	--       nvim_lsp[lsp].setup {
-	--           capabilities = lsp_status.capabilities,
-	--           handlers = {
-	--             ["textDocument/publishDiagnostics"] = vim.lsp.with(
-	--               vim.lsp.diagnostic.on_publish_diagnostics, {
-	--                 virtual_text = false
-	--               }
-	--             ),
-	--           }
-	--       }
-	--   end
-	--
-	--   vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-	--       if err ~= nil or result == nil then
-	--           return
-	--       end
-	--       if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-	--           local view = vim.fn.winsaveview()
-	--           vim.lsp.util.apply_text_edits(result, bufnr)
-	--           vim.fn.winrestview(view)
-	--           if bufnr == vim.api.nvim_get_current_buf() then
-	--               vim.api.nvim_command("noautocmd :update")
-	--           end
-	--       end
-	--   end
-	--
-	--   local on_attach = function(client)
-	--       if client.resolved_capabilities.document_formatting then
-	--           vim.api.nvim_command [[augroup Format]]
-	--           vim.api.nvim_command [[autocmd! * <buffer>]]
-	--           vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-	--           vim.api.nvim_command [[augroup END]]
-	--       end
-	--   end
-	--
-	--   -- Setup diagnostics formaters and linters for non LSP provided files
-	--   nvim_lsp.efm.setup {
-	--       on_attach = on_attach,
-	--       capabilities = lsp_status.capabilities,
-	--       init_options = {
-	--           documentFormatting = true,
-	--           codeAction = true
-	--       },
-	--       filetypes = {
-	--         'javascript',
-	--         "lua",
-	--         "sh",
-	--         "markdown",
-	--         "json",
-	--         "yaml",
-	--         "toml",
-	--         "python"
-	--
-	--       }
-	--   }
-	--
-	-- end
+	-- 		local lsp_status = require("lsp-status")
+	-- 		local nvim_lsp = require "lspconfig"
+	-- 		local servers = {
+	-- 			"html",
+	-- 			"cssls",
+	-- 			"jsonls",
+	-- 			"vuels",
+	-- 			"bashls",
+	-- 			"ts_ls",
+	-- 			"pyright",
+	-- 			"gopls"
+	-- 		}
+
+	-- 		for _, lsp in ipairs(servers) do
+	-- 			nvim_lsp[lsp].setup {
+	-- 				capabilities = lsp_status.capabilities,
+	-- 				handlers = {
+	-- 					["textDocument/publishDiagnostics"] = vim.lsp.with(
+	-- 						vim.lsp.diagnostic.on_publish_diagnostics, {
+	-- 							virtual_text = false
+	-- 						}
+	-- 					),
+	-- 				}
+	-- 			}
+	-- 		end
+
+	-- 		vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+	-- 			if err ~= nil or result == nil then
+	-- 				return
+	-- 			end
+	-- 			if not vim.api.nvim_buf_get_option(bufnr, "modified") then
+	-- 				local view = vim.fn.winsaveview()
+	-- 				vim.lsp.util.apply_text_edits(result, bufnr)
+	-- 				vim.fn.winrestview(view)
+	-- 				if bufnr == vim.api.nvim_get_current_buf() then
+	-- 					vim.api.nvim_command("noautocmd :update")
+	-- 				end
+	-- 			end
+	-- 		end
+
+	-- 		local on_attach = function(client)
+	-- 			if client.resolved_capabilities.document_formatting then
+	-- 				vim.api.nvim_command [[augroup Format]]
+	-- 				vim.api.nvim_command [[autocmd! * <buffer>]]
+	-- 				vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
+	-- 				vim.api.nvim_command [[augroup END]]
+	-- 			end
+	-- 		end
+
+	-- 		-- Setup diagnostics formaters and linters for non LSP provided files
+	-- 		nvim_lsp.efm.setup {
+	-- 			on_attach = on_attach,
+	-- 			capabilities = lsp_status.capabilities,
+	-- 			init_options = {
+	-- 				documentFormatting = true,
+	-- 				codeAction = true
+	-- 			},
+	-- 			filetypes = {
+	-- 				'javascript',
+	-- 				"lua",
+	-- 				"sh",
+	-- 				"markdown",
+	-- 				"json",
+	-- 				"yaml",
+	-- 				"toml",
+	-- 				"python"
+
+	-- 			}
+	-- 		}
+	-- 	end
 	-- }
 	--
 	-- use {

@@ -66,6 +66,9 @@ case $1 in
   init|bootstrap|update)
     bootstrap
     ;;
+  link)
+    make_links
+    ;;
   *)
     bootstrap
     ;;

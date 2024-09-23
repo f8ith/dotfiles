@@ -23,6 +23,7 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=F
 
+
 nnoremap dm :execute 'delmarks '.nr2char(getchar())<cr>
 inoremap jk <Esc>
 
@@ -43,32 +44,7 @@ lua require('faith.remap')
 " vanilla {{{
 else
 
-lua require('faith')
-
-set signcolumn=yes
-
-function! Is_WSL() abort
-  let proc_version = '/proc/version'
-  return filereadable(proc_version)
-        \  ? !empty(filter(
-        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
-        \  : v:false
-endfunction
-
-if Is_WSL()
-    let g:clipboard = {
-                \   'name': 'WslClipboard',
-                \   'copy': {
-                \      '+': '/mnt/c/Windows/System32/clip.exe',
-                \      '*': '/mnt/c/Windows/System32/clip.exe',
-                \    },
-                \   'paste': {
-                \      '+': 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-                \      '*': 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-                \   },
-                \   'cache_enabled': 0,
-                \ }
-endif
+"lua require('faith')
 
 " fzf
 "
@@ -252,9 +228,6 @@ let g:tcomment#options = {'col': 1}
 " let g:indent_blankline_show_trailing_blankline_indent = 0
 " let g:indent_blankline_use_treesitter = 1
 
-" Open lazygit
-nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
-
 " yoink
 " let g:yoinkIncludeDeleteOperations = 1
 " let g:yoinkAutoFormatPaste='1'
@@ -279,35 +252,6 @@ let g:vista#renderer#icons = {
 
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-"nvim-tree
-
-nnoremap <leader>e :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-
-" lspsaga
-" nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-" nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
-" nnoremap <silent>gr :Lspsaga rename<CR>
-" nnoremap <silent> gs :Lspsaga signature_help<CR>
-" nnoremap <silent> gd :Lspsaga preview_definition<CR>
-" nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-" vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-" nnoremap <silent>K :Lspsaga hover_doc<CR>
-" nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-"
-" autocmd CursorHold * silent :Lspsaga show_cursor_diagnostics
-
-" nvim lsp
-" let g:diagnostic_enable_virtual_text = 0
-" let g:diagnostic_show_sign = 0
-
-" bufferline
-nnoremap <silent><TAB> :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCycleNext<CR>
-nnoremap <silent>[b :BufferLineCyclePrev<CR>
-nnoremap <silent><leader>x :Bdelete<CR>
 
 endif
 

@@ -19,3 +19,4 @@ vim.opt.relativenumber = true
 vim.opt.breakindent = true
 vim.opt.updatetime = 250
 vim.opt.inccommand = "split"
+vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }

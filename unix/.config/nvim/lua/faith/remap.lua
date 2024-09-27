@@ -73,16 +73,5 @@ vim.keymap.set(
 	'"_dP',
 	{ noremap = true, silent = true, desc = "Paste over selection without erasing unnamed register" }
 )
-
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>")
-vim.keymap.set("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>")
-
-vim.keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-vim.keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
-vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
-vim.keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { silent = true })
-
 vim.keymap.set("n", "dm", ":execute 'delmarks '.nr2char(getchar())<cr>")
 vim.keymap.set("i", "jk", "<Esc>")

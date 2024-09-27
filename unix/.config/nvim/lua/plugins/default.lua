@@ -15,7 +15,16 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		config = function()
-			vim.cmd([[colorscheme catppuccin]])
+			require("catppuccin").setup({
+				highlight_overrides = {
+					all = function(colors)
+						return {
+							CursorLineNr = { fg = colors.peach },
+						}
+					end,
+				},
+			})
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	--  'connorholyday/vim-snazzy'
@@ -47,16 +56,22 @@ return {
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = function()
+			vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+			vim.keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>")
+			vim.keymap.set("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>")
 			require("nvim-tree").setup({
 				filters = {
 					git_ignored = false,
+				},
+				view = {
+					side = "right",
 				},
 			})
 		end,
 	},
 
 	-- motions
-  "unblevable/quick-scope",
+	"unblevable/quick-scope",
 	"tpope/vim-surround",
 	"easymotion/vim-easymotion",
 
@@ -64,27 +79,36 @@ return {
 	"sheerun/vim-polyglot",
 	"nvim-tree/nvim-web-devicons",
 	"norcalli/nvim-colorizer.lua",
-
 	{
-		"akinsho/nvim-bufferline.lua",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
 		config = function()
-			require("bufferline").setup({})
+			require("nvim-treesitter.configs").setup({
+				-- Install parsers synchronously (only applied to `ensure_installed`)
+				sync_install = false,
+
+				-- Automatically install missing parsers when entering buffer
+				-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+				auto_install = true,
+
+				highlight = {
+					-- `false` will disable the whole extension
+					enable = true,
+
+					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+					-- Using this option may slow down your editor, and you may see some duplicate highlights.
+					-- Instead of true it can also be a list of languages
+					additional_vim_regex_highlighting = false,
+				},
+
+				indent = { enable = true },
+			})
 		end,
 	},
 
 	"moll/vim-bbye",
 	{ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview" },
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
-
-	{
-		"glepnir/galaxyline.nvim",
-		branch = "main",
-		config = function()
-			require("faith.statusline-minimal")
-		end,
-		dependencies = { "kyazdani42/nvim-web-devicons" },
-	},
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -93,13 +117,47 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+
 	{
-		"ibhagwan/fzf-lua",
-		-- optional for icon support
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			-- calling `setup` is optional for customization
-			require("fzf-lua").setup({})
+			vim.keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+			vim.keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+			vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+			vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { silent = true })
+
+			require("bufferline").setup({
+				options = {
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "",
+							highlight = "Fill",
+							separator = false, -- use a "true" to enable the default, or set your own character
+						},
+					},
+				},
+				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+			})
 		end,
+	},
+
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		config = function()
+			require("barbecue").setup({})
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = require("faith.lualine"),
 	},
 }

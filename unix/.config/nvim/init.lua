@@ -2,7 +2,7 @@ require("faith.settings")
 require("faith.remap")
 
 if vim.g.vscode then
-	require("vscode")
+	require("code")
 	return
 end
 

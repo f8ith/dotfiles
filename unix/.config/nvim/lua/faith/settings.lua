@@ -16,6 +16,7 @@ vim.opt.wrap = false
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.o.cursorline = true
+vim.o.cursorlineopt = "number"
 vim.opt.breakindent = true
 vim.opt.updatetime = 250
 vim.opt.inccommand = "split"

@@ -80,7 +80,7 @@ return {
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 					vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-					vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+					vim.keymap.set("n", "<leader>ds", vim.diagnostic.setloclist, opts)
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.

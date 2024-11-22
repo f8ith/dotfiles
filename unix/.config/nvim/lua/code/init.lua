@@ -42,6 +42,9 @@ local error = {
 	previous = function()
 		vim.fn.VSCodeNotify("editor.action.marker.prev")
 	end,
+	hover = function()
+		vim.fn.VSCodeNotify("editor.action.showHover")
+	end,
 }
 
 local editor = {
@@ -266,6 +269,7 @@ vim.keymap.set({ "n", "v" }, "L", workbench.nextEditor)
 vim.keymap.set({ "n" }, "<leader>q", error.list)
 vim.keymap.set({ "n" }, "]d", error.next)
 vim.keymap.set({ "n" }, "[d", error.previous)
+vim.keymap.set({ "n" }, "ge", error.hover)
 
 -- git
 vim.keymap.set({ "n" }, "<leader>gb", git.switch)

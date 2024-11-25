@@ -48,8 +48,15 @@ update_repos() {
   wait
 }
 
+setup() {
+  if [[ -z $(git config --get core.excludesfile) ]]; then
+    git config --global core.excludesFile '~/.gitignore'
+  fi
+}
+
 
 bootstrap() {
+    setup()
     echo "Updating git repos:"
     if [[ ! $(git -C $DOTFILES_HOME pull --rebase) ]]; then
       exit 1

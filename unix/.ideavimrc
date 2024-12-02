@@ -32,6 +32,7 @@ map [d <Action>(GotoPreviousError)
 map gd <Action>(GotoDeclaration)
 map gy <Action>(GotoTypeDeclaration)
 map gi <Action>(GotoImplementation)
+map gr <Action>(GotoDeclaration)
 
 inoremap jk <Esc>
 nnoremap vd "_d

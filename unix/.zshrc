@@ -43,9 +43,6 @@ autoload edit-command-line; zle -N edit-command-line
 if [ "$system_type" = "Darwin" ]; then
     export PATH="/opt/local/bin:/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin:$PATH:"
     eval "$(brew shellenv)"
-    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-    export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-    export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
     alias l="gls -lh --color=always"
     alias ls="gls"
     export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"

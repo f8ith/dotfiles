@@ -13,7 +13,7 @@ $symlinks = @{
     "$HOME\applications.yaml"                                                                       = ".\applications.yaml"
     "$HOME\.config\whkdrc"                                                                          = ".\whkdrc"
     "$HOME\.gitignore"                                                                              = "..\unix\.gitignore"
-    "$HOME\AppData\Roaming\alacritty"                                                               = "..\unix\.conifg\alacritty"
+    "$HOME\AppData\Roaming\alacritty"                                                               = "..\unix\.config\alacritty"
 }
 
 # Winget dependencies

@@ -12,6 +12,7 @@ $symlinks = @{
     "$HOME\komorebi.json"                                                                           = ".\komorebi.json"
     "$HOME\applications.yaml"                                                                       = ".\applications.yaml"
     "$HOME\.config\whkdrc"                                                                          = ".\whkdrc"
+    "$HOME\AppData\Roaming\alacritty"                                                               = "..\unix\.conifg\alacritty"
 }
 
 # Winget dependencies

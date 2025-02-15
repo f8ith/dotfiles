@@ -1,15 +1,15 @@
-local wezterm = require 'wezterm';
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- local colors = one_dark_colors
 
-if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-    config.default_prog = { "wsl.exe" }
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	config.default_prog = { "wsl.exe", "--cd", "~" }
 end
 
-config.font = wezterm.font { family = "Roboto Mono", harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }, }
+config.font = wezterm.font({ family = "Roboto Mono", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } })
 config.font_size = 14
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = "Catppuccin Mocha"
 config.use_dead_keys = false
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true

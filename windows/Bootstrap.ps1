@@ -12,6 +12,7 @@ $symlinks = @{
     "$HOME\komorebi.json"                                                                           = ".\komorebi.json"
     "$HOME\applications.yaml"                                                                       = ".\applications.yaml"
     "$HOME\.config\whkdrc"                                                                          = ".\whkdrc"
+    "$HOME\.gitignore"                                                                              = "..\unix\.gitignore"
 }
 
 # Winget dependencies

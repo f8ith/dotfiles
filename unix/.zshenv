@@ -7,8 +7,8 @@ export NeovideMultiGrid
 
 # Fcitx settings
 export XDG_CONFIG_HOME="$HOME/.config"
-export BROWSER="brave"
-export READER="brave"
+export BROWSER="firefox"
+export READER="firefox"
 
 # XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots

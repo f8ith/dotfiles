@@ -1,0 +1,52 @@
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+#[shell]
+#args = ["-l", "-c", "tmux attach || tmux"]
+#program = "/bin/zsh"
+
+[window]
+dynamic_padding = true
+startup_mode = "Windowed"
+padding.x = 10
+padding.y = 10
+decorations = "Full"
+decorations_theme_variant = "Light" # "Dark"
+
+[font]
+normal.family = "Roboto Mono"
+size = 14.0
+
+[general]
+live_config_reload = true
+import = [
+  "~/.config/alacritty/catppuccin-latte.toml"
+]
+
+# Tip: for inspiration, look for values in the source code files of your favorite VS Code themes, and use the color picker in
+# Google to test colors before setting a value, or simply using an editor such as VS Code where colors are displayed in a
+# small box when a HEX is detected by the editor.

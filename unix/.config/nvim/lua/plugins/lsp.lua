@@ -141,7 +141,6 @@ return {
 				html = {},
 				clangd = {},
 				ts_ls = {},
-				eslint = {},
 				rust_analyzer = {
 					settings = {
 						cargo = {

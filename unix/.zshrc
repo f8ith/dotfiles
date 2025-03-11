@@ -139,4 +139,7 @@ source $ZSH_PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH_PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
 source ~/.p10k.zsh

@@ -68,6 +68,12 @@ bootstrap() {
     compile_plugins
 }
 
+edit() {
+}
+
+add() {
+}
+
 
 case $1 in
   init|bootstrap|update)
@@ -75,6 +81,9 @@ case $1 in
     ;;
   link)
     make_links
+    ;;
+  edit)
+    edit
     ;;
   *)
     bootstrap

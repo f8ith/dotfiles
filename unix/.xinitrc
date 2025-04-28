@@ -10,8 +10,8 @@
 #export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 dbus-update-activation-environment --systemd DISPLAY
 
-export QT_QPA_PLATFORMTHEME="qt6ct"
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export QT_QPA_PLATFORMTHEME="qt6ct"
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 export IMSETTINGS_MODULE=fcitx5
 export INPUT_METHOD=fcitx5
@@ -23,8 +23,9 @@ export XMODIFIERS=@im=fcitx5
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 
-#export DESKTOP_SESSION=plasma
+export DESKTOP_SESSION=plasma
+exec startplasma-x11
+
 #exec gnome-session
-#exec startplasma-x11
-exec bspwm
+#exec bspwm
 #exec Hypr

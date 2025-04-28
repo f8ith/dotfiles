@@ -13,6 +13,7 @@ anki-bin
 appimagelauncher
 archivemount
 aritim-light-gtk
+ark
 asetroot
 atool
 audacity
@@ -381,6 +382,7 @@ wine-staging
 winetricks
 wireguard-tools
 wireshark-qt
+woeusb-ng
 wofi
 xarchiver
 xautolock

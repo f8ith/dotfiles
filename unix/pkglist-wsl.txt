@@ -36,7 +36,6 @@ lsof
 man-db
 mesa-utils
 miniupnpc
-mise-bin
 mosh
 mpv
 nano
@@ -73,7 +72,6 @@ vivid
 wezterm
 wget
 wireguard-tools
-yay-bin-debug
 yazi
 yt-dlp
 zsh

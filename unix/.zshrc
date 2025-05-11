@@ -20,6 +20,7 @@ if [ "$system_type" = "Darwin" ]; then
     eval "$(brew shellenv)"
     alias l="gls -lh --color=always"
     alias ls="gls"
+    alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
     export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 else
     alias l="ls -lh --color=always"
@@ -68,6 +69,19 @@ vicd()
 bindkey -s '^o' 'vicd\n'
 
 function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}
+
+fix_mosh_client() {
+  local fw='/usr/libexec/ApplicationFirewall/socketfilterfw'
+  local mosh_sym="$(which mosh-client)"
+  local mosh_abs="$(readlink -f $mosh_sym)"
+
+  sudo "$fw" --setglobalstate off
+  sudo "$fw" --add "$mosh_sym"
+  sudo "$fw" --unblockapp "$mosh_sym"
+  sudo "$fw" --add "$mosh_abs"
+  sudo "$fw" --unblockapp "$mosh_abs"
+  sudo "$fw" --setglobalstate on
+}
 
 export PNPM_HOME="/Users/faith/Library/pnpm"
 case ":$PATH:" in

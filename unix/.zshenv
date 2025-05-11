@@ -1,10 +1,5 @@
 # Default Programs
-
 export EDITOR="nvim"
-export VISUAL="nvim"
-
-# Fcitx settings
-export XDG_CONFIG_HOME="$HOME/.config"
 
 # XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots

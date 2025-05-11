@@ -4,11 +4,11 @@
 case "$1" in
 
   wake)
-    ssh dietpi@100.99.44.151 bin/wol 255.255.255.255 2c:f0:5d:72:d1:e2
+    ssh dietpi bin/wol 255.255.255.255 2c:f0:5d:72:d1:e2
     ;;
 
   sleep)
-    ssh dietpi@100.99.44.151 curl 'http://192.168.1.12:8009/sleep'
+    ssh dietpi curl 'http://192.168.1.12:8009/sleep'
     ;;
 
   *)

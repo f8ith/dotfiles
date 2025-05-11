@@ -148,7 +148,13 @@ return {
 						},
 					},
 				},
-				pyright = {},
+				pyright = {
+					settings = {
+						exclude = { ".venv" },
+						venvPath = ".",
+						venv = ".venv",
+					},
+				},
 				cmake = {},
 				lua_ls = {
 					settings = {

@@ -76,7 +76,7 @@ return {
 	"easymotion/vim-easymotion",
 
 	-- eyecandy
-	"sheerun/vim-polyglot",
+	-- "sheerun/vim-polyglot",
 	"nvim-tree/nvim-web-devicons",
 	"norcalli/nvim-colorizer.lua",
 	{
@@ -154,10 +154,5 @@ return {
 		config = function()
 			require("barbecue").setup({})
 		end,
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = require("faith.lualine"),
 	},
 }

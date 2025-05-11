@@ -3,13 +3,13 @@ set -eu
 
 cd "$HOME"/git/voice-changer ||
 
-DOCKER_IMAGE=dannadori/vcclient:20230826_211406
+DOCKER_IMAGE="dannadori/vcclient:20230826_211406"
 #DOCKER_IMAGE=vcclient
 
 ### DEFAULT VAR ###
 DEFAULT_EX_PORT=18888
 DEFAULT_USE_GPU=on # on|off
-DEFAULT_USE_LOCAL=on # on|off
+DEFAULT_USE_LOCAL=off # on|off
 ### ENV VAR ###
 EX_PORT=${EX_PORT:-${DEFAULT_EX_PORT}}
 USE_GPU=${USE_GPU:-${DEFAULT_USE_GPU}}
@@ -22,7 +22,7 @@ fi
 if [ "${USE_GPU}" = "on" ]; then
     echo "VC Client start...(with gpu)"
     docker run -it --rm --gpus all --shm-size=1024M \
-    -e EX_IP="`hostname -I`" \
+    -e EX_IP="`hostname -i`" \
     -e EX_PORT=${EX_PORT} \
     -e LOCAL_UID=$(id -u $USER) \
     -e LOCAL_GID=$(id -g $USER) \

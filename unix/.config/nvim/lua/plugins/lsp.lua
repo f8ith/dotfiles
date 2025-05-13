@@ -17,9 +17,8 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
-			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			{ "mason-org/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+			"mason-org/mason-lspconfig.nvim",
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -141,13 +140,7 @@ return {
 				html = {},
 				clangd = {},
 				ts_ls = {},
-				rust_analyzer = {
-					settings = {
-						cargo = {
-							features = { "nestest" },
-						},
-					},
-				},
+				rust_analyzer = {},
 				pyright = {
 					settings = {
 						exclude = { ".venv" },
@@ -175,9 +168,10 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
+				ensure_installed = servers,
+				automatic_enable = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}

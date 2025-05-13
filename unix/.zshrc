@@ -22,7 +22,9 @@ if [ "$system_type" = "Darwin" ]; then
     alias ls="gls"
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
     export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+    export PNPM_HOME="$HOME/Library/pnpm"
 else
+    export PNPM_HOME="$HOME/local/share/pnpm"
     alias l="ls -lh --color=always"
 fi
 
@@ -33,6 +35,10 @@ export LS_COLORS="$(vivid generate one-dark)"
 export NNN_OPTS="H"
 export NNN_PLUG='p:preview-tui'
 #export SPLIT='v'
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 n () # to cd on quit
 {
@@ -57,17 +63,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-vicd()
-{
-    local dst="$(command vifm --choose-dir - "$@")"
-    if [ -z "$dst" ]; then
-        echo 'Directory picking cancelled/failed'
-        return 1
-    fi
-    cd "$dst"
-}
-bindkey -s '^o' 'vicd\n'
-
 function gi () { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;}
 
 fix_mosh_client() {
@@ -83,17 +78,12 @@ fix_mosh_client() {
   sudo "$fw" --setglobalstate on
 }
 
-export PNPM_HOME="/Users/faith/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 eval "$(mise activate zsh)"
-
-# export NVM_DIR="$HOME/.config/nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 zcompile_many() {
   local f
@@ -115,10 +105,6 @@ compile_plugins() {
     wait
     set -m
 }
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 if type brew &>/dev/null
 then

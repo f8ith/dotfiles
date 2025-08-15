@@ -1,17 +1,10 @@
 local M = function()
-	local colors = require("catppuccin.palettes").get_palette("mocha")
 	local config = {
 		options = {
 			-- Disable sections and component separators
 			component_separators = "",
 			section_separators = "",
-			theme = {
-				-- We are going to use lualine_c an lualine_x as left and
-				-- right section. Both are highlighted by c theme .  So we
-				-- are just setting default looks o statusline
-				normal = { c = { fg = colors.fg, bg = colors.bg } },
-				inactive = { c = { fg = colors.fg, bg = colors.bg } },
-			},
+			theme = "rose-pine",
 			disabled_filetypes = { "packer", "NvimTree" },
 		},
 		sections = {
@@ -56,18 +49,14 @@ local M = function()
 		table.insert(config.sections.lualine_x, component)
 	end
 
-	ins_left({ "mode", color = { bg = colors.crust } })
+	ins_left({
+		"mode", -- color = { bg = colors.crust }
+	})
 
 	ins_left({
 		"diagnostics",
 		sources = { "nvim_diagnostic" },
 		symbols = { error = " ", warn = " ", info = " " },
-		diagnostics_color = {
-			error = { fg = colors.red },
-			warn = { fg = colors.yellow },
-			info = { fg = colors.cyan },
-		},
-		color = { bg = colors.mantle },
 	})
 
 	-- Insert mid section. You can make any number of sections in neovim :)
@@ -81,7 +70,7 @@ local M = function()
 	ins_right({
 		"branch",
 		icon = "",
-		color = { fg = colors.violet, gui = "bold" },
+		--color = { fg = colors.violet, gui = "bold" },
 	})
 
 	ins_right({ "location" })

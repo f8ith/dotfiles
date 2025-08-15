@@ -11,25 +11,32 @@ return {
 	--  'drewtempelmeyer/palenight.vim'
 	--  'Luxed/ayu-vim'
 	--  'b4skyx/serenade'
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("catppuccin").setup({
-				highlight_overrides = {
-					all = function(colors)
-						return {
-							CursorLineNr = { fg = colors.peach },
-						}
-					end,
-				},
-			})
-			vim.cmd.colorscheme("catppuccin")
-		end,
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			highlight_overrides = {
+	-- 				all = function(colors)
+	-- 					return {
+	-- 						CursorLineNr = { fg = colors.peach },
+	-- 					}
+	-- 				end,
+	-- 			},
+	-- 		})
+	-- 		vim.cmd.colorscheme("catppuccin")
+	-- 	end,
+	-- },
 	--  'connorholyday/vim-snazzy'
 	--  'navarasu/onedark.nvim'
 	--  'morhetz/gruvbox'
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
 
 	-- auto pairs
 	"AndrewRadev/tagalong.vim",
@@ -139,7 +146,7 @@ return {
 						},
 					},
 				},
-				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+				highlights = require("rose-pine.plugins.bufferline"),
 			})
 		end,
 	},

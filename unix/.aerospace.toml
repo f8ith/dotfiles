@@ -81,7 +81,7 @@ outer.right = 0
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-alt-enter = 'exec-and-forget wezterm'
+alt-enter = 'exec-and-forget wezterm-gui'
 cmd-shift-c = 'exec-and-forget qrsh clipboard -c'
 cmd-ctrl-shift-c = 'exec-and-forget qrsh screen'
 cmd-ctrl-shift-q = 'exec-and-forget qrsh camera'

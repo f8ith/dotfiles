@@ -10,3 +10,4 @@
 	rebase = false
 [core]
 	longpaths = true
+	autocrlf = false

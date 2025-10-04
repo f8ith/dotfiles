@@ -14,6 +14,7 @@ $symlinks = @{
     "$HOME\.config\whkdrc"                                                                          = ".\whkdrc"
     "$HOME\.gitignore"                                                                              = "..\unix\.gitignore"
     "$HOME\AppData\Roaming\alacritty"                                                               = "..\unix\.config\alacritty"
+    "$HOME\.glzr"                                                                                   = ".\.glzr"
 }
 
 # Winget dependencies
@@ -21,9 +22,11 @@ $wingetDeps = @(
     "eza-community.eza"
     "Git.Git"
     "GitHub.cli"
-    "Microsoft.OpenJDK.21"
     "Microsoft.PowerShell"
     "OpenJS.NodeJS"
+    "GlazeWM"
+    "wez.wezterm"
+    "jdx.mise"
 )
 
 # PS Modules

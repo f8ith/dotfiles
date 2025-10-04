@@ -1,4 +1,7 @@
 unix/.config/nvim/plugin/packer_compiled.lua
+unix/.config/nvim/lazy-lock.json
 unix/.config/vifm/colors
 unix/.config/vifm/vifminfo.json
+
+windows/.glzr/zebar/errors.log
 .DS_Store

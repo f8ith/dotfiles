@@ -7,7 +7,14 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "wsl.exe", "--cd", "~" }
 end
 
-config.font = wezterm.font({ family = "Roboto Mono", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } })
+--config.font = wezterm.font({ family = "Roboto Mono", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } })
+
+config.font = wezterm.font_with_fallback {
+    { family = "Roboto Mono", harfbuzz_features = { "calt=0", "clig=0", "liga=0" } },
+    'Symbol Nerd Font Mono',
+    'Noto Color Emoji',
+}
+
 config.font_size = 14
 config.color_scheme = "rose-pine"
 config.use_dead_keys = false

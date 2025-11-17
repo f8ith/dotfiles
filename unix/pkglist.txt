@@ -1,9 +1,9 @@
+7zip
 acestream-launcher
 acpid
 adobe-source-han-sans-tw-fonts
 adobe-source-han-serif-tw-fonts
 adw-gtk-theme
-adw-gtk3
 adwaita-dark
 alacritty
 alsa-utils
@@ -16,6 +16,7 @@ aritim-light-gtk
 ark
 asetroot
 atool
+atuin
 audacity
 aurutils
 autoconf
@@ -25,6 +26,7 @@ awesome-git
 aylurs-gtk-shell
 base
 base-devel
+bind
 binutils
 bison
 blueman
@@ -101,6 +103,7 @@ fcitx5-table-extra
 feh
 ffmpegthumbnailer
 ffnvcodec-headers
+filelight
 filezilla
 firefox
 firejail
@@ -113,6 +116,7 @@ freerdp
 fzf
 game-devices-udev
 gamemode
+gamescope
 gcc
 gimp
 git
@@ -126,6 +130,7 @@ gradle
 grim
 groff
 grub
+grub2-theme-preview
 gst-libav
 gst-plugins-bad
 gst-plugins-base
@@ -168,7 +173,6 @@ latte-dock
 lazygit
 lf-bin
 lib32-libglvnd
-lib32-libva-mesa-driver
 lib32-mangohud
 lib32-nvidia-utils
 lib32-vkd3d
@@ -176,10 +180,8 @@ libdrm
 libglvnd
 libgnome-keyring
 libp11
-libreoffice-fresh
 libretro-mupen64plus-next
 libselinux
-libva-mesa-driver
 libva-vdpau-driver
 libvirt
 lightly-qt
@@ -209,8 +211,6 @@ nbd
 ncdu
 neovim
 net-tools
-network-manager-applet
-networkmanager
 nftables
 niri
 nitroshare
@@ -232,8 +232,8 @@ nwg-look
 obconf
 obmenu-generator
 obs-studio
-obsidian
 ofono
+onlyoffice-bin
 open-vm-tools
 openbox
 opencl-clover-mesa
@@ -248,7 +248,6 @@ otf-arsenal
 otf-hermit
 otf-overpass
 owlink-git
-p7zip
 pacman-contrib
 papirus-folders-git
 papirus-icon-theme
@@ -278,8 +277,8 @@ python-pip
 python-pipx
 python-pyaudio
 python-pynvim
-python2
 qbittorrent
+qdirstat-bin
 qpwgraph
 qt5ct
 qt6ct
@@ -316,19 +315,16 @@ steam
 stow
 stremio
 sudo
-sunshine
 sway
 swaync
 sxhkd
 syncthing
 tabbed
+tailscale
 tela-icon-theme
 testdisk
 texinfo
 thefuck
-thunar
-thunar-archive-plugin
-thunar-volman
 thunderbird
 tint2
 tldr

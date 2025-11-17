@@ -1,11 +1,8 @@
 # Default Programs
 export EDITOR="nvim"
-
-# XDG Directories
 export XDG_SCREENSHOTS_DIR=~/Pictures/Screenshots
 
 system_type=$(uname -s)
-
 export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 # Dotfiles

@@ -20,7 +20,7 @@ config.color_scheme = "rose-pine"
 config.use_dead_keys = false
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
-config.enable_wayland = false
+config.warn_about_missing_glyphs = false
 
 -- tmux keybinds
 -- config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }

@@ -85,6 +85,10 @@ case $1 in
   edit)
     edit
     ;;
+  compile_plugins)
+    source ~/.zshrc
+    compile_plugins
+    ;;
   *)
     bootstrap
     ;;

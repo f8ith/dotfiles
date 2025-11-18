@@ -150,6 +150,7 @@ gvfs-wsdd
 helvum
 heroku-cli-bin
 htop
+hyprland
 i2c-tools
 inkscape
 inotify-tools

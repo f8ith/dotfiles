@@ -5,7 +5,6 @@ export ELECTRON_OZONE_PLATFORM_HINT="auto"
 export EDITOR="nvim"
 export TERMINAL="wezterm"
 export BROWSER="brave"
-export READER="zathura"
 
 # Fcitx settings
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -19,5 +18,6 @@ export XMODIFIERS=@im=fcitx
 export SYSTEM_TYPE=$(uname -s)
 export PATH="$HOME/bin:$HOME/go/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export GRIMSHOT_FILENAME_FORMAT="$(date +'%Y.%m.%d-%H.%m.%S')"
+export XDG_SCREENSHOTS_DIR=$HOME/Pictures/Screenshots
 
 source ~/.local.profile

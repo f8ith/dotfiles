@@ -4,7 +4,7 @@
 case "$1" in
 
   wake)
-    ssh dietpi bin/wol 255.255.255.255 2c:f0:5d:72:d1:e2
+    ssh dietpi@dietpi bin/wol 255.255.255.255 2c:f0:5d:72:d1:e2
     ;;
 
   sleep)

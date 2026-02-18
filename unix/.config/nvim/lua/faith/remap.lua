@@ -66,3 +66,8 @@ vim.keymap.set("n", "<leader>Q", ":cclose<cr>")
 
 vim.keymap.set("n", "<leader>l", ":lopen<cr>")
 vim.keymap.set("n", "<leader>L", ":lclose<cr>")
+
+vim.keymap.set("n", "<TAB>", ":bnext<cr>", { silent = true })
+vim.keymap.set("n", "<S-TAB>", ":bprev<cr>", { silent = true })
+vim.keymap.set("n", "]b", ":bnext<cr>", { silent = true })
+vim.keymap.set("n", "[b", ":bprev<cr>", { silent = true })

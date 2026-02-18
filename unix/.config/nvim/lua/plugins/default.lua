@@ -29,14 +29,20 @@ return {
 	-- },
 	--  'connorholyday/vim-snazzy'
 	--  'navarasu/onedark.nvim'
-	--  'morhetz/gruvbox'
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	},
+  { 
+    "morhetz/gruvbox",
+    name = "gruvbox", 
+    config = function()
+      vim.cmd("colorscheme gruvbox")
+    end,
+  },
+	--{
+	--	"rose-pine/neovim",
+	--	name = "rose-pine",
+	--	config = function()
+	--		vim.cmd("colorscheme rose-pine")
+	--	end,
+	--},
 
 	-- auto pairs
 	"AndrewRadev/tagalong.vim",
@@ -125,31 +131,31 @@ return {
 		end,
 	},
 
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			vim.keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-			vim.keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
-			vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { silent = true })
-			vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
-			vim.keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { silent = true })
+	--{
+	--	"akinsho/bufferline.nvim",
+	--	dependencies = "nvim-tree/nvim-web-devicons",
+	--	config = function()
+	--		vim.keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+	--		vim.keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+	--		vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+	--		vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+	--		vim.keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { silent = true })
 
-			require("bufferline").setup({
-				options = {
-					offsets = {
-						{
-							filetype = "NvimTree",
-							text = "",
-							highlight = "Fill",
-							separator = false, -- use a "true" to enable the default, or set your own character
-						},
-					},
-				},
-				highlights = require("rose-pine.plugins.bufferline"),
-			})
-		end,
-	},
+	--		require("bufferline").setup({
+	--			options = {
+	--				offsets = {
+	--					{
+	--						filetype = "NvimTree",
+	--						text = "",
+	--						highlight = "Fill",
+	--						separator = false, -- use a "true" to enable the default, or set your own character
+	--					},
+	--				},
+	--			},
+	--			highlights = require("gruvbox.plugins.bufferline"),
+	--		})
+	--	end,
+	--},
 
 	{
 		"utilyre/barbecue.nvim",

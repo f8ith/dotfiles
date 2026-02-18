@@ -1,10 +1,23 @@
+local colors = {
+  black        = '#282828',
+  white        = '#ebdbb2',
+  red          = '#fb4934',
+  green        = '#b8bb26',
+  blue         = '#83a598',
+  yellow       = '#fe8019',
+  gray         = '#a89984',
+  darkgray     = '#3c3836',
+  lightgray    = '#504945',
+  inactivegray = '#7c6f64',
+}
+
 local M = function()
 	local config = {
 		options = {
 			-- Disable sections and component separators
 			component_separators = "",
 			section_separators = "",
-			theme = "rose-pine",
+			theme = "gruvbox",
 			disabled_filetypes = { "packer", "NvimTree" },
 		},
 		sections = {
@@ -59,6 +72,22 @@ local M = function()
 		symbols = { error = " ", warn = " ", info = " " },
 	})
 
+  ins_left({
+    "buffers",
+    icons_enabled = false,
+    buffers_color = {
+ 		  active = { bg = colors.lightgray, fg = colors.white, gui = "bold" },
+			inactive = { bg = colors.darkgray, fg = colors.white },
+    },
+    use_mode_colors = true,
+    mode = 0,
+    symbols = {
+      modified = ' ●',    
+      alternate_file = '',
+      directory =  '',    
+    },
+  })
+
 	-- Insert mid section. You can make any number of sections in neovim :)
 	-- for lualine it's any number greater then 2
 	ins_right({
@@ -73,7 +102,9 @@ local M = function()
 		--color = { fg = colors.violet, gui = "bold" },
 	})
 
-	ins_right({ "location" })
+	ins_right({ 
+    "location", 
+  })
 
 	-- ins_right({
 	-- 	"diff",

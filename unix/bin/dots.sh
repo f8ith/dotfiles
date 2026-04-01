@@ -5,10 +5,10 @@ POSITIONAL_ARGS=()
 ZSH_PLUGINS_HOME="${ZSH_PLUGINS_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/zsh}"
 DOTFILES_HOME="${DOTFILES_HOME:-$HOME/dotfiles/unix}"
 REPOS=(
-  https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS_HOME/zsh-syntax-highlighting
   https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_PLUGINS_HOME/zsh-autosuggestions
   https://github.com/romkatv/powerlevel10k.git $ZSH_PLUGINS_HOME/powerlevel10k
   https://github.com/zdharma-continuum/fast-syntax-highlighting.git $ZSH_PLUGINS_HOME/fast-syntax-highlighting
+  https://github.com/mroth/evalcache $ZSH_PLUGINS_HOME/evalcache
   https://github.com/vifm/vifm-colors.git $HOME/.config/vifm/colors
 )
 REPOSLEN="${#REPOS[@]}"

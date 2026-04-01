@@ -1,3 +1,7 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
@@ -34,11 +38,6 @@ export PATH="$PATH:/mnt/c/Users/faith/AppData/Local/Microsoft/WindowsApps:/mnt/c
 export LS_COLORS="$(vivid generate one-dark)"
 export NNN_OPTS="H"
 export NNN_PLUG='p:preview-tui'
-#export SPLIT='v'
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 n () # to cd on quit
 {
@@ -111,17 +110,24 @@ then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-autoload -Uz compinit && compinit
-[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile_many ~/.zcompdump
-unfunction zcompile_many
+# Smarter completion initialization
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+
 _comp_options+=(globdots)		# Include hidden files.
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # Load plugins.
-source $ZSH_PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH_PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH_PLUGINS_HOME/evalcache/evalcache.plugin.zsh
 source $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 eval "$(atuin init zsh --disable-up-arrow)"

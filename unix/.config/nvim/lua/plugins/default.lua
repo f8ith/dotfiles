@@ -45,7 +45,7 @@ return {
 	--},
 
 	-- auto pairs
-	"AndrewRadev/tagalong.vim",
+  'windwp/nvim-ts-autotag',
 	--  'Raimondi/delimitMate',
 	--  'cohama/lexima.vim',
 
@@ -94,9 +94,10 @@ return {
 	"norcalli/nvim-colorizer.lua",
 	{
 		"nvim-treesitter/nvim-treesitter",
+    branch = "main",
 		run = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,
 

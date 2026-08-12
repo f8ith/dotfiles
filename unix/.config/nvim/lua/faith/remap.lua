@@ -47,12 +47,6 @@ vim.keymap.set(
 vim.keymap.set({ "n", "v", "x" }, "<C-a>", "gg0vG$", { noremap = true, silent = true, desc = "Select all" })
 vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', { noremap = true, silent = true, desc = "Paste from clipboard" })
 vim.keymap.set(
-	"i",
-	"<C-p>",
-	"<C-r>+",
-	{ noremap = true, silent = true, desc = "Paste from clipboard from within insert mode" }
-)
-vim.keymap.set(
 	"x",
 	"<leader>P",
 	'"_dP',
@@ -67,8 +61,6 @@ vim.keymap.set("n", "<leader>Q", ":cclose<cr>")
 vim.keymap.set("n", "<leader>l", ":lopen<cr>")
 vim.keymap.set("n", "<leader>L", ":lclose<cr>")
 
-vim.keymap.set("n", "<TAB>", ":bnext<cr>", { silent = true })
-vim.keymap.set("n", "<S-TAB>", ":bprev<cr>", { silent = true })
-vim.keymap.set("n", "]b", ":bnext<cr>", { silent = true })
-vim.keymap.set("n", "[b", ":bprev<cr>", { silent = true })
+vim.keymap.set("n", "<Tab>", ":bnext<cr>", { silent = true })
+vim.keymap.set("n", "<S-Tab>", ":bprev<cr>", { silent = true })
 vim.keymap.set("n", "<leader>x", ":bd | bn<cr>", { silent = true })

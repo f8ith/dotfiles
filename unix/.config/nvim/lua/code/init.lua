@@ -262,45 +262,34 @@ vim.keymap.set({ "n" }, "<Esc>", "<cmd>noh<cr>")
 
 vim.keymap.set({ "n", "v" }, "<leader> ", workbench.showCommands)
 
-vim.keymap.set({ "n", "v" }, "H", workbench.previousEditor)
-vim.keymap.set({ "n", "v" }, "L", workbench.nextEditor)
-
 -- error
-vim.keymap.set({ "n" }, "<leader>q", error.list)
+vim.keymap.set({ "n" }, "<leader>d", error.list)
 vim.keymap.set({ "n" }, "]d", error.next)
 vim.keymap.set({ "n" }, "[d", error.previous)
 vim.keymap.set({ "n" }, "ge", error.hover)
 
 -- git
-vim.keymap.set({ "n" }, "<leader>gb", git.switch)
-vim.keymap.set({ "n" }, "<leader>gi", git.init)
-vim.keymap.set({ "n" }, "<leader>gd", git.deleteBranch)
-vim.keymap.set({ "n" }, "<leader>gf", git.fetch)
-vim.keymap.set({ "n" }, "<leader>gs", git.status)
-vim.keymap.set({ "n" }, "<leader>gp", git.pull)
-vim.keymap.set({ "n" }, "<leader>gg", git.graph)
+-- vim.keymap.set({ "n" }, "<leader>gb", git.switch)
+-- vim.keymap.set({ "n" }, "<leader>gi", git.init)
+-- vim.keymap.set({ "n" }, "<leader>gd", git.deleteBranch)
+-- vim.keymap.set({ "n" }, "<leader>gf", git.fetch)
+-- vim.keymap.set({ "n" }, "<leader>gs", git.status)
+-- vim.keymap.set({ "n" }, "<leader>gp", git.pull)
+-- vim.keymap.set({ "n" }, "<leader>gg", git.graph)
 
 -- project
 vim.keymap.set({ "n" }, "<leader>pf", project.findFile)
 vim.keymap.set({ "n" }, "<leader>pp", project.switch)
 vim.keymap.set({ "n" }, "<leader>pt", project.tree)
 
--- file
-vim.keymap.set({ "n", "v" }, "<space>w", file.save)
-vim.keymap.set({ "n", "v" }, "<space>wa", file.saveAll)
-vim.keymap.set({ "n", "v" }, "<space>fs", file.save)
-vim.keymap.set({ "n", "v" }, "<space>fS", file.saveAll)
-vim.keymap.set({ "n" }, "<space>ff", file.format)
-vim.keymap.set({ "n" }, "<space>fn", file.new)
-vim.keymap.set({ "n" }, "<space>ft", file.showInExplorer)
-vim.keymap.set({ "n" }, "<space>fr", file.rename)
+vim.keymap.set({ "n" }, "<leader>ff", file.format)
+vim.keymap.set({ "n" }, "<leader>fn", file.new)
+vim.keymap.set({ "n" }, "<leader>ft", file.showInExplorer)
+vim.keymap.set({ "n" }, "<leader>fr", file.rename)
 
 -- buffer/editor
-vim.keymap.set({ "n", "v" }, "<space>x", editor.closeActive)
-vim.keymap.set({ "n", "v" }, "<space>bk", editor.closeOther)
-
-vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>", { silent = true })
-vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>x", editor.closeActive)
+vim.keymap.set({ "n", "v" }, "<leader>bk", editor.closeOther)
 
 -- toggle
 vim.keymap.set({ "n", "v" }, "<leader>ta", toggle.toggleActivityBar)

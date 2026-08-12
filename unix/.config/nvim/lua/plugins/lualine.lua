@@ -66,18 +66,12 @@ local M = function()
 		"mode", -- color = { bg = colors.crust }
 	})
 
-	ins_left({
-		"diagnostics",
-		sources = { "nvim_diagnostic" },
-		symbols = { error = " ", warn = " ", info = " " },
-	})
-
   ins_left({
     "buffers",
     icons_enabled = false,
     buffers_color = {
- 		  active = { bg = colors.lightgray, fg = colors.white, gui = "bold" },
-			inactive = { bg = colors.darkgray, fg = colors.white },
+ 		  active = { fg = colors.white, gui = "bold" },
+			inactive = { fg = colors.inactivegray },
     },
     use_mode_colors = true,
     mode = 0,
@@ -90,6 +84,12 @@ local M = function()
 
 	-- Insert mid section. You can make any number of sections in neovim :)
 	-- for lualine it's any number greater then 2
+	ins_right({
+		"diagnostics",
+		sources = { "nvim_diagnostic", "coc" },
+		symbols = { error = " ", warn = " ", info = " " },
+	})
+  
 	ins_right({
 		function()
 			return "%="

@@ -130,6 +130,7 @@ source $ZSH_PLUGINS_HOME/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH_PLUGINS_HOME/evalcache/evalcache.plugin.zsh
 source $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-eval "$(atuin init zsh --disable-up-arrow)"
+FZF_DEFAULT_OPTS="--walker-skip=node_modules,.git"
+FZF_DEFAULT_COMMAND="-type f --hidden --exclude '*.xml'"
 
 source ~/.p10k.zsh

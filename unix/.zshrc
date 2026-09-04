@@ -82,8 +82,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-eval "$(mise activate zsh)"
-
 zcompile_many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
@@ -132,5 +130,9 @@ source $ZSH_PLUGINS_HOME/fast-syntax-highlighting/fast-syntax-highlighting.plugi
 
 FZF_DEFAULT_OPTS="--walker-skip=node_modules,.git"
 FZF_DEFAULT_COMMAND="-type f --hidden --exclude '*.xml'"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source ~/.p10k.zsh

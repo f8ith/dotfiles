@@ -71,13 +71,9 @@ return {
     config = function()
       vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
       vim.keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>")
-      vim.keymap.set("n", "<leader>n", "<cmd>NvimTreeFindFile<CR>")
       require("nvim-tree").setup({
         filters = {
           git_ignored = false,
-        },
-        view = {
-          side = "right",
         },
       })
     end,
